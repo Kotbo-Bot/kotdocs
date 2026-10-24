@@ -1,38 +1,67 @@
 ---
 title: Server health
-description: Follow your server's daily health score, its growth forecasts and its activity anomalies.
+description: "The server's daily health score, what pushes it up or down, how it compares with servers of the same size, its forecasts and the drop alert."
 ---
 
-<p class="doc-lead"><strong>Pulse</strong> gives your server a health score every day, projects its growth and flags activity anomalies.</p>
+<p class="doc-lead">The <strong>Server health</strong> page gives your server a score out of 100 every day, explains what pushes it up or down, compares it with servers of the same size, projects its growth and flags unusual days.</p>
 
 :::note[Where to find it]
-The **General → Server health** section: [Open Pulse ↗](https://dash.kotbo.fr/pulse). The page is in **beta**.
-It depends on the **Analytics** module: with no activity collection, there is nothing to analyse.
+The **General → Server health** section: [Open Server health ↗](https://dash.kotbo.fr/pulse). The page is in **beta**.
+It depends on the **Analytics** module: without activity collection, there is nothing to analyse.
 :::
 
-Pulse is computed **every night** on the day that just ended. The **Recompute** button rebuilds the available history.
+The score is computed **every night** for the previous day. The **Recompute** button computes it right away and rebuilds the available history.
+
+The page has three tabs: **Overview**, **Health** and **Predictions**.
 
 ---
 
 ## Overview tab
 
-The day's score is broken into five sub-scores:
+### Today's score
 
-* **Activity**
-* **Moderation**
-* **Growth**
-* **Engagement**
-* **Health**
+The score out of 100 is rated **Excellent**, **Good**, **Average**, **Weak** or **Critical**, with its trend over the last 7 days. It comes with:
 
-Each score is rated **Excellent**, **Good**, **Average**, **Weak** or **Critical**.
+* a **reliability**, which depends on active members, history length and available signals;
+* an **anonymous comparison** with Kotbo servers of the same size, on the same day and with the same scale. Enough comparable servers are needed for it to show.
 
-The **metrics of the day** detail messages, voice, active members, joins and leaves, sanctions and resolved tickets.
+The score accounts for the day of the week (a Sunday is compared with your usual Sundays) and for the server's size: a small server is not judged on a large one's figures.
 
 :::caution[Today's score is provisional]
-Until the day is over, Kotbo shows a partial score and says so explicitly.
+Until the day is over, the page shows a partial score, marked *Today (in progress)*.
 :::
 
-The **30-day trend** puts the day back in context.
+### Why this score
+
+This block lists the factors as points gained or lost compared with a neutral score of 50: **Pushing it up** and **Pulling it down**. Each factor leads to the page where you can act.
+
+### 30-day trend
+
+The chart puts the day back in its trend, with the **7-day average** and the five sub-scores. Triangles mark days with an alert or an outstanding run. Clicking a day shows its details: messages, voice, active members, joins / leaves, sanctions and tickets resolved.
+
+### Alerts and tips
+
+The page comments on the score instead of leaving it raw: dormant activity, high sanctions, many departures, pending tickets, unhealthy channels, or on the contrary an excellent momentum. When history is too short, it says so.
+
+### Being warned of a drop
+
+**Warn me if the score drops** creates an alert: every morning, Kotbo compares yesterday's score with your week and warns you, in a channel or by DM, if it drops by **at least** the chosen percentage. **Manage alerts** opens the [Statistics alerts](/en/dashboard/general/analytics/#threshold-alerts), where it is edited like the others.
+
+---
+
+## Health tab
+
+The tab details the five sub-scores, each with what it measures, its weight in the score (*N % of the score*) and its factors:
+
+| Sub-score | What it measures |
+| --- | --- |
+| **Activity** | Messages and voice, compared with your usual days. |
+| **Engagement** | Who takes part, who comes back (daily versus monthly active members), and whether messages get answered. |
+| **Growth** | Joins and leaves, smoothed over the week. |
+| **Moderation** | Sanctions and the tone of conversations, including the toxicity measured by [AegisAI](/en/dashboard/moderation/aegis/) when it is on. |
+| **Health** | Channel health and ticket follow-up. |
+
+A sub-score with nothing to measure stays neutral.
 
 ---
 
@@ -50,37 +79,18 @@ The module is enabled in [Settings → Modules](/en/dashboard/configuration/modu
 
 ---
 
-## Alerts & recommendations
-
-Pulse comments on the score rather than leaving it raw. Some of what it flags:
-
-* *Very low activity, the server is dormant.*
-* *High sanction rate, check the conflicts under way.*
-* *The server is losing members, look into why.*
-* *N leaves for M joins, retention is weak.*
-* *Low engagement, few members take an active part.*
-* *N open tickets waiting.*
-* *N unhealthy channels detected.*
-* *Excellent momentum, the server is in great shape!*
-
-When the history is too short, Pulse says so: *Not enough data yet for a reliable diagnosis.*
-
----
-
 ## Predictions tab
 
 ### Growth forecast
 
-Projection of the member count at **7 days** and **30 days**, with an average of members gained per day and a **confidence** rating. Low confidence signals a short or irregular history.
+Projection of the member count **in 7 days** and **in 30 days**, with members gained per day and a **Reliability**. Low reliability signals a short or irregular history. **Projected series** show the observed data and, dotted, the 7-day projection with its likely range.
 
-The chart distinguishes the **observed**, the **predicted** and an **80% interval**.
+At least **five complete days** of history are needed to project a trend.
 
-At least **five full days** of history are needed to project a trend.
+### Typical week and typical day
 
-### Seasonality
+The **Typical week** shows the most and least active days; the **Typical day**, messages per hour in server time, with the peak and low hours. Below 14 observed days, the profile is flagged as unreliable.
 
-Kotbo identifies the **busiest day**, the **quietest day**, the **peak hour** and the **quiet hour** (in UTC). Below 14 days observed, the profile is flagged as not yet reliable.
+### Detected anomalies
 
-### Anomalies detected
-
-An abnormal **spike** or **drop** is reported with its date, its observed value and the expected value. This is the right place to find the day something happened without anyone noticing.
+Days clearly outside the norm - trend and weekday taken into account - are listed with their date, observed value and expected value. It is the right place to find the day something happened without anyone noticing.
