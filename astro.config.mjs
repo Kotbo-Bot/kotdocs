@@ -132,6 +132,7 @@ export default defineConfig({
           ]),
           group('Intégrations', 'Integrations', [
             page('Connecter une IA', 'Connect an AI', 'aide/mcp'),
+            page('Webhooks sortants', 'Outgoing webhooks', 'dashboard/configuration/webhooks'),
             page('Bot personnalisé', 'Custom bot', 'dashboard/configuration/custom-bot'),
             page('Liens de salons', 'Channel links', 'dashboard/communaute/liens-salons'),
             page('Serveur du staff', 'Staff server', 'dashboard/cross-serveur/serveurs-staff'),

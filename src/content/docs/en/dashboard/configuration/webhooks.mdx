@@ -1,0 +1,82 @@
+---
+title: Outgoing webhooks
+description: "Send your server's events, signed, to an external tool: CRM, spreadsheet, n8n or your own service."
+---
+
+<p class="doc-lead"><strong>Outgoing webhooks</strong> send your server's events - joins, sanctions, tickets, suggestions… - in real time to the address of your choice. Every delivery is signed, retried on failure and recorded in a log.</p>
+
+:::note[Where to find it]
+The **Integrations → Outgoing webhooks** section: [Open outgoing webhooks ↗](https://dash.kotbo.fr/webhooks).
+The **Integrations** group only shows for server administrators. The page carries the **Beta** badge.
+:::
+
+---
+
+## Creating a webhook
+
+Click **Add endpoint**:
+
+* **Name**: to find it again, for example the tool's name.
+* **Endpoint URL**: a **public HTTPS** address. Internal addresses are refused.
+* **Events to send**: tick the ones you want, or **All events**, which includes events Kotbo adds later.
+
+On creation, Kotbo shows the **signing secret**. Copy it and store it in your tool: you can reveal it again, but every reveal is logged.
+
+A server can have up to **10 webhooks**.
+
+### Available events
+
+| Category | Events |
+| --- | --- |
+| **Members** | Join, join with an identified invite, leave, roles updated, level up. |
+| **Moderation** | Sanction applied, sanction revoked, auto-moderation rule triggered (without the caught text). |
+| **Tickets** | Ticket opened, closed, rated by the member. |
+| **Community** | Form response, suggestion proposed or resolved, giveaway winner and end, partnership stage change. |
+| **Server structure** | Channel or role created, channel or role deleted. |
+
+:::note[What is never sent]
+Message content never goes out in a webhook.
+:::
+
+---
+
+## Following a webhook
+
+The list shows each endpoint, **Active** or **Paused**. Click one to open its card:
+
+* **Send test**: sends a test event, to check that your tool answers.
+* **Success rate (24 h)**, **Last delivery** and last response received.
+* **Signing secret**: **Reveal** or **Regenerate**. After regenerating, update your tool, or it will reject deliveries.
+* **Subscribed events**.
+* **Delivery log**: every attempt, with request and response, kept for **30 days**. A delivery opens in detail (**Status**, **HTTP code**, **Attempts**, **Duration**, **Next retry**, **Request body**, **Response received**) and can be **Redelivered**.
+
+**Edit** changes the name, the address or the events, and **Delete** removes the webhook.
+
+---
+
+## Retries and automatic shutdown
+
+A delivery succeeds when your service answers with a **2xx** code within 10 seconds. Redirects are not followed.
+
+Otherwise, Kotbo retries it after 1 min, 5 min, 30 min, 2 h, 6 h, 12 h and 24 h: **8 attempts** in total. The count of consecutive failures shows on the card.
+
+:::caution[A webhook can switch itself off]
+After **40 failures in a row**, the webhook disables itself. The card shows *This webhook was disabled*: check that your service answers 2xx, then click **Re-enable**.
+:::
+
+The same event may arrive twice: deduplicate it with its ID (the `Kotbo-Event-Id` header).
+
+---
+
+## Verifying the signature
+
+Every request is a JSON `POST` signed with HMAC-SHA256 using the webhook's secret. Four headers come with it:
+
+| Header | Content |
+| --- | --- |
+| `Kotbo-Signature` | `t=timestamp,v1=signature`, the signature covering `timestamp.body`. |
+| `Kotbo-Event` | The event name, for example `member.joined`. |
+| `Kotbo-Event-Id` | The event's stable ID, to deduplicate. |
+| `Kotbo-Delivery` | The ID of this attempt. |
+
+The page's **Verify the signature** block gives a ready-to-copy verification example with **Copy example**, to hand to whoever connects your tool.
