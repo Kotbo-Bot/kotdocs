@@ -1,0 +1,135 @@
+---
+title: AegisAI
+description: "Have every message scored by AegisAI: remove serious insults, send borderline cases to staff, spot conflicts, harassment and distress."
+---
+
+<p class="doc-lead"><strong>Kotbo × AegisAI</strong> has every message scored by AegisAI, the AI built by marvideo. A toxicity score from 0 to 100 decides what happens next: nothing, a check by staff, or immediate action by the bot. Emotion analysis also feeds conflict and distress alerts, and the server's tone in the statistics.</p>
+
+:::note[Where to find it]
+The **Protection → AegisAI** section: [Open AegisAI ↗](https://dash.kotbo.fr/security/aegis). The old `/security/filters/ai` address leads there too.
+The page follows the **Filters** permission: whoever can configure filters sets up AegisAI, and moderators can rule on messages to review.
+:::
+
+:::caution[Text goes to a third-party service]
+Once the module is on, message text is sent to AegisAI to be scored. Kotbo strips mentions, links and emojis, and never sends attachments or members' identities.
+:::
+
+---
+
+## Turning analysis on
+
+The **Message analysis** switch at the top of the page turns the module on. Its status shows next to it: whether AegisAI is reachable, its response time, and the queue size when messages are waiting.
+
+The first time you turn it on, Kotbo asks **Help train AegisAI?**:
+
+* **Yes, share**: analyzed messages join AegisAI's training set, to improve its detection;
+* **No, keep nothing**: they are scored, then forgotten.
+
+You can change that choice later in the **Privacy** block. Until it is made, nothing is shared.
+
+:::note[If a warning mentions a missing key]
+*This bot has no AegisAI key*: the Kotbo instance is not connected to AegisAI. Only the Kotbo administrator can fix that.
+:::
+
+The page has three tabs: **Settings**, **To review** and **Modules**.
+
+---
+
+## Settings
+
+### Sensitivity
+
+Two thresholds split the toxicity scale:
+
+* below the **Review threshold**, nothing happens;
+* between the two, the message is sent to you under **To review**;
+* above the **Automatic action threshold**, the bot acts on its own.
+
+The **Preset** sets both thresholds at once:
+
+| Preset | Review threshold | Automatic action |
+| --- | --- | --- |
+| **Lenient** | 88 | 97 |
+| **Balanced** | 80 | 95 |
+| **Strict** | 70 | 90 |
+
+Changing a threshold by hand switches the preset to **Custom**. The second threshold must stay above the first.
+
+The **Try a sentence** field scores a message of your choice against the thresholds shown: **Analyze** returns its **Toxicity** and its **Emotion**. The sentence is only shared for training if you agreed to it.
+
+### When the bot acts on its own
+
+What happens above the automatic action threshold:
+
+* **Action**: **Remove the message**, **Remove and warn** or **Remove and time out**. The warning has a **Warning weight** (**Light**, **Normal**, **Serious**) on the weighted warning scale; the timeout, a length in minutes.
+* **Notify the member**: a short message in the channel, deleted after a few seconds.
+* **Card channel**: where messages to review and the bot's actions are posted. Empty, it is the server's log channel.
+
+A message scored late goes to review instead of being removed. Every sanction issued by AegisAI attaches a transcript of the channel as evidence, taken before the message is removed.
+
+### What is analyzed
+
+Every message is scored, staff and administrators included. Three options extend the analysis:
+
+* **Edited messages**: catches insults added afterwards to get around the filter.
+* **Nicknames**: a nickname judged toxic is replaced with a neutral one, and its owner gets the automatic action's sanction.
+* **Ticket mood**: shows the requester's mood on each ticket. **High priority on anger or distress** raises a low or normal priority ticket to high.
+
+### Exemptions
+
+**Exempt channels** and **Exempt roles**: their messages are scored, but never removed or sanctioned automatically. Above the threshold, they go to review. Administrators are treated the same way.
+
+### Privacy
+
+The block recaps what goes to AegisAI (the text, without mentions, links or emojis) and what Kotbo keeps: counters per hour and per channel, and the excerpt of flagged messages, erased when the log retention period ends. This is where you change **Help train AegisAI**.
+
+---
+
+## To review
+
+The tab lists detections, with a counter of pending messages. The **Status** filter shows **To review**, **Automatic**, **Confirmed**, **False positives** or **All**.
+
+Each card shows the channel (or *nickname*, or *edited message*), the **Toxicity** score, the emotion, the person targeted if any, and the message excerpt. *Scored late* flags a message scored too late to be removed.
+
+| Button | Effect |
+| --- | --- |
+| **Confirm and sanction** | Applies the planned sanction. For a conflict or distress alert, the button reads **Handled**. |
+| **False positive** | Undoes what the bot did. For a distress alert: **False alarm**. |
+| **Lift slowmode** | Removes the slowmode set by an escalation. |
+| **View message** / **Evidence** | Open the message on Discord and the attached transcript. |
+
+The same cards are posted to the **Card channel** on Discord, with the same buttons (labelled in French): staff can rule without opening the dashboard.
+
+:::note[If AegisAI does not answer]
+Kotbo falls back on the server's banned word list. Messages caught that way carry the note *Caught by the banned word list (AegisAI unavailable)*.
+:::
+
+---
+
+## Modules
+
+Three detections build on the scores. Each has its own switch.
+
+### Escalation
+
+When things get heated between several members of a channel, the bot sets a temporary slowmode and alerts staff. Settings: **Heated messages to trigger**, **Window (seconds)**, **Slowmode (seconds)** and **Slowmode duration (minutes)**.
+
+### Targeted harassment
+
+A member who sends several toxic messages to the same person, as replies or mentions, is flagged along with their messages. Settings: **Toxic messages to trigger**, **Window (minutes)**, and the **Action** - **Alert staff** or **Time out and alert**.
+
+Two more thresholds watch over time, all authors combined: they spot a group ganging up on one person, or attacks spread over several days. They alert staff, with no sanction.
+
+### Distress
+
+A message with strong sadness or fear is quietly flagged to staff. **Never any sanction.** Settings: **Emotion threshold**, **Alert channel** (a restricted channel ideally; empty, the card channel) and **One alert per member every (hours)**.
+
+:::tip[An alert is an invitation to check in]
+AegisAI sometimes mistakes disgust for sadness: a distress alert is an invitation to check in on someone, not a conclusion.
+:::
+
+---
+
+## Tone in the statistics
+
+Detected emotions are only kept as aggregates, and only if the server's statistics are turned on. They feed the **Tone** section of [Statistics](/en/dashboard/general/analytics/) and the tone card on a [member's profile](/en/dashboard/moderation/membres/).

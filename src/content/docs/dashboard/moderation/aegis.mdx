@@ -1,0 +1,135 @@
+---
+title: AegisAI
+description: "Faire noter chaque message par l'IA d'AegisAI : retirer les insultes graves, soumettre les cas limites au staff, repérer les conflits, le harcèlement et la détresse."
+---
+
+<p class="doc-lead"><strong>Kotbo × AegisAI</strong> fait noter chaque message par l'IA d'AegisAI, développée par marvideo. Un score de toxicité de 0 à 100 décide de la suite : rien, une vérification par le staff, ou une action immédiate du bot. L'analyse des émotions alimente en plus des alertes de conflit et de détresse, et le climat du serveur dans les statistiques.</p>
+
+:::note[Où la trouver]
+Section **Protection → AegisAI** : [Ouvrir AegisAI ↗](https://dash.kotbo.fr/security/aegis). L'ancienne adresse `/security/filters/ai` y mène aussi.
+La page suit le droit des **Filtres** : qui peut configurer les filtres règle AegisAI, et les modérateurs peuvent trancher les messages à vérifier.
+:::
+
+:::caution[Le texte part chez un service tiers]
+Une fois le module allumé, le texte des messages est envoyé à AegisAI pour être noté. Kotbo en retire les mentions, les liens et les emojis, et n'envoie jamais les pièces jointes ni l'identité des membres.
+:::
+
+---
+
+## Allumer l'analyse
+
+L'interrupteur **Analyse des messages**, en haut de page, allume le module. Son état s'affiche à côté : disponibilité d'AegisAI, temps de réponse, et taille de la file d'attente quand des messages patientent.
+
+À la première activation, Kotbo demande **Aider à entraîner AegisAI ?** :
+
+* **Oui, partager** : les messages analysés rejoignent le jeu d'entraînement d'AegisAI, pour améliorer sa détection ;
+* **Non, ne rien garder** : ils sont notés puis oubliés.
+
+Ce choix se modifie ensuite dans le bloc **Vie privée**. Tant qu'il n'est pas fait, rien n'est partagé.
+
+:::note[Si un avertissement parle d'une clé manquante]
+*Ce bot n'a pas de clé AegisAI* : l'instance Kotbo n'est pas reliée à AegisAI. Seul l'administrateur de Kotbo peut corriger cela.
+:::
+
+La page compte trois onglets : **Réglages**, **À vérifier** et **Modules**.
+
+---
+
+## Réglages
+
+### Sensibilité
+
+Deux seuils découpent l'échelle de toxicité :
+
+* sous le **Seuil de revue**, rien ne se passe ;
+* entre les deux, le message vous est soumis dans **À vérifier** ;
+* au-dessus du **Seuil d'action automatique**, le bot agit seul.
+
+Le **Préréglage** pose les deux seuils d'un coup :
+
+| Préréglage | Seuil de revue | Action automatique |
+| --- | --- | --- |
+| **Tolérant** | 88 | 97 |
+| **Équilibré** | 80 | 95 |
+| **Strict** | 70 | 90 |
+
+Modifier un seuil à la main passe le préréglage sur **Personnalisé**. Le second seuil doit rester au-dessus du premier.
+
+Le champ **Essaie une phrase** note un message de votre choix avec les seuils affichés : **Analyser** renvoie sa **Toxicité** et son **Émotion**. La phrase n'est partagée pour l'entraînement que si vous l'avez accepté.
+
+### Quand le bot agit seul
+
+Ce qui arrive au-dessus du seuil d'action automatique :
+
+* **Action** : **Retirer le message**, **Retirer et avertir** ou **Retirer et exclure temporairement**. L'avertissement a un **Poids** (**Léger**, **Normal**, **Grave**) sur l'échelle de warns pondérés ; l'exclusion, une **Durée** en minutes.
+* **Prévenir le membre** : un court message dans le salon, effacé après quelques secondes.
+* **Salon des cartes** : où arrivent les messages à vérifier et les actions du bot. Vide, c'est le salon de logs du serveur.
+
+Un message noté avec du retard part en revue au lieu d'être retiré. Chaque sanction prononcée par AegisAI joint en preuve une transcription du salon, prise avant le retrait du message.
+
+### Ce qui est analysé
+
+Tous les messages sont notés, staff et administrateurs compris. Trois options étendent l'analyse :
+
+* **Messages modifiés** : rattrape l'insulte ajoutée après coup pour contourner le filtre.
+* **Pseudos** : un pseudo jugé toxique est remplacé par un pseudo neutre, et son auteur reçoit la sanction de l'action automatique.
+* **Humeur des tickets** : affiche l'humeur du demandeur sur chaque ticket. **Priorité haute si colère ou détresse** fait passer en priorité haute un ticket en priorité basse ou normale.
+
+### Exemptions
+
+**Salons exemptés** et **Rôles exemptés** : leurs messages sont notés, mais jamais retirés ni sanctionnés d'office. Au-dessus du seuil, ils partent en revue. Les administrateurs sont traités de la même façon.
+
+### Vie privée
+
+Le bloc rappelle ce qui part chez AegisAI (le texte, sans mentions, liens ni emojis) et ce que Kotbo conserve : des compteurs par heure et par salon, et l'extrait des messages relevés, effacé à l'échéance de la rétention des logs. C'est ici que se change **Aider à entraîner AegisAI**.
+
+---
+
+## À vérifier
+
+L'onglet liste les détections, avec un compteur des messages en attente. Le filtre **Statut** affiche **À vérifier**, **Automatiques**, **Confirmés**, **Faux positifs** ou **Tout**.
+
+Chaque carte montre le salon (ou *pseudo*, ou *message modifié*), le score de **Toxicité**, l'émotion, la personne visée quand il y en a une, et l'extrait du message. *Analysé avec du retard* signale un message noté trop tard pour être retiré.
+
+| Bouton | Effet |
+| --- | --- |
+| **Confirmer et sanctionner** | Applique la sanction prévue. Pour une alerte de conflit ou de détresse, le bouton devient **Pris en charge**. |
+| **Faux positif** | Défait ce que le bot a fait. Pour une alerte de détresse : **Fausse alerte**. |
+| **Lever le mode lent** | Retire le mode lent posé par une escalade. |
+| **Voir le message** / **Preuve** | Ouvrent le message sur Discord et la transcription jointe. |
+
+Les mêmes cartes, avec les mêmes boutons, sont publiées dans le **Salon des cartes** sur Discord : le staff peut trancher sans ouvrir le dashboard.
+
+:::note[Si AegisAI ne répond pas]
+Kotbo se rabat sur la liste de mots bannis du serveur. Les messages ainsi relevés portent la mention *Repéré par la liste de mots bannis (AegisAI indisponible)*.
+:::
+
+---
+
+## Modules
+
+Trois détections s'appuient sur les scores. Chacune a son propre interrupteur.
+
+### Escalade
+
+Quand le ton monte entre plusieurs membres d'un salon, le bot pose un mode lent temporaire et prévient le staff. Réglages : **Messages tendus pour déclencher**, **Fenêtre (secondes)**, **Mode lent (secondes)** et **Durée du mode lent (minutes)**.
+
+### Harcèlement ciblé
+
+Un membre qui adresse plusieurs messages toxiques à la même personne, en réponse ou en mention, est signalé avec ses messages. Réglages : **Messages toxiques pour déclencher**, **Fenêtre (minutes)**, et l'**Action** - **Prévenir le staff** ou **Exclure temporairement et prévenir**.
+
+Deux seuils supplémentaires surveillent la durée, tous auteurs confondus : ils repèrent un groupe qui s'en prend à une même personne, ou des attaques étalées sur plusieurs jours. Ils préviennent le staff, sans sanction.
+
+### Détresse
+
+Un message très marqué par la tristesse ou la peur est signalé discrètement au staff. **Aucune sanction, jamais.** Réglages : **Seuil d'émotion**, **Salon des alertes** (un salon restreint de préférence ; vide, le salon des cartes) et **Une alerte par membre toutes les (heures)**.
+
+:::tip[Une alerte invite à prendre des nouvelles]
+AegisAI confond parfois le dégoût avec la tristesse : une alerte de détresse est une invitation à prendre des nouvelles, pas une conclusion.
+:::
+
+---
+
+## Le climat dans les statistiques
+
+Les émotions relevées sont conservées en agrégats seulement, et uniquement si les statistiques du serveur sont activées. Elles alimentent la section **Climat** des [Statistiques](/dashboard/general/analytics/) et la carte de climat de la [fiche d'un membre](/dashboard/moderation/membres/).

@@ -73,6 +73,7 @@ export default defineConfig({
             page('Anti-raid', 'Anti-raid', 'dashboard/moderation/anti-raid'),
             page('Filtres', 'Filters', 'dashboard/moderation/automod'),
             page('Pseudos', 'Nicknames', 'dashboard/moderation/pseudos'),
+            page('AegisAI', 'AegisAI', 'dashboard/moderation/aegis'),
             page('Comptes suspects', 'Suspicious accounts', 'dashboard/moderation/double-comptes'),
             page('Sanctions', 'Sanctions', 'dashboard/moderation/sanctions'),
             page('Contestations de ban', 'Ban appeals', 'dashboard/moderation/appels-ban'),
