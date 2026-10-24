@@ -1,19 +1,19 @@
 ---
-title: Gestion des salons
-description: Configurez l'Auto-Thread, les messages sticky, les salons de statistiques dynamiques, les salons vocaux temporaires et le système Honeypot depuis le dashboard.
+title: Salons
+description: "Fils automatiques à configurations multiples, message collé en bas de salon, compteurs, vocaux à la demande et leurs demandes d'accès, salon piège."
 ---
 
-<p class="doc-lead">Le module <strong>Salons</strong> regroupe toutes les fonctionnalités d'automatisation, de statistiques vocales et de sécurité liées aux salons de votre serveur Discord.</p>
+<p class="doc-lead">La page <strong>Salons</strong> regroupe les automatismes liés aux salons du serveur : fils ouverts automatiquement, message toujours visible en bas d'un salon, compteurs dans le nom des salons vocaux, salons vocaux créés à la demande et salon piège contre le spam.</p>
 
 :::tip[Côté Discord]
-Pour voir le fonctionnement de l'Auto-Thread, des messages sticky, des salons de statistiques, de la création de salon temporaire avec l'embed de contrôle et du piège Honeypot, consultez le [Guide Discord de gestion des salons](/discord/configuration/salons).
+Pour voir le fonctionnement des fils automatiques, des messages épinglés, des compteurs, des vocaux à la demande et du salon piège, consultez le [guide Discord de gestion des salons](/discord/configuration/salons).
 :::
 
-:::note[Disponibilité]
-Ce module est accessible depuis la section **Réglages → Salons** de votre dashboard : [Accéder au module Salons ↗](https://dash.kotbo.fr/channels-management).
+:::note[Où la trouver]
+Section **Réglages → Salons** : [Ouvrir les salons ↗](https://dash.kotbo.fr/channels-management).
 :::
 
-L'interface est structurée autour de six onglets principaux, détaillés ci-dessous.
+La page compte sept onglets : **Par salon**, **Fils automatiques**, **Message épinglé**, **Compteurs**, **Vocaux à la demande**, **Demandes d'accès** et **Salon piège**.
 
 ---
 
@@ -21,9 +21,7 @@ L'interface est structurée autour de six onglets principaux, détaillés ci-des
 
 L'onglet **Par salon**, ouvert par défaut, répond à la question « qu'est-ce qui touche ce salon ? » sans avoir à parcourir les autres onglets.
 
-Il liste les salons du serveur ; chacun se déplie sur les fonctionnalités qui l'affectent : fils automatiques, exclusion des logs, salon piège, et les sept jeux du module [Salons Fun](/dashboard/communaute/salons-fun/).
-
-Les autres onglets restent là pour la configuration fine de chaque fonctionnalité.
+Il liste les salons du serveur ; chacun se déplie sur les fonctionnalités qui l'affectent : fils automatiques, exclusion des journaux, salon piège, et les jeux du module [Salons fun](/dashboard/communaute/salons-fun/).
 
 :::note[Une fonctionnalité unique se déplace]
 Certains réglages ne désignent qu'un seul salon - le piège, un jeu. Les activer sur un salon les retire de celui qui les portait, et la liste se recharge pour le montrer.
@@ -33,43 +31,56 @@ Le renommage et la suppression d'un salon se font également depuis cet onglet.
 
 ---
 
-## 2. Auto-Thread (Fils automatiques)
+## 2. Fils automatiques
 
-L'onglet **Auto-Thread** permet de définir des salons textuels ou d'annonces dans lesquels Kotbo créera systématiquement et automatiquement un fil de discussion (thread) pour chaque nouveau message posté.
+Kotbo ouvre un fil pour chaque nouveau message d'un salon, selon les règles d'une **configuration**. Un salon peut en porter plusieurs : elles sont essayées dans l'ordre, et la première qui accepte le message ouvre le fil.
 
-### Configuration
-* **Sélection des salons** : Cliquez sur les salons de la liste pour les activer ou les désactiver. Les salons sélectionnés apparaissent avec une bordure colorée et une coche.
-* **Actions rapides** :
-  * **Sélectionner tout (filtre)** : Sélectionne tous les salons actuellement visibles (utile si vous avez filtré par recherche).
-  * **Tout désélectionner** : Décoche tous les salons configurés.
-  * **Barre de recherche** : Filtre la liste des salons par nom pour retrouver rapidement un canal spécifique.
+**Ajouter une configuration** déroule trois questions :
+
+1. **Où créer les fils ?** Le **Salon** et le **Nom de la configuration**.
+2. **Quels messages créent un fil ?**
+   * **Tous les messages**, **Texte**, **Liens** ou **Médias** (images, vidéos, GIF et stickers) ;
+   * ou **Conditions personnalisées**, qui combinent des conditions et des groupes : contient du texte, un lien, un média ou une pièce jointe, contient ou commence par un texte, correspond à une expression régulière, longueur minimale ou maximale, l'auteur a l'un des rôles ou est un membre précis, message de bot, de webhook ou réponse. Un groupe exige **Toutes les conditions** ou **Au moins une condition**, et **Inverser le résultat** prend le contraire.
+3. **Comment nommer le fil ?** **Première ligne du message**, **Nom de l'auteur**, **« Fil de l'auteur » et début du message**, **Nom de l'auteur et date**, ou **Règles personnalisées** : un modèle de titre, la première ligne, le titre de l'embed, ou un extrait par expression régulière. Les règles sont essayées de haut en bas, et la première qui produit un titre l'emporte. Un **Exemple fictif de titre** montre le résultat.
+
+### Réglages avancés
+
+* **Archivage du fil** : après 1 heure, 24 heures, 3 jours ou 1 semaine sans message.
+* **Qui peut renommer le fil ?** : **Modérateurs uniquement**, **Modérateurs et auteur** ou **Tout le monde**. Les modérateurs le peuvent toujours ; les autres passent par la commande `/fil renommer`, puisque c'est le bot qui a créé le fil.
+* **Messages des bots et webhooks** : les évaluer aussi. Ils peuvent ouvrir un fil, mais ne sont jamais supprimés.
+* **Ordre d'évaluation** : la place de la configuration parmi celles du salon.
+* **Import / export JSON** : copier ou télécharger une configuration, et en importer une dans le brouillon. L'export contient les identifiants de rôles et de membres : vérifiez-le avant de le partager.
+
+### Messages non conformes
+
+**Que faire des messages non conformes ?** supprime automatiquement un message qu'aucune configuration active du salon n'accepte, après un **Délai** (5 secondes à 1 heure), avec un **Avertissement** facultatif (`{user}`, `{channel}`, `{delay}`). Une configuration qui accepte tous les messages ne peut pas le faire.
+
+:::note[Qui n'est jamais supprimé]
+Les membres qui peuvent gérer les messages et les messages des bots ne sont jamais repris. Kotbo doit avoir la permission **Gérer les messages** pour supprimer.
+:::
+
+Chaque configuration peut être **Dupliquée**, désactivée ou supprimée. Supprimer une configuration laisse en place les fils déjà créés.
 
 ---
 
-## 3. Message Sticky (message collé en bas de salon)
+## 3. Message épinglé (collé en bas de salon)
 
-L'onglet **Message épinglé** garde un message toujours visible en bas d'un salon. Le bot le republie pour qu'il reste le dernier message affiché, ce qui est pratique pour un rappel de règles ou une consigne de format.
+L'onglet **Message épinglé** garde un message toujours visible en bas d'un salon. Dès que le salon accumule le nombre de messages configuré, Kotbo supprime son envoi précédent et renvoie le message tout en bas.
 
-### Fonctionnement
-Dès que le salon accumule le nombre de messages configuré, Kotbo supprime son envoi précédent et renvoie le message tout en bas du salon.
+**Ajouter un message épinglé** demande :
 
-### Configurer un message
-Cliquez sur **Ajouter un message épinglé**, puis renseignez :
-* **Salon concerné** : le salon dans lequel le message reste collé.
-* **Message** : le texte republié (ex : `Pense à lire le règlement avant de poster !`). Il ne peut pas être vide.
-* **Afficher en message enrichi** : envoie le message dans un encadré coloré plutôt qu'en texte brut. Deux champs apparaissent alors :
-  * **Titre de l'embed** (ex : *À lire avant de poster*).
-  * **Couleur** : au format hexadécimal `#RRGGBB`.
-* **Renvoyer après (messages)** : nombre de messages postés dans le salon avant que le sticky ne remonte en bas.
-* **Délai minimum entre deux renvois (secondes)** : protège des limites d'envoi de Discord quand le salon s'emballe. Mettez `0` pour désactiver ce délai.
+* **Salon concerné** et **Message** (il ne peut pas être vide).
+* **Afficher en message enrichi** : un encadré coloré, avec un **Titre du message** et une **Couleur**.
+* **JSON Discord** : publie un payload Discord complet (embeds et composants) au lieu d'un simple texte. Un exemple à adapter est fourni ; un JSON illisible est refusé.
+* **Identité personnalisée** : publie via un webhook, sous le **Nom affiché** et l'**Avatar** choisis, au lieu de l'identité du bot. Il faut la permission **Gérer les webhooks** ; le nom ne peut pas contenir « discord » ni « clyde ».
+* **Renvoyer après (messages)** et **Délai minimum entre deux renvois (secondes)**, qui protège des limites d'envoi de Discord quand le salon s'emballe (`0` pour désactiver).
 * **Actif** : suspend ou réactive le message sans supprimer sa configuration.
 
 :::note[Le salon ne se change pas après coup]
-Le salon d'un sticky déjà enregistré ne peut plus être modifié. Pour le déplacer, supprimez-le et recréez-en un.
+Le salon d'un message épinglé déjà enregistré ne peut plus être modifié. Pour le déplacer, supprimez-le et recréez-en un.
 :::
 
 ### Variables disponibles
-Le texte et le titre de l'embed acceptent les mêmes variables :
 
 | Variable | Résultat |
 | --- | --- |
@@ -78,114 +89,131 @@ Le texte et le titre de l'embed acceptent les mêmes variables :
 | `{salons}` ou `{channelCount}` | Nombre de salons |
 | `{boosts}` ou `{boostCount}` | Nombre de boosts du serveur |
 
-Les variantes françaises et anglaises fonctionnent indifféremment, quelle que soit la langue de votre dashboard.
-
 ### Actions disponibles
+
 * **Renvoyer maintenant** : force le renvoi immédiat sans attendre le seuil de messages.
 * **Supprimer** : retire le message encore affiché dans le salon et efface la configuration.
 
 :::caution[Permissions Discord requises]
-Kotbo doit pouvoir **voir le salon** et **y écrire**. Sans ces deux permissions, le message sticky n'est jamais renvoyé.
+Kotbo doit pouvoir **voir le salon** et **y écrire**. Sans ces deux permissions, le message n'est jamais renvoyé.
 :::
 
 :::note[Aucune mention n'est déclenchée]
-Les mentions écrites dans un message sticky ne notifient personne : le bot les neutralise à l'envoi. Un `@everyone` placé dans un sticky ne pingera donc pas votre serveur à chaque renvoi.
+Les mentions écrites dans un message épinglé ne notifient personne : le bot les neutralise à l'envoi. Un `@everyone` ne pingera donc pas votre serveur à chaque renvoi.
 :::
 
 ---
 
-## 4. Salons Stats (Compteurs en temps réel)
+## 4. Compteurs
 
-Le sous-module **Compteurs** permet d'afficher en temps réel des indicateurs clés de votre serveur (nombre de membres, d'actifs, de boosts, etc.) directement dans le nom de salons vocaux dédiés.
+L'onglet **Compteurs** affiche des indicateurs du serveur (membres, bots, boosts…) dans le nom de salons vocaux dédiés.
 
-### Configuration globale
-* **Activer le module** : Utilisez l'interrupteur principal en haut à droite.
-* **Catégorie de création** : Sélectionnez la catégorie Discord où seront placés vos salons de statistiques.
-  * *Option automatique* : Si vous laissez la sélection vide ou cliquez sur **Créer la catégorie**, Kotbo créera automatiquement une catégorie dédiée sur votre serveur Discord.
+### Catégorie de création
+
+Choisissez la catégorie Discord des salons de statistiques, ou cliquez sur **Créer la catégorie** pour que Kotbo en crée une.
 
 ### Statistiques historiques
+
 :::warning[Reconstruction des statistiques]
-Kotbo dispose d'un outil pour analyser l'historique complet des messages de vos salons textuels afin de générer les graphiques d'activité sur le dashboard.
-* **Lancer le scan** : Parcourt l'historique en arrière-plan sans affecter les données déjà enregistrées.
-* **Forcer le Re-scan** : Supprime et recalcule toutes les statistiques existantes du serveur. **Cette action est destructrice pour l'historique actuel du dashboard.**
+**Reconstruire les statistiques historiques** relit les anciens messages de vos salons pour remplir les graphiques d'activité.
+* **Lancer le scan** : parcourt l'historique en arrière-plan sans toucher aux données déjà enregistrées.
+* **Forcer le Re-scan** : écrase puis recalcule toutes les statistiques du serveur. **Cette action est destructrice pour l'historique actuel du dashboard.**
 :::
 
 ### Compteurs par défaut
-Vous pouvez activer et personnaliser individuellement les compteurs suivants :
-1. **Compteur de Membres** : Nombre total d'utilisateurs sur le serveur.
-2. **Compteur de Bots** : Nombre total d'applications/bots.
-3. **Compteur par Rôle** : Nombre de membres possédant un rôle cible spécifique (ex: `@Staff`).
-4. **Compteur de Salons** : Nombre de salons textuels et vocaux présents.
-5. **Compteur de Catégories** : Nombre total de catégories de salons.
-6. **Compteur d'Activité (24h)** : Nombre de membres ayant envoyé un message ou rejoint un salon vocal au cours des dernières 24 heures.
 
-Pour chaque compteur actif, vous pouvez spécifier un **salon vocal existant** ou laisser le bot le **créer automatiquement**, et personnaliser le modèle du nom (ex: `Membres : {count}`).
+1. **Compteur de membres** : nombre total d'utilisateurs sur le serveur.
+2. **Compteur de bots** : nombre total de bots.
+3. **Compteur par rôle** : nombre de membres possédant un rôle cible (ex : `@Staff`).
+4. **Compteur de salons** : nombre de salons textuels et vocaux.
+5. **Compteur de catégories** : nombre total de catégories.
+6. **Compteur d'Activité (24h)** : membres ayant écrit ou rejoint un vocal dans les dernières 24 heures.
+
+Pour chaque compteur, désignez un **salon vocal existant** ou laissez Kotbo le **créer**, et personnalisez le modèle du nom (ex : `Membres : {count}`).
 
 ### Compteurs personnalisés
-En cliquant sur **Ajouter un compteur personnalisé**, vous pouvez configurer des compteurs additionnels en choisissant :
-* **Type de statistique** : Membres totaux, Bots, Membres en ligne, Membres en vocal, Rôle spécifique, Salons totaux, Catégories, Actifs (24h), Boosts de serveur, ou Objectif de membres.
-* **Objectif (Cible)** : Spécifique au type *Objectif de membres*, permet d'afficher la progression vers un but (ex: `Objectif : {count}/{goal}`).
-* **Modèle du nom** : Utilisez la balise `{count}` (et `{goal}` pour les objectifs) qui sera remplacée dynamiquement par la valeur réelle.
+
+**Ajouter un compteur personnalisé** choisit :
+
+* le **Type de statistique** : membres totaux, bots, membres en ligne, membres en vocal, rôle spécifique, salons totaux, catégories, actifs (24h), boosts de serveur, ou objectif de membres ;
+* l'**Objectif (nombre cible)**, pour le type *Objectif de membres* (ex : `Objectif : {count}/{goal}`) ;
+* le **Modèle du nom**, où `{count}` (et `{goal}`) sont remplacés par les valeurs réelles.
 
 :::note[Mise à jour des noms]
-Pour respecter les limites de requêtes imposées par l'API Discord (Rate Limits), le bot rafraîchit le nom des salons de statistiques **toutes les 10 minutes**. Le changement n'est donc pas instantané sur Discord.
+Discord limite les renommages : Kotbo met ces compteurs à jour **toutes les 10 minutes**.
 :::
 
 ---
 
-## 5. Créer son salon (Salons temporaires)
+## 5. Vocaux à la demande
 
-Ce module permet aux utilisateurs de créer leur propre salon vocal temporaire et de le configurer de façon autonome à l'aide de boutons interactifs.
+Les membres créent leur propre salon vocal temporaire et le gèrent eux-mêmes avec des boutons. L'onglet se découpe en **Générateurs**, **Permissions**, **Panneau** et **Salons actifs**.
 
-### Configuration du générateur
-* **Salon Vocal Générateur** : Le salon vocal "d'appel". Dès qu'un membre rejoint ce salon, Kotbo l'en extrait, crée un nouveau salon temporaire et l'y déplace.
-* **Catégorie de création** : La catégorie Discord dans laquelle les salons temporaires seront créés.
-* **Modèle de nom du salon** : Le format du nom généré. Utilisez la balise `{user}` pour insérer le pseudonyme du créateur (ex: `Salon de {user}`).
-* **Rôle requis** : Restreint la possibilité de créer des salons temporaires aux seuls possesseurs d'un rôle spécifique (laisser vide pour ouvrir à tous).
-* **Générateurs additionnels** : Vous pouvez configurer plusieurs générateurs indépendants (chacun avec son salon déclencheur, sa catégorie cible, son modèle de nom et son rôle requis).
+### Générateurs
 
-:::note[Ce que le rôle requis contrôle]
-Il conditionne l'accès au **générateur**, pas les permissions dans le salon créé.
-:::
+* **Salon vocal générateur** : dès qu'un membre le rejoint, Kotbo crée un salon temporaire et l'y déplace.
+* **Catégorie de création** et **Modèle de nom du salon** (`{user}` insère le pseudo du créateur, ex : `Salon de {user}`).
+* **Rôle requis pour utiliser** : réserve le générateur à un rôle. Il conditionne l'accès au **générateur**, pas les permissions dans le salon créé.
+* **Salons générateurs additionnels** : d'autres générateurs indépendants, chacun avec son salon, sa catégorie, son modèle de nom et son rôle requis.
+
+**Propriété du salon** décide de ce qui se passe quand le propriétaire quitte son salon : un **Délai de passation** pour désigner un successeur, puis **Qui peut récupérer le salon** : **Les membres présents** ou **Les modérateurs seulement**. Le staff peut toujours récupérer un salon sans propriétaire.
 
 ### Permissions des salons créés
 
-Le bloc **Permissions des salons créés** décide de ce que le bot applique à chaque salon temporaire dès sa création.
-
-* **Places par défaut** : `0` pour un salon sans limite. Le propriétaire peut la modifier ensuite depuis le panneau.
-* **Verrouillage** : créer le salon déjà verrouillé. Seuls le propriétaire et les rôles autorisés d'office peuvent le rejoindre et y écrire.
-* **Chat textuel du salon** : *Hérité* (le chat suit la catégorie, comportement d'origine), *Ouvert* (tous ceux qui voient le salon peuvent y écrire, sans pour autant accéder au vocal) ou *Fermé* (seuls le propriétaire et les rôles autorisés d'office y écrivent).
-* **Rôles autorisés d'office** : ces rôles voient et rejoignent le salon sans que le propriétaire ait à les ajouter, même s'il est créé verrouillé.
-* **Pouvoirs du propriétaire** : ce que le créateur reçoit **sur son seul salon** - *Rendre muet*, *Rendre sourd*, *Déplacer* (nécessaire au bouton « Expulser » du panneau), *Gérer le salon* (renommer et régler depuis Discord, sans passer par le panneau) et *Gérer les messages* (supprimer et épingler dans le chat du salon).
+* **Places par défaut** : `0` pour un salon sans limite. Le propriétaire peut la modifier ensuite.
+* **Verrouillage** : créer le salon déjà verrouillé. Seuls le propriétaire et les rôles autorisés d'office peuvent le rejoindre et y écrire ; le staff en garde l'entrée.
+* **Chat textuel du salon** : *Hérité* (suit la catégorie), *Ouvert* ou *Fermé*.
+* **Rôles autorisés d'office** : ils voient et rejoignent le salon sans que le propriétaire ait à les ajouter, même verrouillé.
+* **Pouvoirs du propriétaire** : ce que le créateur reçoit **sur son seul salon** - rendre muet, rendre sourd, déplacer (nécessaire au bouton « Expulser » du panneau), gérer le salon et gérer les messages.
 
 :::caution[Ces réglages n'ouvrent jamais un salon fermé]
 Le salon temporaire reste aligné sur sa catégorie : ce bloc s'ajoute par-dessus. Si la catégorie interdit l'accès à vos membres, le salon créé l'interdira aussi.
 :::
 
-### Supervision depuis le Dashboard
-En bas de l'onglet, la section **Salons temporaires actifs** liste tous les salons actuellement ouverts sur le serveur. Les administrateurs peuvent :
-* Visualiser le nom du salon, son créateur actuel et le nombre de membres connectés.
-* Modifier à la volée la réservation (Rôle requis).
-* Renommer directement le salon en cliquant sur l'icône d'édition.
-* Fermer et supprimer instantanément le salon en cliquant sur **Fermer**.
+### Panneau
+
+Dès qu'un salon est créé, Kotbo poste dans son chat un **message de gestion** à boutons : verrouiller ou déverrouiller, renommer, limiter le nombre de places, exclure ou bannir un intrus, ouvrir ou fermer le chat.
+
+**Présentation du panneau** règle comment ce message est affiché : le **Mode du panneau** (V1, présentation classique en colonnes ; V2, la présentation actuelle), ses composants, la mise en page et la palette de l'état du salon, et l'endroit de la **Mention du propriétaire**. **Présentation par générateur** laisse chaque générateur avoir ses propres réglages ; le désactiver n'efface rien.
+
+### Salons actifs
+
+**Salons temporaires actifs** liste les salons ouverts, avec leur créateur, leurs membres et leur réservation. Les administrateurs peuvent les **Renommer**, changer la réservation et **Fermer le salon**.
 
 ---
 
-## 6. Salon Honeypot (Piège Anti-Spam)
+## 6. Demandes d'accès
 
-Le **Salon piège** est un outil de sécurité radical conçu pour détecter et neutraliser instantanément les bots de spam ou les comptes d'utilisateurs piratés (self-bots) qui rejoignent votre serveur.
+Quand un salon temporaire est verrouillé ou réservé, son panneau affiche un bouton **Demander l'accès** : quelqu'un d'extérieur peut prévenir le propriétaire sans forcer l'entrée.
 
-### Configuration du piège
-* **Salon Piège (Honeypot)** : Sélectionnez le salon à utiliser ou cliquez sur **Créer automatiquement**. Le bot créera un salon avec les permissions adaptées et y enverra un message embed d'avertissement.
+* **Qui peut répondre** : **Le propriétaire seul**, ou **Le propriétaire et le staff**.
+* **Prévenir le propriétaire par** : **Le salon vocal** (un message dans son chat, qui mentionne le propriétaire), **En message privé** (discret, mais échoue si ses MP sont fermés) ou **Un salon dédié** à toutes les demandes du serveur, choisi dans **Salon dédié aux demandes**. Si le choix principal échoue, un repli se déclenche tout seul.
+* **Expiration d'une demande (minutes)** : passé ce délai, le bouton redevient disponible.
+* **Silence après un refus (minutes)** : de 1 à 1440 minutes avant de pouvoir redemander.
+
+L'onglet porte aussi trois réglages des vocaux à la demande :
+
+* **Réglages admin** : ce que les modérateurs ont le droit de faire sur les salons temporaires, action par action - **Autorisé** ou **Admins seulement**. Les rôles staff sont ceux de la gestion du staff.
+* **Panneau compact** : les sous-panneaux se réécrivent dans un seul message, avec un bouton Retour, au lieu d'en ouvrir un nouveau à chaque action.
+* **Réservation** : les **Rôles réservables** proposés par le bouton **Réserver le salon** (vide : n'importe quel rôle), ce qu'on fait des **Personnes déjà présentes sans le rôle** (avec un **Salon de repli**, sinon elles sont déconnectées), et ce que fait le bouton pour un propriétaire qui n'a aucun rôle réservable : proposer n'importe quel rôle, choisir des personnes, ou interdire la réservation.
+
+---
+
+## 7. Salon piège
+
+Le **Salon piège** élimine les bots de spam et les comptes piratés : toute personne hors staff qui y écrit est sanctionnée aussitôt.
+
+* **Salon piège** : sélectionnez un salon ou cliquez sur **Créer automatiquement**. Kotbo crée un salon avec les permissions adaptées et y poste un message d'avertissement.
 * **Sanction à appliquer** :
-  * **Exclusion Temporaire (Timeout)** *(recommandé)* : Applique une exclusion d'écriture de 28 jours sur Discord.
-  * **Bannissement définitif** : Bannit définitivement le compte du serveur et supprime ses messages des dernières 24 heures.
-  * **Softban** : Bannit le membre puis le débannit immédiatement, ce qui a pour effet de purger tous ses messages récents sur le serveur.
-  * **Expulsion** : Exclut le membre du serveur.
-  * **Avertissement** : Enregistre un avertissement dans le dossier disciplinaire du membre.
-* **Réinvitation automatique (Optionnel - Kick uniquement)** : Si activé, Kotbo enverra un DM à l'utilisateur exclu contenant un lien d'invitation unique valable 24h.
-* Cliquez sur **Enregistrer** dans la barre inférieure verte après chaque modification.
+  * **Exclusion temporaire** *(par défaut)* : une exclusion d'écriture de 28 jours.
+  * **Bannissement définitif** : bannit le compte et supprime ses messages des dernières 24 heures.
+  * **Softban** : bannit puis débannit aussitôt, ce qui purge ses messages récents.
+  * **Expulsion** : exclut le membre du serveur.
+  * **Avertissement** : enregistre un avertissement dans son dossier.
+* **Réinvitation automatique** (avec l'expulsion) : envoie au membre expulsé une invitation temporaire en message privé.
 
-:::caution[Avertissement de Sécurité]
-Le Honeypot est une mesure de sécurité stricte. Veillez à ce que le nom du salon piège ou sa description soient explicites pour éviter que des membres légitimes ne se fassent sanctionner par curiosité ou inattention.
+Enregistrez avec la barre en bas de l'écran.
+
+:::caution[Avertissement de sécurité]
+Le salon piège est visible par tous les membres, y compris les nouveaux, pour servir de piège. Donnez-lui un nom et une description explicites (ex : `#ne-pas-ecrire-ici`) pour éviter qu'un membre légitime ne se fasse sanctionner par curiosité.
 :::
