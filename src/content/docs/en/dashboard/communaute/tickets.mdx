@@ -1,70 +1,99 @@
 ---
 title: Tickets
-description: Configure and run the ticket support system to talk privately with your members, from the dashboard.
+description: "The server's help desk: ticket queues, priorities and assignment, response targets, support statistics, macros and configuration."
 ---
 
-<p class="doc-lead">The <strong>Tickets</strong> module lets your members open a private space (a text channel, a thread or a relayed DM) to contact your staff team directly.</p>
+<p class="doc-lead">The <strong>Tickets</strong> module lets your members open a private space (channel, thread or relayed direct message) with your team. From the dashboard, staff handle them as in a help desk: queues, priorities, assignment, response targets and statistics.</p>
 
 :::tip[On the Discord side]
-To see what the panel looks like, how members open a ticket and how staff reply on Discord, read the [Discord guide to Tickets](/en/discord/communaute/tickets).
+To see what the panel looks like, how members open a ticket and how staff answer on Discord, read the [Discord tickets guide](/en/discord/communaute/tickets).
 :::
 
-:::note[Availability]
-The system is managed and configured from the **Team → Tickets** section of your dashboard: [Open the Tickets module ↗](https://dash.kotbo.fr/tickets).
-Access to the administration and configuration tabs is limited to administrators or to members holding the configured access roles.
+:::note[Where to find it]
+The **Team → Tickets** section: [Open tickets ↗](https://dash.kotbo.fr/tickets).
+The management and configuration tabs are reserved for administrators and the configured access roles.
 :::
+
+The page has seven tabs: **Tickets**, **Performance**, **Transcripts**, **Satisfaction**, **Macros**, **Blocklist** and **Configuration**.
 
 ---
 
-## How the dashboard page is organised
+## Handling tickets (Tickets tab)
 
-The page is split into six main tabs:
-1. **Tickets**: the operational interface for reading, replying to and managing active tickets.
-2. **Transcripts**: the history of archived and closed tickets.
-3. **Satisfaction**: the ratings and comments left by your members after their ticket is closed.
-4. **Macros**: the staff's ready-made replies, with their attached actions.
-5. **Blacklist**: the list of members barred from opening a ticket.
-6. **Configuration**: the module's technical settings.
+### Queues
 
----
+On the left, tickets are sorted into **queues**, each with its counter:
 
-## Handling tickets in real time (Tickets tab)
+| Queue | Content |
+| --- | --- |
+| **Needs reply** | Tickets where the member is waiting for a staff reply. |
+| **Open** | Every open ticket. |
+| **Unassigned** | Open tickets with nobody assigned. |
+| **My tickets** | Those assigned to you. |
+| **Overdue** | Those past a [service target](#service-targets). |
+| **To approve** | Requests waiting for approval, when approval is required. |
+| **Closed** and **All** | The history. |
 
-This tab is a full customer support centre built into the dashboard.
+The **Search tickets** field accepts a member, a reason, a `#tag` or an ID. Sorting switches between **Oldest first** and **Newest first**, and the `j` / `k` keys move from one ticket to the next.
 
-### 1. Filter and select a ticket
-The list on the left holds every ticket. You can filter by status: **All**, **Open**, **Claimed** or **Closed**. Click a ticket to load its conversation in the centre.
+In the list, each ticket shows whether it is **Waiting for a staff reply** or **Waiting on member**, its priority when it is **High** or **Urgent**, and who it is assigned to.
 
-### 2. Chat from the dashboard
-The central area shows the messages exchanged. You can **type a message** at the bottom of the screen: it is sent immediately to the matching Discord channel, under the signed-in staff account.
+### The conversation
 
-### 3. Quick staff actions
-Action buttons sit at the top right of the conversation:
-* **Claim**: assigns the ticket to you. The bot updates the Discord channel to signal that you are handling the member.
-* **Close**: closes the ticket. A pop-up requires you to enter a **closing reason**.
-* **Rename**: changes the name of the linked Discord channel (for example from `#ticket-001` to `#bug-fixed`).
-* **Reopen**: for a closed ticket that needs further discussion.
-* **Overclaim**: take over a ticket already claimed by someone else, when the configuration allows it.
-* **Archive** / **Unarchive**: an archived ticket **keeps its channel**, which becomes read-only instead of being deleted. It then carries the **Archived** status.
-* **Lock** / **Unlock**: protects the ticket against deletion.
+The ticket's messages show in the middle. The **Write a message...** field replies directly: the message goes to the ticket's Discord channel, under the signed-in staff account.
+
+When [AegisAI](/en/dashboard/moderation/aegis/) analyzes ticket mood, the requester's mood shows on each ticket.
+
+### Properties
+
+On the right, the properties block sets:
+
+* the **Priority**: **Low**, **Normal**, **High** or **Urgent**;
+* **Assigned to**: a staff member (the list shows how many tickets each one already has open), or **Nobody**;
+* **Tags**, to sort tickets and find them again through search;
+* the **Targets**: the time left before the **First reply** and **Resolution** deadlines, or how far past them the ticket is.
+
+Below, the member card sums up their seniority, roles, **Record** (warns, timeouts, kicks, bans), past tickets and their average rating, plus a **Staff note**. **Full case file** opens their case file without leaving the page, where a sanction can be applied; **Full profile** opens their [member profile](/en/dashboard/moderation/membres/).
+
+### Actions
+
+| Action | Effect |
+| --- | --- |
+| **Claim** | Assigns the ticket to you. The bot announces it in the channel. |
+| **Overclaim** | Takes over a ticket already assigned to someone else, if the configuration allows it. |
+| **Close** | Closes the ticket. A **Closing reason** can be added; it is optional. |
+| **Reopen** | Reopens a closed ticket. |
+| **Archive** / **Unarchive** | An archived ticket **keeps its channel**, which becomes read-only. |
+| **Lock** / **Unlock** | Protects the ticket against deletion (see below). |
+| **Rename** | Changes the Discord channel's name. |
+| **Restore** | Recreates the channel of a deleted ticket, with the whole message history, original names and avatars. Three restores at most per ticket; original attachments are not restored. |
+| **Delete** | Deletes the channel on Discord and generates a transcript. |
 
 ### Protecting a ticket against deletion
 
-The **Lock** button opens a **Protect against deletion** dialog: *while the protection holds, this ticket cannot be deleted from the dashboard nor from Discord.*
+**Lock** opens **Protect against deletion**: while the protection holds, the ticket cannot be deleted from the dashboard nor from Discord. Pick a **Protection duration** (*7 days*, *30 days*, *90 days* or *No expiry*) and an optional **Reason**.
 
-* **Protection duration**: *7 days*, *30 days*, *90 days* or *No expiry*.
-* **Reason** (optional), for example *ongoing dispute, part of a moderation case*.
+The ticket then shows **Protected against deletion**, with who set the lock and when it ends.
 
-A protected ticket shows a **Protected against deletion** banner, with who locked it and until when. Any attempt to delete it returns: *this ticket is protected, lift the lock first.*
-* **Restore**: if the Discord channel was deleted by accident, instantly recreates it with the full message history intact.
-* **Delete**: permanently erases the ticket and its data from the database.
+### Approving a request
 
-### 4. Direct access to the member file
-Next to the name of the user who opened the ticket, a button opens their **member file** in a modal window. Without leaving the tickets page, you can review their history and apply an immediate sanction:
-* Warning (**WARN**)
-* Timeout (**TIMEOUT**)
-* Kick (**KICK**)
-* Ban (**BAN**)
+With approval required, a request opens no channel until it is accepted. It shows up in the **To approve** queue:
+
+* **Approve request** creates the ticket;
+* **Reject** asks for a **Reason given to the member**, who receives the rejection by DM.
+
+The same decision can be made from the card posted in the approval channel on Discord.
+
+---
+
+## Measuring support (Performance tab)
+
+The tab gives support times as **medians**, with the 90th percentile to spot forgotten tickets, over the chosen **Period**. **Compare with previous period** overlays the previous period.
+
+* The **Open now** block counts tickets without an owner and those waiting for a staff reply.
+* **Per staff member**: tickets handled, median times and satisfaction for each one.
+* **By type** and **By tag**: where requests pile up.
+* **Ratings received**: how satisfaction ratings are spread.
 
 ---
 
@@ -85,161 +114,157 @@ A deleted transcript cannot be recovered. If it serves as evidence in a sanction
 
 ---
 
-## Quality tracking (Satisfaction tab)
+## Tracking quality (Satisfaction tab)
 
-When a ticket is closed, the bot sends the member a DM or a channel message asking them to rate the support they received (from 1 to 5 stars) and to add an optional comment.
+When a ticket closes, the bot asks the member to rate the support they got, from 1 to 5 stars. The **Satisfaction** tab shows:
 
-In the **Satisfaction** tab you can see:
-* Your overall average rating.
-* The breakdown of ratings (Very dissatisfied, Dissatisfied, Neutral, Satisfied, Very satisfied).
-* A chronological list of the detailed comments left by users.
+* the average rating and how ratings are spread;
+* **Satisfaction per staff**;
+* **Recent reviews**, with a **With comment** filter.
 
-### Reposting reviews on Discord
-
-* **Reviews channel**: every review is reposted there as an embed - rating, author, assigned staff and comment. Leave empty to disable.
-* **Hide the review author**: the embed shows *Anonymous member* instead of the member. The dashboard still shows the author.
+The comment question and reposting reviews on Discord are set in the [configuration](#satisfaction-survey).
 
 ---
 
-## Ready-made replies (Macros tab)
+## Macros (Macros tab)
 
-A **macro** puts a reply the staff rewrites ticket after ticket one click away, and attaches whatever usually follows it.
+A **macro** puts a reply the staff keeps rewriting one click away, and attaches what usually comes next.
 
-The **New macro** button asks for:
+The **Nouvelle macro** button asks for:
 
-* **Name**, **Category** and **Emoji**.
-* **Content**: the text sent, 2000 characters maximum - the limit of a Discord message. The `{user}`, `{staff}`, `{ticket_id}`, `{ticket_type}` and `{server}` variables are replaced in it.
-* **Ticket types concerned** and **Allowed roles**: left empty, the macro applies to every type and to the whole staff.
-* **Suggestion keywords**: macros whose keyword appears in the request move to the top of the picker.
+* **Nom**, **Catégorie** and **Emoji**.
+* **Contenu**: the text sent, 2000 characters maximum - the limit of a Discord message. The `{user}`, `{staff}`, `{ticket_id}`, `{ticket_type}` and `{server}` variables are replaced in it.
+* **Types de ticket concernés** and **Rôles autorisés**: empty, the macro applies to every type and all staff.
+* **Mots-clés de suggestion**: macros whose keyword appears in the request move to the top of the picker.
+
+The macro editor is labelled in French in the dashboard.
 
 ### Attached actions
 
 A macro can do more than write:
 
-* **Reclassify as**: change the ticket's type.
-* **Add the role** and **Remove the role**.
-* **Trigger the satisfaction survey**.
-* **Close the ticket**: applied last, the others needing a ticket that is still open.
+* **Requalifier en**: change the ticket's type.
+* **Ajouter le rôle** and **Retirer le rôle**.
+* **Déclencher l'enquête de satisfaction**: trigger the satisfaction survey.
+* **Fermer le ticket**: applied last, since the others need a ticket that is still open.
 
 ### Automatic sending
 
-**Send automatically on opening** posts the macro as soon as the ticket is created.
+**Envoyer automatiquement à l'ouverture** posts the macro as soon as the ticket is created.
 
-:::note[Its actions are not applied]
-A macro sent on opening publishes its text but does not apply its actions: closing or reclassifying a ticket that has just been born would do more harm than good.
+:::note[Its actions do not apply]
+A macro sent on opening posts its text but does not apply its actions: closing or retyping a ticket that was just born would do more harm than good.
 :::
 
-In the ticket channel, the **Macros** button opens the picker. Discord only accepts 25 entries: the most used ones come first.
+In the ticket channel, the **Macros** button opens the picker. Discord only accepts 25 entries: the most used come first.
 
 ---
 
-## Ticket blacklist (Blacklist tab)
+## Blocklist (Blocklist tab)
 
-The **Blacklist** tab stops specific members from opening a ticket, without going through a Discord sanction.
+The **Ticket blocklist** tab stops some members from opening a ticket, without going through a Discord sanction.
 
-* **Discord ID**: the ID of the member to block. A malformed ID is refused with the message *Invalid Discord ID*.
-* **Reason**: it is **shown to the member** when they try to open a ticket. Left empty, it displays as *No reason given*.
-* **Duration (days)** or **Permanent**: choose a temporary or permanent block.
-* **Allow reopening their past tickets**: the blacklist closes new ticket creation; tick this to still let them request the reopening of an already handled case. The entry then carries the **Reopening allowed** label.
-* Click **Add** to confirm.
+* **Discord ID**: the ID of the member to block.
+* **Reason**: it is **shown to the member** when they try to open a ticket. Left empty, it shows as *No reason given*.
+* **Duration (days)**: empty, the block is **Permanent**.
+* **Allow reopening their past tickets**: the member can no longer open tickets, but can still ask to reopen one that was already handled. The entry then reads **Reopening allowed**.
 
-Every entry in the list shows who created it (*Added by …*), so a decision can be traced back. While the list is empty, the tab shows *Nobody on the blocklist*.
+Each entry shows who created it (*Added by …*). **Remove** lifts the block.
 
 ---
 
 ## Configuring the module (Configuration tab)
 
-Before your members can open tickets, you need to set up the basics and post the opening panel on your server.
+At the top of the tab, **Set up** creates what is missing - the ticket category, the panel channel and the log channel - keeping what you already picked. **Send Embed** posts the opening panel in its channel.
 
-### 1. Channels and roles (Mode accordion)
-* **Ticket category**: pick the Discord category under which ticket channels will be created.
-* **Staff role**: the Discord role allowed to see and reply to every ticket created (for example `@Support Staff`).
-* **Log channel**: the channel where Kotbo posts a summary each time a ticket is opened, claimed and closed.
-* **Conversation mode**:
-  * `CHANNEL`: creates one private text channel per ticket (recommended).
-  * `THREAD`: creates a private thread under the panel's channel.
-  * `DM`: opens a direct message conversation with the user and relays their messages into a dedicated staff channel.
+The settings are grouped into collapsible sections.
 
-### 2. The opening panel (Embed accordion)
-Configure the message members will use to open a ticket:
-* Enter the panel's **Title**, **Description**, **Colour** and **Button text**.
-* **Selector type**: choose between individual **Buttons** (limited to 5) or a **Dropdown** if you offer many support categories.
+### Channels & roles
 
-### 3. Ticket categories (ticket types)
-You can configure several support options (for example "Report a bug", "Shop question", "Complaints"):
-* For each type, click **Add a ticket type**.
-* Customise its label, description, emoji and button style (green, blue, grey, red).
-* **Per-category overrides**: you can override the default category and staff role for each type (for example send "Recruitment" tickets into an HR category restricted to administrators).
-* **Anonymity**: hides the member's identity from the staff (the ticket shows *Anonymous user*).
-* **Staff server relay**: relays messages to another Discord server if needed.
-* **Custom opening form (questions)**:
-  For each ticket type you can configure up to **5 custom questions** that the user must (or may optionally) fill in inside a pop-up (a Discord modal) before their ticket opens:
-  * Click **Add a question** to design a new field.
-  * Enter the **question label** (for example *"What is your in-game username?"*).
-  * Provide a **hint / placeholder** to guide the member (for example *"Enter your exact username"*).
-  * Choose the **answer type**: *short line* (for a username, an ID or a short value) or *long paragraph* (for a detailed explanation).
-  * Tick **Required field** to force the user to answer.
-  * If no custom question is configured, Kotbo shows the standard form with two default questions: *"Subject of the request"* and *"Detailed description"*.
+* **Default ticket category**, **Opening panel channel**, **Logs / transcripts channel** and **Default support staff role**.
+* **Direct message relay channel (DM mode)**: where messages from tickets opened by DM arrive.
+* **Allow overclaiming**: a staff member can take over an already claimed ticket; **Who can overclaim?** opens it to *All staff* or *Higher or equal grade*.
+* **Auto-claim on reply**: as soon as a staff member writes in an open ticket, it is claimed by them.
 
-  **The five answer types** fall into two families:
+A channel or role that cannot be found on the server is flagged: the module will not work while it points there.
 
-  | Type | Where the question is asked |
-  | --- | --- |
-  | **Short line** and **Long paragraph** | In the opening window (Discord modal). |
-  | **Dropdown menu**, **Radio buttons** and **File attachment** | *Interactive*: the question is not part of the opening form, the bot asks it inside the ticket right after it is created. |
+### Embed customisation
 
-  Choice types ask for the list of **Choices / options**, comma separated. Discord only renders the first **5** choices as radio buttons.
+The opening panel: **Title**, **Description**, **Button text**, **Colour**, images, author and footer. The **Interaction type** shows one button per ticket type (**Buttons**) or a single **Dropdown menu**.
 
-  :::caution[A question with no label blocks saving]
-  *Question N of type "…" has no label: Discord would reject the form.*
-  :::
+### Welcome message inside the ticket
 
+The message sent when the ticket is created, with its variables (`{type_label}`, `{user}`, `{staff_mention}`, `{reason}`, `{description}`) and its **Embed colour**.
 
-### 4. Archiving (Archiving accordion)
+### Approval & locking
 
-An archived ticket keeps its channel: it becomes read-only instead of being deleted.
+* **Lock until claimed**: the channel stays visible to the opener and staff, but nobody can write until a staff member claims it.
+* **Require approval before opening**: the request goes to staff first, and the channel is only created once approved. The **Approval channel** receives the decision cards (empty: the ticket log channel).
 
-* **Archive category**: archived channels are moved there. Left empty, the channel stays put and only its permissions change.
-* **The opener keeps read access**: when on, the member keeps seeing their archived ticket without being able to write in it.
+Each ticket type can follow these settings or override them.
 
-### 5. Member-side history (History accordion)
+### Archiving
 
-A button under the opening panel gives members access to their closed tickets, their transcripts, and the actions you allow here.
+* **Archive category**: archived channels are moved there. Empty, the channel stays put and only its permissions change.
+* **The opener keeps read access**: the member keeps seeing their archived ticket without being able to write in it.
 
-* **"My past tickets" button**: adds the button under the opening embed. The panel it opens is ephemeral - everyone only sees their own tickets.
-* **Member-side reopening**: members can request the reopening of a closed ticket, capped at **3 reopenings** with increasing delays.
-* **Member-side deletion**: members can permanently erase one of their past tickets and its transcript. Locked tickets stay protected.
+**Member-side history** adds a **"My past tickets" button** under the panel: everyone sees their closed tickets and transcripts there. **Member-side reopening** lets them ask to reopen a closed ticket (3 reopenings at most, with increasing delays) and **Member-side deletion** lets them erase one of their past tickets; locked tickets stay protected.
 
-### 6. Claiming (Mode accordion)
+### Inactivity
 
-* **Auto-claim on reply**: as soon as a staff member writes in an open ticket, it is automatically claimed by them.
-* **Lock until claimed**: the channel stays visible to the opener and staff, but nobody can write until a staff member claims it. The setting applies globally, or ticket type by ticket type.
-* **Allow overclaiming**: a staff member can take over an already claimed ticket. The **Who can overclaim?** sub-setting opens the gesture to *All staff* or to *Higher or equal grade* only.
+* **Enable reminders**: an automatic message when the author stops answering, after a **Delay (hours)**, with the text of your choice.
+* **Remind staff when a member is waiting**: if no staff member has answered the member after the **Delay without reply (minutes)**, the bot mentions whoever claimed the ticket, otherwise the staff role. One reminder per wait, counted in the statistics.
 
-### 7. Quotas (Quotas accordion)
+### Recording notice
 
-Opening limits on the member side, and a load ceiling on the staff side. Each switch commands its own threshold.
+**Show the notice before every ticket** tells the member, before their ticket is created, that the conversation will be recorded, transcribed and archived. They read it in a message only they can see, and the ticket is created once the **Reading delay** has passed (5 to 30 seconds; 10 to 15 leave time to read). The **Notice text** can be changed, and a preview shows it with its countdown.
+
+### Service targets
+
+Two times to keep, tracked in the ticket list and in the **Overdue** queue:
+
+* **First reply (minutes)**;
+* **Resolution (hours)**: time between opening and closing.
+
+Empty, a time has **No target**.
+
+### Quotas
+
+Opening limits on the member side, and a workload cap on the staff side. Each quota is turned on separately, and a ticket type can adjust the threshold. This section is labelled in French in the dashboard.
 
 | Quota | What it limits |
 | --- | --- |
-| **Simultaneously open tickets** | How many tickets a member can have running at once. |
-| **Delay between two openings** | Prevents chaining tickets without leaving time to answer. |
-| **Quota over a period** | Caps the number of openings over a sliding window (*Maximum tickets* over *N hours*). |
-| **Limit reopenings** | The maximum number of times a ticket can be reopened. |
+| **Tickets ouverts simultanément** | How many tickets a member can have open at the same time. |
+| **Délai entre deux ouvertures** | Stops members from opening ticket after ticket without leaving time to answer. |
+| **Quota sur une période** | Caps openings over a rolling window (*Tickets maximum* over *N hours*). |
 
-The **maximum load per moderator** counts tickets claimed and still open. Three modes: **Disabled**, **Warn** or **Block**. **Roles that bypass it** can be exempted.
+**Charge maximale par modérateur** (maximum load per moderator) counts tickets claimed and still open; beyond it, staff are warned or refused.
 
-### 8. Inactivity handling (Follow-up accordion)
-Turn on **inactivity follow-ups** to automatically warn or close tickets for members who stop replying:
-* Set the delay in hours (for example 24 hours).
-* Write the automatic follow-up message (for example *"Hello <code>{'{user}'}</code>, your ticket has been inactive..."*).
+### Satisfaction survey
 
----
+* **Ask for a comment**: after rating, the member can add a free-text comment. The **Question asked** can be changed, and the button disappears from the DM after the **Timeout** (30 to 900 seconds). The rating is stored even without a comment.
+* **Reviews channel**: every review is reposted there - rating, author, assigned staff and comment. Empty, nothing is reposted.
+* **Hide the review author**: the reposted review shows *Anonymous member*. The dashboard still shows the author.
 
-## Putting the panel live
+### Ticket types
 
-Once all your settings are in place:
-1. Click **Save** in the green bottom bar to store the configuration.
-2. In the configuration block, select the **panel channel** (for example `#support-tickets`).
-3. Click the **Send the panel** button in the top right of the configuration screen.
-4. Kotbo instantly posts the embed with its button or select menu in the chosen channel. Members can now click it to open a ticket.
+Several support options ("Report a bug", "Shop question"…). **Add a type** then set:
+
+* the **Button / option label**, the **Emoji**, the **Button colour (style)** and the **Option description (dropdown menu)**;
+* the **Opening mode**: **New channel**, **Direct messages (DM)**, **Thread**, or **Default (global)**;
+* the **Target category** and a **Specific staff role** (empty: the defaults);
+* **Lock until claimed** and **Require approval**, specific to the type;
+* **Staff anonymity** in DM mode, and creating the ticket on the [staff server](/en/dashboard/cross-serveur/serveurs-staff/) for an internal ticket (HR, complaint…).
+
+**Enable the question form for this type** asks up to **5 questions** before opening. With no custom question, Kotbo asks *Subject* and *Description*.
+
+| Answer type | Where the question is asked |
+| --- | --- |
+| **Short line** and **Long paragraph** | In the opening window (Discord modal). |
+| **Dropdown menu**, **Radio buttons** and **File attachment** | In the ticket, right after it is created: the bot asks it itself. |
+
+Choice types need their **Choices / options**, comma separated; Discord only renders the first 5 as buttons. **Required field** makes the answer mandatory.
+
+:::caution[A question without a label blocks saving]
+Discord would reject the form: Kotbo refuses to save a type with an unlabelled question.
+:::
