@@ -1,51 +1,51 @@
 ---
 title: Social networks
-description: Follow YouTube channels and Twitch streamers and post a Discord alert automatically on every new upload or stream.
+description: "Announce YouTube videos and lives, Twitch streams, GitHub repository activity and Hugging Face releases on Discord."
 ---
 
-<p class="doc-lead">The <strong>Social networks</strong> module watches YouTube channels and Twitch streamers, and posts an alert in a Discord channel on every new video, new Short or live stream.</p>
+<p class="doc-lead">The <strong>Social networks</strong> module watches external accounts and posts an alert in a Discord channel for every new item: YouTube video, Short or live, Twitch stream, GitHub repository activity, Hugging Face release.</p>
 
 :::note[Where to find it]
 The **Communication → Social networks** section: [Open social networks ↗](https://dash.kotbo.fr/social-networks). The module is in **beta**.
-YouTube and Twitch alerts are produced by background tasks: the **YouTube** and **Twitch** modules must be enabled in the module catalogue, otherwise nothing is posted.
+YouTube and Twitch announcements also depend on the **YouTube** and **Twitch** modules. When one of them is off, the tab says so (*The … module is off*): your follows are kept, but nothing is announced.
 :::
 
-A **Modules status** banner at the top of the page recalls which modules are active and whether the service is online.
+The page has four tabs: **YouTube**, **Twitch**, **GitHub** and **Hugging Face**. Each lists its follows; a button opens the add window, and **Edit** reopens the same window on an existing follow.
 
 ---
 
-## Following a YouTube channel
+## Shared settings
 
-<div class="step-list">
-  <div class="step-item"><div><h3>Enter the channel</h3><p>The <strong>URL, Handle or Channel Name</strong> field accepts all three forms, for example <code>https://youtube.com/@cyprien</code> or just the name.</p></div></div>
-  <div class="step-item"><div><h3>Pick the alerts channel</h3><p>Leave the default value to use the public channel configured elsewhere.</p></div></div>
-  <div class="step-item"><div><h3>Add a mention (optional)</h3><p>The <strong>Mention</strong> field is a picker: choose a server role, <code>@everyone</code> or <code>@here</code>. Only the chosen role is allowed to notify, so a video or stream title cannot ping the whole server.</p></div></div>
-  <div class="step-item"><div><h3>Customise the messages</h3><p>Three separate messages can be configured: <strong>Live</strong>, <strong>Video</strong> and <strong>Short</strong>. The <code>[title]</code> and <code>[channel]</code> variables are replaced when posting.</p></div></div>
-</div>
+Each follow has:
 
-Click **Add Channel**. It appears under **Followed Channels**, where you can change its configuration or stop following it.
+* an **Alerts Channel** (by default, the server's public channel);
+* an optional **Mention (role to ping)**: a server role, `@everyone` or `@here`. Only the chosen mention can notify: a video or stream title cannot ping the whole server;
+* one or more messages. Empty, a message uses Kotbo's default text.
 
----
-
-## Following a Twitch streamer
-
-The **Follow a Twitch Streamer** form works the same way:
-
-* **Twitch Username or Link**: for example `xqc` or `https://twitch.tv/xqc`.
-* **Alerts Channel** and **Mention**.
-* **Live Message** with the same variables.
-
-Click **Follow Streamer**. The **Followed Streamers** list shows each one's state: <span class="dash-badge kick">Live</span> or <span class="dash-badge">Offline</span>.
+**Stop following** removes a follow without confirmation: an **Undo** button lets you go back for a few seconds.
 
 ---
 
-## Editing or removing a follow
+## YouTube
 
-On each list entry:
+**Follow a YouTube Channel**: the **URL, Handle or Channel Name** field accepts all three forms, for example `https://youtube.com/@cyprien` or just the name. Three messages are set separately under **Messages by alert type**: **Live**, **Video** and **Short**, with the `[title]` and `[channel]` variables.
 
-* the save icon applies the configuration changes;
-* the **Stop following** action removes the channel or streamer, after confirmation.
+Click **Add Channel**: it joins the **Followed Channels**.
+
+## Twitch
+
+**Follow a Twitch Streamer**: **Twitch Username or Link** (for example `xqc` or `https://twitch.tv/xqc`) and a **Live Message**. **Follow Streamer** adds them to the **Followed Streamers**, which show **Live** or **Offline** for each.
+
+## GitHub
+
+**Follow a GitHub repository**: the **Repository** (`owner/repo` or its link), the **Commit branch** (empty: the default branch) and the **Alerts to send**: **Commits**, **Releases**, **Pull requests** and **Issues**. The message accepts `[title]`, `[channel]`, `[author]` and `[url]`.
+
+Only what happens after adding is announced, checked every 5 minutes.
+
+## Hugging Face
+
+**Follow on Hugging Face**: pick **What to follow** - a **Model**, a **Dataset**, a **Space** or an **Author** - then the **Repository or author** (`owner/name` or a Hub link). A repository announces its new commits, an author their new models, datasets and spaces.
 
 :::tip[Default message]
-Leaving a message field empty uses Kotbo's default message. That is enough in most cases: only customise the alerts you genuinely want to stand out.
+The default message is enough in most cases: only customise the alerts you really want to set apart.
 :::
