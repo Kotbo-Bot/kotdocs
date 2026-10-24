@@ -89,6 +89,7 @@ export default defineConfig({
           group('Économie et jeux', 'Economy & games', [
             page('Configuration rapide', 'Quick setup', 'dashboard/economie/configuration-rapide'),
             page('Économie', 'Economy', 'dashboard/economie/economie'),
+            page('Jeu RPG', 'RPG game', 'dashboard/economie/rpg'),
             page('Marché', 'Marketplace', 'dashboard/economie/marche'),
             page('Quêtes', 'Quests', 'dashboard/economie/quetes'),
           ]),

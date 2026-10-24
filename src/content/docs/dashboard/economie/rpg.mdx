@@ -1,0 +1,212 @@
+---
+title: Jeu RPG
+description: "Régler le contenu du RPG : recettes, bestiaire, donjons, Tour roguelite, pêche, raid, quêtes, titres, aventures et guildes."
+---
+
+<p class="doc-lead">La page <strong>Jeu RPG</strong> règle tout ce que vos joueurs affrontent et gagnent dans le RPG : les créatures, les donjons, la Tour, le raid hebdomadaire, les quêtes, les titres, les événements de voyage et les guildes.</p>
+
+:::note[Où la trouver]
+Section **Économie et jeux → Jeu RPG** : [Ouvrir le jeu RPG ↗](https://dash.kotbo.fr/rpg).
+Elle dépend du module **Économie & RPG**, comme la page [Économie](/dashboard/economie/economie/), où restent la monnaie, les boutiques, le marché noir et les joueurs. Les anciennes adresses des onglets du jeu sous `/economy` mènent ici.
+:::
+
+La page compte dix onglets : **Recettes**, **Boss et monstres**, **Donjons**, **La Tour**, **Pêche**, **Raid**, **Quêtes**, **Titres**, **Aventures** et **Guildes**.
+
+:::tip[Côté Discord]
+Ce que vos membres voient du jeu est décrit dans [Jouer au RPG](/discord/economie/rpg/).
+:::
+
+---
+
+## Onglet Recettes
+
+Les **recettes d'artisanat** décrivent ce qu'un joueur peut fabriquer à l'atelier, à partir de matériaux ramassés sur les monstres ou achetés.
+
+Le bouton **Nouvelle recette** demande l'**objet fabriqué**, ses **matériaux** (chacun doit désigner un objet existant), le **coût en pièces** et le **niveau requis**.
+
+Les recettes **fournies de base** sont partagées par tous les serveurs et ne se modifient pas ici. Sans recette à vous, le serveur n'utilise que celles-là.
+
+---
+
+## Onglet Boss et monstres
+
+Le **bestiaire du serveur** liste les créatures que vos membres affrontent. Un filtre sépare **Tout**, **Boss** et **Monstres**.
+
+### Difficulté du bestiaire
+
+Trois paliers réécrivent d'un coup les statistiques, les gains, les chances de butin et la réapparition de toutes les créatures de la catégorie :
+
+| Palier | Effet |
+| --- | --- |
+| **Facile** | Des combats courts, pour un serveur qui débute ou qui joue de temps en temps. |
+| **Moyen** | L'équilibrage livré avec le bot, ni indulgent ni punitif. |
+| **Difficile** | Des créatures qui encaissent et qui frappent, mais qui rapportent davantage. |
+
+Les boss et les monstres se règlent séparément. Rien n'est verrouillé : une fiche reste modifiable ensuite, et le palier suivant repart de vos retouches. Appliquer un palier demande confirmation, car il réécrit aussi les créatures déjà personnalisées, en conservant leurs écarts au prorata. La confirmation annonce le nombre de fiches concernées et un aperçu des points de vie avant / après.
+
+Kotbo conseille un palier d'après les résultats réels : *vos joueurs gagnent N % de leurs M combats des X derniers jours, le palier … leur irait mieux*, ou *le palier en place tient la route*. Sans assez de combats sur la période, il ne conseille rien.
+
+Deux garde-fous :
+
+* Les créatures de **bas niveau** ne reçoivent qu'une partie du palier, pour ne pas fermer l'entrée de jeu.
+* Les **points de clan**, et les butins qui donnent de l'XP ou des points de clan, ne sont **jamais** touchés.
+
+### Personnaliser une créature
+
+Les créatures livrées avec le bot sont communes à tous les serveurs. Le bouton **Personnaliser** en crée une version propre à ce serveur, sans toucher à l'originale ; **Réinitialiser** la rend à tout moment. Le nom d'une créature livrée de base ne peut pas être changé : c'est lui qui permet de retrouver l'originale.
+
+Une fiche porte son **nom**, son **emoji**, sa **description**, son **niveau**, ses **points de vie**, l'**XP donnée**, les **pièces données**, ses **points de clan à la victoire** et, pour un boss, son **délai de réapparition**.
+
+Les badges disent d'où vient une créature : **Livré de base**, **Créé ici**, **Personnalisé**, **Retouché** (statistiques réglées à la main, elles ne suivent plus le palier), **Boss** ou **Désactivé**. Chaque ligne affiche aussi son taux de victoires sur les derniers jours.
+
+### Butin
+
+Un seul butin est tiré par victoire, dans l'ordre de la liste. Chaque entrée désigne un **objet** (qui doit exister dans la boutique ou le catalogue global), sa **chance** en pourcentage et d'éventuelles **pièces bonus**. Sans butin, la victoire ne rapporte que XP et pièces.
+
+### Points de clan sur les victoires
+
+Un interrupteur en haut de l'onglet verse au clan du vainqueur la prime réglée sur chaque créature. Le couper suspend l'apport du RPG au classement des clans sans remettre les primes à zéro. Un joueur sans clan ne rapporte rien.
+
+### Import et export
+
+**Exporter** télécharge le bestiaire du serveur au format JSON. **Importer** remplace les créatures de même nom et ajoute les autres ; rien n'est supprimé, et un butin dont l'objet n'existe pas sur ce serveur est retiré à l'import.
+
+---
+
+## Onglet Donjons
+
+Un donjon est une suite de boss du bestiaire à enchaîner sans repos : les PV ne remontent pas entre deux étages, le butin reste en attente jusqu'à la sortie, et une défaite le fait perdre en entier.
+
+**Nouveau donjon** demande un **Nom**, un **Emoji**, une **Description**, un **Niveau requis**, un **Coût en énergie** et une **Attente (heures)** entre deux entrées d'un même joueur (0 pour aucune attente).
+
+* **Étages** : les boss, dans l'ordre où les joueurs les affrontent. Un même boss peut revenir. Un récapitulatif donne les PV cumulés, le boss le plus fort et les gains d'une partie complète. Modifier les étages ne change pas les parties déjà lancées.
+* **Coffre final** : versé à chaque joueur qui franchit le dernier étage - pièces, XP RPG, et éventuellement un objet, un titre ou un rôle.
+* **Premier vainqueur** : une prime versée une seule fois, au premier joueur du serveur qui termine le donjon, annoncée dans le salon des premiers vainqueurs du bestiaire. **Remettre en jeu** la rend de nouveau disponible.
+* **Donjon ouvert** : fermé, il disparaît de la salle des donjons ; les parties lancées peuvent se terminer.
+
+Il faut au moins un boss dans le bestiaire pour créer un donjon. Si un étage désigne un boss qui n'existe plus, le donjon reste fermé aux joueurs tant qu'il n'est pas remplacé. Chaque carte affiche ses parties, réussites et défaites.
+
+:::caution[Les rôles offerts]
+Le rôle du bot doit être au-dessus du rôle offert, et un rôle qui donne la permission Administrateur est refusé. La même règle vaut pour la pêche.
+:::
+
+---
+
+## Onglet La Tour
+
+La Tour est le mode roguelite du RPG : les joueurs grimpent étage par étage avec des statistiques compressées et gagnent des **éclats**. Sur Discord, elle s'ouvre avec `/tour`.
+
+L'onglet affiche d'abord le **Top de la saison**, les **Monstres qui tuent le plus** et le **Défi du jour**, puis les réglages :
+
+* **Identité**, **Entrée dans la Tour** (comment les statistiques du RPG sont converties au départ - la classe et ses compétences sont toujours conservées, et un aperçu montre l'écart entre un joueur surpuissant et un débutant), **Difficulté et rythme**, **Montée et communauté**.
+* **Éclats** : des **Améliorations permanentes**, des **Articles** échangés contre des éclats (titre, rôle, objet, pièces, XP, points de clan) et des **Paliers** déclenchés par le nombre d'étages franchis dans une même ascension. Une mort ou un départ termine l'ascension et verse les éclats.
+* **Carte de la Tour** : un éditeur dessine chaque étage salle par salle - créatures, élites, gardien, coffres, épreuves, marchand, sortie et escalier scellé. Un étage peut avoir plusieurs variantes tirées au sort, se copier en miroir, s'exporter et s'importer en JSON. **Aperçu sur Discord** montre l'étage tel que le joueur le verra.
+* **Simulateur d'équilibrage** : rejoue des ascensions pour voir où les joueurs meurent, étage par étage.
+* **Réinitialiser la Tour** remet la saison à zéro.
+
+**Tour de clan** ajoute une tour hebdomadaire que chaque clan gravit de son côté. Activée, une bascule **Tour solo / Tour de clan** en haut de l'onglet passe d'une configuration à l'autre. Elle ne s'ouvre que si les [clans](/dashboard/xp/clans/) sont activés.
+
+---
+
+## Onglet Pêche
+
+**Espèces de poisson** liste ce qui mord quand un joueur pêche, par rareté. La chance de chaque rareté est fixe et se partage entre ses espèces actives : une rareté sans espèce ne sort jamais.
+
+* Les espèces **Livrées de base** se **Personnalisent** (ou reviennent à l'original avec **Rétablir l'originale**) et se désactivent ; leur nom ne change pas, car les prises des joueurs y sont rattachées.
+* **Nouvelle espèce** en crée une **Propre au serveur**, avec son **Nom**, son **Emoji**, sa **Rareté** et ses **Pièces**. La renommer renomme aussi les prises déjà faites.
+
+**Récompenses du carnet de pêche** récompense les joueurs qui complètent leur carnet, palier par palier jusqu'au **Carnet complet** : pièces, points de clan ou XP de guilde, objet, rôle ou titre. Tout laisser à zéro rend un palier muet.
+
+---
+
+## Onglet Raid
+
+Une fois par semaine, un boss s'ouvre pendant quelques heures. Chaque équipe affronte **sa propre instance**, dont les points de vie suivent son effectif : toutes courent la même épreuve, sans que la plus nombreuse ne monopolise la barre de vie.
+
+### Qui forme une équipe
+
+* **Clans du serveur** *(recommandé)* : l'appartenance se lit sur le rôle Discord. Les récompenses passent par les points de clan, avec la saison, le classement et le remboursement de dette.
+* **Guildes RPG** : l'appartenance se lit sur le profil de jeu. Les points de l'équipe partent en XP de guilde plutôt qu'en points de clan.
+
+Le raid demande l'un des deux : sans module d'équipe, il ne peut pas s'activer.
+
+### Ouverture
+
+* **Ouverture automatique** : le raid s'ouvre au **jour** et à l'**heure** réglés, dans le fuseau du serveur. Désactivez-la pour ne le lancer qu'à la main.
+* **Durée (heures)** : la fenêtre pendant laquelle on peut frapper.
+* **Annonce** : le message porte le bouton d'assaut et la barre de progression de chaque équipe. Sans annonce, personne ne peut frapper.
+* **Boss du raid** : un boss précis, ou *Au hasard parmi les boss actifs*.
+
+Le bouton **Lancer un raid maintenant** ouvre la fenêtre sur-le-champ. Enregistrez vos réglages d'abord : le lancement part sur ce qui est enregistré, pas sur ce qui est à l'écran.
+
+:::note[Changer de boss en cours de semaine]
+La fenêtre du prochain raid est écrite d'avance, avec le boss tiré à ce moment-là. Choisir un autre boss puis **enregistrer** reprend la fenêtre en attente, donc la semaine en cours. Le boss fixe est désigné par son **nom** : renommer ou désactiver sa fiche dans *Boss et monstres* le rend introuvable, et le sélecteur l'annonce - *… (indisponible : fiche désactivée)*.
+:::
+
+### Équilibrage et récompenses
+
+* **PV par membre**, avec un **PV minimum** et un **PV maximum**. Un aperçu annonce ce qu'affrontent une équipe de 3 et une équipe de 20.
+* **Assauts par membre**, **Énergie par assaut** et **Assauts achetables par membre** (en potions ; à zéro, plus rien ne s'achète).
+* **XP de l'équipe**, **Pièces de l'équipe**, **Points de clan de l'équipe** ou **XP de guilde de l'équipe**, réglés par membre.
+* **Consolation d'une équipe qui échoue (%)** : la part de l'enveloppe versée à une équipe qui a frappé sans abattre son boss. À zéro, seule la victoire paie.
+
+L'enveloppe d'une équipe suit son effectif et se partage entre les participants : **30 % à parts égales**, le reste au prorata des dégâts.
+
+### Boss de raid et sorts
+
+Les fiches de boss de raid appartiennent au serveur. Chacune choisit ses **sorts** dans le catalogue livré : un sort par tour quand il est disponible, les sorts de phase (*Sous N %*) primant sur les autres. Sans sort, le boss ne fait que frapper.
+
+**Rétablir les boss livrés** redépose ceux qui manquent, sans toucher aux vôtres.
+
+### Suivi
+
+Un bloc **Raid en cours** montre les équipes engagées et leur progression. À la clôture, le **bilan du dernier raid** reste affiché jusqu'à l'ouverture du suivant : équipes, meilleurs frappeurs, dégâts et assauts. L'onglet garde aussi l'historique des **raids passés**.
+
+---
+
+## Onglet Quêtes
+
+Des objectifs de jeu à atteindre dans une fenêtre de temps.
+
+Une quête définit son **objectif**, sa **cible** et sa **fenêtre (heures)**. Les objectifs disponibles couvrent les monstres vaincus, les boss abattus, les assauts et dégâts de raid, les objets ramassés, les objets fabriqués, les améliorations réussies, les aventures résolues, la pêche, les récompenses quotidiennes, les achats en boutique ou au marché noir et les pièces dépensées.
+
+La fenêtre est alignée sur l'heure : 24 h se remet à zéro à minuit UTC, 6 h à 00, 06, 12 et 18. Toutes les équipes courent ainsi la même horloge.
+
+Deux portées :
+
+* **Personnelle** : chaque membre a sa progression. La récompense se verse toute seule sur l'action qui atteint la cible, sans geste du joueur.
+* **Équipe** : toute l'équipe pousse le même compteur. La récompense se partage au prorata - 30 % à parts égales, le reste selon ce que chacun a apporté - et se verse toute seule à la complétion.
+
+L'interrupteur **Répétable dans la journée** décide de ce qui se passe une fois la quête payée :
+
+* **Activé** : la quête repart à zéro dès qu'elle est payée, et le joueur peut la refaire autant de fois qu'il veut dans la fenêtre. Sa carte porte l'étiquette **Répétable**.
+* **Désactivé** : la quête ne rapporte qu'une fois par 24 h. Terminée plus tôt, elle attend la fin du délai pour se payer.
+
+Une quête inactive n'est plus proposée et cesse de compter. Les points de clan ne partent que si le pont RPG vers les clans est ouvert, dans l'onglet *Boss et monstres*.
+
+---
+
+## Onglet Titres
+
+Un titre s'affiche en haut de la carte du personnage et peut donner des statistiques ; seul le titre porté compte. **Nouveau titre** en crée un, décoratif ou avec bonus.
+
+Les joueurs obtiennent un titre en battant une créature qui l'offre, en terminant un donjon, par la Tour, la pêche ou une aventure - ou de votre main : **Choisir un joueur** puis **Attribuer**. Chaque titre indique combien de joueurs le possèdent, et **Retirer le titre** le reprend.
+
+---
+
+## Onglet Aventures
+
+**Événements de voyage** liste ce qui arrive aux joueurs au bout d'un voyage. Sans événement, les voyages se terminent sans rencontre.
+
+* Les événements **Livrés de base** sont communs à tous les serveurs : **Personnaliser** crée votre version, **Rétablir l'original** y renonce, et l'interrupteur **Proposer cet événement aux voyageurs** les retire du tirage.
+* **Nouvel événement** demande un **Titre**, un **Emoji**, **Ce qui se passe** et jusqu'à plusieurs **Choix proposés**. Chaque choix a un **Libellé du bouton**, ses gains ou pertes (une valeur négative retire des PV ou des pièces), un **Niveau min.** et un éventuel **Titre remis**. Un choix au niveau trop élevé reste visible mais grisé.
+
+---
+
+## Onglet Guildes
+
+**Guildes RPG** liste les guildes créées par les joueurs, avec leur niveau, leurs membres, leur trésor et les bâtiments de leur village. Vous pouvez y corriger une guilde sans tout réinitialiser :
+
+* **Modifier** : **Nom**, **Étendard**, **Description**, **Trésor** et **Chef**.
+* **Retirer de la guilde** un membre.
+* **Dissoudre** la guilde.
