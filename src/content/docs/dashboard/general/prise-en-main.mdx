@@ -3,10 +3,10 @@ title: Bien démarrer
 description: Voir ce qu'il reste à configurer, par quoi commencer, et monter toute l'arborescence du serveur en une fois.
 ---
 
-<p class="doc-lead">La page <strong>Prise en main</strong> répond à deux questions : par quoi commencer maintenant, et qu'est-ce qui manque encore. Elle lit la configuration réelle du serveur, pas un compteur d'étapes franchies : un réglage effacé redevient « à faire ».</p>
+<p class="doc-lead">La page <strong>Bien démarrer</strong> répond à deux questions : par quoi commencer maintenant, et qu'est-ce qui manque encore. Elle lit la configuration réelle du serveur, pas un compteur d'étapes franchies : un réglage effacé redevient « à faire ».</p>
 
 :::note[Où la trouver]
-Section **Général → Bien démarrer** : [Ouvrir la prise en main ↗](https://dash.kotbo.fr/setup). La page est en **bêta**.
+Section **Général → Bien démarrer** : [Ouvrir Bien démarrer ↗](https://dash.kotbo.fr/setup).
 L'ancienne page *Créer mon serveur* y a été fusionnée : monter la structure et vérifier ce qu'il reste à régler sont le même moment.
 :::
 
@@ -14,11 +14,11 @@ L'ancienne page *Créer mon serveur* y a été fusionnée : monter la structure 
 
 ## Les trois prochaines actions
 
-En haut de la page, trois cartes désignent les points qui manquent le plus, dans l'ordre conseillé. Chacune dit ce que le réglage apporte, ce qui manque exactement, et mène directement à la page concernée. La première porte la mention **À faire maintenant**.
+En haut de la page, trois cartes désignent les points qui manquent le plus, dans l'ordre conseillé. Chacune dit ce que le réglage apporte, ce qui manque exactement, et vous guide jusqu'au champ à remplir sur la page concernée. La première porte la mention **À faire maintenant**.
 
 ## L'avancement
 
-Un anneau affiche le pourcentage de points réglés et le décompte `fait / total`. À côté, Kotbo nomme le prochain point à traiter, ou annonce *Tout est configuré* quand il n'en reste aucun.
+Une ligne **Avancement**, en tête de page, affiche le pourcentage de points réglés et le décompte *N sur M*, ou *Tout est réglé* quand il n'en reste aucun.
 
 ---
 
@@ -71,7 +71,7 @@ Chaque salon indique son audience :
 | **Fermé : visible du seul rôle Non vérifié** | Disparaît une fois le captcha réussi. |
 | **Lecture seule** | Seul Kotbo y écrit ; les membres peuvent réagir avec des emojis. |
 
-Plusieurs salons arrivent déjà branchés : le salon de highlights sur [Starlight](/dashboard/communaute/starlight/), le salon d'annonces en auto-thread, le générateur de salons vocaux temporaires, ou le salon piège placé hors catégorie tout en haut du serveur.
+Plusieurs salons arrivent déjà branchés : le salon de highlights sur [Messages à la une](/dashboard/communaute/starlight/), le salon d'annonces en auto-thread, le générateur de salons vocaux temporaires, ou le salon piège placé hors catégorie tout en haut du serveur.
 
 ### Comment on obtient le rôle Membre
 
@@ -123,7 +123,23 @@ Sous le bloc de mise en place, les points sont rangés en trois groupes, chacun 
 | **Modération** | De quoi encadrer le serveur et rendre les décisions défendables : règlement publié, protection activée, salon des alertes de sanction. |
 | **Vie du serveur** | Ce qui fait revenir les membres : tickets opérationnels, quotas de tickets, accueil des arrivants. |
 
-Chaque ligne dit **pourquoi** le point compte, et affiche l'étiquette *manque : …* tant qu'il n'est pas réglé. Un clic ouvre la page où le régler.
+Chaque ligne dit **pourquoi** le point compte, et affiche *Il manque : …* tant qu'il n'est pas réglé. Un clic ouvre la page où le régler.
+
+---
+
+## Configurations rapides
+
+Sous la liste, le bloc **Configurations rapides** réunit les réglages complets en un seul choix, que vous affinerez ensuite module par module. Seuls ceux que vous pouvez ouvrir apparaissent :
+
+| Carte | Ce qu'elle règle |
+| --- | --- |
+| **Sécurité** | Un [niveau de protection](/dashboard/moderation/configuration-rapide/) règle d'un coup les filtres et l'anti-raid. |
+| **Économie** | Un [rythme](/dashboard/economie/configuration-rapide/) fixe les gains, le délai du daily et l'énergie. |
+| **Niveaux** | Une courbe d'XP toute prête, à ajuster ensuite. |
+| **Prestige** | Une échelle de rangs et ses gains, en un choix. |
+| **Santé des salons** | Des seuils d'alerte adaptés à la taille du serveur. |
+
+Ces configurations rapides n'ont plus d'entrée à elles dans le menu.
 
 ---
 
