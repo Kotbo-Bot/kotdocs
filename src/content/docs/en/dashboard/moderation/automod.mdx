@@ -32,38 +32,38 @@ Every filter is enabled on its own and has its own **Action** menu, which decide
 
 ## Available filters
 
-### 1. Anti-spam filter
+### 1. Anti-spam
 Limits how fast a member can post.
 * **Maximum messages**: the allowed limit.
 * **Within how many seconds**: the window used for the count.
 * **Sanction**: the action applied when the limit is passed.
 
-### 2. Anti-link / invite filter
+### 2. Links and invites
 A single filter covers external links **and** invites to other Discord servers.
 * **Allowed sites (one per line)**: any domain missing from this list triggers the sanction.
 
-### 3. Excessive caps filter
+### 3. All caps
 * **Share of capitals (%)**: the share of capital letters at which the message is sanctioned.
 * **Minimum length**: below this character count the message is not analysed, which avoids blocking a plain "OK".
 
-### 4. Emoji spam
+### 4. Too many emojis
 Limits how many emoji a message may contain. Set to `0`, the filter is disabled and allows an unlimited number of emoji.
 
-### 5. Mention spam
+### 5. Too many mentions
 Limits how many mentions a message may contain. Set to `0`, it allows an unlimited number of mentions.
 
-### 6. Anti-ghost ping
+### 6. Ghost pings
 Detects pings that are deleted or edited quickly. Two actions to choose from: **Alert only** or **Warning and alert**.
 
-### 7. Anti-everyone
+### 7. @everyone and @here
 Deletes unauthorized `@everyone` and `@here` mentions. Possible actions: **Delete only**, **Delete and warn**, or **Timeout (10 min)**.
 
-### 8. Custom words
+### 8. Banned words
 Your own blocklist.
 * **Banned words (one per line, 1000 max)**.
 * **Exceptions (allowed words, one per line)**: useful for a word that contains a forbidden sequence of letters.
 
-### 9. Profanity filter
+### 9. Insults and offensive content
 * **Active categories**: **Insults and profanity**, **Sexual content**, **Hate speech**.
 * **Exceptions (words allowed anyway, one per line)**.
 
@@ -71,7 +71,7 @@ Your own blocklist.
 The word lists are not maintained by Kotbo: the filter uses **Discord's predefined lists** to catch insults, sexual content and hateful terms.
 :::
 
-### 10. Secure mode (anti-bot)
+### 10. Adding bots
 Prevents anyone other than the server owner from adding bots. A bot added by someone else is automatically kicked or banned.
 * **People allowed to add bots**: the list of exceptions.
 * **What to do with the added bot**: **Kick the bot** or **Ban the bot**.
@@ -80,7 +80,7 @@ Prevents anyone other than the server owner from adding bots. A bot added by som
 Only the Discord server owner can enable, disable or configure this filter. Other staff members cannot touch it, even with full dashboard access.
 :::
 
-### 11. Automatic suspension (anti-burst)
+### 11. Emergency admin removal
 Automatically removes ADMINISTRATOR roles when destructive actions are repeated in a short time. It is a safeguard against a compromised administrator account.
 * **Short limit** and **Long limit**: the two rates that trigger the suspension.
 
@@ -96,6 +96,25 @@ Only the server owner can enable, disable or configure Admin Permission Lock.
 
 :::warning[Role position]
 Place the bot's role **above** the ADMINISTRATOR roles, otherwise the automatic reverts cannot be applied.
+:::
+
+---
+
+## Testing a rule on past messages (Simulator tab)
+
+The **Simulator** tab replays a rule on past messages without sanctioning anyone: you see which messages it would have hit before turning it on. A filter's **Test** button opens the simulator straight on that filter, with its settings.
+
+1. Pick the **Rule type**: **Banned words**, **Invites**, **Caps**, **Emojis**, **Mentions**, **@everyone**, **Anti-spam**, **Scams** or **Custom regex**, then adjust its settings.
+2. Pick the **Period**: **24 h**, **7 days** or **30 days**.
+3. Tick **Compare with the live version** to see what your changes add or remove.
+4. Click **Run simulation**.
+
+The result shows **Messages hit**, **Members hit**, **Likely false positives** (staff, code or quote) and **Messages scanned**, with **Triggers per day**, **Most affected channels** and **Most affected members**. The message list highlights the triggering passage; **Allow this passage** adds it to the allow list.
+
+When the result suits you, **Apply these settings to the page** carries the tested rule over to the filter. Remember to save afterwards.
+
+:::note[An estimate]
+The simulator replays the messages kept by [Logs](/en/dashboard/moderation/logs/): you need access to them. History keeps neither role mentions, nor the permission to mention @everyone, nor messages the bot deleted mid-spam: the result remains an estimate.
 :::
 
 ---
