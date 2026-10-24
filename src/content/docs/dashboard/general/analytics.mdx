@@ -1,71 +1,102 @@
 ---
 title: Statistiques
-description: Analysez la croissance, l'engagement et l'activité de votre communauté, et exportez les graphiques.
+description: "Mesurer l'activité, le contenu, les membres, la croissance et la modération du serveur, comparer des périodes, recevoir des alertes et des rapports."
 ---
 
-<p class="doc-lead">La page <strong>Analytics</strong> mesure ce qui se passe réellement sur votre serveur : messages, vocal, arrivées, rétention, modération et invitations, sur la période de votre choix.</p>
+<p class="doc-lead">La page <strong>Statistiques</strong> mesure ce qui se passe réellement sur votre serveur : messages, vocal, contenu posté, membres, arrivées et départs, modération, staff, site communautaire. Chaque graphique se compare à la période d'avant, et des alertes ou des rapports vous préviennent sans ouvrir le dashboard.</p>
 
 :::note[Où la trouver]
-Section **Général → Statistiques** : [Ouvrir Analytics ↗](https://dash.kotbo.fr/analytics).
+Section **Général → Statistiques** : [Ouvrir les statistiques ↗](https://dash.kotbo.fr/analytics).
 La collecte se coupe en désactivant le module **Analytics** depuis **Réglages → Modules**. Sans elle, plus rien n'est enregistré.
 :::
 
 ---
 
-## Choisir la période
+## Se repérer
 
-Les périodes proposées sont **24 heures**, **7 jours**, **30 jours**, **90 jours**, **365 jours**, ou une plage **personnalisée**. Le **Live Feed** indique l'heure de la dernière mise à jour.
+À gauche, une barre liste les **sections** ; chacune a ses sous-onglets en haut de page. La barre se **replie** en icônes (elle se replie d'elle-même sur un écran étroit) et se déplie d'un clic. Les sections marquées **Nouveau** sont récentes. En bas de la barre, **Sur leur propre page** mène à [Santé du serveur](/dashboard/general/pulse/) et aux [Invitations](/dashboard/moderation/invitations/).
+
+Chaque sous-onglet a sa propre adresse : un lien partagé ouvre exactement la même vue.
+
+### La barre de filtres
+
+* **Période** : **24 heures**, **7 jours**, **30 jours**, **90 jours**, **365 jours** ou **Personnalisé** (dates **Du** / **Au**, puis **Appliquer**).
+* **Comparer à la période d'avant** : superpose la période précédente en pointillé et affiche les écarts.
+* Un **salon ou une catégorie** (*Tout le serveur* par défaut) et un **rôle** (*Tous les rôles*).
+* **Sans le staff** retire l'équipe des chiffres ; **Compter les bots** ne change que le nombre de membres, les bots ne postant jamais dans les statistiques d'activité.
+* **Retirer les filtres** revient à la vue d'origine.
+
+Certains sous-onglets ne suivent que la période, ou ont leur propre fenêtre de temps (le direct, par exemple) : un bandeau le signale.
 
 :::note[Dans quel fuseau les heures sont lues]
-Les graphiques annoncent *Heures affichées en …*. Ce fuseau est **le vôtre**, pas celui du serveur : il se choisit dans vos paramètres utilisateur, en automatique (celui du navigateur) ou explicitement. Il ne change que l'affichage des graphiques et des heatmaps, jamais les données collectées.
+Les heures s'affichent dans **votre** fuseau, pas celui du serveur : il se choisit dans [vos préférences](/dashboard/general/profil/), en automatique (celui du navigateur) ou explicitement. Il ne change que l'affichage, jamais les données collectées.
 :::
 
----
+### Vues enregistrées
 
-## Les six catégories
-
-| Catégorie | Ce qu'on y trouve |
-| --- | --- |
-| **Aperçu** | Vue générale de la période. |
-| **Engagement** | Messages, vocal, membres, réseau, commandes. |
-| **Communauté** | Pouls, salons, social, fréquence des mots. |
-| **Croissance** | Rétention, cohortes, churn, heatmap horaire, comparaison de semaines. |
-| **Modération** | Activité de modération et performance du staff. |
-| **Invitations** | Analyse des codes d'invitation. |
+Le menu **Vues** enregistre l'onglet, la période et les filtres actuels sous un nom, pour y revenir en un clic. **Partager avec l'équipe** rend la vue visible de tous ceux qui ont accès aux statistiques.
 
 ---
 
-## Engagement
+## Lire un graphique
 
-* **Activité globale des messages** et **Activité vocale globale** : la courbe de la période, avec le **Total**, le **Pic**, la **Moyenne / point** et la **Tendance** face au début de la période. Une bascule **Brut / Moyenne** lisse la courbe.
-* **Top messagers** et **Top vocalistes**, avec le classement complet, une recherche par nom et une pagination. Comme les tops de salons, ils ne comptent que la **période choisie** en haut de page, et non le cumul depuis l'arrivée du membre.
-* **Salons textuels populaires** et **salons vocaux populaires**, par volume de messages et par temps passé.
-* **Commandes exécutées** : usage global des commandes du bot et répartition par commande.
-* **Réseau** : le graphe des interactions entre membres.
+Le graphique principal d'activité se pilote depuis ses cartes de chiffres : cliquer sur une mesure (messages, vocal, membres actifs…) l'affiche dans la courbe, avec son **Total**, sa **Moyenne**, son **Pic** et son **Minimum**.
 
-### Membres
+* **Pas de temps** : **Auto**, **Heure**, **Jour**, **Semaine** ou **Mois**. Le pas horaire n'existe que pour tout le serveur, sur 14 jours au plus.
+* **Affichage** : **Courbe**, **Barres**, **Empilé par salon**, **Empilé par catégorie** ou **Tableau**.
+* **Lissage** : **Moyenne mobile**, **Période d'avant** et **Prévision** (qui demande 28 jours d'historique, au pas du jour, sur une période qui finit aujourd'hui).
+* Les jours anormaux sont signalés sur la courbe.
 
-* **Flux de population** : arrivées et départs, en vue journalière ou cumulée, avec les moyennes par jour et le solde **net**.
-* **Membres actifs** : pic d'activité simultanée, pic record, moyenne et minimum.
-* **Membres arborant le tag du serveur** : évolution du nombre de membres affichant le tag officiel.
-* Un bouton permet de **synchroniser les membres existants** pour remplir l'historique.
+**Ajouter une note** pose un repère daté sur les courbes (« tournoi », « pub sur un autre serveur »…). Cliquer sur un point de la courbe choisit sa date. Les notes sont visibles de toute l'équipe qui a accès aux statistiques, avec leur auteur.
 
----
+Les classements (membres, salons…) basculent entre **Tableau** et **Barres**, avec l'écart par rapport à la période d'avant. **Tout voir** ouvre le classement complet, avec recherche et export.
 
-## Croissance
-
-* **Membres de retour** : les membres actifs cette semaine après 30 jours ou plus d'absence.
-* **Rétention par source** : le taux de membres encore présents 90 jours après, par invitation.
-* **Cohortes d'arrivée** : pour chaque semaine d'arrivée, le pourcentage encore présent à J+1, J+7 et J+30.
-* **DAU / WAU / MAU** et l'**assiduité** (DAU/MAU).
-* **Semaine vs semaine** : comparaison de deux périodes sur les messages, le temps vocal, les arrivées, les départs et les sanctions, avec la variation absolue et une rétention estimée.
-* **Heures d'activité** : les messages par jour et par heure.
+Cliquer sur un membre, un salon, une catégorie ou une invitation ouvre sa **fiche** dans une fenêtre, avec ses courbes, ses chiffres clés et la même comparaison à la période d'avant.
 
 ---
 
-## Invitations
+## Les sections
 
-**Total codes**, **codes actifs**, **utilisations totales** et **moyenne par code**, avec la liste des **codes populaires** et des **codes inactifs**. Un raccourci ouvre la page [Invitations](/dashboard/moderation/invitations/) pour agir dessus.
+| Section | Sous-onglets | Ce qu'on y trouve |
+| --- | --- | --- |
+| **Aperçu** | Aperçu | L'essentiel de la période, avec l'écart par rapport à la période d'avant et un résumé du direct. |
+| **Activité** | Messages, Vocal, En direct, Comparer, Heures d'activité, Santé du serveur, Semaine vs semaine, Commandes, Daily Algo | Messages et vocal, salons les plus actifs, heures de pointe, commandes utilisées. |
+| **Contenu** | Aperçu, Emojis, Stickers, GIF, Sites, Mise en forme, Mots | Ce que les membres postent : types de message, emojis (Unicode, du serveur ou d'ailleurs, et leur serveur d'origine), stickers, GIF et leur provenance, sites cités, mise en forme, mots en hausse. |
+| **Salons et catégories** | Catégories et salons, Temps de réponse, Santé des salons | Chaque catégorie avec ses salons, écrit et vocal réunis ; le temps qu'il faut pour obtenir une réponse ; la santé de chaque salon. |
+| **Membres** | Membres, Engagement, Cycle de vie, Concentration, Réseau, Social, Membres silencieux | Qui fait vivre le serveur : membres actifs par jour, semaine et mois et leur fidélité, segments de cycle de vie, part de l'activité portée par quelques membres, réseau des échanges, membres qui ne disent plus rien. |
+| **Croissance** | Arrivées et départs, Entonnoir d'arrivée, Cohortes, Départs | Arrivées et départs, provenance des arrivées, étapes entre l'arrivée et le premier message, rétention par cohorte, départs selon l'ancienneté et risque de départ. |
+| **Modération** | Modération, Tendances de modération | Sanctions, sanctions en cours, motifs récurrents, membres les plus sanctionnés, modérateurs actifs. |
+| **Climat** | Climat | Toxicité et émotions des échanges, mesurées par [AegisAI](/dashboard/moderation/aegis/). |
+| **Staff** | Annuaire staff, Performance staff, Tickets et réactivité | L'équipe, la performance de chacun, et la charge et la réactivité sur les tickets. |
+| **Site web** | Fréquentation du site | La fréquentation du [site communautaire](/dashboard/communaute/site/), mesurée sans cookie. |
+| **Alertes et rapports** | Alertes, Rapports planifiés | Voir ci-dessous. |
+
+### En direct
+
+**En direct** suit le serveur en temps réel, sur les 30 dernières minutes : **Messages** et rythme **Par minute (5 min)**, **Membres qui écrivent**, **En vocal**, **En ligne**, **Arrivées**, et les **Salons qui bougent** et **Salons vocaux occupés**.
+
+### Comparer
+
+**Comparer des segments** met côte à côte deux ou trois **rôles** ou **salons** sur la période choisie, ou la période choisie face à une autre (**Deux périodes**). Mesures : **Messages**, **Membres actifs** ou **Temps en vocal**, jour par jour et en **Chiffres clés**.
+
+---
+
+## Alertes et rapports
+
+### Alertes sur seuil
+
+**Nouvelle alerte** vous prévient quand une mesure bouge, par exemple « si les messages baissent de 30 % sur une journée » :
+
+* un **Nom**, la **Mesure**, le **Pas**, la **Condition** et le **Seuil** ; la phrase **En clair** résume la règle ;
+* un **Salon surveillé** (facultatif : tout le serveur sinon) ;
+* le **Repos après déclenchement (heures)**, pour ne pas recevoir la même alerte en boucle ;
+* les destinataires : un **Salon d'envoi** et/ou des **Membres du staff** **En message privé** (10 au plus ; un membre qui a fermé ses MP ne reçoit rien).
+
+Les alertes sont vérifiées toutes les 5 minutes. **Derniers déclenchements** compare la valeur mesurée à la valeur habituelle. La chute du score de [Santé du serveur](/dashboard/general/pulse/) se surveille aussi par une alerte.
+
+### Rapports planifiés
+
+**Nouveau rapport** envoie un récapitulatif **Hebdomadaire** ou **Mensuel** - la semaine ou le mois écoulé, comparé à la période d'avant - au **Jour** et à l'**Heure** choisis, dans le fuseau du serveur. Choisissez ses **Rubriques** et ses destinataires, comme pour une alerte. **Envoyer un essai** le reçoit tout de suite.
 
 ---
 
@@ -85,6 +116,10 @@ Un export sur une période vide est refusé avec le message *Aucune donnée de g
 
 ## Couper la collecte
 
-Éteindre le module **Analytics** depuis le [catalogue des modules](/dashboard/configuration/modules/) arrête tout enregistrement : messages, minutes vocales, réactions, threads, arrivées et départs, statistiques par membre, fréquence des mots et classements d'usage.
+Éteindre le module **Analytics** depuis le [catalogue des modules](/dashboard/configuration/modules/) arrête tout enregistrement : messages, minutes vocales, réactions, fils, arrivées et départs, statistiques par membre, contenu des messages, échanges entre membres, fréquence des mots et classements d'usage.
 
 Les autres modules (modération, tickets, niveaux…) continuent de fonctionner normalement. Seules les mesures techniques du bot (durées d'exécution et erreurs, sans aucune identité) restent conservées.
+
+:::note[Ce qui n'est jamais gardé]
+Les statistiques de contenu ne gardent que des comptes : types de message, emojis, domaines des sites cités - jamais le texte des messages ni l'adresse complète d'un lien. Les échanges entre membres sont comptés par paire et par jour, sans leur contenu.
+:::
