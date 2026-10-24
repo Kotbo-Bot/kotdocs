@@ -1,5 +1,5 @@
 ---
-title: API MCP (Model Context Protocol)
+title: Connecter une IA (MCP)
 description: Connecter des intelligences artificielles (Claude, ChatGPT...) à votre bot pour interroger et administrer votre serveur Discord.
 sidebar:
   order: 2
@@ -25,7 +25,7 @@ Le MCP est un standard ouvert permettant à un modèle d'IA d'interagir avec des
 
 Pour connecter une IA, vous devez générer des identifiants dédiés à partir du dashboard de Kotbo.
 
-1. Allez dans **Configuration → API MCP** ([Accéder à l'API MCP ↗](https://dash.kotbo.fr/mcp-settings)).
+1. Allez dans **Intégrations → Connecter une IA** ([Accéder à l'API MCP ↗](https://dash.kotbo.fr/mcp-settings)).
 2. Cliquez sur le bouton **Nouvelle clé** en haut à droite.
 3. Saisissez un **Nom de clé** pour l'identifier facilement (ex: *Claude Web*, *ChatGPT Staff*).
 4. Configurez les permissions de la clé. Cochez uniquement ce qui est nécessaire pour l'usage prévu.
@@ -129,6 +129,6 @@ Exemple de configuration JSON pour un serveur MCP :
 ## Diagnostics et Logs
 
 Si l'IA n'arrive pas à lire les informations ou si des requêtes échouent, vous pouvez consulter les logs en temps réel.
-1. Allez dans **Configuration → API MCP**.
+1. Allez dans **Intégrations → Connecter une IA**.
 2. À côté de l'URL de votre Endpoint, cliquez sur le bouton **Logs**.
 3. Vous y verrez toutes les connexions entrantes récentes, les méthodes appelées (ex: `listTools`, `callTool`) ainsi que les erreurs éventuelles retournées par le bot.

@@ -1,5 +1,5 @@
 ---
-title: Tickets de support
+title: Tickets
 description: Configurez et gérez le système de support par tickets pour communiquer en privé avec vos membres depuis le dashboard.
 ---
 
@@ -10,7 +10,7 @@ Pour voir comment se présente le panel, comment les membres ouvrent un ticket e
 :::
 
 :::note[Disponibilité]
-La gestion et la configuration du système se font depuis la section **Staff → Tickets & Satisfaction** de votre dashboard : [Accéder au module Tickets ↗](https://dash.kotbo.fr/tickets).
+La gestion et la configuration du système se font depuis la section **Équipe → Tickets** de votre dashboard : [Accéder au module Tickets ↗](https://dash.kotbo.fr/tickets).
 L'accès aux onglets d'administration et de configuration est restreint aux administrateurs ou aux membres possédant les rôles d'accès configurés.
 :::
 
@@ -68,12 +68,20 @@ Un ticket protégé affiche un bandeau **Protégé contre la suppression**, avec
 
 ---
 
-## Historiques des tickets (Onglet Transcriptions)
+## Transcriptions (onglet Transcriptions)
 
-Lorsqu'un ticket est fermé :
-* Kotbo compile l'ensemble de la discussion sous forme de page HTML propre.
-* Le fichier est stocké de manière sécurisée.
-* Dans l'onglet **Transcriptions**, cliquez sur un ticket archivé pour générer un **lien d'accès temporaire signé**. Ce lien vous permet de lire le script complet dans votre navigateur ou de le partager avec votre équipe.
+L'onglet reprend l'ancienne page **Transcriptions**, dont l'adresse `/transcripts-list` mène désormais ici. Il liste les transcriptions de **tickets** et de **salons** :
+
+* un ticket est transcrit quand on le **supprime**, et de nouveau quand on l'**archive**, pour que l'archive reflète son dernier état ;
+* la commande `/transcript` et l'import de messages comme preuves dans un [rapport de sanction](/dashboard/moderation/sanctions/) produisent les transcriptions de salons.
+
+La colonne **Type** distingue les deux : **Ticket** ou `/transcript`. **Consulter** ouvre la transcription complète dans un nouvel onglet.
+
+La suppression est réservée à qui gère les réglages du serveur. Une confirmation la précède : la transcription disparaît du tableau de bord et son lien ne marchera plus.
+
+:::danger[Suppression définitive]
+Une transcription supprimée n'est pas récupérable. Si elle sert de preuve dans un rapport de sanction, le rapport perd sa pièce jointe.
+:::
 
 ---
 

@@ -1,5 +1,5 @@
 ---
-title: MCP API (Model Context Protocol)
+title: Connect an AI (MCP)
 description: Connect AI assistants (Claude, ChatGPT and others) to your bot so they can query and administer your Discord server.
 sidebar:
   order: 2
@@ -25,7 +25,7 @@ MCP is an open standard that lets an AI model interact with external tools and d
 
 To connect an AI, you need to generate dedicated credentials from the Kotbo dashboard.
 
-1. Go to **Configuration → MCP API** ([Open the MCP API ↗](https://dash.kotbo.fr/mcp-settings)).
+1. Go to **Integrations → Connect an AI** ([Open the MCP API ↗](https://dash.kotbo.fr/mcp-settings)).
 2. Click the **New key** button in the top right.
 3. Enter a **key name** so you can identify it easily (for example *Claude Web*, *ChatGPT Staff*).
 4. Configure the key's permissions. Only tick what the intended use actually requires.
@@ -129,6 +129,6 @@ Example JSON configuration for an MCP server:
 ## Diagnostics and logs
 
 If the AI cannot read information, or if requests are failing, you can check the logs in real time.
-1. Go to **Configuration → MCP API**.
+1. Go to **Integrations → Connect an AI**.
 2. Next to your endpoint URL, click the **Logs** button.
 3. You will see every recent incoming connection, the methods called (for example `listTools`, `callTool`) and any errors the bot returned.

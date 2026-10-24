@@ -24,7 +24,7 @@ Suivre les étapes ci-dessous vous assure un serveur **sécurisé, auditable et 
 ## Étape 1 : Sécuriser les accès et permissions
 Avant toute chose, limitez qui peut interagir avec le bot et qui peut administrer ses réglages.
 
-* **Où aller :** **Configuration → Commandes**
+* **Où aller :** **Réglages → Commandes**
 * **Action :** Vérifiez les droits d'exécution de vos commandes slash. Assurez-vous que les commandes de modération (`/clear`, `/sanction`, `/casier`, etc.) et de configuration ne sont accessibles qu'aux rôles adéquats (par exemple `@Administrateur` ou `@Modérateur`).
 * **Pourquoi :** Évite que des membres malveillants profitent d’une commande mal restreinte par défaut pendant que vous configurez le reste.
 
@@ -33,7 +33,7 @@ Avant toute chose, limitez qui peut interagir avec le bot et qui peut administre
 ## Étape 2 : Activer le journal d'activité (Logs)
 Il est essentiel de voir ce que fait le bot et d'avoir des traces en cas de dysfonctionnement ou de comportement suspect.
 
-* **Où aller :** **Modération → Logs Discord**
+* **Où aller :** **Modération → Journaux**
 * **Action :** Créez ou sélectionnez un salon privé réservé à votre équipe de modération (ex: `#logs-mod`), puis activez les filtres de logs souhaités (sanctions, messages supprimés, modifications de rôles, etc.).
 * **Pourquoi :** Toutes les configurations suivantes (sanctions automatiques, tickets créés, détections de doubles comptes) généreront des logs. Si vos salons de logs ne sont pas configurés en premier, vous passerez à côté d'informations cruciales.
 
@@ -43,10 +43,10 @@ Il est essentiel de voir ce que fait le bot et d'avoir des traces en cas de dysf
 Mettez en place les protections qui surveilleront votre serveur H24.
 
 1. **AutoMod (Modération automatique) :**
-   * **Où aller :** **Sécurité → Filtres**
+   * **Où aller :** **Protection → Filtres**
    * **Action :** Activez les filtres anti-spam, de liens interdits, de grossièretés et l'**Anti-Bot**.
 2. **Doubles Comptes :**
-   * **Où aller :** **Sécurité → Multi-comptes**
+   * **Où aller :** **Protection → Comptes suspects**
    * **Action :** Activez la détection automatique et configurez le processus de vérification par Captcha pour les nouveaux comptes trop récents.
 
 * **Pourquoi :** Votre serveur est désormais sous surveillance active. Si un spammeur ou un bot malveillant tente de le rejoindre pendant la suite de votre configuration, il sera bloqué immédiatement.
@@ -57,13 +57,13 @@ Mettez en place les protections qui surveilleront votre serveur H24.
 Configurez l'expérience d'arrivée des futurs membres.
 
 1. **Messages d'accueil :**
-   * **Où aller :** **Communauté → Annonces & Auto-Rôle**
+   * **Où aller :** **Communication → Bienvenue et départs**
    * **Action :** Activez l'onglet **Accueil**, sélectionnez un salon comme `#bienvenue` et rédigez votre message personnalisé.
 2. **Acceptation du règlement :**
-   * **Où aller :** **Communauté → Règlement** (si installé)
+   * **Où aller :** **Communication → Règlement** (si installé)
    * **Action :** Rédigez vos règles et définissez le rôle de validation à attribuer lorsque l'utilisateur accepte la charte.
 3. **Rôles de réaction :**
-   * **Où aller :** **Communauté → Reaction Roles**
+   * **Où aller :** **Communauté → Rôles par réaction**
    * **Action :** Créez des menus de rôles auto-attribués (ex: pour choisir ses jeux, ses plateformes) afin de désengorger vos salons.
 
 ---
@@ -72,10 +72,10 @@ Configurez l'expérience d'arrivée des futurs membres.
 Organisez le travail de votre staff et le système de relation avec vos membres.
 
 1. **Tickets de support :**
-   * **Où aller :** **Staff → Tickets & Satisfaction**
+   * **Où aller :** **Équipe → Tickets**
    * **Action :** Configurez la catégorie de support, le rôle staff gérant les tickets, et générez le panel d'ouverture dans `#support`.
 2. **Recrutement :**
-   * **Où aller :** **Staff → Recrutement** (ou via Form Builder)
+   * **Où aller :** **Équipe → Recrutement** (ou via Form Builder)
    * **Action :** Si vous recrutez des modérateurs ou animateurs, préparez les formulaires de candidature.
 
 ---
@@ -96,7 +96,7 @@ Maintenant que le serveur est sécurisé, structuré et fonctionnel, vous pouvez
 ## Étape 7 : Vérifier les accès du staff
 Une fois les modules en place, décidez qui voit quoi.
 
-* **Où aller :** **Configuration → Centre de gestion**, onglet **Accès par rôle**
+* **Où aller :** **Réglages → Réglages du serveur**, onglet **Accès par rôle**
 * **Action :** Renseignez d'abord vos salons et rôles transverses dans l'onglet *Salons & Rôles*, puis posez les droits **Voir**, **Modérer**, **Configurer** et **Supprimer** par rôle staff.
 * **Pourquoi :** Une fonctionnalité sans aucune règle reste visible par tout le staff. La première règle posée la réserve aux rôles qui l'ont : c'est ce basculement qu'il faut connaître avant d'ouvrir le dashboard à votre équipe.
 

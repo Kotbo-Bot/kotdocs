@@ -5,7 +5,7 @@ description: Résoudre les problèmes courants lors de l’utilisation du dashbo
 
 ## Pourquoi une page n’apparaît-elle pas dans la barre latérale ?
 
-La page dépend de votre niveau d’accès, d’un module désactivé, ou de l’offre du serveur. Demandez à un administrateur de vérifier **Configuration → Modules**, la matrice **Accès par rôle** du [Centre de gestion](/dashboard/configuration/centre-gestion/), et l’offre en cours sur la page [Facturation](/dashboard/configuration/facturation/).
+La page dépend de votre niveau d’accès, d’un module désactivé, ou de l’offre du serveur. Demandez à un administrateur de vérifier **Réglages → Modules**, la matrice **Accès par rôle** du [Centre de gestion](/dashboard/configuration/centre-gestion/), et l’offre en cours sur la page [Facturation](/dashboard/configuration/facturation/).
 
 ## Le bot est là mais ne répond à rien
 

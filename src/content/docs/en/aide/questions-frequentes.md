@@ -5,7 +5,7 @@ description: Solve the common problems people hit when using the Kotbo dashboard
 
 ## Why is a page missing from the sidebar?
 
-The page depends on your access level, on a disabled module, or on the server's plan. Ask an administrator to check **Configuration → Modules**, the **Role access** matrix in the [Management center](/en/dashboard/configuration/centre-gestion/), and the current plan on the [Billing](/en/dashboard/configuration/facturation/) page.
+The page depends on your access level, on a disabled module, or on the server's plan. Ask an administrator to check **Settings → Modules**, the **Role access** matrix in the [Management center](/en/dashboard/configuration/centre-gestion/), and the current plan on the [Billing](/en/dashboard/configuration/facturation/) page.
 
 ## The bot is there but responds to nothing
 

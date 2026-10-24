@@ -1,5 +1,5 @@
 ---
-title: Support tickets
+title: Tickets
 description: Configure and run the ticket support system to talk privately with your members, from the dashboard.
 ---
 
@@ -10,7 +10,7 @@ To see what the panel looks like, how members open a ticket and how staff reply 
 :::
 
 :::note[Availability]
-The system is managed and configured from the **Staff → Tickets & Satisfaction** section of your dashboard: [Open the Tickets module ↗](https://dash.kotbo.fr/tickets).
+The system is managed and configured from the **Team → Tickets** section of your dashboard: [Open the Tickets module ↗](https://dash.kotbo.fr/tickets).
 Access to the administration and configuration tabs is limited to administrators or to members holding the configured access roles.
 :::
 
@@ -68,12 +68,20 @@ Next to the name of the user who opened the ticket, a button opens their **membe
 
 ---
 
-## Ticket history (Transcripts tab)
+## Transcripts (Transcripts tab)
 
-When a ticket is closed:
-* Kotbo compiles the whole conversation into a clean HTML page.
-* The file is stored securely.
-* In the **Transcripts** tab, click an archived ticket to generate a **signed temporary access link**. That link lets you read the full transcript in your browser or share it with your team.
+This tab replaces the former **Transcripts** page, whose `/transcripts-list` address now leads here. It lists **ticket** and **channel** transcripts:
+
+* a ticket is transcribed when it is **deleted**, and again when it is **archived**, so the archive reflects its last state;
+* the `/transcript` command and importing messages as evidence into a [sanction report](/en/dashboard/moderation/sanctions/) produce channel transcripts.
+
+The **Type** column tells them apart: **Ticket** or `/transcript`. **View** opens the full transcript in a new tab.
+
+Only people who manage the server settings can delete one. A confirmation comes first: the transcript disappears from the dashboard and its link stops working.
+
+:::danger[Permanent deletion]
+A deleted transcript cannot be recovered. If it serves as evidence in a sanction report, the report loses its attachment.
+:::
 
 ---
 

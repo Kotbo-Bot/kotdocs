@@ -1,12 +1,12 @@
 ---
-title: Planning & agenda
+title: Schedule
 description: See your team's schedule, declare your absences, schedule calls and follow your tasks.
 ---
 
 <p class="doc-lead">The <strong>Planning</strong> gathers meetings, Discord calls, absences and tasks for your team on a single agenda.</p>
 
 :::note[Where to find it]
-The **Staff → Schedule** section: [Open the planning ↗](https://dash.kotbo.fr/planning).
+The **Team → Schedule** section: [Open the planning ↗](https://dash.kotbo.fr/planning).
 You must be registered as a staff member to create anything here.
 :::
 
@@ -22,7 +22,7 @@ Four calendars overlay each other, each toggled separately under **My calendars*
 
 | Calendar | Content |
 | --- | --- |
-| **Meetings** | Team check-ins from the [Meetings](/en/dashboard/staff/reunions/) module. |
+| **Meetings** | Team check-ins, covered [below](#meetings). |
 | **Discord calls** | Scheduled voice calls. |
 | **Absences** | Declared unavailability. |
 | **Tasks** | Assigned tasks. |
@@ -30,6 +30,36 @@ Four calendars overlay each other, each toggled separately under **My calendars*
 The **People** panel filters the agenda on one or more members, with **None** and **All** shortcuts.
 
 The **My day** view shows your deadlines for today and, when there is nothing, the message *Your day is free!*.
+
+---
+
+## Meetings
+
+Meetings no longer have a page of their own: you create and follow them here. The old `/meetings` address opens the Schedule.
+
+### Planning a meeting
+
+<div class="step-list">
+  <div class="step-item"><div><h3>Open New event</h3><p>Pick the <strong>Meeting</strong> type at the top of the window.</p></div></div>
+  <div class="step-item"><div><h3>Fill in the title and the time slot</h3><p>The title is required, the end must come after the start, and a meeting already in the past is refused.</p></div></div>
+  <div class="step-item"><div><h3>Write the agenda</h3><p>The description is posted with the announcement.</p></div></div>
+  <div class="step-item"><div><h3>Save</h3><p>Kotbo announces the event on Discord and turns on the reply buttons.</p></div></div>
+</div>
+
+Under the dates, Kotbo shows which time zone the time is read in. For a meeting, the **Change** button lets you enter it in another time zone, for that meeting only.
+
+The announcement channel and the voice channel for meetings are set in [Server settings](/en/dashboard/configuration/centre-gestion/), **Channels and roles** tab: the **Meeting Announcements** and **Meeting Voice** fields.
+
+### Following a meeting
+
+Click a meeting on the agenda to open its card. It goes through the **Scheduled**, **In progress**, **Completed** and **Cancelled** statuses:
+
+* **Start** moves it to in progress, **End** closes it;
+* the **Attendance list** counts who is **Present**, **Excused** and **Absent**. Attendance is taken in the voice channel, and an absence declared over the slot excuses the member automatically.
+
+### Deleting a meeting
+
+Deletion is permanent. Kotbo then asks whether to clean up Discord too: **Delete the Discord event**, **Delete the announcement message** and **Delete internal notifications**.
 
 ---
 

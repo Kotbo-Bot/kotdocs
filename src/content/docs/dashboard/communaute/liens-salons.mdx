@@ -12,7 +12,7 @@ Pour connaître les commandes de gestion des liens sur Discord et le comportemen
 :::
 
 :::note[Disponibilité]
-Cette fonctionnalité est accessible depuis la section **Cross-Serveur → Liens de salons** de votre dashboard : [Accéder au module Liens de salons ↗](https://dash.kotbo.fr/channel-links).
+Cette fonctionnalité est accessible depuis la section **Intégrations → Liens de salons** de votre dashboard : [Accéder au module Liens de salons ↗](https://dash.kotbo.fr/channel-links).
 Vous devez être administrateur du serveur pour créer ou modifier ces liens.
 :::
 
@@ -66,7 +66,7 @@ Un serveur qui n'a pas de clé d'activation porte le badge **Liaison seule** : K
 Vous pouvez lier deux salons distincts au sein de votre propre serveur (par exemple, pour dupliquer des annonces ou relayer des discussions d'un salon privé vers un salon public).
 
 ### Étapes de configuration
-1. Ouvrez le dashboard de votre serveur et accédez à **Cross-Serveur → Liens de salons**.
+1. Ouvrez le dashboard de votre serveur et accédez à **Intégrations → Liens de salons**.
 2. Cliquez sur le bouton **Créer un lien** en haut à droite.
 3. Remplissez le formulaire :
    *   **Salon sur ce serveur** : Choisissez le premier salon (source).
@@ -84,7 +84,7 @@ Pour connecter deux serveurs Discord distincts, le bot Kotbo doit être install�
 ### Méthode A : Liaison directe (si vous êtes administrateur des deux serveurs)
 Si vous possédez les droits d'administration sur les deux serveurs, vous pouvez établir le lien directement depuis votre dashboard.
 
-1. Allez dans **Cross-Serveur → Liens de salons** sur le serveur source.
+1. Allez dans **Intégrations → Liens de salons** sur le serveur source.
 2. Cliquez sur **Créer un lien**.
 3. Sélectionnez le salon source local.
 4. Dans **Serveur cible**, sélectionnez le serveur distant (celui-ci apparaît dans la liste si vous y êtes administrateur et que le bot y est présent).
@@ -95,7 +95,7 @@ Si vous possédez les droits d'administration sur les deux serveurs, vous pouvez
 Si vous souhaitez lier votre salon à celui d'un autre serveur que vous ne gérez pas, vous devez générer un code d'invitation que l'autre administrateur devra valider. Dans ce scénario, le **Serveur A** désigne le serveur depuis lequel vous initiez la configuration et créez l'invitation, et le **Serveur B** désigne le serveur cible qui recevra l'invitation.
 
 #### Étape 1 : Générer l'invitation (Serveur A — Serveur d'initiation)
-1. Sur le serveur A, allez dans **Cross-Serveur → Liens de salons** et cliquez sur **Créer un lien**.
+1. Sur le serveur A, allez dans **Intégrations → Liens de salons** et cliquez sur **Créer un lien**.
 2. Sélectionnez votre salon local.
 3. Activez l'option **Générer une invitation Discord** (cela permet également de créer une invitation d'accès si les membres veulent rejoindre l'autre serveur).
 4. Sélectionnez la direction et le mode de relais souhaités.
@@ -108,7 +108,7 @@ Si vous souhaitez lier votre salon à celui d'un autre serveur que vous ne gére
 
 Par défaut, Kotbo synchronise les textes et les images. Vous pouvez affiner ce comportement pour chaque lien actif.
 
-1. Dans la liste de vos liens sous **Cross-Serveur → Liens de salons**, repérez le lien concerné et cliquez sur l'icône d'engrenage (**Configurer**).
+1. Dans la liste de vos liens sous **Intégrations → Liens de salons**, repérez le lien concerné et cliquez sur l'icône d'engrenage (**Configurer**).
 2. Activez ou désactivez les interrupteurs selon vos préférences :
    *   **Texte** : Relaye les messages écrits classiques.
    *   **Images** : Relaye les images et fichiers joints.
@@ -122,6 +122,6 @@ Par défaut, Kotbo synchronise les textes et les images. Vous pouvez affiner ce 
 
 ## Supprimer une liaison
 
-Pour rompre un lien, retournez dans **Cross-Serveur → Liens de salons**, cliquez sur l'icône de corbeille rouge (**Supprimer**) à côté du lien et confirmez. Le relais s'arrêtera immédiatement.
+Pour rompre un lien, retournez dans **Intégrations → Liens de salons**, cliquez sur l'icône de corbeille rouge (**Supprimer**) à côté du lien et confirmez. Le relais s'arrêtera immédiatement.
 
 Si l'option **Mettre à jour la description des salons** était active, le bot supprimera automatiquement les liens d'invitation insérés dans le sujet (topic) des salons Discord concernés.
