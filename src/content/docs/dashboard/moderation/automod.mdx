@@ -20,13 +20,13 @@ Vous devez être administrateur du serveur pour modifier ces réglages. Assurez-
 
 Chaque filtre s'active indépendamment et dispose de son propre menu **Action**, qui détermine ce que Kotbo fait en cas d'infraction :
 
-* **Supprimer silencieusement** : le message disparaît, sans notification au membre.
-* **Supprimer & Avertir le membre** : le message est supprimé et le membre reçoit un avertissement.
+* **Supprimer sans prévenir** : le message disparaît, sans notification au membre.
+* **Supprimer et avertir le membre** : le message est supprimé et le membre reçoit un avertissement.
 * **Bloquer le message** : le message est bloqué avant publication.
-* **Bloquer + Exclure temporairement** : le message est bloqué et le membre est mis en sourdine.
-* **Exclusion temporaire (Mute 10 min)** : le membre ne peut plus écrire pendant 10 minutes.
+* **Bloquer et exclure temporairement** : le message est bloqué et le membre est mis en sourdine.
+* **Exclusion temporaire (10 min)** : le membre ne peut plus écrire pendant 10 minutes.
 * **Avertissement (Warn)** : un avertissement est enregistré dans son dossier.
-* **Alerter uniquement (logs)** : rien n'est supprimé, une alerte part simplement dans les logs.
+* **Alerter seulement (dans les journaux)** : rien n'est supprimé, une alerte part simplement dans les logs.
 
 ---
 
@@ -35,15 +35,15 @@ Chaque filtre s'active indépendamment et dispose de son propre menu **Action**,
 ### 1. Filtre Anti-Spam
 Limite le rythme d'envoi d'un membre.
 * **Nombre max de messages** : la limite autorisée.
-* **Intervalle de temps (sec)** : la fenêtre de calcul.
-* **Sanction en cas d'infraction** : l'action appliquée au dépassement.
+* **En combien de secondes** : la fenêtre de calcul.
+* **Sanction** : l'action appliquée au dépassement.
 
 ### 2. Filtre Anti-Liens / Invitations
 Un seul filtre couvre les liens externes **et** les invitations vers d'autres serveurs Discord.
-* **Domaines autorisés (un par ligne)** : tout domaine absent de cette liste déclenche la sanction.
+* **Sites autorisés (un par ligne)** : tout domaine absent de cette liste déclenche la sanction.
 
 ### 3. Filtre Majuscules Excessives
-* **Seuil de MAJ (%)** : la proportion de majuscules à partir de laquelle le message est sanctionné.
+* **Part de majuscules (%)** : la proportion de majuscules à partir de laquelle le message est sanctionné.
 * **Longueur minimale** : en dessous de ce nombre de caractères, le message n'est pas analysé, ce qui évite de bloquer un simple « OK ».
 
 ### 4. Spam Émojis
@@ -53,18 +53,18 @@ Limite le nombre d'émojis par message. Réglé sur `0`, le filtre est désactiv
 Limite le nombre de mentions par message. Réglé sur `0`, il autorise un nombre illimité de mentions.
 
 ### 6. Anti-Ghost Ping
-Détecte les pings supprimés ou modifiés rapidement. Deux actions au choix : **Simple Alerte (Message)** ou **Avertissement (Warn + Alerte)**.
+Détecte les pings supprimés ou modifiés rapidement. Deux actions au choix : **Alerte seulement** ou **Avertissement et alerte**.
 
 ### 7. Anti-Everyone
-Supprime les mentions non autorisées de `@everyone` et `@here`. Actions possibles : **Suppression simple**, **Supprimer & Avertir**, ou **Exclusion (10 min)**.
+Supprime les mentions non autorisées de `@everyone` et `@here`. Actions possibles : **Supprimer**, **Supprimer et avertir**, ou **Exclusion temporaire (10 min)**.
 
 ### 8. Mots Personnalisés
 Votre propre liste noire.
-* **Mots interdits (un par ligne, max 1000)**.
+* **Mots interdits (un par ligne, 1000 maximum)**.
 * **Exceptions (mots autorisés, un par ligne)** : utile pour un mot qui contient une suite de lettres interdite.
 
 ### 9. Filtre Profanités
-* **Catégories actives** : **Insultes & Grossièretés**, **Contenu Sexuel**, **Termes Haineux & Discriminatoires**.
+* **Catégories actives** : **Insultes et grossièretés**, **Contenu sexuel**, **Propos haineux**.
 * **Exceptions (mots autorisés malgré tout, un par ligne)**.
 
 :::note[Ce filtre s'appuie sur Discord]
@@ -73,8 +73,8 @@ Les listes de mots ne sont pas maintenues par Kotbo : le filtre utilise les **li
 
 ### 10. Mode Sécurisé (Anti-Bot)
 Empêche tout membre autre que le propriétaire du serveur d'ajouter des bots. Un bot ajouté par quelqu'un d'autre est automatiquement expulsé ou banni.
-* **Utilisateurs autorisés à ajouter des bots** : la liste des exceptions.
-* **Action sur le bot non autorisé** : **Expulser le bot** ou **Bannir le bot**.
+* **Personnes autorisées à ajouter des bots** : la liste des exceptions.
+* **Que faire du bot ajouté** : **Expulser le bot** ou **Bannir le bot**.
 
 :::caution[Réservé au propriétaire]
 Seul le propriétaire du serveur Discord peut activer, désactiver ou configurer ce filtre. Les autres membres du staff n'y touchent pas, même avec un accès complet au dashboard.
@@ -82,11 +82,11 @@ Seul le propriétaire du serveur Discord peut activer, désactiver ou configurer
 
 ### 11. Suspension automatique (anti-rafale)
 Retire automatiquement les rôles ADMINISTRATOR en cas d'actions destructrices répétées en peu de temps. C'est un garde-fou contre un compte d'administrateur compromis.
-* **Seuil rapide** et **Seuil lent** : les deux cadences qui déclenchent la suspension.
+* **Limite courte** et **Limite longue** : les deux cadences qui déclenchent la suspension.
 
 ### 12. Admin Permission Lock
 Soumet les actions d'administration sensibles à une approbation.
-* **Rôles « sécurité » (approbateurs)** : en plus du propriétaire, les membres de ces rôles peuvent approuver ou rejeter les demandes.
+* **Rôles qui peuvent valider** : en plus du propriétaire, les membres de ces rôles peuvent approuver ou rejeter les demandes.
 * **Salon de notification** : où les demandes sont annoncées.
 * **Voir les demandes en attente** : ouvre la file d'attente.
 

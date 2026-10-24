@@ -10,7 +10,7 @@ Section **Économie et jeux → Économie** : [Ouvrir l'économie ↗](https://d
 Le module est désactivé par défaut : activez-le avec l'interrupteur **Statut du module** en haut de la page.
 :::
 
-La page se découpe en huit onglets : **Configuration**, **Objets Boutique**, **Recettes**, **Boss & Monstres**, **Raid**, **Quêtes**, **Marché noir** et **Joueurs & Classement**.
+La page se découpe en huit onglets : **Configuration**, **Boutique**, **Recettes**, **Boss et monstres**, **Raid**, **Quêtes**, **Marché noir** et **Joueurs**.
 
 :::tip[Pour démarrer vite]
 Le choix d'un rythme d'économie - gains du daily, délai, énergie - a sa propre page : [Configuration rapide](/dashboard/economie/configuration-rapide/).
@@ -28,16 +28,16 @@ Un bouton **Page publique**, visible depuis tous les onglets, ouvre le tableau p
 
 ### Activation des modules
 
-* **Activer les Aventures RPG (RNG)** : déverrouille les voyages et les événements aléatoires. Les joueurs partent en aventure depuis le hub `/rpg`, et non par une commande à eux.
-* **Activer la Boutique d'Objets** : permet d'acheter du matériel, d'équiper des armes et d'utiliser des potions.
-* **Activer le Système de Guildes RPG** : permet de fonder des alliances, de coopérer et d'avoir un coffre de guilde.
+* **Aventures RPG** : déverrouille les voyages et les événements aléatoires. Les joueurs partent en aventure depuis le hub `/rpg`, et non par une commande à eux.
+* **Boutique d'objets** : permet d'acheter du matériel, d'équiper des armes et d'utiliser des potions.
+* **Guildes RPG** : permet de fonder des alliances, de coopérer et d'avoir un coffre de guilde.
 
 ### Paramètres
 
 * **Nom de la monnaie**, **Emoji de la monnaie** et **Image de la monnaie** (PNG, JPG ou SVG ; l'image s'affiche en priorité sur le dashboard).
-* **Gain Daily Minimum** et **Maximum**, **Cooldown du Daily (heures)**.
+* **Gain quotidien minimum** et **Maximum**, **Cooldown du Daily (heures)**.
 * **Cooldown Aventure (minutes)**.
-* **Énergie Maximale** et **Récupération Énergie / heure**.
+* **Énergie maximale** et **Récupération Énergie / heure**.
 
 ### Limites anti-abus
 
@@ -50,7 +50,7 @@ Plafonds appliqués aux jeux d'argent et aux transferts entre membres :
 
 ### Réinitialisation
 
-Six boutons, tous irréversibles : **Joueurs** (comptes, inventaires, soldes), **Boutique** (objets créés), **Guildes**, **Bestiaire** (supprime les créatures créées ici et rend les boss d'origine), **Configuration** (multiplicateurs et cooldowns) et **Reset Global**.
+Six boutons, tous irréversibles : **Joueurs** (comptes, inventaires, soldes), **Boutique** (objets créés), **Guildes**, **Bestiaire** (supprime les créatures créées ici et rend les boss d'origine), **Configuration** (multiplicateurs et cooldowns) et **Reset global**.
 
 :::danger[Un mot à saisir]
 Chaque réinitialisation demande désormais de saisir `RESET` pour confirmer. L'opération supprime définitivement les données associées.
@@ -63,7 +63,7 @@ Chaque réinitialisation demande désormais de saisir `RESET` pour confirmer. L'
 Le bouton **Créer un objet** ouvre un formulaire :
 
 * **Nom de l'objet**, **Emoji**, **Description**, **Type d'objet** et **Prix d'achat**.
-* **Statistiques & Effets** : les champs proposés suivent le type choisi.
+* **Statistiques et effets** : les champs proposés suivent le type choisi.
 
 | Type d'objet | Ce qu'il demande |
 | --- | --- |
@@ -93,7 +93,7 @@ Un objet de type **SCROLL (Parchemin d'enchantement)** pose un enchantement sur 
 Un objet peut verser, à la consommation, autre chose que des statistiques RPG :
 
 * **XP de niveau donnée** : de l'XP de progression du serveur.
-* **Points de clan donnés** : versés au clan de l'acheteur. Ils ne partent que si le pont RPG vers les clans est ouvert, dans l'onglet *Boss & Monstres* - sinon Kotbo prévient que l'objet n'est pas vendable.
+* **Points de clan donnés** : versés au clan de l'acheteur. Ils ne partent que si le pont RPG vers les clans est ouvert, dans l'onglet *Boss et monstres* - sinon Kotbo prévient que l'objet n'est pas vendable.
 * **Assauts de raid rendus** : bue pendant un raid ouvert, la potion rend ces assauts en plus du quota, dans la limite du plafond réglé sur l'onglet *Raid*.
 
 :::caution[Un objet suit le module qui le paie]
@@ -186,7 +186,7 @@ Le raid demande l'un des deux : sans module d'équipe, il ne peut pas s'activer.
 Le bouton **Lancer un raid maintenant** ouvre la fenêtre sur-le-champ. Enregistrez vos réglages d'abord : le lancement part sur ce qui est enregistré, pas sur ce qui est à l'écran.
 
 :::note[Changer de boss en cours de semaine]
-La fenêtre du prochain raid est écrite d'avance, avec le boss tiré à ce moment-là. Choisir un autre boss puis **enregistrer** reprend la fenêtre en attente, donc la semaine en cours. Le boss fixe est désigné par son **nom** : renommer ou désactiver sa fiche dans *Boss & Monstres* le rend introuvable, et le sélecteur l'annonce - *… (indisponible : fiche désactivée)*.
+La fenêtre du prochain raid est écrite d'avance, avec le boss tiré à ce moment-là. Choisir un autre boss puis **enregistrer** reprend la fenêtre en attente, donc la semaine en cours. Le boss fixe est désigné par son **nom** : renommer ou désactiver sa fiche dans *Boss et monstres* le rend introuvable, et le sélecteur l'annonce - *… (indisponible : fiche désactivée)*.
 :::
 
 ### Équilibrage et récompenses
@@ -228,13 +228,13 @@ L'interrupteur **Répétable dans la journée** décide de ce qui se passe une f
 * **Activé** : la quête repart à zéro dès qu'elle est payée, et le joueur peut la refaire autant de fois qu'il veut dans la fenêtre. Sa carte porte l'étiquette **Répétable**.
 * **Désactivé** : la quête ne rapporte qu'une fois par 24 h. Terminée plus tôt, elle attend la fin du délai pour se payer.
 
-Une quête inactive n'est plus proposée et cesse de compter. Les points de clan ne partent que si le pont RPG vers les clans est ouvert, dans l'onglet *Boss & Monstres*.
+Une quête inactive n'est plus proposée et cesse de compter. Les points de clan ne partent que si le pont RPG vers les clans est ouvert, dans l'onglet *Boss et monstres*.
 
 ---
 
 ## Onglet Joueurs & Classement
 
-Le tableau classe les joueurs avec les colonnes **Rang**, **Joueur**, **Solde**, **Stats & Équipement**, **PV & Énergie** et **Localisation & Guilde**. Un champ de recherche accepte un pseudo ou un identifiant.
+Le tableau classe les joueurs avec les colonnes **Rang**, **Joueur**, **Solde**, **Stats et équipement**, **PV et énergie** et **Localisation et guilde**. Un champ de recherche accepte un pseudo ou un identifiant.
 
 Le bouton **Modifier** ouvre le profil du joueur, où vous pouvez ajuster son **solde**, son **niveau RPG**, son **expérience**, ses **points de vie**, son **énergie**, sa **force (ATK)**, sa **défense (DEF)** et sa **vitesse (SPD)**.
 

@@ -21,12 +21,12 @@ You must be a server administrator to change these settings. Make sure Kotbo's D
 Every filter is enabled on its own and has its own **Action** menu, which decides what Kotbo does when a rule is broken:
 
 * **Delete silently**: the message disappears, with no notification to the member.
-* **Delete & warn the member**: the message is deleted and the member receives a warning.
+* **Delete and warn the member**: the message is deleted and the member receives a warning.
 * **Block the message**: the message is blocked before it is posted.
-* **Block + timeout**: the message is blocked and the member is muted.
-* **Temporary timeout (10 min mute)**: the member cannot write for 10 minutes.
-* **Warning (warn)**: a warning is recorded in their file.
-* **Alert only (logs)**: nothing is deleted, an alert is simply sent to the logs.
+* **Block and time out**: the message is blocked and the member is muted.
+* **Timeout (10 min)**: the member cannot write for 10 minutes.
+* **Warning**: a warning is recorded in their file.
+* **Alert only (in the logs)**: nothing is deleted, an alert is simply sent to the logs.
 
 ---
 
@@ -34,16 +34,16 @@ Every filter is enabled on its own and has its own **Action** menu, which decide
 
 ### 1. Anti-spam filter
 Limits how fast a member can post.
-* **Max number of messages**: the allowed limit.
-* **Time window (sec)**: the window used for the count.
-* **Sanction on violation**: the action applied when the limit is passed.
+* **Maximum messages**: the allowed limit.
+* **Within how many seconds**: the window used for the count.
+* **Sanction**: the action applied when the limit is passed.
 
 ### 2. Anti-link / invite filter
 A single filter covers external links **and** invites to other Discord servers.
-* **Allowed domains (one per line)**: any domain missing from this list triggers the sanction.
+* **Allowed sites (one per line)**: any domain missing from this list triggers the sanction.
 
 ### 3. Excessive caps filter
-* **Caps threshold (%)**: the share of capital letters at which the message is sanctioned.
+* **Share of capitals (%)**: the share of capital letters at which the message is sanctioned.
 * **Minimum length**: below this character count the message is not analysed, which avoids blocking a plain "OK".
 
 ### 4. Emoji spam
@@ -53,18 +53,18 @@ Limits how many emoji a message may contain. Set to `0`, the filter is disabled 
 Limits how many mentions a message may contain. Set to `0`, it allows an unlimited number of mentions.
 
 ### 6. Anti-ghost ping
-Detects pings that are deleted or edited quickly. Two actions to choose from: **Alert only (message)** or **Warning (warn + alert)**.
+Detects pings that are deleted or edited quickly. Two actions to choose from: **Alert only** or **Warning and alert**.
 
 ### 7. Anti-everyone
-Deletes unauthorized `@everyone` and `@here` mentions. Possible actions: **Delete only**, **Delete & warn**, or **Timeout (10 min)**.
+Deletes unauthorized `@everyone` and `@here` mentions. Possible actions: **Delete only**, **Delete and warn**, or **Timeout (10 min)**.
 
 ### 8. Custom words
 Your own blocklist.
-* **Forbidden words (one per line, max 1000)**.
+* **Banned words (one per line, 1000 max)**.
 * **Exceptions (allowed words, one per line)**: useful for a word that contains a forbidden sequence of letters.
 
 ### 9. Profanity filter
-* **Active categories**: **Insults & profanity**, **Sexual content**, **Hateful & discriminatory terms**.
+* **Active categories**: **Insults and profanity**, **Sexual content**, **Hate speech**.
 * **Exceptions (words allowed anyway, one per line)**.
 
 :::note[This filter relies on Discord]
@@ -73,8 +73,8 @@ The word lists are not maintained by Kotbo: the filter uses **Discord's predefin
 
 ### 10. Secure mode (anti-bot)
 Prevents anyone other than the server owner from adding bots. A bot added by someone else is automatically kicked or banned.
-* **Users allowed to add bots**: the list of exceptions.
-* **Action on unauthorized bot**: **Kick the bot** or **Ban the bot**.
+* **People allowed to add bots**: the list of exceptions.
+* **What to do with the added bot**: **Kick the bot** or **Ban the bot**.
 
 :::caution[Owner only]
 Only the Discord server owner can enable, disable or configure this filter. Other staff members cannot touch it, even with full dashboard access.
@@ -82,12 +82,12 @@ Only the Discord server owner can enable, disable or configure this filter. Othe
 
 ### 11. Automatic suspension (anti-burst)
 Automatically removes ADMINISTRATOR roles when destructive actions are repeated in a short time. It is a safeguard against a compromised administrator account.
-* **Fast threshold** and **Slow threshold**: the two rates that trigger the suspension.
+* **Short limit** and **Long limit**: the two rates that trigger the suspension.
 
 ### 12. Admin permission lock
 Puts sensitive administration actions behind an approval step.
-* **"Security" roles (approvers)**: in addition to the owner, members of these roles can approve or reject requests.
-* **Notification channel**: where requests are announced.
+* **Roles that can approve**: in addition to the owner, members of these roles can approve or reject requests.
+* **Alert channel**: where requests are announced.
 * **View pending requests**: opens the queue.
 
 :::caution[Owner only]

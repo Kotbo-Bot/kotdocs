@@ -26,7 +26,7 @@ This is a **core** module, it cannot be disabled.
 | **Staff management** | Upcoming absences and next meetings. |
 | **Recent activity** | Live history of moderation and administration actions. |
 | **Action shortcuts** | Quick creation of an absence, a meeting, a staff member and more. |
-| **Team notes** | A shared notepad, saved locally. |
+| **Notes** | A shared notepad, saved locally. |
 | **Server info** | Members, boosts, owner. |
 | **Bot hosting** | CPU, RAM, API latency and uptime. |
 | **Latest news** | The Kotbo changelog. |
@@ -40,7 +40,7 @@ A widget whose module is disabled says so explicitly rather than showing empty f
 
 ### Bot language
 
-The **Bot language** widget decides what language Kotbo replies in on this server. By default it is on **auto-detection** and follows the Discord server's language; an **explicit choice** - French or English - takes priority, and the **Switch to auto** button returns to detection.
+The **Bot language** widget decides what language Kotbo replies in on this server. By default it is on **auto-detection** and follows the Discord server's language; an **explicit choice** - French or English - takes priority, and the **Switch back to automatic** button returns to detection.
 
 Changing the language re-publishes the panels already posted in the new language, and Kotbo reports how many were.
 
@@ -63,7 +63,7 @@ The bot runs in UTC. While the zone is unset, every date shown or entered is shi
   <div class="step-item"><div><h3>Hide what you do not use</h3><p>The <strong>Hide module</strong> action removes it from the grid without losing its configuration.</p></div></div>
 </div>
 
-Kotbo confirms with a *Layout saved!* message. The reset button restores the default arrangement.
+Kotbo confirms with a *Layout saved.* message. The reset button restores the default arrangement.
 
 ---
 
@@ -83,6 +83,6 @@ A moderator and an administrator do not need the same things. Prepare a preset p
 
 ## The special states
 
-* **The API is restarting**: reconnection is automatic, just wait.
-* **Maintenance required**: a **Repair** button is offered to fix the reported configuration.
+* **Kotbo is restarting, it takes a few seconds**: reconnection is automatic, just wait.
+* **A setting is broken**: a **Repair** button is offered to fix the reported configuration.
 * System health is summarised as **Optimal**, **Good**, **Degraded** or **Critical**.

@@ -48,16 +48,16 @@ L'onglet **Auto-Thread** permet de définir des salons textuels ou d'annonces da
 
 ## 3. Message Sticky (message collé en bas de salon)
 
-L'onglet **Message Sticky** garde un message toujours visible en bas d'un salon. Le bot le republie pour qu'il reste le dernier message affiché, ce qui est pratique pour un rappel de règles ou une consigne de format.
+L'onglet **Message épinglé** garde un message toujours visible en bas d'un salon. Le bot le republie pour qu'il reste le dernier message affiché, ce qui est pratique pour un rappel de règles ou une consigne de format.
 
 ### Fonctionnement
 Dès que le salon accumule le nombre de messages configuré, Kotbo supprime son envoi précédent et renvoie le message tout en bas du salon.
 
 ### Configurer un message
-Cliquez sur **Ajouter un message sticky**, puis renseignez :
+Cliquez sur **Ajouter un message épinglé**, puis renseignez :
 * **Salon concerné** : le salon dans lequel le message reste collé.
 * **Message** : le texte republié (ex : `Pense à lire le règlement avant de poster !`). Il ne peut pas être vide.
-* **Afficher en embed** : envoie le message dans un encadré coloré plutôt qu'en texte brut. Deux champs apparaissent alors :
+* **Afficher en message enrichi** : envoie le message dans un encadré coloré plutôt qu'en texte brut. Deux champs apparaissent alors :
   * **Titre de l'embed** (ex : *À lire avant de poster*).
   * **Couleur** : au format hexadécimal `#RRGGBB`.
 * **Renvoyer après (messages)** : nombre de messages postés dans le salon avant que le sticky ne remonte en bas.
@@ -96,7 +96,7 @@ Les mentions écrites dans un message sticky ne notifient personne : le bot les 
 
 ## 4. Salons Stats (Compteurs en temps réel)
 
-Le sous-module **Salons Stats** permet d'afficher en temps réel des indicateurs clés de votre serveur (nombre de membres, d'actifs, de boosts, etc.) directement dans le nom de salons vocaux dédiés.
+Le sous-module **Compteurs** permet d'afficher en temps réel des indicateurs clés de votre serveur (nombre de membres, d'actifs, de boosts, etc.) directement dans le nom de salons vocaux dédiés.
 
 ### Configuration globale
 * **Activer le module** : Utilisez l'interrupteur principal en haut à droite.
@@ -106,7 +106,7 @@ Le sous-module **Salons Stats** permet d'afficher en temps réel des indicateurs
 ### Statistiques historiques
 :::warning[Reconstruction des statistiques]
 Kotbo dispose d'un outil pour analyser l'historique complet des messages de vos salons textuels afin de générer les graphiques d'activité sur le dashboard.
-* **Lancer le Scan** : Parcourt l'historique en arrière-plan sans affecter les données déjà enregistrées.
+* **Lancer le scan** : Parcourt l'historique en arrière-plan sans affecter les données déjà enregistrées.
 * **Forcer le Re-scan** : Supprime et recalcule toutes les statistiques existantes du serveur. **Cette action est destructrice pour l'historique actuel du dashboard.**
 :::
 
@@ -163,7 +163,7 @@ Le salon temporaire reste aligné sur sa catégorie : ce bloc s'ajoute par-dessu
 :::
 
 ### Supervision depuis le Dashboard
-En bas de l'onglet, la section **Salons Temporaires Actifs** liste tous les salons actuellement ouverts sur le serveur. Les administrateurs peuvent :
+En bas de l'onglet, la section **Salons temporaires actifs** liste tous les salons actuellement ouverts sur le serveur. Les administrateurs peuvent :
 * Visualiser le nom du salon, son créateur actuel et le nombre de membres connectés.
 * Modifier à la volée la réservation (Rôle requis).
 * Renommer directement le salon en cliquant sur l'icône d'édition.
@@ -173,16 +173,16 @@ En bas de l'onglet, la section **Salons Temporaires Actifs** liste tous les salo
 
 ## 6. Salon Honeypot (Piège Anti-Spam)
 
-Le **Salon Honeypot** est un outil de sécurité radical conçu pour détecter et neutraliser instantanément les bots de spam ou les comptes d'utilisateurs piratés (self-bots) qui rejoignent votre serveur.
+Le **Salon piège** est un outil de sécurité radical conçu pour détecter et neutraliser instantanément les bots de spam ou les comptes d'utilisateurs piratés (self-bots) qui rejoignent votre serveur.
 
 ### Configuration du piège
 * **Salon Piège (Honeypot)** : Sélectionnez le salon à utiliser ou cliquez sur **Créer automatiquement**. Le bot créera un salon avec les permissions adaptées et y enverra un message embed d'avertissement.
 * **Sanction à appliquer** :
   * **Exclusion Temporaire (Timeout)** *(recommandé)* : Applique une exclusion d'écriture de 28 jours sur Discord.
-  * **Bannissement Définitif** : Bannit définitivement le compte du serveur et supprime ses messages des dernières 24 heures.
+  * **Bannissement définitif** : Bannit définitivement le compte du serveur et supprime ses messages des dernières 24 heures.
   * **Softban** : Bannit le membre puis le débannit immédiatement, ce qui a pour effet de purger tous ses messages récents sur le serveur.
-  * **Exclusion Simple (Kick)** : Exclut le membre du serveur.
-  * **Avertissement Simple (Warn)** : Enregistre un avertissement dans le dossier disciplinaire du membre.
+  * **Expulsion** : Exclut le membre du serveur.
+  * **Avertissement** : Enregistre un avertissement dans le dossier disciplinaire du membre.
 * **Réinvitation automatique (Optionnel - Kick uniquement)** : Si activé, Kotbo enverra un DM à l'utilisateur exclu contenant un lien d'invitation unique valable 24h.
 * Cliquez sur **Enregistrer** dans la barre inférieure verte après chaque modification.
 
