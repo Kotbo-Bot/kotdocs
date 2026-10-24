@@ -1,0 +1,138 @@
+---
+title: Community site
+description: "Create the server's public site: pages, wiki and blog written together, appearance, menu, votes, forum, shop, visitor statistics."
+---
+
+<p class="doc-lead">The <strong>Community site</strong> gives the server a public site, at <code>dash.kotbo.fr/s/your-server</code>. Kotbo builds it from your server - pages for active modules, latest announcements, live activity - then you polish it in a visual editor, several people at once.</p>
+
+:::note[Where to find it]
+The **Communication → Community site** section: [Open the community site ↗](https://dash.kotbo.fr/site).
+The site depends on the **Site communautaire** module; the wiki and the blog each have their own module, **Wiki du site** and **Blog du site**. Only server managers can create the site.
+:::
+
+---
+
+## Creating the site
+
+While there is no site, the page offers **Create the server's site**:
+
+1. Pick the **Site address** (lowercase letters, digits and hyphens).
+2. Pick the **Community type**: it decides the sample pages.
+3. Click **Create the site**.
+
+Kotbo then builds the site in a few seconds: channels, active modules and latest announcements. The site starts **offline**: only staff can see it, visitors get a holding page.
+
+---
+
+## Overview tab
+
+The overview tells whether the site is **Online** or **Offline**, gives its **Address** with **Copy link**, and counts pages, wiki and blog.
+
+* **Open private preview** shows the site as it will be published.
+* **Site online** publishes it: anyone can then read the public pages. Going online requires a plan that includes the site.
+* **Pick up where you left off** lists drafts and changes not published yet.
+* **My card on the Staff page** sets what visitors see about you: a **Bio** of up to 400 characters, or **Don't show me on the Staff page**.
+
+Visitor statistics follow: **Page views**, **Visitors**, **Most viewed pages**, **Referrers** and **Devices** over the chosen period, and the **What the site brings in** card, from visits to members who stay on the server. The same numbers appear in the **Site traffic** tab of [Statistics](/en/dashboard/general/analytics/).
+
+---
+
+## Content tab
+
+The filter at the top of the tab switches between lists: **Pages**, **Wiki**, **Blog** and **Comments**. Everyone only sees what their permissions allow.
+
+In a list, you can search, create a page (title and **Parent page**), **Set as home page**, move it up or down, **View** or **Delete** it. Clicking a page opens the editor.
+
+### The page editor
+
+The editor is **visual**: you write straight on the page, with no markup. The `/` key opens the block menu:
+
+* **Text and layout blocks**: text, lists, task list, quote, code block, callout, bento, divider, table, FAQ, button, call-to-action banner, testimonials, gallery, table of contents, image, video.
+* **Module blocks**, which show live server data: staff, rules, news, partners, ban appeal, recruitment, form, support, suggestions, leaderboard, clans, giveaways, events, seasons, marketplace, Starlight, vote for the server, member profile, what's new, search, server pulse, members, join-the-server button, voice channels.
+
+Several people can edit the same page at once: their avatars show under **People on this page**, and every keystroke is **Saved live**. Visitors see nothing before **Publish changes**.
+
+The page's **Settings** panel sets:
+
+* the **Page address**, the **Parent page**, the **Icon** (an emoji, shown in the menu and the wiki index) and the **Cover image**;
+* the **Visibility**: **Everyone**, **Server members**, **Specific roles** (with the **Allowed roles**) or **Staff only**;
+* the **Summary**, **Tags** and **Comments open**, for blog articles;
+* **SEO**: title and description for search engines.
+
+Three more actions round off the editor:
+
+* **History**: a version is kept on every publish, up to 100. **Restore** goes back to one of them.
+* **Schedule**: the page is published automatically at the chosen time.
+* **Preview link**: shares the page before it is published.
+
+**Unpublish** takes a live page down without deleting it.
+
+### Comments
+
+**Blog comments** lists comments on articles. Those held by moderation wait for your decision: **Show**, **Hide** or **Delete**.
+
+---
+
+## Appearance tab
+
+* **Theme**: every theme has a light and a dark version, with a **Side menu** or a **Top menu**. **Fine-tuning** changes the **Default mode** (visitors can switch), the **Accent color**, the **Corner radius**, the fonts and the **Background**.
+* **Logo, banner and icon**: taken from Discord by default, replaceable with your own images.
+* **Custom CSS**: applied to the site content, after the theme. External imports and fixed positioning are refused, and images must come from the site's images.
+
+A **Preview** shows the result before saving.
+
+**Site menu** builds the navigation: each link leads to a **Page**, a **Section**, an **External link**, or opens a **Dropdown** of sublinks. Without a menu, the site lists its published pages in list order.
+
+---
+
+## Growth tab
+
+### Vote sites
+
+**Vote sites** connects top.gg or a server list. Members vote from the site's **Votes** page and get the reward set in the **Settings** tab.
+
+For each site: the **Vote page URL**, the **Key** (from the vote site's owner area), the **Display name** and the **Delay between votes**. For top.gg, Kotbo gives a URL and a secret to paste into top.gg's webhook settings. **Top voters this month** ranks voters.
+
+### Forum
+
+**Forum categories** creates the site forum's categories. Each one works:
+
+* **On the site only**: topics and replies stay on the site;
+* or as a **Mirror of a Discord forum channel**: each thread becomes a topic, and what is written on the site goes to the channel under the member's name. Kotbo needs the **Manage Webhooks** permission on that channel.
+
+**Who can write** limits writing to some roles (none checked: every member; staff can always write), and **Only the staff opens topics** reserves topic creation. **Latest messages** lets you pin or lock a topic and remove a message - a message written on the site is also removed from Discord.
+
+---
+
+## Settings tab
+
+* **Identity**: the **Site address**, the **Site name** (empty: the server's name), the **Tagline** used in link previews, and **Server pulse on the home page** (online, voice, busy channels, live). Changing the address with **Send old links to the site** makes the old one redirect.
+* **Writers**: the roles that can write in the **Wiki** and the **Blog** without dashboard access, from their space (see below).
+* **Discord announcements**: a message in the chosen channel for each published wiki page and each new article, and **Open comments on new articles**.
+* **Rewards**: coins and XP for signed-in members who take part on the site - comment, suggestion, event sign-up, forum message. Coins go to the economy and XP to levels, when those modules are on.
+* **Automatic site**: the site fills itself.
+  * **Discord announcements → blog**: each message in the checked channels becomes an article, updated when edited (with an **Article tag** and a **Minimum length**).
+  * **Module pages**: a module turned on gets its page, added to the menu.
+  * **Weekly recap**: one article per week, on the chosen day and time.
+
+:::danger[Deleting the site]
+The **Danger zone** deletes the site, its pages, history, images and statistics. You must type the site's address to confirm. This can't be undone.
+:::
+
+---
+
+## The site and members
+
+* **My space**: a signed-in member without dashboard access lands on **My space**. They set **My profile** there - their **Description** and **Public profile** - which follows them on every server running Kotbo. Writers also find **Writing**, with **New wiki page** and **New article**.
+* **Shop**: the site's Shop page sells the offers set up in the second **Shop** tab of [Economy](/en/dashboard/economie/economie/).
+* **Wiki on Discord**: the `/wiki` command looks up a wiki page and shows it in the channel.
+
+---
+
+## When an AI agent edits the site
+
+An agent connected through [Connect an AI](/en/aide/mcp/) can do everything on the site. While it writes, a banner says so and human editing is locked. **Interrupt** takes back control and blocks the agent for a while; **Allow again** lets it resume.
+
+:::caution[Suspended site]
+If the Kotbo team suspends a site, the page says so with the reason: the site is no longer public. Contact Kotbo support to find out more.
+:::

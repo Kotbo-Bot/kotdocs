@@ -108,6 +108,7 @@ export default defineConfig({
             page('Règlement', 'Rules', 'dashboard/communaute/reglement'),
             page('Actualités', 'News', 'dashboard/communaute/actualites'),
             page('Réseaux sociaux', 'Social networks', 'dashboard/communaute/reseaux-sociaux'),
+            page('Site communautaire', 'Community site', 'dashboard/communaute/site'),
           ]),
           group('Équipe', 'Team', [
             page('Membres du staff', 'Staff members', 'dashboard/staff/annuaire'),
