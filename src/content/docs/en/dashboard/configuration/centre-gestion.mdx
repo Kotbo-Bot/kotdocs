@@ -22,6 +22,18 @@ When a cross-cutting channel is missing, an **Incomplete configuration** notice 
 
 The **Feature status** block lists the modules with their state, *Active* or *Inactive*, and flags those whose access is **Restricted** to certain roles.
 
+
+### Language and time zone
+
+The **Language and time zone** block sets the language Kotbo answers in and the time it uses on this server.
+
+* **Kotbo's language**: **Automatic** follows the Discord server's language; an explicit choice, French or English, takes priority. Changing the language republishes already-published panels in the new language.
+* **Time zone**: the server's reference time, used for meetings, calls, reminders, scheduled triggers and the weekly raid opening.
+
+:::caution[Without a time zone, everything is off]
+The bot runs on UTC. Until the time zone is set, every date shown or entered is shifted: it is one of the "Essential" points of [Getting started](/en/dashboard/general/prise-en-main/).
+:::
+
 ---
 
 ## Channels & Roles
