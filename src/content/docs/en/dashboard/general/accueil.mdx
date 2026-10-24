@@ -1,88 +1,85 @@
 ---
-title: Dashboard home
-description: Build your dashboard from the widgets you actually use, and share your layout.
+title: Home
+description: "What is waiting for action, setup progress and the blocks of figures you choose to show."
 ---
 
-<p class="doc-lead">The <strong>Home</strong> page is a fully modular dashboard: you choose which widgets are shown, how big they are and in what order.</p>
+<p class="doc-lead">The <strong>Home</strong> page first tells you what is waiting: tickets, approvals, reports, setup steps. Below, a grid of blocks you arrange as you like.</p>
 
 :::note[Where to find it]
-It is the dashboard's opening page: [Open the home page ↗](https://dash.kotbo.fr/).
-This is a **core** module, it cannot be disabled.
+It is the dashboard's landing page: [Open home ↗](https://dash.kotbo.fr/).
+It is a **core** module: it cannot be disabled.
 :::
 
 ---
 
-## The available widgets
+## Needs attention
 
-| Widget | What it shows |
+The **Needs attention** block, at the top of the page, gathers what is waiting for you to act, depending on your permissions: tickets to approve or with nobody assigned, ban appeals, sanction reports to complete, alt accounts to review, absences to approve, your tasks, staff polls you have not voted in, upcoming meetings, applications, pending suggestions, channel health alerts, failed triggers. Each line leads to the page where you act.
+
+You can hide a line that does not concern you; **Show all again** brings it back. When nothing is waiting, the block says so: *No tickets, appeals, reports or approvals waiting.*
+
+### Setup
+
+Under those items, the **Setup** line shows progress (*N of M in place*) and what is missing. **Guide me** opens the page concerned and leads you to the field to fill in; the rest is in [Getting started](/en/dashboard/general/prise-en-main/).
+
+---
+
+## The blocks
+
+A new server shows five blocks: **Live**, **Activity**, **Moderation**, **Team** and **Recent activity**. Others are added from **Add a block**.
+
+| Block | What it shows |
 | --- | --- |
-| **Live stats** | Members, voice, online and growth in real time. |
-| **Activity chart** | Messages, voice and sanctions over 7 days. |
-| **System status** | Instance health and number of active modules. |
-| **Active channels** | Channels ranked by message volume. |
-| **Moderation** | Number of sanctions issued. |
-| **Active members** | Ranking of the most talkative members. |
-| **Inbox** | Internal notifications and system alerts. |
-| **Staff management** | Upcoming absences and next meetings. |
-| **Recent activity** | Live history of moderation and administration actions. |
-| **Action shortcuts** | Quick creation of an absence, a meeting, a staff member and more. |
-| **Notes** | A shared notepad, saved locally. |
-| **Server info** | Members, boosts, owner. |
-| **Bot hosting** | CPU, RAM, API latency and uptime. |
-| **Latest news** | The Kotbo changelog. |
-| **Quick guide** | Checklist of recommended setup actions. |
-| **Clock** | Local date and time. |
-| **Bot language** | The language the bot replies in on this server. |
-| **Time zone** | The zone used for meetings, calls and reminders. |
-| **Economy**, **Levels**, **Tickets**, **Invites**, **Events**, **Polls**, **Staff server** | An overview of the matching module. |
+| **Live** | Members, online, in voice and this week's joins. |
+| **Activity** | Messages, voice and sanctions over the last 7 days, with the rankings from [Statistics](/en/dashboard/general/analytics/). |
+| **Active modules** | How many modules are on, and which ones are failing. |
+| **Active channels** | The channels with the most messages. |
+| **Moderation** | Sanctions given: warnings, timeouts, bans. |
+| **Active members** | The members who post the most. |
+| **Notifications** | Your latest [notifications](/en/dashboard/general/notifications/) and alerts. |
+| **Team** | Absences to approve and upcoming meetings. |
+| **Recent activity** | The latest moderation and settings actions. |
+| **Kotbo's language** and **Time zone** | The same settings as in [Server settings](/en/dashboard/configuration/centre-gestion/), close at hand. |
+| **Shortcuts** | Links to the planning, modules, statistics and team. |
+| **Notes** | A notepad for your reminders, saved on this device. |
+| **Your server** | Members, boosts and server owner. |
+| **Kotbo resources** | Memory and CPU used by Kotbo, response time and uptime. |
+| **What's new** | The latest Kotbo updates. |
+| **Getting started** | The first recommended settings. |
+| **Clock** | The local date and time. |
+| **Economy**, **Levels**, **Tickets**, **Invites**, **Events**, **Polls**, **Staff server** | A preview of the matching module. |
 
-A widget whose module is disabled says so explicitly rather than showing empty figures.
+A block whose module is off says so instead of showing empty figures. When a module is failing, a banner says so at the top of the page with **See modules**.
 
-### Bot language
-
-The **Bot language** widget decides what language Kotbo replies in on this server. By default it is on **auto-detection** and follows the Discord server's language; an **explicit choice** - French or English - takes priority, and the **Switch back to automatic** button returns to detection.
-
-Changing the language re-publishes the panels already posted in the new language, and Kotbo reports how many were.
-
-### Time zone
-
-The **Server time zone** widget sets the server's reference time. It is what drives meeting, call and reminder times, as well as scheduled triggers and the opening of the weekly raid.
-
-:::caution[Without a time zone, everything is off]
-The bot runs in UTC. While the zone is unset, every date shown or entered is shifted - it is one of the three "Essentials" points on the [Getting set up](/en/dashboard/general/prise-en-main/) page.
+:::note[Language and time zone moved]
+**Kotbo's language** and **Time zone** are now set in [Server settings](/en/dashboard/configuration/centre-gestion/), **Overview** tab. The home blocks are still available, but are no longer part of the starting layout.
 :::
 
 ---
 
-## Building your layout
+## Customizing home
+
+The **Customize** button, in the header, switches to edit mode: move, resize or remove blocks, then save.
 
 <div class="step-list">
-  <div class="step-item"><div><h3>Add a module</h3><p>The <strong>Add a module</strong> button offers the widgets still hidden.</p></div></div>
-  <div class="step-item"><div><h3>Move it</h3><p>The move controls send the widget up or down the grid.</p></div></div>
-  <div class="step-item"><div><h3>Resize it</h3><p>Every widget has a <strong>width</strong> in columns and a <strong>height</strong> in rows, both adjustable by dragging.</p></div></div>
-  <div class="step-item"><div><h3>Hide what you do not use</h3><p>The <strong>Hide module</strong> action removes it from the grid without losing its configuration.</p></div></div>
+  <div class="step-item"><div><h3>Add a block</h3><p><strong>Add a block</strong> offers the blocks still hidden.</p></div></div>
+  <div class="step-item"><div><h3>Move it</h3><p><strong>Move up</strong> and <strong>Move down</strong> place it in the grid.</p></div></div>
+  <div class="step-item"><div><h3>Resize it</h3><p>Drag the block's edge to change its <strong>width</strong> in columns and its <strong>height</strong> in rows.</p></div></div>
+  <div class="step-item"><div><h3>Hide what you don't use</h3><p><strong>Hide the block</strong> takes it off the grid.</p></div></div>
+  <div class="step-item"><div><h3>Save or cancel</h3><p><strong>Save</strong> keeps the layout; <strong>Cancel</strong> goes back to the previous one.</p></div></div>
 </div>
 
-Kotbo confirms with a *Layout saved.* message. The reset button restores the default arrangement.
+In edit mode, the page menu also offers:
+
+* **Templates**: save the current layout under a name, apply another one, or import a layout from exported text;
+* **Export**: download the layout to share it;
+* **Reset**: go back to the blocks offered at the start.
 
 ---
 
-## Sharing a layout: presets
+## In the header
 
-A layout can be saved as a **preset**, then:
+* **Vote** opens Kotbo's page on Top.gg.
+* **Refresh** reloads the figures.
 
-* **applied** in one click on another server;
-* **shared** by link, the button copying the address to your clipboard;
-* **exported** and **imported** as JSON.
-
-:::tip[One preset per role]
-A moderator and an administrator do not need the same things. Prepare a preset per profile and share the link with your team, so everyone gets the view that concerns them.
-:::
-
----
-
-## The special states
-
-* **Kotbo is restarting, it takes a few seconds**: reconnection is automatic, just wait.
-* **A setting is broken**: a **Repair** button is offered to fix the reported configuration.
-* System health is summarised as **Optimal**, **Good**, **Degraded** or **Critical**.
+If Kotbo restarts, the page shows *Kotbo is restarting, it takes a few seconds*: reconnection is automatic, just wait or click **Retry**.

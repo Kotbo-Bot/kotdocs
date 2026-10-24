@@ -1,9 +1,9 @@
 ---
-title: Accueil du dashboard
-description: Composez votre tableau de bord avec les widgets qui vous servent vraiment, et partagez votre mise en page.
+title: Accueil
+description: "Ce qui attend une action, l'avancement de la configuration et les blocs de chiffres que vous choisissez d'afficher."
 ---
 
-<p class="doc-lead">La page d'<strong>Accueil</strong> est un tableau de bord entièrement modulable : vous choisissez les widgets affichés, leur taille et leur ordre.</p>
+<p class="doc-lead">La page d'<strong>Accueil</strong> dit d'abord ce qui attend : tickets, validations, signalements, étapes de configuration. Dessous, une grille de blocs que vous composez à votre guise.</p>
 
 :::note[Où la trouver]
 C'est la page d'ouverture du dashboard : [Ouvrir l'accueil ↗](https://dash.kotbo.fr/).
@@ -12,77 +12,74 @@ C'est un module **cœur**, il ne peut pas être désactivé.
 
 ---
 
-## Les widgets disponibles
+## À traiter
 
-| Widget | Ce qu'il affiche |
+Le bloc **À traiter**, en tête de page, rassemble ce qui attend une action de votre part, selon vos droits : tickets à valider ou sans personne attitrée, contestations de ban, rapports de sanction à compléter, doubles comptes à examiner, absences à valider, vos tâches, sondages du staff où vous n'avez pas voté, réunions à venir, candidatures, suggestions en attente, alertes de santé des salons, déclencheurs en échec. Chaque ligne mène à la page où agir.
+
+Vous pouvez masquer une ligne qui ne vous concerne pas ; **Tout réafficher** la ramène. Quand rien n'attend, le bloc l'indique : *Aucun ticket, appel, signalement ou validation en attente.*
+
+### Configuration
+
+Sous les sujets à traiter, la ligne **Configuration** donne l'avancement (*N sur M en place*) et ce qu'il manque. **Me guider** ouvre la page concernée et mène jusqu'au champ à remplir ; le reste se trouve dans [Bien démarrer](/dashboard/general/prise-en-main/).
+
+---
+
+## Les blocs
+
+Un nouveau serveur affiche cinq blocs : **En direct**, **Activité**, **Modération**, **Équipe** et **Activité récente**. Les autres s'ajoutent depuis **Ajouter un bloc**.
+
+| Bloc | Ce qu'il affiche |
 | --- | --- |
-| **En direct** | Membres, vocaux, connectés et croissance en temps réel. |
-| **Activité** | Évolution des messages, vocaux et sanctions sur 7 jours. |
-| **Modules actifs** | Santé de l'instance et nombre de modules actifs. |
-| **Salons actifs** | Classement des salons par volume de messages. |
-| **Modération** | Nombre de sanctions émises. |
-| **Membres actifs** | Classement des membres les plus bavards. |
-| **Notifications** | Notifications internes et alertes système. |
-| **Gestion Staff** | Prochaines absences et prochaines réunions. |
-| **Activité récente** | Historique en direct des actions de modération et d'administration. |
-| **Raccourcis** | Création rapide d'une absence, d'une réunion, d'un membre staff… |
-| **Notes** | Un bloc-notes partagé, enregistré localement. |
-| **Infos Serveur** | Membres, boosts, propriétaire. |
-| **Ressources de Kotbo** | CPU, RAM, latence API et durée d'activité. |
-| **Nouveautés** | Journal des mises à jour Kotbo. |
-| **Bien démarrer** | Checklist des actions recommandées. |
-| **Horloge** | Date et heure locale. |
-| **Langue du bot** | Langue des réponses du bot sur ce serveur. |
-| **Fuseau horaire** | Fuseau utilisé pour les réunions, appels et rappels. |
-| **Économie**, **Niveaux**, **Tickets**, **Invitations**, **Événements**, **Sondages**, **Serveur Staff** | Un aperçu du module correspondant. |
+| **En direct** | Membres, connectés, présents en vocal et arrivées de la semaine. |
+| **Activité** | Messages, vocal et sanctions sur les 7 derniers jours, avec les classements des [Statistiques](/dashboard/general/analytics/). |
+| **Modules actifs** | Combien de modules sont activés, et lesquels sont en panne. |
+| **Salons actifs** | Les salons où l'on écrit le plus. |
+| **Modération** | Les sanctions données : avertissements, exclusions, bannissements. |
+| **Membres actifs** | Les membres qui écrivent le plus. |
+| **Notifications** | Vos dernières [notifications](/dashboard/general/notifications/) et alertes. |
+| **Équipe** | Absences à valider et prochaines réunions. |
+| **Activité récente** | Les dernières actions de modération et de réglage. |
+| **Langue de Kotbo** et **Fuseau horaire** | Les mêmes réglages que dans [Réglages du serveur](/dashboard/configuration/centre-gestion/), à portée de main. |
+| **Raccourcis** | Des liens vers le planning, les modules, les statistiques et l'équipe. |
+| **Notes** | Un bloc-notes pour vos rappels, enregistré sur cet appareil. |
+| **Ton serveur** | Membres, boosts et propriétaire du serveur. |
+| **Ressources de Kotbo** | Mémoire et processeur utilisés par Kotbo, temps de réponse et durée en ligne. |
+| **Nouveautés** | Les dernières mises à jour de Kotbo. |
+| **Bien démarrer** | Les premiers réglages conseillés. |
+| **Horloge** | La date et l'heure locales. |
+| **Économie**, **Niveaux**, **Tickets**, **Invitations**, **Événements**, **Sondages**, **Serveur du staff** | Un aperçu du module correspondant. |
 
-Un widget dont le module est désactivé le signale explicitement plutôt que d'afficher des chiffres vides.
+Un bloc dont le module est désactivé le signale plutôt que d'afficher des chiffres vides. Quand un module est en panne, un bandeau l'annonce en haut de page avec **Voir les modules**.
 
-### Langue du bot
-
-Le widget **Langue du bot** décide de la langue des réponses de Kotbo sur ce serveur. Par défaut, il est en **détection automatique** et suit la langue du serveur Discord ; un **choix explicite** - Français ou Anglais - est prioritaire, et le bouton **Revenir en automatique** revient à la détection.
-
-Changer de langue republie les panneaux déjà publiés dans la nouvelle langue, et Kotbo indique combien l'ont été.
-
-### Fuseau horaire
-
-Le widget **Fuseau du serveur** fixe l'heure de référence du serveur. C'est lui qui est utilisé pour l'heure des réunions, des appels et des rappels, ainsi que pour les déclencheurs planifiés et l'ouverture du raid hebdomadaire.
-
-:::caution[Sans fuseau, tout est décalé]
-Le bot tourne en UTC. Tant que le fuseau n'est pas réglé, toute date affichée ou saisie est décalée - c'est l'un des trois points « Essentiel » de la page [Prise en main](/dashboard/general/prise-en-main/).
+:::note[La langue et le fuseau ont changé de place]
+**Langue de Kotbo** et **Fuseau horaire** se règlent désormais dans [Réglages du serveur](/dashboard/configuration/centre-gestion/), onglet **Aperçu**. Les blocs de l'accueil restent disponibles, mais ne font plus partie de la disposition de départ.
 :::
 
 ---
 
-## Composer sa mise en page
+## Personnaliser l'accueil
+
+Le bouton **Personnaliser**, dans l'en-tête, passe en mode édition : déplacez, agrandissez ou retirez les blocs, puis enregistrez.
 
 <div class="step-list">
-  <div class="step-item"><div><h3>Ajoutez un module</h3><p>Le bouton <strong>Ajouter un module</strong> propose les widgets encore masqués.</p></div></div>
-  <div class="step-item"><div><h3>Déplacez-le</h3><p>Les commandes de déplacement montent ou descendent le widget dans la grille.</p></div></div>
-  <div class="step-item"><div><h3>Redimensionnez-le</h3><p>Chaque widget a une <strong>largeur</strong> en colonnes et une <strong>hauteur</strong> en lignes, ajustables par glissement.</p></div></div>
-  <div class="step-item"><div><h3>Masquez ce qui ne sert pas</h3><p>L'action <strong>Masquer le module</strong> le retire de la grille sans perdre sa configuration.</p></div></div>
+  <div class="step-item"><div><h3>Ajoutez un bloc</h3><p><strong>Ajouter un bloc</strong> propose les blocs encore masqués.</p></div></div>
+  <div class="step-item"><div><h3>Déplacez-le</h3><p><strong>Monter</strong> et <strong>Descendre</strong> le placent dans la grille.</p></div></div>
+  <div class="step-item"><div><h3>Redimensionnez-le</h3><p>Glissez le bord du bloc pour changer sa <strong>largeur</strong> en colonnes et sa <strong>hauteur</strong> en lignes.</p></div></div>
+  <div class="step-item"><div><h3>Masquez ce qui ne sert pas</h3><p><strong>Masquer le bloc</strong> le retire de la grille.</p></div></div>
+  <div class="step-item"><div><h3>Enregistrez ou annulez</h3><p><strong>Enregistrer</strong> garde la disposition ; <strong>Annuler</strong> revient à la précédente.</p></div></div>
 </div>
 
-Kotbo confirme l'enregistrement par un message *Disposition enregistrée.*. Le bouton de réinitialisation remet la disposition par défaut.
+En mode édition, le menu de la page propose aussi :
+
+* **Modèles** : enregistrer la disposition actuelle sous un nom (**Mes dispositions**), en appliquer une autre, ou **Importer une disposition** à partir d'un texte exporté ;
+* **Exporter** : télécharger la disposition pour la partager ;
+* **Réinitialiser** : revenir aux blocs proposés au départ.
 
 ---
 
-## Partager une mise en page : les presets
+## Dans l'en-tête
 
-Une mise en page peut être enregistrée comme **preset**, puis :
+* **Voter** ouvre la page de Kotbo sur Top.gg.
+* **Actualiser** recharge les chiffres.
 
-* **appliquée** en un clic sur un autre serveur ;
-* **partagée** par lien, le bouton copie l'adresse dans le presse-papiers ;
-* **exportée** et **importée** au format JSON.
-
-:::tip[Un preset par rôle]
-Les besoins d'un modérateur et d'un administrateur ne sont pas les mêmes. Préparez un preset par profil et partagez le lien à votre équipe : chacun retrouve la vue qui le concerne.
-:::
-
----
-
-## Les états particuliers
-
-* **Kotbo redémarre, ça prend quelques secondes** : la reconnexion est automatique, il suffit d'attendre.
-* **Un réglage est cassé** : un bouton **Réparer** est proposé pour corriger la configuration signalée.
-* L'état de santé du système est résumé par **Optimal**, **Bon**, **Dégradé** ou **Critique**.
+Si Kotbo redémarre, la page affiche *Kotbo redémarre, ça prend quelques secondes* : la reconnexion est automatique, il suffit d'attendre ou de cliquer sur **Réessayer**.
