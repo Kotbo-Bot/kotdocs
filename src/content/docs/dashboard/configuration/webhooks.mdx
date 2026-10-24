@@ -1,0 +1,82 @@
+---
+title: Webhooks sortants
+description: "Envoyer les événements du serveur, signés, vers un outil externe : CRM, tableur, n8n ou votre propre service."
+---
+
+<p class="doc-lead">Les <strong>Webhooks sortants</strong> envoient les événements du serveur - arrivées, sanctions, tickets, suggestions… - en temps réel vers l'adresse de votre choix. Chaque envoi est signé, relancé en cas d'échec et consigné dans un journal.</p>
+
+:::note[Où la trouver]
+Section **Intégrations → Webhooks sortants** : [Ouvrir les webhooks sortants ↗](https://dash.kotbo.fr/webhooks).
+Le groupe **Intégrations** n'apparaît qu'aux administrateurs du serveur. La page porte le badge **Bêta**.
+:::
+
+---
+
+## Créer un webhook
+
+Cliquez sur **Ajouter un point de terminaison** :
+
+* **Nom** : pour vous y retrouver, par exemple le nom de l'outil.
+* **URL du point de terminaison** : une adresse **HTTPS publique**. Les adresses internes sont refusées.
+* **Événements à envoyer** : cochez ceux qui vous intéressent, ou **Tous les événements**, qui inclut ceux que Kotbo ajoutera plus tard.
+
+À la création, Kotbo affiche le **secret de signature**. Copiez-le et rangez-le dans votre outil : vous pourrez le révéler à nouveau, mais chaque affichage est journalisé.
+
+Un serveur peut avoir jusqu'à **10 webhooks**.
+
+### Les événements disponibles
+
+| Famille | Événements |
+| --- | --- |
+| **Membres** | Arrivée, arrivée dont l'invitation est identifiée, départ, rôles modifiés, passage de niveau. |
+| **Modération** | Sanction appliquée, sanction levée, règle d'automodération déclenchée (sans le texte capté). |
+| **Tickets** | Ticket ouvert, fermé, noté par le membre. |
+| **Communauté** | Réponse à un formulaire, suggestion proposée ou tranchée, gagnant et clôture d'un giveaway, étape d'un partenariat. |
+| **Structure du serveur** | Salon ou rôle créé, salon ou rôle supprimé. |
+
+:::note[Ce qui n'est jamais envoyé]
+Le contenu des messages ne part jamais dans un webhook.
+:::
+
+---
+
+## Suivre un webhook
+
+La liste montre chaque point de terminaison, **Actif** ou **En pause**. Cliquez-en un pour ouvrir sa fiche :
+
+* **Envoyer un test** : envoie un événement d'essai, pour vérifier que votre outil répond.
+* **Taux de réussite (24 h)**, **Dernier envoi** et dernière réponse reçue.
+* **Secret de signature** : **Révéler** ou **Régénérer**. Après une régénération, mettez à jour votre outil, sinon il rejettera les envois.
+* **Événements écoutés**.
+* **Journal des envois** : chaque tentative, avec la requête et la réponse, conservée **30 jours**. Un envoi s'ouvre en détail (**Statut**, **Code HTTP**, **Tentatives**, **Durée**, **Prochaine relance**, **Corps envoyé**, **Réponse reçue**) et peut être **Renvoyé**.
+
+**Modifier** change le nom, l'adresse ou les événements, et **Supprimer** retire le webhook.
+
+---
+
+## Relances et coupure automatique
+
+Un envoi est réussi quand votre service répond par un code **2xx** en moins de 10 secondes. Les redirections ne sont pas suivies.
+
+Sinon, Kotbo le relance après 1 min, 5 min, 30 min, 2 h, 6 h, 12 h et 24 h, soit **8 tentatives** en tout. Le compteur d'échecs consécutifs s'affiche sur la fiche.
+
+:::caution[Un webhook peut se couper tout seul]
+Après **40 échecs d'affilée**, le webhook se coupe. La fiche affiche *Ce webhook a été coupé* : vérifiez que votre service répond bien en 2xx, puis cliquez sur **Réactiver**.
+:::
+
+Un même événement peut arriver deux fois : dédoublonnez-le avec son identifiant (en-tête `Kotbo-Event-Id`).
+
+---
+
+## Vérifier la signature
+
+Chaque requête est un `POST` JSON signé en HMAC-SHA256 avec le secret du webhook. Quatre en-têtes l'accompagnent :
+
+| En-tête | Contenu |
+| --- | --- |
+| `Kotbo-Signature` | `t=horodatage,v1=signature`, la signature portant sur `horodatage.corps`. |
+| `Kotbo-Event` | Le nom de l'événement, par exemple `member.joined`. |
+| `Kotbo-Event-Id` | L'identifiant stable de l'événement, pour dédoublonner. |
+| `Kotbo-Delivery` | L'identifiant de cette tentative. |
+
+Le bloc **Vérifier la signature** de la page donne un exemple de vérification prêt à copier avec **Copier l'exemple**, à transmettre à la personne qui branche votre outil.

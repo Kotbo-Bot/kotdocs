@@ -12,7 +12,7 @@ For the link management commands on Discord and how relayed messages behave (web
 :::
 
 :::note[Availability]
-This feature lives under the **Cross-server → Channel links** section of your dashboard: [Open the Channel links module ↗](https://dash.kotbo.fr/channel-links).
+This feature lives under the **Integrations → Channel links** section of your dashboard: [Open the Channel links module ↗](https://dash.kotbo.fr/channel-links).
 You must be a server administrator to create or edit these links.
 :::
 
@@ -42,7 +42,7 @@ Every channel in the bridge picks its role:
 
 ### The relay mode
 
-*   **Webhook (mirror)** *(recommended)*: Kotbo uses a Discord webhook to send the message with the original author's real username and avatar. The result looks clean and natural.
+*   **As the author (mirror)** *(recommended)*: Kotbo uses a Discord webhook to send the message with the original author's real username and avatar. The result looks clean and natural.
 *   **Embed**: the message is wrapped in a styled embed sent under Kotbo's name, naming the original server and author.
 
 ### Permission diagnostics
@@ -66,7 +66,7 @@ A server without an activation key carries the **Link-only** badge: Kotbo only r
 You can link two separate channels inside your own server (for example to duplicate announcements or relay discussions from a private channel to a public one).
 
 ### Setup steps
-1. Open your server's dashboard and go to **Cross-server → Channel links**.
+1. Open your server's dashboard and go to **Integrations → Channel links**.
 2. Click the **Create a link** button in the top right.
 3. Fill in the form:
    *   **Channel on this server**: choose the first (source) channel.
@@ -84,7 +84,7 @@ To connect two separate Discord servers, the Kotbo bot must be installed on both
 ### Method A: direct linking (if you are an administrator on both servers)
 If you have administrator rights on both servers, you can establish the link straight from your dashboard.
 
-1. Go to **Cross-server → Channel links** on the source server.
+1. Go to **Integrations → Channel links** on the source server.
 2. Click **Create a link**.
 3. Select the local source channel.
 4. Under **Target server**, select the remote server (it appears in the list if you are an administrator there and the bot is present).
@@ -95,7 +95,7 @@ If you have administrator rights on both servers, you can establish the link str
 If you want to link your channel to one on a server you do not manage, you need to generate an invitation code for the other administrator to accept. In this scenario, **Server A** is the server where you start the setup and create the invitation, and **Server B** is the target server that receives it.
 
 #### Step 1: generate the invitation (Server A — the initiating server)
-1. On server A, go to **Cross-server → Channel links** and click **Create a link**.
+1. On server A, go to **Integrations → Channel links** and click **Create a link**.
 2. Select your local channel.
 3. Enable the **Generate a Discord invite** option (this also creates an access invite in case members want to join the other server).
 4. Select the direction and relay mode you want.
@@ -108,7 +108,7 @@ If you want to link your channel to one on a server you do not manage, you need 
 
 By default, Kotbo synchronises text and images. You can fine-tune this behaviour for each active link.
 
-1. In your list of links under **Cross-server → Channel links**, find the link in question and click the gear icon (**Configure**).
+1. In your list of links under **Integrations → Channel links**, find the link in question and click the gear icon (**Configure**).
 2. Turn the toggles on or off to suit your preferences:
    *   **Text**: relays ordinary written messages.
    *   **Images**: relays images and attachments.
@@ -122,6 +122,6 @@ By default, Kotbo synchronises text and images. You can fine-tune this behaviour
 
 ## Removing a link
 
-To break a link, go back to **Cross-server → Channel links**, click the red bin icon (**Delete**) next to the link and confirm. The relay stops immediately.
+To break a link, go back to **Integrations → Channel links**, click the red bin icon (**Delete**) next to the link and confirm. The relay stops immediately.
 
 If the **Update channel descriptions** option was enabled, the bot automatically removes the invite links it inserted into the topic of the Discord channels involved.

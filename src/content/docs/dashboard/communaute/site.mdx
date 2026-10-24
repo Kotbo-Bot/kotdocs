@@ -1,0 +1,138 @@
+---
+title: Site communautaire
+description: "Créer le site public du serveur : pages, wiki et blog écrits à plusieurs, apparence, menu, votes, forum, boutique, statistiques de visite."
+---
+
+<p class="doc-lead">Le <strong>Site communautaire</strong> donne au serveur un site public, à l'adresse <code>dash.kotbo.fr/s/votre-serveur</code>. Kotbo le compose d'après votre serveur - pages des modules actifs, dernières annonces, activité en direct - puis vous le retouchez dans un éditeur visuel, à plusieurs en même temps.</p>
+
+:::note[Où la trouver]
+Section **Communication → Site communautaire** : [Ouvrir le site communautaire ↗](https://dash.kotbo.fr/site).
+Le site dépend du module **Site communautaire** ; le wiki et le blog ont chacun leur module, **Wiki du site** et **Blog du site**. Seuls les gestionnaires du serveur peuvent créer le site.
+:::
+
+---
+
+## Créer le site
+
+Tant qu'il n'y a pas de site, la page propose **Créer le site du serveur** :
+
+1. Choisissez l'**Adresse du site** (lettres minuscules, chiffres et tirets).
+2. Choisissez le **Type de communauté** : il décide des pages d'exemple.
+3. Cliquez sur **Créer le site**.
+
+Kotbo compose alors le site en quelques secondes : salons, modules actifs et dernières annonces. Le site démarre **hors ligne** : seul le staff le voit, les visiteurs tombent sur une page d'attente.
+
+---
+
+## Onglet Aperçu
+
+L'aperçu dit si le site est **En ligne** ou **Hors ligne**, donne son **Adresse** avec **Copier le lien**, et compte les pages, le wiki et le blog.
+
+* **Voir l'aperçu privé** ouvre le site tel qu'il sera publié.
+* **Site en ligne** le publie : tout le monde peut alors consulter les pages publiques. La mise en ligne demande une offre qui comprend le site.
+* **Reprendre** liste les brouillons et les modifications pas encore publiées.
+* **Ma fiche sur la page Équipe** règle ce que les visiteurs voient de vous : une **Bio** de 400 caractères, ou **Ne pas m'afficher sur la page Équipe**.
+
+Les statistiques de visite suivent : **Pages vues**, **Visiteurs**, **Pages les plus vues**, **Provenance** et **Appareils** sur la période choisie, et la carte **Ce que le site rapporte**, des visites jusqu'aux membres qui restent sur le serveur. Les mêmes chiffres figurent dans l'onglet **Fréquentation du site** des [Statistiques](/dashboard/general/analytics/).
+
+---
+
+## Onglet Contenu
+
+Le filtre en haut de l'onglet passe d'une liste à l'autre : **Pages**, **Wiki**, **Blog** et **Commentaires**. Chacun ne voit que ce que ses droits lui ouvrent.
+
+Dans une liste, on peut rechercher, créer une page (titre et **Page parente**), la **Définir comme page d'accueil**, la remonter ou la descendre, la **Voir** ou la **Supprimer**. Cliquer sur une page ouvre l'éditeur.
+
+### L'éditeur de page
+
+L'éditeur est **visuel** : on écrit directement sur la page, sans balisage. La touche `/` ouvre le menu des blocs :
+
+* **Blocs de texte et de mise en page** : texte, listes, liste de tâches, citation, bloc de code, encadré, bento, séparateur, tableau, FAQ, bouton, bannière d'appel, témoignages, galerie, sommaire, image, vidéo.
+* **Blocs de modules**, qui affichent des données vivantes du serveur : équipe, règlement, actualités, partenaires, appel de ban, recrutement, formulaire, support, suggestions, classement, clans, giveaways, événements, saisons, marché, Starlight, vote pour le serveur, profil du membre, nouveautés, recherche, pouls du serveur, membres, bouton pour rejoindre le serveur, salons vocaux.
+
+Plusieurs personnes peuvent modifier la même page en même temps : leurs avatars s'affichent dans **Personnes sur la page**, et chaque frappe est **Enregistrée en direct**. Rien n'est visible des visiteurs avant **Publier les modifications**.
+
+Le panneau **Réglages** de la page règle :
+
+* l'**Adresse de la page**, la **Page parente**, l'**Icône** (un emoji, affiché dans le menu et le sommaire du wiki) et l'**Image de couverture** ;
+* la **Visibilité** : **Tout le monde**, **Membres du serveur**, **Certains rôles** (avec les **Rôles autorisés**) ou **Staff uniquement** ;
+* le **Résumé**, les **Étiquettes** et **Commentaires ouverts**, pour les articles du blog ;
+* le **Référencement** : titre et description pour les moteurs de recherche.
+
+Trois autres actions complètent l'éditeur :
+
+* **Historique** : une version est gardée à chaque publication, jusqu'à 100. **Restaurer** revient à l'une d'elles.
+* **Programmer** : la page est publiée automatiquement à la date choisie.
+* **Lien d'aperçu** : partage la page avant sa publication.
+
+**Dépublier** retire une page en ligne sans la supprimer.
+
+### Commentaires
+
+**Commentaires du blog** liste les commentaires des articles. Ceux retenus par la modération attendent votre décision : **Afficher**, **Masquer** ou **Supprimer**.
+
+---
+
+## Onglet Apparence
+
+* **Thème** : chaque thème a une version claire et une version sombre, avec un **Menu latéral** ou un **Menu en haut**. **Réglages fins** change le **Mode par défaut** (les visiteurs peuvent basculer), la **Couleur d'accent**, l'**Arrondi des coins**, les polices et le **Fond**.
+* **Logo, bannière et icône** : repris de Discord par défaut, remplaçables par vos images.
+* **CSS personnalisé** : appliqué au contenu du site, après le thème. Les imports externes et les positions fixes sont refusés, et les images doivent venir des images du site.
+
+Un **Aperçu** montre le résultat avant d'enregistrer.
+
+**Menu du site** compose la navigation : chaque lien mène à une **Page**, une **Section**, un **Lien externe**, ou ouvre un **Menu déroulant** de sous-liens. Sans menu, le site affiche ses pages publiées dans l'ordre de la liste.
+
+---
+
+## Onglet Croissance
+
+### Sites de vote
+
+**Sites de vote** relie top.gg ou un annuaire de serveurs. Les membres votent depuis la page **Votes** du site et touchent la récompense réglée dans l'onglet **Réglages**.
+
+Pour chaque site : l'**Adresse de la page de vote**, la **Clé** (dans l'espace propriétaire du site de vote), le **Nom affiché** et le **Délai entre deux votes**. Pour top.gg, Kotbo donne une adresse et un secret à coller dans les réglages webhook de top.gg. **Meilleurs votants du mois** classe les votants.
+
+### Forum
+
+**Catégories du forum** crée les catégories du forum du site. Chacune fonctionne :
+
+* **Sur le site seulement** : sujets et réponses restent sur le site ;
+* ou en **Miroir d'un salon forum Discord** : chaque fil du salon devient un sujet, et ce qui est écrit sur le site part dans le salon au nom du membre. Kotbo a besoin de la permission **Gérer les webhooks** sur ce salon.
+
+**Qui peut écrire** limite l'écriture à certains rôles (aucun coché : tous les membres ; le staff peut toujours écrire), et **Seul le staff ouvre des sujets** réserve la création de sujets. **Derniers messages** permet d'épingler ou de verrouiller un sujet, et de retirer un message - un message écrit depuis le site disparaît aussi de Discord.
+
+---
+
+## Onglet Réglages
+
+* **Identité** : l'**Adresse du site**, le **Nom du site** (vide : le nom du serveur), l'**Accroche** reprise dans les aperçus de lien, et **Pouls du serveur sur l'accueil** (en ligne, vocal, salons actifs en direct). Changer d'adresse avec **Envoyer les anciens liens vers le site** fait rediriger l'ancienne.
+* **Rédacteurs** : les rôles qui peuvent écrire dans le **Wiki** et le **Blog** sans accès au dashboard, depuis leur espace (voir plus bas).
+* **Annonces sur Discord** : un message dans le salon choisi à chaque page du wiki publiée et à chaque nouvel article, et **Ouvrir les commentaires sur les nouveaux articles**.
+* **Récompenses** : des pièces et de l'XP pour les membres connectés qui participent sur le site - commentaire, suggestion, inscription à un événement, message au forum. Les pièces vont dans l'économie et l'XP dans les niveaux, si ces modules sont actifs.
+* **Site automatique** : le site se remplit seul.
+  * **Annonces Discord → blog** : chaque message des salons cochés devient un article, mis à jour s'il est modifié (avec une **Étiquette** et une **Longueur minimale**).
+  * **Pages des modules** : un module allumé reçoit sa page, ajoutée au menu.
+  * **Résumé de la semaine** : un article chaque semaine, au jour et à l'heure choisis.
+
+:::danger[Supprimer le site]
+La **Zone sensible** supprime le site, ses pages, son historique, ses images et ses statistiques. Il faut saisir l'adresse du site pour confirmer. C'est définitif.
+:::
+
+---
+
+## Le site et les membres
+
+* **Mon espace** : un membre connecté sans accès au dashboard arrive sur **Mon espace**. Il y règle **Ma fiche** - sa **Description** et son **Profil public** - qui le suit sur tous les serveurs où Kotbo est installé. Les rédacteurs y trouvent en plus **Rédaction**, avec **Nouvelle page du wiki** et **Nouvel article**.
+* **Boutique** : la page Boutique du site vend les offres réglées dans le second onglet **Boutique** de l'[Économie](/dashboard/economie/economie/).
+* **Wiki sur Discord** : la commande `/wiki` cherche une page du wiki et l'affiche dans le salon.
+
+---
+
+## Quand un agent IA modifie le site
+
+Un agent connecté par [Connecter une IA](/aide/mcp/) peut tout faire sur le site. Pendant qu'il écrit, un bandeau l'annonce et l'édition humaine est verrouillée. **Interrompre** reprend la main et bloque l'agent quelque temps ; **Autoriser à nouveau** le laisse reprendre.
+
+:::caution[Site suspendu]
+Si l'équipe Kotbo suspend un site, la page l'indique avec le motif : le site n'est plus accessible au public. Contactez le support Kotbo pour en savoir plus.
+:::

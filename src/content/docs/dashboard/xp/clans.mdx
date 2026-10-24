@@ -6,7 +6,7 @@ description: Divisez votre communauté en clans basés sur des rôles Discord, s
 <p class="doc-lead">Le module <strong>Clans</strong> divise votre communauté en équipes basées sur des rôles Discord. Chaque membre contribue aux points de son clan, et une saison désigne un vainqueur.</p>
 
 :::note[Où la trouver]
-Section **Système d'XP → Clans** : [Ouvrir les clans ↗](https://dash.kotbo.fr/clans). Le module est en **bêta**.
+Section **Niveaux → Clans** : [Ouvrir les clans ↗](https://dash.kotbo.fr/clans). Le module est en **bêta**.
 Il dépend du module [Leveling & XP](/dashboard/xp/leveling/) : les points de clan viennent des passages de niveau.
 :::
 
@@ -22,9 +22,9 @@ Il dépend du module [Leveling & XP](/dashboard/xp/leveling/) : les points de cl
 
 ### Récompenses de fin de saison
 
-* **Salon d'Annonces de Saison** : où est publiée l'annonce du vainqueur.
-* **Boost de Giveaways** : augmente les chances du clan gagnant dans les giveaways.
-* **Rôle de Chef de Clan** : attribue le rôle de chef au meilleur contributeur.
+* **Salon d'Annonces de saison** : où est publiée l'annonce du vainqueur.
+* **Boost de giveaways** : augmente les chances du clan gagnant dans les giveaways.
+* **Rôle de chef de clan** : attribue le rôle de chef au meilleur contributeur.
 
 ### Bilan hebdomadaire
 
@@ -34,9 +34,9 @@ Kotbo nomme les clans sans QG : sans salon, ils ne recevront rien.
 
 ### Créer un clan
 
-Le bouton **Nouveau clan** ouvre un formulaire : **Nom du Clan**, **Description**, **Rôle Discord Associé**, **Général de clan (QG)** et **Rôle du Chef de Clan**.
+Le bouton **Nouveau clan** ouvre un formulaire : **Nom du clan**, **Description**, **Rôle Discord associé**, **Général de clan (QG)** et **Rôle du chef de clan**.
 
-Le tableau **Clans Configurés** affiche ensuite les colonnes **Clan**, **Rôle Discord**, **Général de clan**, **Rôle du Chef**, **Membres** et **XP Cumulée**.
+Le tableau **Clans configurés** affiche ensuite les colonnes **Clan**, **Rôle Discord**, **Général de clan**, **Rôle du chef**, **Membres** et **XP cumulée**.
 
 ### Opérations de masse
 
@@ -86,10 +86,10 @@ Les points de la **saison en cours** suivent le membre dans son nouveau clan ; c
 
 ## Onglet Gestion des Saisons
 
-Le bloc **Saison Actuelle** affiche le numéro de saison, le **temps restant**, les dates de début et de fin.
+Le bloc **Saison actuelle** affiche le numéro de saison, le **temps restant**, les dates de début et de fin.
 
-* **Clôturer manuellement la Saison** calcule le clan vainqueur, attribue les avantages, renomme le QG et remet l'XP de clan active de tous les membres à 0. L'historique des contributions reste conservé.
-* **Réinitialiser la Saison (Reset)** passe à la saison suivante.
+* **Clôturer manuellement la saison** calcule le clan vainqueur, attribue les avantages, renomme le QG et remet l'XP de clan active de tous les membres à 0. L'historique des contributions reste conservé.
+* **Réinitialiser la saison (reset)** passe à la saison suivante.
 
 ### Planifier
 
@@ -116,8 +116,8 @@ Si le module [Daily Algo](/discord/communaute/daily-algo/) est actif, vous pouve
 
 ### Ajustements manuels
 
-* **Points de Clan (Global)** : ajoute un montant au total d'un clan. Le bouton **Retirer des points au Clan** fait l'inverse.
-* **Points d'un Membre** : ajuste la contribution d'un membre précis, recherché par pseudo, avec le même couple ajouter / **Retirer des points au Membre**.
+* **Points de clan (global)** : ajoute un montant au total d'un clan. Le bouton **Retirer des points au clan** fait l'inverse.
+* **Points d'un membre** : ajuste la contribution d'un membre précis, recherché par pseudo, avec le même couple ajouter / **Retirer des points au membre**.
 
 :::note[Un membre endetté est remboursé d'abord]
 Si le membre a une dette de points de clan issue des paris, l'ajout part en priorité en remboursement : *ajout enregistré, mais N point(s) sont partis en remboursement de la dette du membre*.
@@ -185,7 +185,7 @@ Les **Derniers paris** listent l'historique avec la mise, l'enjeu, la saison et 
 Les deux actions de cet onglet demandent la saisie d'un mot de confirmation.
 :::
 
-* **Réinitialisation Totale** (`RESET ALL`) : supprime définitivement tous les clans configurés, les rôles associés en base et l'historique d'XP de toutes les saisons. Pour simplement clore la saison en cours, utilisez plutôt l'onglet *Gestion des Saisons*.
+* **Réinitialisation Totale** (`RESET ALL`) : supprime définitivement tous les clans configurés, les rôles associés en base et l'historique d'XP de toutes les saisons. Pour simplement clore la saison en cours, utilisez plutôt l'onglet *Gestion des saisons*.
 * **Annuler la dernière saison** (`ANNULER`) : revient à la saison précédente. Les contributions de la saison active sont supprimées, et le vainqueur de l'avant-dernière saison ainsi que ses chefs de clan sont rétablis.
 
 ---
@@ -202,7 +202,7 @@ On y trouve :
 * les **derniers paris tranchés** (*qui a défié qui, sur quoi, et pour combien*), le **palmarès des parieurs** de la saison et les dettes en cours ;
 * une recherche, pour retrouver un membre.
 
-Les boutons **Voir la page** et **Copier le lien** sont disponibles depuis le dashboard, sur la page Clans comme sur la page [Économie & RPG](/dashboard/economie/economie/).
+Les boutons **Voir la page** et **Copier le lien** sont disponibles depuis le dashboard, sur la page Clans comme sur la page [Économie](/dashboard/economie/economie/).
 
 :::note[Chaque bloc a sa propre garde]
 Clans et RPG sont deux modules distincts : éteindre les clans retire le classement, les paris et les dettes, mais laisse le classement des aventuriers. L'écran n'est vraiment vide que si les deux sont coupés - *ce serveur n'a activé ni les clans, ni le RPG*.

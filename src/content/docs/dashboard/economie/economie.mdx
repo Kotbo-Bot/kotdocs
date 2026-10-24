@@ -1,16 +1,16 @@
 ---
-title: Économie & RPG
+title: Économie
 description: Gérez la monnaie locale, les aventures textuelles, la boutique d'objets, le marché noir et les profils des joueurs.
 ---
 
 <p class="doc-lead">Le module <strong>Économie & RPG</strong> ajoute une monnaie locale, une boutique d'objets, des aventures textuelles aléatoires et des guildes de joueurs.</p>
 
 :::note[Où la trouver]
-Section **Économie & RPG → Économie & RPG** : [Ouvrir l'économie ↗](https://dash.kotbo.fr/economy).
-Le module est désactivé par défaut : activez-le avec l'interrupteur **Statut du module** en haut de la page.
+Section **Économie et jeux → Économie** : [Ouvrir l'économie ↗](https://dash.kotbo.fr/economy).
+Le module **Économie & RPG** est désactivé par défaut : le bandeau **Module désactivé** en haut de la page propose de l'**Activer**. Il porte aussi la page [Jeu RPG](/dashboard/economie/rpg/).
 :::
 
-La page se découpe en huit onglets : **Configuration**, **Objets Boutique**, **Recettes**, **Boss & Monstres**, **Raid**, **Quêtes**, **Marché noir** et **Joueurs & Classement**.
+La page compte cinq onglets : **Configuration**, deux onglets **Boutique** - le premier pour les objets du jeu, le second pour les offres vendues aux membres -, **Marché noir** et **Joueurs**. Les onglets du jeu (recettes, bestiaire, donjons, Tour, raid…) ont rejoint la page [Jeu RPG](/dashboard/economie/rpg/).
 
 :::tip[Pour démarrer vite]
 Le choix d'un rythme d'économie - gains du daily, délai, énergie - a sa propre page : [Configuration rapide](/dashboard/economie/configuration-rapide/).
@@ -28,16 +28,20 @@ Un bouton **Page publique**, visible depuis tous les onglets, ouvre le tableau p
 
 ### Activation des modules
 
-* **Activer les Aventures RPG (RNG)** : déverrouille les voyages et les événements aléatoires. Les joueurs partent en aventure depuis le hub `/rpg`, et non par une commande à eux.
-* **Activer la Boutique d'Objets** : permet d'acheter du matériel, d'équiper des armes et d'utiliser des potions.
-* **Activer le Système de Guildes RPG** : permet de fonder des alliances, de coopérer et d'avoir un coffre de guilde.
+* **Aventures RPG** : déverrouille les voyages et les événements aléatoires. Les joueurs partent en aventure depuis le hub `/rpg`, et non par une commande à eux.
+* **Boutique d'objets** : permet d'acheter du matériel, d'équiper des armes et d'utiliser des potions.
+* **Guildes RPG** : permet de fonder des alliances, de coopérer et d'avoir un coffre de guilde.
+
+### Salons RPG
+
+**Salons RPG** limite `/rpg`, `/raid`, `/market` et `/tower` à certains salons, fils compris. Vide, ils sont autorisés partout ; les administrateurs ne sont pas concernés. Chaque commande peut aussi avoir sa propre liste dans [Commandes](/dashboard/configuration/commandes/) : enregistrer ici leur applique la même liste à toutes.
 
 ### Paramètres
 
 * **Nom de la monnaie**, **Emoji de la monnaie** et **Image de la monnaie** (PNG, JPG ou SVG ; l'image s'affiche en priorité sur le dashboard).
-* **Gain Daily Minimum** et **Maximum**, **Cooldown du Daily (heures)**.
+* **Gain quotidien minimum** et **Maximum**, **Cooldown du Daily (heures)**.
 * **Cooldown Aventure (minutes)**.
-* **Énergie Maximale** et **Récupération Énergie / heure**.
+* **Énergie maximale** et **Récupération Énergie / heure**.
 
 ### Limites anti-abus
 
@@ -50,7 +54,7 @@ Plafonds appliqués aux jeux d'argent et aux transferts entre membres :
 
 ### Réinitialisation
 
-Six boutons, tous irréversibles : **Joueurs** (comptes, inventaires, soldes), **Boutique** (objets créés), **Guildes**, **Bestiaire** (supprime les créatures créées ici et rend les boss d'origine), **Configuration** (multiplicateurs et cooldowns) et **Reset Global**.
+Six boutons, tous irréversibles : **Joueurs** (comptes, inventaires, soldes), **Boutique** (objets créés), **Guildes**, **Bestiaire** (supprime les créatures créées ici et rend les boss d'origine), **Configuration** (multiplicateurs et cooldowns) et **Reset global**.
 
 :::danger[Un mot à saisir]
 Chaque réinitialisation demande désormais de saisir `RESET` pour confirmer. L'opération supprime définitivement les données associées.
@@ -58,12 +62,12 @@ Chaque réinitialisation demande désormais de saisir `RESET` pour confirmer. L'
 
 ---
 
-## Onglet Objets Boutique
+## Premier onglet Boutique : les objets du jeu
 
 Le bouton **Créer un objet** ouvre un formulaire :
 
 * **Nom de l'objet**, **Emoji**, **Description**, **Type d'objet** et **Prix d'achat**.
-* **Statistiques & Effets** : les champs proposés suivent le type choisi.
+* **Statistiques et effets** : les champs proposés suivent le type choisi.
 
 | Type d'objet | Ce qu'il demande |
 | --- | --- |
@@ -93,8 +97,8 @@ Un objet de type **SCROLL (Parchemin d'enchantement)** pose un enchantement sur 
 Un objet peut verser, à la consommation, autre chose que des statistiques RPG :
 
 * **XP de niveau donnée** : de l'XP de progression du serveur.
-* **Points de clan donnés** : versés au clan de l'acheteur. Ils ne partent que si le pont RPG vers les clans est ouvert, dans l'onglet *Boss & Monstres* - sinon Kotbo prévient que l'objet n'est pas vendable.
-* **Assauts de raid rendus** : bue pendant un raid ouvert, la potion rend ces assauts en plus du quota, dans la limite du plafond réglé sur l'onglet *Raid*.
+* **Points de clan donnés** : versés au clan de l'acheteur. Ils ne partent que si le pont RPG vers les clans est ouvert, dans l'onglet *Boss et monstres* du [Jeu RPG](/dashboard/economie/rpg/) - sinon Kotbo prévient que l'objet n'est pas vendable.
+* **Assauts de raid rendus** : bue pendant un raid ouvert, la potion rend ces assauts en plus du quota, dans la limite du plafond réglé dans l'onglet *Raid* du [Jeu RPG](/dashboard/economie/rpg/).
 
 :::caution[Un objet suit le module qui le paie]
 *Retiré de la boutique : le module qui verse sa récompense est désactivé.* Un objet portant une de ces récompenses disparaît de la boutique tant que le module correspondant est éteint.
@@ -110,137 +114,40 @@ Il ne touche qu'aux objets **créés sur ce serveur** : le catalogue livré de b
 
 ---
 
-## Onglet Recettes
+## Second onglet Boutique : les offres
 
-Les **recettes d'artisanat** décrivent ce qu'un joueur peut fabriquer à l'atelier, à partir de matériaux ramassés sur les monstres ou achetés.
+Ce second onglet vend des avantages aux membres contre la monnaie du bot. Les offres se règlent ici et s'achètent sur Discord avec `/boutique`, ou sur la page **Boutique** du [Site communautaire](/dashboard/communaute/site/).
 
-Le bouton **Nouvelle recette** demande l'**objet fabriqué**, ses **matériaux** (chacun doit désigner un objet existant), le **coût en pièces** et le **niveau requis**.
+### Les offres
 
-Les recettes **fournies de base** sont partagées par tous les serveurs et ne se modifient pas ici. Sans recette à vous, le serveur n'utilise que celles-là.
+**Nouvelle offre** demande un **Type d'offre** :
 
----
-
-## Onglet Boss & Monstres
-
-Le **bestiaire du serveur** liste les créatures que vos membres affrontent. Un filtre sépare **Tout**, **Boss** et **Monstres**.
-
-### Difficulté du bestiaire
-
-Trois paliers réécrivent d'un coup les statistiques, les gains, les chances de butin et la réapparition de toutes les créatures de la catégorie :
-
-| Palier | Effet |
+| Type | Ce qu'il livre |
 | --- | --- |
-| **Facile** | Des combats courts, pour un serveur qui débute ou qui joue de temps en temps. |
-| **Moyen** | L'équilibrage livré avec le bot, ni indulgent ni punitif. |
-| **Difficile** | Des créatures qui encaissent et qui frappent, mais qui rapportent davantage. |
+| **Rôle** | Un rôle, pour toujours ou pour une **Durée (jours)**. Un rachat prolonge la durée en cours. |
+| **Objets RPG** | Des objets ajoutés à l'inventaire RPG du membre. |
+| **XP** | De l'XP de niveau. |
+| **Abonnement** | Un rôle dont le prix est prélevé à chaque **Période (jours)**. Si le solde ne suffit pas, le membre a des jours de grâce, puis le rôle est retiré. |
+| **Prestation** | Le staff livre à la main (emoji perso, salon privé…). Toujours soumise à validation. |
 
-Les boss et les monstres se règlent séparément. Rien n'est verrouillé : une fiche reste modifiable ensuite, et le palier suivant repart de vos retouches. Appliquer un palier demande confirmation, car il réécrit aussi les créatures déjà personnalisées, en conservant leurs écarts au prorata. La confirmation annonce le nombre de fiches concernées et un aperçu des points de vie avant / après.
+Chaque offre a un **Nom**, un **Prix**, une **Description**, une **Catégorie** (qui regroupe les offres sur le site) et une **Image**. Le bloc **Règles** ajoute un **Stock**, une **Limite par membre**, un **Niveau minimum**, une liste de rôles (**Réservé à**), la **Validation par le staff avant livraison** et l'option **Peut être offert à un autre membre**.
 
-Kotbo conseille un palier d'après les résultats réels : *vos joueurs gagnent N % de leurs M combats des X derniers jours, le palier … leur irait mieux*, ou *le palier en place tient la route*. Sans assez de combats sur la période, il ne conseille rien.
+Seuls les rôles que Kotbo peut attribuer sont proposés ; une offre dont le rôle est passé au-dessus de celui du bot le signale. **Monter** et **Descendre** règlent l'ordre d'affichage.
 
-Deux garde-fous :
+### Les commandes à valider
 
-* Les créatures de **bas niveau** ne reçoivent qu'une partie du palier, pour ne pas fermer l'entrée de jeu.
-* Les **points de clan**, et les butins qui donnent de l'XP ou des points de clan, ne sont **jamais** touchés.
+Une offre soumise à validation, ou une prestation, apparaît dans **À valider** : la somme est retenue, **Valider** livre l'offre, **Refuser** rembourse le membre et lui envoie le motif saisi. **Dernières commandes** liste les achats, renouvellements d'abonnement et achats faits sur le site.
 
-### Personnaliser une créature
+### Codes promo
 
-Les créatures livrées avec le bot sont communes à tous les serveurs. Le bouton **Personnaliser** en crée une version propre à ce serveur, sans toucher à l'originale ; **Réinitialiser** la rend à tout moment. Le nom d'une créature livrée de base ne peut pas être changé : c'est lui qui permet de retrouver l'originale.
+**Nouveau code** crée une remise en **Pourcentage** ou en **Montant**, sur toute la boutique ou sur les **Offres concernées**. Un code compte 2 à 32 lettres, chiffres ou tirets, peut avoir un nombre d'**Utilisations max** et une date **Valable jusqu'au**. Chaque membre ne peut l'utiliser qu'une fois.
 
-Une fiche porte son **nom**, son **emoji**, sa **description**, son **niveau**, ses **points de vie**, l'**XP donnée**, les **pièces données**, ses **points de clan à la victoire** et, pour un boss, son **délai de réapparition**.
+### Réglages
 
-Les badges disent d'où vient une créature : **Livré de base**, **Créé ici**, **Personnalisé**, **Retouché** (statistiques réglées à la main, elles ne suivent plus le palier), **Boss** ou **Désactivé**. Chaque ligne affiche aussi son taux de victoires sur les derniers jours.
-
-### Butin
-
-Un seul butin est tiré par victoire, dans l'ordre de la liste. Chaque entrée désigne un **objet** (qui doit exister dans la boutique ou le catalogue global), sa **chance** en pourcentage et d'éventuelles **pièces bonus**. Sans butin, la victoire ne rapporte que XP et pièces.
-
-### Points de clan sur les victoires
-
-Un interrupteur en haut de l'onglet verse au clan du vainqueur la prime réglée sur chaque créature. Le couper suspend l'apport du RPG au classement des clans sans remettre les primes à zéro. Un joueur sans clan ne rapporte rien.
-
-### Import et export
-
-**Exporter** télécharge le bestiaire du serveur au format JSON. **Importer** remplace les créatures de même nom et ajoute les autres ; rien n'est supprimé, et un butin dont l'objet n'existe pas sur ce serveur est retiré à l'import.
-
----
-
-## Onglet Raid
-
-Une fois par semaine, un boss s'ouvre pendant quelques heures. Chaque équipe affronte **sa propre instance**, dont les points de vie suivent son effectif : toutes courent la même épreuve, sans que la plus nombreuse ne monopolise la barre de vie.
-
-### Qui forme une équipe
-
-* **Clans du serveur** *(recommandé)* : l'appartenance se lit sur le rôle Discord. Les récompenses passent par les points de clan, avec la saison, le classement et le remboursement de dette.
-* **Guildes RPG** : l'appartenance se lit sur le profil de jeu. Les points de l'équipe partent en XP de guilde plutôt qu'en points de clan.
-
-Le raid demande l'un des deux : sans module d'équipe, il ne peut pas s'activer.
-
-### Ouverture
-
-* **Ouverture automatique** : le raid s'ouvre au **jour** et à l'**heure** réglés, dans le fuseau du serveur. Désactivez-la pour ne le lancer qu'à la main.
-* **Durée (heures)** : la fenêtre pendant laquelle on peut frapper.
-* **Annonce** : le message porte le bouton d'assaut et la barre de progression de chaque équipe. Sans annonce, personne ne peut frapper.
-* **Boss du raid** : un boss précis, ou *Au hasard parmi les boss actifs*.
-
-Le bouton **Lancer un raid maintenant** ouvre la fenêtre sur-le-champ. Enregistrez vos réglages d'abord : le lancement part sur ce qui est enregistré, pas sur ce qui est à l'écran.
-
-:::note[Changer de boss en cours de semaine]
-La fenêtre du prochain raid est écrite d'avance, avec le boss tiré à ce moment-là. Choisir un autre boss puis **enregistrer** reprend la fenêtre en attente, donc la semaine en cours. Le boss fixe est désigné par son **nom** : renommer ou désactiver sa fiche dans *Boss & Monstres* le rend introuvable, et le sélecteur l'annonce - *… (indisponible : fiche désactivée)*.
-:::
-
-### Équilibrage et récompenses
-
-* **PV par membre**, avec un **PV minimum** et un **PV maximum**. Un aperçu annonce ce qu'affrontent une équipe de 3 et une équipe de 20.
-* **Assauts par membre**, **Énergie par assaut** et **Assauts achetables par membre** (en potions ; à zéro, plus rien ne s'achète).
-* **XP de l'équipe**, **Pièces de l'équipe**, **Points de clan de l'équipe** ou **XP de guilde de l'équipe**, réglés par membre.
-* **Consolation d'une équipe qui échoue (%)** : la part de l'enveloppe versée à une équipe qui a frappé sans abattre son boss. À zéro, seule la victoire paie.
-
-L'enveloppe d'une équipe suit son effectif et se partage entre les participants : **30 % à parts égales**, le reste au prorata des dégâts.
-
-### Boss de raid et sorts
-
-Les fiches de boss de raid appartiennent au serveur. Chacune choisit ses **sorts** dans le catalogue livré : un sort par tour quand il est disponible, les sorts de phase (*Sous N %*) primant sur les autres. Sans sort, le boss ne fait que frapper.
-
-**Rétablir les boss livrés** redépose ceux qui manquent, sans toucher aux vôtres.
-
-### Suivi
-
-Un bloc **Raid en cours** montre les équipes engagées et leur progression. À la clôture, le **bilan du dernier raid** reste affiché jusqu'à l'ouverture du suivant : équipes, meilleurs frappeurs, dégâts et assauts. L'onglet garde aussi l'historique des **raids passés**.
-
----
-
-## Onglet Quêtes
-
-Des objectifs de jeu à atteindre dans une fenêtre de temps.
-
-Une quête définit son **objectif**, sa **cible** et sa **fenêtre (heures)**. Les objectifs disponibles couvrent les monstres vaincus, les boss abattus, les assauts et dégâts de raid, les objets ramassés, les objets fabriqués, les améliorations réussies, les aventures résolues, la pêche, les récompenses quotidiennes, les achats en boutique ou au marché noir et les pièces dépensées.
-
-La fenêtre est alignée sur l'heure : 24 h se remet à zéro à minuit UTC, 6 h à 00, 06, 12 et 18. Toutes les équipes courent ainsi la même horloge.
-
-Deux portées :
-
-* **Personnelle** : chaque membre a sa progression. La récompense se verse toute seule sur l'action qui atteint la cible, sans geste du joueur.
-* **Équipe** : toute l'équipe pousse le même compteur. La récompense se partage au prorata - 30 % à parts égales, le reste selon ce que chacun a apporté - et se verse toute seule à la complétion.
-
-L'interrupteur **Répétable dans la journée** décide de ce qui se passe une fois la quête payée :
-
-* **Activé** : la quête repart à zéro dès qu'elle est payée, et le joueur peut la refaire autant de fois qu'il veut dans la fenêtre. Sa carte porte l'étiquette **Répétable**.
-* **Désactivé** : la quête ne rapporte qu'une fois par 24 h. Terminée plus tôt, elle attend la fin du délai pour se payer.
-
-Une quête inactive n'est plus proposée et cesse de compter. Les points de clan ne partent que si le pont RPG vers les clans est ouvert, dans l'onglet *Boss & Monstres*.
-
----
-
-## Onglet Joueurs & Classement
-
-Le tableau classe les joueurs avec les colonnes **Rang**, **Joueur**, **Solde**, **Stats & Équipement**, **PV & Énergie** et **Localisation & Guilde**. Un champ de recherche accepte un pseudo ou un identifiant.
-
-Le bouton **Modifier** ouvre le profil du joueur, où vous pouvez ajuster son **solde**, son **niveau RPG**, son **expérience**, ses **points de vie**, son **énergie**, sa **force (ATK)**, sa **défense (DEF)** et sa **vitesse (SPD)**.
-
-:::danger[Réinitialiser les joueurs]
-Le bouton **Réinitialiser les joueurs** efface les profils RPG enregistrés : soldes, niveaux, inventaires. **La recherche ne restreint pas l'effacement** : tous les joueurs de la liste sont concernés.
-:::
+* **Boutique ouverte** : fermée, plus rien ne se vend, mais les abonnements en cours continuent.
+* **Salon des commandes à valider** : Kotbo y prévient le staff à chaque commande en attente.
+* **Journal des ventes** : une ligne par vente livrée.
+* **Jours de grâce des abonnements** : le délai pour recharger son solde avant le retrait du rôle (0 = retrait immédiat).
 
 ---
 
@@ -255,3 +162,15 @@ Les offres sont tirées parmi les objets achetables. Sans boutique active, le ma
 * **Rythme d'ouverture** : **Périodicité (jours)**, qui fixe l'écart moyen entre deux ouvertures, l'instant exact restant tiré au hasard, et **Durée d'ouverture (minutes)**.
 * **Offres tirées** : **Offres par membre**, **Achats max par offre**, **Remise minimale (%)** et **Remise maximale (%)**.
 * **Annonce** : *Aucune, découverte via `/rpg`*, *Message dans un salon*, ou *Message + mention d'un rôle*.
+
+---
+
+## Onglet Joueurs
+
+Le tableau classe les joueurs avec les colonnes **Rang**, **Joueur**, **Solde**, **Stats et équipement**, **PV et énergie** et **Localisation et guilde**. Un champ de recherche accepte un pseudo ou un identifiant.
+
+Le bouton **Modifier** ouvre le profil du joueur, où vous pouvez ajuster son **solde**, son **niveau RPG**, son **expérience**, ses **points de vie**, son **énergie**, sa **force (ATK)**, sa **défense (DEF)** et sa **vitesse (SPD)**.
+
+:::danger[Réinitialiser les joueurs]
+Le bouton **Réinitialiser les joueurs** efface les profils RPG enregistrés : soldes, niveaux, inventaires. **La recherche ne restreint pas l'effacement** : tous les joueurs de la liste sont concernés.
+:::

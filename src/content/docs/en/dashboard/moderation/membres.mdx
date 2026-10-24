@@ -1,5 +1,5 @@
 ---
-title: Member management
+title: Members
 description: Search, filter and open the detailed files of your community's members from the dashboard.
 ---
 
@@ -14,12 +14,7 @@ Access requires a moderation or administration role.
 
 ## The indicators at the top
 
-Four figures summarise the state of your community:
-
-* **Total members**
-* the number of members **online**;
-* the number of members who **left**;
-* the number of **bots**.
+Four figures summarise the state of your community: **Total members**, then the number of members **present**, members who **left** and **bots**.
 
 ---
 
@@ -47,10 +42,35 @@ The **Per page** selector controls how many rows are shown, and the counter at t
 
 ## Reading a row
 
-Each row shows the member, their **Activity** column (last activity, in minutes, hours or days, or *Never*) and their **Messages** column.
+Each row shows the member, their **Activity** column (last activity, in minutes, hours or days, or *Never*) and their **Messages** column. Clicking a member opens their profile.
 
-The **File** button opens the member's full record: sanction history, roles, join date, activity, and the moderation actions you can apply straight from the dashboard.
+---
+
+## A member's profile
+
+Every member has their own page, at `/members/` followed by their ID: you can bookmark it or share it with staff. It also exists for a member who left, marked **Left**.
+
+The header gives the join date, account creation, **Last activity** and inviter (**Invited by**), with **Copy ID**. Two buttons go further:
+
+* **Full case file** opens the moderation case file in a window, with its tabs;
+* **Moderate** applies a sanction straight away.
+
+The profile then gathers:
+
+| Block | Content |
+| --- | --- |
+| **Points of attention** | What deserves a look: active sanctions, suspected alt account, pending reports, repeated warnings, account created shortly before joining, linked accounts, repeated joins, invitees who leave quickly. These badges are written in French. |
+| **Staff note** | An internal note, changed with **Edit**. |
+| **At a glance** | Messages and voice over 90 days, active days (with the current streak and the best), level, reputation received, balance, members invited (and how many are still here), tickets opened and their average rating, suggestions and forms, giveaways won. |
+| **Roles** | The member's roles. |
+| **Activity** | Messages per day, with a dot under the bar on voice days. |
+| **Timeline** | Everything about the member, most recent first, filterable: **All**, **Joins**, **Moderation**, **Support**, **Community**, **Changes**. |
+| **Risk level** | The number of warnings, the weighted score and how long ago the last sanction was. |
+| **Where they talk** and **With whom** | Their most used channels and the members they talk with most. |
+| **Linked accounts** | Alt accounts spotted, **validated** or **to check**. |
+
+When [AegisAI](/en/dashboard/moderation/aegis/) is on, a card also sums up the tone of their messages.
 
 :::tip[From other pages]
-A member's file is also reachable by clicking their name on the [Sanctions](/en/dashboard/moderation/sanctions/), [Discord logs](/en/dashboard/moderation/logs/) and [Alt accounts](/en/dashboard/moderation/double-comptes/) pages.
+A member's case file also opens by clicking their name on the [Sanctions](/en/dashboard/moderation/sanctions/), [Logs](/en/dashboard/moderation/logs/), [Suspicious accounts](/en/dashboard/moderation/double-comptes/) or [Tickets](/en/dashboard/communaute/tickets/) pages. The case file's **Full profile** link leads to this page.
 :::

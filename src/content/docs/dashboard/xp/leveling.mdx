@@ -1,13 +1,13 @@
 ---
-title: Leveling & XP
+title: Niveaux
 description: Configurez le gain d'expérience de vos membres, la courbe de progression, les rôles de récompense et le classement public.
 ---
 
 <p class="doc-lead">Le module <strong>Leveling & XP</strong> récompense la participation : chaque message et chaque minute passée en vocal rapportent de l'expérience, qui fait monter les membres en niveau et leur attribue des rôles.</p>
 
 :::note[Où la trouver]
-Section **Système d'XP → Leveling & XP** : [Ouvrir le leveling ↗](https://dash.kotbo.fr/leveling).
-Le module est désactivé par défaut : activez-le avec l'interrupteur **Statut du module** en haut de la page, sinon aucune XP n'est distribuée.
+Section **Niveaux → Niveaux** : [Ouvrir le leveling ↗](https://dash.kotbo.fr/leveling).
+Le module est désactivé par défaut : le bandeau **Module désactivé** en haut de la page propose de l'**Activer**. Tant qu'il est éteint, aucune XP n'est distribuée.
 :::
 
 :::tip[Côté Discord]
@@ -18,7 +18,7 @@ Ce que vos membres tapent pour lire leur progression est réuni dans [Niveaux, c
 
 ## Onglet Accueil : commencer par un préréglage
 
-La page s'ouvre sur l'onglet **Accueil** et son écran **Choisissez un préréglage**. La configuration détaillée reste à un clic derrière, dans les onglets suivants. Un préréglage règle d'un coup les gains d'XP et la courbe de progression.
+La page s'ouvre sur l'onglet **Accueil** et son écran **Choisis un préréglage**. La configuration détaillée reste à un clic derrière, dans les onglets suivants. Un préréglage règle d'un coup les gains d'XP et la courbe de progression.
 
 | Préréglage | Ce qu'il donne |
 | --- | --- |
@@ -44,8 +44,8 @@ Un curseur à cinq crans, de **Très faible** à **Très élevé**, aligne d'un 
 En mode détaillé, vous réglez :
 
 * **XP Minimum / Maximum par message**
-* **Cooldown XP Textuelle (secondes)**
-* **XP Vocale par minute**
+* **Délai entre deux gains d'XP (secondes)**
+* **XP vocale par minute**
 
 ### Bonus selon la longueur du message
 
@@ -70,7 +70,11 @@ Restreint l'XP vocale aux membres réellement actifs :
 ### Exclusions et multiplicateurs
 
 * **Salons Exclus** et **Rôles Exclus** : aucune XP n'y est gagnée.
-* **Multiplicateurs d'XP par Rôle** : associez un rôle à un multiplicateur. Le rôle du clan gagnant est géré automatiquement quand le boost de clan est actif.
+* **Multiplicateurs d'XP par rôle** : associez un rôle à un multiplicateur. Le rôle du clan gagnant est géré automatiquement quand le boost de clan est actif.
+
+### Blacklist commune
+
+La **Blacklist commune** écarte des **Membres**, des **Rôles** et des **Salons et catégories** de toute la progression du serveur : niveaux, prestige, saisons, économie et RPG, marché, quêtes, drops, clans et réputation. Ils n'y gagnent plus rien, et leurs commandes y sont refusées. Une catégorie couvre tous ses salons, et les administrateurs ne sont pas concernés.
 
 ---
 
@@ -111,7 +115,7 @@ Après un changement de courbe, les rôles de récompense sont corrigés au proc
 
 Associez un **Niveau requis** à un **Rôle à attribuer**, puis cliquez sur **Ajouter le rôle récompense**.
 
-* **Cumuler les Rôles de Récompense** : les membres conservent tous les rôles obtenus au lieu de ne garder que le plus élevé.
+* **Cumuler les rôles de récompense** : les membres conservent tous les rôles obtenus au lieu de ne garder que le plus élevé.
 * Une récompense placée au-dessus du niveau maximum est marquée **Hors d'atteinte**.
 
 ### Boost de saison de clan
@@ -122,7 +126,7 @@ Si les [Clans](/dashboard/xp/clans/) sont activés, vous pouvez attribuer automa
 
 ## Onglet Classement
 
-* Statistiques : **Membres classés**, **Niveau max**, **Niveau moyen**, **XP Total**.
+* Statistiques : **Membres classés**, **Niveau max**, **Niveau moyen**, **XP total**.
 * Le **Classement XP** est consultable et filtrable par pseudo.
 * La **page publique du classement** dispose d'un lien à partager avec vos membres, avec les boutons **Voir la page** et **Copier le lien**.
 
@@ -130,7 +134,7 @@ Si les [Clans](/dashboard/xp/clans/) sont activés, vous pouvez attribuer automa
 
 ## La carte de rang de chaque membre
 
-La carte affichée sur Discord se personnalise depuis **Mon Profil**, en bas de la barre latérale, section **Ma carte de rang** - voir [Mon profil et mes préférences](/dashboard/general/profil/). Elle suit son propriétaire sur tous les serveurs ; le niveau, l'XP et le rang affichés dessus, eux, restent propres à chaque serveur.
+La carte affichée sur Discord se personnalise depuis **Mon profil**, en bas de la barre latérale, section **Ma carte de rang** - voir [Mon profil et mes préférences](/dashboard/general/profil/). Elle suit son propriétaire sur tous les serveurs ; le niveau, l'XP et le rang affichés dessus, eux, restent propres à chaque serveur.
 
 Chacun y règle le **Fond**, le **Motif du fond**, le **Cadre de l'avatar**, la **Barre d'XP**, la **Police du pseudo**, jusqu'à **trois emojis** et jusqu'à **trois badges**. L'aperçu se met à jour au fil des choix, et rien n'est appliqué avant **Enregistrer la carte**.
 

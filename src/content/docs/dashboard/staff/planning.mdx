@@ -1,12 +1,12 @@
 ---
-title: Planning & agenda
+title: Planning
 description: Visualisez l'emploi du temps de votre équipe, déclarez vos absences, planifiez des appels et suivez vos tâches.
 ---
 
 <p class="doc-lead">Le <strong>Planning</strong> réunit sur un même agenda les réunions, les appels Discord, les absences et les tâches de votre équipe.</p>
 
 :::note[Où la trouver]
-Section **Staff → Planning** : [Ouvrir le planning ↗](https://dash.kotbo.fr/planning).
+Section **Équipe → Planning** : [Ouvrir le planning ↗](https://dash.kotbo.fr/planning).
 Il faut être enregistré comme membre du staff pour y créer quoi que ce soit.
 :::
 
@@ -22,14 +22,44 @@ Quatre calendriers se superposent, activables séparément dans **Mes calendrier
 
 | Calendrier | Contenu |
 | --- | --- |
-| **Réunions** | Les points d'équipe du module [Réunions](/dashboard/staff/reunions/). |
+| **Réunions** | Les points d'équipe, détaillés [plus bas](#les-réunions). |
 | **Appels Discord** | Les appels vocaux planifiés. |
 | **Absences** | Les indisponibilités déclarées. |
 | **Tâches** | Les tâches assignées. |
 
 Le panneau **Personnes** filtre l'agenda sur un ou plusieurs membres, avec les raccourcis **Aucun** et **Tous**.
 
-La vue **Ma journée** affiche vos échéances du jour et, quand il n'y a rien, la mention *Votre journée est libre !*.
+La vue **Ma journée** affiche vos échéances du jour et, quand il n'y a rien, la mention *Ta journée est libre !*.
+
+---
+
+## Les réunions
+
+Les réunions ont quitté leur page à part : elles se créent et se suivent ici. L'ancienne adresse `/meetings` ouvre le Planning.
+
+### Planifier une réunion
+
+<div class="step-list">
+  <div class="step-item"><div><h3>Ouvrez Nouvel événement</h3><p>Choisissez le type <strong>Réunion</strong> en haut de la fenêtre.</p></div></div>
+  <div class="step-item"><div><h3>Renseignez le titre et le créneau</h3><p>Le titre est obligatoire, la fin doit suivre le début, et une réunion déjà passée est refusée.</p></div></div>
+  <div class="step-item"><div><h3>Rédigez l'ordre du jour</h3><p>La description est publiée avec l'annonce.</p></div></div>
+  <div class="step-item"><div><h3>Enregistrez</h3><p>Kotbo annonce l'événement sur Discord et active les boutons de réponse.</p></div></div>
+</div>
+
+Sous les dates, Kotbo rappelle dans quel fuseau l'heure est interprétée. Pour une réunion, le bouton **Changer** permet de la saisir dans un autre fuseau, pour cette réunion seulement.
+
+Le salon d'annonce et le salon vocal des réunions se règlent dans [Réglages du serveur](/dashboard/configuration/centre-gestion/), onglet **Salons et rôles** : champs **Annonces réunions** et **Vocal réunions**.
+
+### Suivre une réunion
+
+Cliquez sur une réunion de l'agenda pour ouvrir sa fiche. Elle passe par les statuts **Planifiée**, **En cours**, **Terminée** et **Annulée** :
+
+* **Démarrer** la bascule en cours, **Terminer** la clôt ;
+* la **Liste des présences** compte les **Présents**, **Excusés** et **Absents**. La présence est relevée dans le salon vocal, et une absence déclarée sur le créneau excuse le membre automatiquement.
+
+### Supprimer une réunion
+
+La suppression est définitive. Kotbo demande ensuite s'il faut aussi nettoyer Discord : **Supprimer l'événement Discord**, **Supprimer le message d'annonce** et **Supprimer les notifications internes**.
 
 ---
 
@@ -55,8 +85,8 @@ Un appel crée un salon vocal ou une conférence à une date donnée.
 
 * **Salon temporaire** ou **Salon existant**.
 * Type **Vocal** ou **Conférence**.
-* **Supprimer auto. quand vide** : nettoie le salon temporaire après l'appel.
-* **Invités - Staff** et **Invités - Membres du serveur** : la recherche porte sur les membres du serveur.
+* **Supprimer quand il est vide** : nettoie le salon temporaire après l'appel.
+* **Invités - staff** et **Invités - membres du serveur** : la recherche porte sur les membres du serveur.
 
 ### Qui peut créer des appels
 

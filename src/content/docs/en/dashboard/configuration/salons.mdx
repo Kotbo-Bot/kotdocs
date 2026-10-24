@@ -1,191 +1,219 @@
 ---
-title: Channel management
-description: Configure Auto-Thread, sticky messages, live statistics channels, temporary voice channels and the Honeypot system from the dashboard.
+title: Channels
+description: "Automatic threads with several configurations, a message pinned to the bottom of a channel, counters, on-demand voice channels and their access requests, trap channel."
 ---
 
-<p class="doc-lead">The <strong>Channels</strong> module gathers every automation, voice statistics and security feature tied to the channels on your Discord server.</p>
+<p class="doc-lead">The <strong>Channels</strong> page gathers the automations tied to your server's channels: threads opened automatically, a message always visible at the bottom of a channel, counters in voice channel names, voice channels created on demand and a trap channel against spam.</p>
 
 :::tip[On the Discord side]
-To see how Auto-Thread, sticky messages, statistics channels, temporary channel creation with its control embed and the Honeypot trap behave, read the [Discord guide to channel management](/en/discord/configuration/salons).
+To see how automatic threads, pinned messages, counters, on-demand voice channels and the trap channel work, read the [Discord channel management guide](/en/discord/configuration/salons).
 :::
 
-:::note[Availability]
-This module lives under the **Configuration → Channels** section of your dashboard: [Open the Channels module ↗](https://dash.kotbo.fr/channels-management).
+:::note[Where to find it]
+The **Settings → Channels** section: [Open channels ↗](https://dash.kotbo.fr/channels-management).
 :::
 
-The interface is built around six main tabs, covered below.
+The page has seven tabs: **By channel**, **Auto threads**, **Pinned message**, **Counters**, **On-demand voice**, **Access requests** and **Trap channel**.
 
 ---
 
-## 1. Par salon (by channel)
+## 1. By channel
 
-The **Par salon** tab - its label stays in French - is open by default and answers the question "what affects this channel?" without having to go through the other tabs.
+The **By channel** tab, open by default, answers the question "what affects this channel?" without going through the other tabs.
 
-It lists the server's channels; each one expands onto the features that affect it: automatic threads, log exclusion, the trap channel, and the seven games of the [Fun channels](/en/dashboard/communaute/salons-fun/) module.
-
-The other tabs are still there for the fine-grained configuration of each feature.
+It lists the server's channels; each one expands into the features that affect it: automatic threads, log exclusion, trap channel, and the games of the [Fun channels](/en/dashboard/communaute/salons-fun/) module.
 
 :::note[A single-channel feature moves]
-Some settings name only one channel - the trap, a game. Enabling them on a channel removes them from the one that held them, and the list reloads to show it.
+Some settings only point to one channel - the trap, a game. Turning them on for a channel removes them from the one that had them, and the list reloads to show it.
 :::
 
-Renaming and deleting a channel is also done from this tab.
+Renaming and deleting a channel are also done from this tab.
 
 ---
 
-## 2. Auto-Thread (automatic threads)
+## 2. Auto threads
 
-The **Auto-Thread** tab lets you designate text or announcement channels where Kotbo will systematically and automatically create a thread for every new message posted.
+Kotbo opens a thread for each new message in a channel, following the rules of a **configuration**. A channel can have several: they are tried in order, and the first one that accepts the message opens the thread.
 
-### Configuration
-* **Channel selection**: click the channels in the list to enable or disable them. Selected channels appear with a coloured border and a tick.
-* **Quick actions**:
-  * **Select all (filtered)**: selects every channel currently visible (handy if you have filtered by search).
-  * **Deselect all**: unticks every configured channel.
-  * **Search bar**: filters the channel list by name so you can find a specific channel quickly.
+**Add a configuration** walks through three questions:
+
+1. **Where should threads be created?** The **Channel** and the **Configuration name**.
+2. **Which messages create a thread?**
+   * **All messages**, **Text**, **Links** or **Media** (images, videos, GIFs and stickers);
+   * or **Custom conditions**, which combine conditions and groups: contains text, a link, media or an attachment, contains or starts with some text, matches a regular expression, minimum or maximum length, author has one of the roles or is a given member, sent by a bot, by a webhook, or is a reply. A group requires **All conditions** or **At least one condition**, and **Invert the result** takes the opposite.
+3. **How should the thread be named?** **First line of the message**, **Author's name**, **"Thread by author" and start of the message**, **Author's name and date**, or **Custom rules**: a title template, the first line, the embed title, or an extract through a regular expression. Rules are tried top to bottom, and the first one that produces a title wins. A **Sample title** shows the result.
+
+### Advanced settings
+
+* **Thread archiving**: after 1 hour, 24 hours, 3 days or 1 week without messages.
+* **Who can rename the thread?**: **Moderators only**, **Moderators and author** or **Everyone**. Moderators always can; others use the `/thread rename` command, since the bot created the thread.
+* **Bot and webhook messages**: evaluate them too. They can open a thread but are never deleted.
+* **Evaluation order**: the configuration's place among the channel's.
+* **JSON import / export**: copy or download a configuration, and import one into the draft. The export contains role and member IDs: check it before sharing it.
+
+### Non-matching messages
+
+**What to do with non-matching messages?** automatically deletes a message that no active configuration of the channel accepts, after a **Delay** (5 seconds to 1 hour), with an optional **Warning** (`{user}`, `{channel}`, `{delay}`). A configuration that accepts every message cannot do this.
+
+:::note[Who is never deleted]
+Members who can manage messages and bot messages are never affected. Kotbo needs the **Manage Messages** permission to delete.
+:::
+
+Each configuration can be **Duplicated**, turned off or deleted. Deleting a configuration leaves the threads already created in place.
 
 ---
 
-## 3. Sticky message (a message pinned to the bottom of a channel)
+## 3. Pinned message (stuck to the bottom of a channel)
 
-The **Sticky message** tab keeps a message permanently visible at the bottom of a channel. The bot reposts it so it always stays the last message shown, which is handy for a rules reminder or a posting guideline.
+The **Pinned message** tab keeps a message always visible at the bottom of a channel. Whenever the channel piles up the set number of messages, Kotbo deletes its previous post and sends the message again at the very bottom.
 
-### How it works
-Every time the channel reaches the configured message count, Kotbo deletes its previous post and sends the message again at the very bottom of the channel.
+**Add a sticky message** asks for:
 
-### Configuring a message
-Click **Add a sticky message**, then fill in:
-* **Target channel**: the channel the message stays pinned to.
-* **Message**: the text that gets reposted (for example `Remember to read the rules before posting!`). It cannot be empty.
-* **Display as an embed**: sends the message in a coloured box instead of plain text. Two fields then appear:
-  * **Embed title** (for example *Read before posting*).
-  * **Colour**: in `#RRGGBB` hexadecimal format.
-* **Repost after (messages)**: how many messages are posted in the channel before the sticky moves back to the bottom.
-* **Minimum delay between two reposts (seconds)**: protects against Discord rate limits when the channel gets busy. Set `0` to disable the delay.
+* **Target channel** and **Message** (it cannot be empty).
+* **Display as an embed**: a coloured box, with an **Embed title** and a colour.
+* **Discord JSON**: posts a full Discord payload (embeds and components) instead of plain text. An example to adapt is provided; unreadable JSON is refused.
+* **Custom identity**: posts through a webhook, under the **Display name** and **Avatar** you pick, instead of the bot's identity. It needs the **Manage Webhooks** permission; the name cannot contain "discord" or "clyde".
+* **Repost after (messages)** and **Minimum delay between two reposts (seconds)**, which protects against Discord's sending limits when the channel gets busy (`0` to turn it off).
 * **Active**: pauses or resumes the message without deleting its configuration.
 
-:::note[The channel cannot be changed afterwards]
-The channel of a saved sticky can no longer be edited. To move it, delete it and create a new one.
+:::note[The channel can't be changed later]
+A saved pinned message's channel can no longer be changed. To move it, delete it and create a new one.
 :::
 
 ### Available variables
-The message text and the embed title accept the same variables:
 
 | Variable | Result |
 | --- | --- |
 | `{server}` or `{serveur}` | Your server's name |
-| `{members}`, `{membres}` or `{memberCount}` | Total number of members |
-| `{channelCount}` or `{salons}` | Number of channels |
-| `{boosts}` or `{boostCount}` | Number of server boosts |
-
-The English and French variants work interchangeably, whatever language your dashboard is set to.
+| `{membres}`, `{members}` or `{memberCount}` | Total number of members |
+| `{salons}` or `{channelCount}` | Number of channels |
+| `{boosts}` or `{boostCount}` | The server's number of boosts |
 
 ### Available actions
-* **Repost now**: forces an immediate repost without waiting for the message threshold.
-* **Delete**: removes the message still displayed in the channel and erases the configuration.
 
-:::caution[Required Discord permissions]
-Kotbo must be able to **view the channel** and **write in it**. Without both permissions, the sticky message is never reposted.
+* **Repost now**: forces an immediate repost without waiting for the message threshold.
+* **Delete**: removes the message still shown in the channel and erases the configuration.
+
+:::caution[Discord permissions required]
+Kotbo must be able to **see the channel** and **write in it**. Without both permissions, the message is never reposted.
 :::
 
-:::note[No mention is ever triggered]
-Mentions written inside a sticky message notify nobody: the bot neutralises them when sending. An `@everyone` placed in a sticky will therefore not ping your server on every repost.
+:::note[No mention is triggered]
+Mentions written in a pinned message notify nobody: the bot neutralises them when sending. An `@everyone` will not ping your server on every repost.
 :::
 
 ---
 
-## 4. Stats channels (live counters)
+## 4. Counters
 
-The **Stats channels** sub-module displays key server metrics in real time (member count, active members, boosts, and so on) directly in the names of dedicated voice channels.
+The **Counters** tab shows server figures (members, bots, boosts…) in the name of dedicated voice channels.
 
-### Global configuration
-* **Enable the module**: use the main toggle in the top right.
-* **Creation category**: pick the Discord category where your statistics channels will be placed.
-  * *Automatic option*: if you leave the selection empty or click **Create the category**, Kotbo automatically creates a dedicated category on your Discord server.
+### Creation category
+
+Pick the Discord category for the statistics channels, or click **Create category** so Kotbo creates one.
 
 ### Historical statistics
+
 :::warning[Rebuilding statistics]
-Kotbo has a tool for analysing the full message history of your text channels in order to generate the activity charts on the dashboard.
+**Rebuild historical statistics** rereads your channels' old messages to fill the activity charts.
 * **Run the scan**: goes through the history in the background without touching the data already recorded.
-* **Force a re-scan**: deletes and recalculates every existing statistic for the server. **This action destroys the dashboard's current history.**
+* **Force re-scan**: overwrites then recalculates all the server's statistics. **This action destroys the dashboard's current history.**
 :::
 
 ### Default counters
-You can enable and customise each of the following counters individually:
-1. **Member counter**: total number of users on the server.
-2. **Bot counter**: total number of applications and bots.
-3. **Role counter**: number of members holding a specific target role (for example `@Staff`).
-4. **Channel counter**: number of text and voice channels present.
-5. **Category counter**: total number of channel categories.
-6. **Activity counter (24h)**: number of members who sent a message or joined a voice channel in the last 24 hours.
 
-For each active counter you can point to an **existing voice channel** or let the bot **create one automatically**, and customise the name template (for example `Members: {count}`).
+1. **Member counter**: total number of users on the server.
+2. **Bot counter**: total number of bots.
+3. **Role counter**: number of members with a target role (e.g. `@Staff`).
+4. **Channel counter**: number of text and voice channels.
+5. **Category counter**: total number of categories.
+6. **Activity counter (24h)**: members who wrote or joined a voice channel in the last 24 hours.
+
+For each counter, point to an **existing voice channel** or let Kotbo **create** it, and customise the name template (e.g. `Members: {count}`).
 
 ### Custom counters
-By clicking **Add a custom counter**, you can configure extra counters by choosing:
-* **Statistic type**: total members, bots, members online, members in voice, a specific role, total channels, categories, active members (24h), server boosts, or a member goal.
-* **Goal (target)**: specific to the *member goal* type, this shows progress towards a target (for example `Goal: {count}/{goal}`).
-* **Name template**: use the `{count}` tag (and `{goal}` for goals), which is replaced dynamically with the real value.
+
+**Add a custom counter** picks:
+
+* the **Statistic type**: total members, bots, online members, members in voice, specific role, total channels, categories, active (24h), server boosts, or member goal;
+* the **Goal (target number)**, for the *Member goal* type (e.g. `Goal: {count}/{goal}`);
+* the **Name template**, where `{count}` (and `{goal}`) are replaced by the real values.
 
 :::note[Name updates]
-To respect the rate limits imposed by the Discord API, the bot refreshes statistics channel names **every 10 minutes**. The change is therefore not instant on Discord.
+Discord limits renames: Kotbo updates these counters **every 10 minutes**.
 :::
 
 ---
 
-## 5. Create your channel (temporary channels)
+## 5. On-demand voice
 
-This module lets users create their own temporary voice channel and configure it themselves using interactive buttons.
+Members create their own temporary voice channel and run it themselves with buttons. The tab is split into **Generators**, **Permissions**, **Panel** and **Active channels**.
 
-### Generator configuration
-* **Generator voice channel**: the "lobby" voice channel. As soon as a member joins it, Kotbo pulls them out, creates a new temporary channel and moves them into it.
-* **Creation category**: the Discord category where temporary channels will be created.
-* **Channel name template**: the format of the generated name. Use the `{user}` tag to insert the creator's username (for example `{user}'s channel`).
-* **Required role**: restricts temporary channel creation to holders of a specific role (leave empty to allow everyone).
-* **Additional generators**: you can configure several independent generators (each with its own trigger channel, target category, name template and required role).
+### Generators
 
-:::note[What the required role gates]
-It gates access to the **generator**, not the permissions inside the created channel.
-:::
+* **Generator voice channel**: as soon as a member joins it, Kotbo creates a temporary channel and moves them into it.
+* **Creation category** and **Channel name template** (`{user}` inserts the creator's name, e.g. `{user}'s channel`).
+* **Required role to use**: reserves the generator for a role. It gates access to the **generator**, not the permissions inside the created channel.
+* **Additional generator channels**: other independent generators, each with its own channel, category, name template and required role.
 
-### Created channel permissions
+**Channel ownership** decides what happens when the owner leaves their channel: a **Handover delay** to pick a successor, then **Who can claim the channel**: **Members present** or **Moderators only**. Staff can always claim a channel without an owner.
 
-The **Created channel permissions** block decides what the bot applies to every temporary channel as soon as it is created.
+### Permissions of created channels
 
-* **Default slots**: `0` for an unlimited channel. The owner can change it afterwards from the panel.
-* **Locking**: create the channel already locked. Only the owner and the auto-allowed roles can join and write in it.
-* **Channel text chat**: *Inherited* (the chat follows the category, the original behaviour), *Open* (anyone who can see the channel can write in it, without gaining voice access) or *Locked* (only the owner and the auto-allowed roles write in it).
-* **Auto-allowed roles**: these roles see and join the channel without the owner adding them, even when it is created locked.
-* **Owner powers**: what the creator receives **on their own channel only** - *Mute*, *Deafen*, *Move* (required for the panel's "Kick" button), *Manage channel* (rename and configure it straight from Discord, without the panel) and *Manage messages* (delete and pin in the channel text chat).
+* **Default slots**: `0` for no limit. The owner can change it later.
+* **Lock**: create the channel already locked. Only the owner and the roles allowed by default can join and write; staff keep access.
+* **Channel text chat**: *Inherited* (follows the category), *Open* or *Closed*.
+* **Roles allowed by default**: they see and join the channel without the owner having to add them, even when locked.
+* **Owner powers**: what the creator gets **on their channel only** - mute, deafen, move (needed for the panel's "Kick" button), manage the channel and manage messages.
 
 :::caution[These settings never open a closed channel]
-The temporary channel stays aligned with its category: this block stacks on top. If the category denies access to your members, the created channel denies it too.
+The temporary channel stays in sync with its category: this block is added on top. If the category denies your members access, the created channel denies it too.
 :::
 
-### Supervision from the dashboard
-At the bottom of the tab, the **Active temporary channels** section lists every channel currently open on the server. Administrators can:
-* See the channel name, its current owner and the number of members connected.
-* Change the reservation (required role) on the fly.
-* Rename the channel directly by clicking the edit icon.
-* Close and delete the channel instantly by clicking **Close**.
+### Panel
+
+As soon as a channel is created, Kotbo posts a **management message** with buttons in its chat: lock or unlock, rename, limit the number of slots, kick or ban an intruder, open or close the chat.
+
+**Panel presentation** sets how that message is shown: the **Panel mode** (V1, classic embed in columns; V2, what the bot sends today), its components, the layout and colours of the channel's state, and where the **Owner mention** goes. **Per-generator presentation** lets each generator have its own settings; turning it off erases nothing.
+
+### Active channels
+
+**Active temporary channels** lists open channels, with their creator, members and reservation. Administrators can **Rename** them, change the reservation and **Close channel**.
 
 ---
 
-## 6. Honeypot channel (anti-spam trap)
+## 6. Access requests
 
-The **Honeypot channel** is a blunt security tool designed to instantly detect and neutralise spam bots or compromised user accounts (self-bots) that join your server.
+When a temporary channel is locked or reserved, its panel shows a **Request access** button: someone outside can let the owner know without forcing their way in.
 
-### Configuring the trap
-* **Trap channel (Honeypot)**: pick the channel to use, or click **Create automatically**. The bot creates a channel with suitable permissions and posts a warning embed in it.
+* **Who can answer**: **The owner only**, or **The owner and the staff**.
+* **Notify the owner by**: **The voice channel** (a message in its chat, mentioning the owner), **Direct message** (discreet, but fails if their DMs are closed) or **A dedicated channel** for all the server's requests, picked under **Dedicated requests channel**. If the main choice fails, a fallback kicks in on its own.
+* **Request expiry (minutes)**: past this delay, the button becomes available again.
+* **Cooldown after a denial (minutes)**: from 1 to 1440 minutes before asking again.
+
+The tab also holds three on-demand voice settings:
+
+* **Admin settings**: what moderators may do on temporary channels, action by action - **Allowed** or **Admins only**. Staff roles are those from staff management.
+* **Compact panel**: sub-panels are rewritten in a single message, with a Back button, instead of opening a new one for every action.
+* **Reservation**: the **Reservable roles** offered by the **Reserve channel** button (empty: any role), what happens to **People already present without the role** (with a **Fallback channel**, otherwise they are disconnected), and what the button does for an owner with no reservable role: offer any role, pick members, or forbid reservation.
+
+---
+
+## 7. Trap channel
+
+The **Trap channel** gets rid of spam bots and hacked accounts: anyone outside staff who writes in it is sanctioned on the spot.
+
+* **Trap channel**: pick a channel or click **Create automatically**. Kotbo creates a channel with the right permissions and posts a warning message in it.
 * **Sanction to apply**:
-  * **Timeout** *(recommended)*: applies a 28-day Discord write mute.
-  * **Permanent ban**: bans the account from the server for good and deletes its messages from the last 24 hours.
-  * **Softban**: bans the member then immediately unbans them, which has the effect of purging all their recent messages on the server.
+  * **Timeout** *(default)*: a 28-day writing timeout.
+  * **Permanent ban**: bans the account and deletes its messages from the last 24 hours.
+  * **Softban**: bans then unbans right away, which purges their recent messages.
   * **Kick**: removes the member from the server.
-  * **Warn**: records a warning in the member's disciplinary file.
-* **Automatic re-invite (optional - kick only)**: if enabled, Kotbo sends the kicked user a DM containing a unique invite link valid for 24 hours.
-* Click **Save** in the green bottom bar after every change.
+  * **Warning**: records a warning in their file.
+* **Automatic re-invite** (with a kick): sends the kicked member a temporary invite by DM.
+
+Save with the bar at the bottom of the screen.
 
 :::caution[Security warning]
-The Honeypot is a strict security measure. Make sure the trap channel's name or description is explicit, so legitimate members are not sanctioned out of curiosity or carelessness.
+The trap channel is visible to every member, newcomers included, to work as a trap. Give it an explicit name and description (e.g. `#do-not-write-here`) so that a legitimate member does not get sanctioned out of curiosity.
 :::

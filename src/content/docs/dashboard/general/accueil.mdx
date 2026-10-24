@@ -16,21 +16,21 @@ C'est un module **cœur**, il ne peut pas être désactivé.
 
 | Widget | Ce qu'il affiche |
 | --- | --- |
-| **Stats en Direct** | Membres, vocaux, connectés et croissance en temps réel. |
-| **Graphique d'Activité** | Évolution des messages, vocaux et sanctions sur 7 jours. |
-| **État du Système** | Santé de l'instance et nombre de modules actifs. |
-| **Salons Actifs** | Classement des salons par volume de messages. |
+| **En direct** | Membres, vocaux, connectés et croissance en temps réel. |
+| **Activité** | Évolution des messages, vocaux et sanctions sur 7 jours. |
+| **Modules actifs** | Santé de l'instance et nombre de modules actifs. |
+| **Salons actifs** | Classement des salons par volume de messages. |
 | **Modération** | Nombre de sanctions émises. |
-| **Membres Actifs** | Classement des membres les plus bavards. |
-| **Boîte de Réception** | Notifications internes et alertes système. |
+| **Membres actifs** | Classement des membres les plus bavards. |
+| **Notifications** | Notifications internes et alertes système. |
 | **Gestion Staff** | Prochaines absences et prochaines réunions. |
-| **Activité Récente** | Historique en direct des actions de modération et d'administration. |
-| **Raccourcis Actions** | Création rapide d'une absence, d'une réunion, d'un membre staff… |
-| **Notes de l'Équipe** | Un bloc-notes partagé, enregistré localement. |
+| **Activité récente** | Historique en direct des actions de modération et d'administration. |
+| **Raccourcis** | Création rapide d'une absence, d'une réunion, d'un membre staff… |
+| **Notes** | Un bloc-notes partagé, enregistré localement. |
 | **Infos Serveur** | Membres, boosts, propriétaire. |
-| **Hébergement Bot** | CPU, RAM, latence API et durée d'activité. |
-| **Dernières Nouvelles** | Journal des mises à jour Kotbo. |
-| **Guide de Démarrage** | Checklist des actions recommandées. |
+| **Ressources de Kotbo** | CPU, RAM, latence API et durée d'activité. |
+| **Nouveautés** | Journal des mises à jour Kotbo. |
+| **Bien démarrer** | Checklist des actions recommandées. |
 | **Horloge** | Date et heure locale. |
 | **Langue du bot** | Langue des réponses du bot sur ce serveur. |
 | **Fuseau horaire** | Fuseau utilisé pour les réunions, appels et rappels. |
@@ -40,7 +40,7 @@ Un widget dont le module est désactivé le signale explicitement plutôt que d'
 
 ### Langue du bot
 
-Le widget **Langue du bot** décide de la langue des réponses de Kotbo sur ce serveur. Par défaut, il est en **détection automatique** et suit la langue du serveur Discord ; un **choix explicite** - Français ou Anglais - est prioritaire, et le bouton **Repasser en auto** revient à la détection.
+Le widget **Langue du bot** décide de la langue des réponses de Kotbo sur ce serveur. Par défaut, il est en **détection automatique** et suit la langue du serveur Discord ; un **choix explicite** - Français ou Anglais - est prioritaire, et le bouton **Revenir en automatique** revient à la détection.
 
 Changer de langue republie les panneaux déjà publiés dans la nouvelle langue, et Kotbo indique combien l'ont été.
 
@@ -63,7 +63,7 @@ Le bot tourne en UTC. Tant que le fuseau n'est pas réglé, toute date affichée
   <div class="step-item"><div><h3>Masquez ce qui ne sert pas</h3><p>L'action <strong>Masquer le module</strong> le retire de la grille sans perdre sa configuration.</p></div></div>
 </div>
 
-Kotbo confirme l'enregistrement par un message *Mise en page enregistrée !*. Le bouton de réinitialisation remet la disposition par défaut.
+Kotbo confirme l'enregistrement par un message *Disposition enregistrée.*. Le bouton de réinitialisation remet la disposition par défaut.
 
 ---
 
@@ -83,6 +83,6 @@ Les besoins d'un modérateur et d'un administrateur ne sont pas les mêmes. Pré
 
 ## Les états particuliers
 
-* **L'API est en cours de redémarrage** : la reconnexion est automatique, il suffit d'attendre.
-* **Maintenance requise** : un bouton **Réparer** est proposé pour corriger la configuration signalée.
+* **Kotbo redémarre, ça prend quelques secondes** : la reconnexion est automatique, il suffit d'attendre.
+* **Un réglage est cassé** : un bouton **Réparer** est proposé pour corriger la configuration signalée.
 * L'état de santé du système est résumé par **Optimal**, **Bon**, **Dégradé** ou **Critique**.

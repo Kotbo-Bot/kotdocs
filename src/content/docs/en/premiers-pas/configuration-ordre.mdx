@@ -24,7 +24,7 @@ Following the steps below gives you a server that is **secure, auditable and rea
 ## Step 1: Lock down access and permissions
 Before anything else, limit who can interact with the bot and who can administer its settings.
 
-* **Where to go:** **Configuration → Commands**
+* **Where to go:** **Settings → Commands**
 * **Action:** Check the execution rights of your slash commands. Make sure moderation commands (`/clear`, `/sanction`, `/casier`, and so on) and configuration commands are only available to the right roles (for example `@Administrator` or `@Moderator`).
 * **Why:** It stops malicious members from exploiting a command left loosely restricted by default while you set up the rest.
 
@@ -33,7 +33,7 @@ Before anything else, limit who can interact with the bot and who can administer
 ## Step 2: Turn on the activity log (Logs)
 It is essential to see what the bot does and to keep a trail in case of a malfunction or suspicious behaviour.
 
-* **Where to go:** **Moderation → Discord logs**
+* **Where to go:** **Moderation → Logs**
 * **Action:** Create or select a private channel reserved for your moderation team (for example `#mod-logs`), then enable the log filters you want (sanctions, deleted messages, role changes, and so on).
 * **Why:** Every configuration that follows (automatic sanctions, tickets created, alt-account detections) will generate logs. If your log channels are not set up first, you will miss crucial information.
 
@@ -43,10 +43,10 @@ It is essential to see what the bot does and to keep a trail in case of a malfun
 Put in place the protections that will watch over your server around the clock.
 
 1. **AutoMod (auto moderation):**
-   * **Where to go:** **Security → Filters**
+   * **Where to go:** **Protection → Filters**
    * **Action:** Enable the anti-spam, blocked links and profanity filters, plus **Anti-Bot**.
 2. **Alt accounts:**
-   * **Where to go:** **Security → Alt accounts**
+   * **Where to go:** **Protection → Suspicious accounts**
    * **Action:** Enable automatic detection and configure the Captcha verification flow for accounts that are too new.
 
 * **Why:** Your server is now actively monitored. If a spammer or a malicious bot tries to join while you finish your setup, it will be blocked immediately.
@@ -57,13 +57,13 @@ Put in place the protections that will watch over your server around the clock.
 Configure the arrival experience for future members.
 
 1. **Welcome messages:**
-   * **Where to go:** **Community → Announcements & Auto-Role**
+   * **Where to go:** **Communication → Welcome & goodbye**
    * **Action:** Enable the **Welcome** tab, pick a channel such as `#welcome` and write your custom message.
 2. **Rules acceptance:**
-   * **Where to go:** **Community → Rules** (if installed)
+   * **Where to go:** **Communication → Rules** (if installed)
    * **Action:** Write your rules and set the validation role to grant when the user accepts them.
 3. **Reaction roles:**
-   * **Where to go:** **Community → Reaction Roles**
+   * **Where to go:** **Community → Reaction roles**
    * **Action:** Create self-assigned role menus (for example to pick games or platforms) to take pressure off your channels.
 
 ---
@@ -72,10 +72,10 @@ Configure the arrival experience for future members.
 Organise your staff's workflow and the way you handle member requests.
 
 1. **Support tickets:**
-   * **Where to go:** **Staff → Tickets & Satisfaction**
+   * **Where to go:** **Team → Tickets**
    * **Action:** Configure the support category, the staff role that handles tickets, and post the opening panel in `#support`.
 2. **Recruitment:**
-   * **Where to go:** **Staff → Recruitment** (or via the Form Builder)
+   * **Where to go:** **Team → Recruitment** (or via the Form Builder)
    * **Action:** If you recruit moderators or event hosts, prepare the application forms.
 
 ---
@@ -96,7 +96,7 @@ Now that the server is secure, structured and working, you can add the optional 
 ## Step 7: Check the staff's access rights
 Once the modules are in place, decide who sees what.
 
-* **Where to go:** **Configuration → Management center**, **Role access** tab
+* **Where to go:** **Settings → Server settings**, **Role access** tab
 * **What to do:** fill in your cross-cutting channels and roles under *Channels & Roles* first, then grant the **View**, **Moderate**, **Configure** and **Delete** rights per staff role.
 * **Why:** a feature with no rule at all stays visible to the whole staff. The first rule you set restricts it to the roles that have it: that switch is what you need to know before opening the dashboard to your team.
 

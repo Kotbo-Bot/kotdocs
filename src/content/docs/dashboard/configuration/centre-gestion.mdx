@@ -1,12 +1,12 @@
 ---
-title: Centre de gestion
+title: Réglages du serveur
 description: Réglez les salons et rôles transverses du serveur, et décidez quel rôle staff accède à quelle section du dashboard.
 ---
 
 <p class="doc-lead">Le <strong>Centre de gestion</strong> regroupe les réglages transverses du serveur : les salons et rôles que plusieurs modules utilisent en commun, et les droits d'accès de chaque rôle staff au dashboard.</p>
 
 :::note[Où la trouver]
-Section **Configuration → Centre de gestion** : [Ouvrir le centre de gestion ↗](https://dash.kotbo.fr/management).
+Section **Réglages → Réglages du serveur** : [Ouvrir le centre de gestion ↗](https://dash.kotbo.fr/management).
 La page est **réservée aux administrateurs** : elle distribue les droits des autres pages, et l'API applique la même règle.
 :::
 
@@ -16,7 +16,7 @@ Trois sections, adressables par URL : **Aperçu**, **Salons & Rôles** et **Acc�
 
 ## Aperçu
 
-Trois indicateurs résument la configuration : **Modules Actifs**, **Modules restreints** et **Santé Config**.
+Trois indicateurs résument la configuration : **Modules actifs**, **Modules restreints** et **Santé config**.
 
 Quand un salon transverse manque, un encart **Configuration incomplète** le nomme et renvoie vers l'onglet *Salons & Rôles*.
 
@@ -32,27 +32,27 @@ Ces salons servent de valeur par défaut aux modules qui n'en déclarent pas un 
 
 | Réglage | Rôle |
 | --- | --- |
-| **Salon de Logs** | Salon principal pour les logs du bot. |
-| **Salon Règlement** | Publication du règlement. |
-| **Annonces Réunions** | Annonces des réunions staff. |
-| **Vocal Réunions** | Salon vocal par défaut des réunions. |
-| **Salon Digest** | Publication du digest de news. |
+| **Salon des journaux** | Salon principal pour les logs du bot. |
+| **Salon règlement** | Publication du règlement. |
+| **Annonces réunions** | Annonces des réunions staff. |
+| **Vocal réunions** | Salon vocal par défaut des réunions. |
+| **Salon digest** | Publication du digest de news. |
 | **Salon Public** | Salon public général. |
-| **Salon Config** | Salon de configuration interne. |
-| **Salon Actualités** | Publication des patch notes et des news du staff. |
+| **Salon config** | Salon de configuration interne. |
+| **Salon actualités** | Publication des patch notes et des news du staff. |
 | **Salon Daily Algo** | Publication des exercices quotidiens. |
 
 ### Rôles Discord
 
 * **Rôle Modérateur** : le rôle de base pour la modération.
-* **Rôle Staff Base** : le rôle de base de l'équipe.
-* **Rôle Staff Test** : le rôle des membres en période d'essai.
+* **Rôle staff base** : le rôle de base de l'équipe.
+* **Rôle staff test** : le rôle des membres en période d'essai.
 
 Ces rôles sont ceux sur lesquels s'appuient l'[Annuaire staff](/dashboard/staff/annuaire/) et le [Tutorat](/dashboard/staff/tutorat/).
 
 ### Intégrations
 
-* **GitHub Releases** : notifications de nouvelles versions.
+* **GitHub releases** : notifications de nouvelles versions.
 * **Casier inter-serveurs** : partager et consulter les sanctions des autres serveurs de l'instance.
 
 :::caution[Statistiques d'activité]
@@ -63,11 +63,11 @@ Les autres modules (modération, tickets, niveaux…) continuent de fonctionner 
 
 ### Par fonctionnalité
 
-Chaque module peut avoir son **Salon Principal**, son **Rôle Notification** et ses méthodes d'alerte :
+Chaque module peut avoir son **Salon principal**, son **Rôle notification** et ses méthodes d'alerte :
 
 * **Salon Discord** : envoi dans le salon configuré.
 * **Messages Privés** : envoi en MP Discord.
-* **URL du Webhook Discord** : relaie une copie de l'alerte vers un webhook externe.
+* **Lien du webhook Discord** : relaie une copie de l'alerte vers un webhook externe.
 
 Un champ de recherche filtre la liste.
 
@@ -75,7 +75,7 @@ Un champ de recherche filtre la liste.
 
 ## Accès par rôle
 
-La **Matrice des Accès** définit, rôle staff par rôle staff, ce qui est ouvert dans le dashboard. Elle se lit **Par module** ou **Par rôle**.
+La **Matrice des accès** définit, rôle staff par rôle staff, ce qui est ouvert dans le dashboard. Elle se lit **Par module** ou **Par rôle**.
 
 Seuls les **rôles staff déclarés** y figurent : rattachez d'abord un rôle Discord à un grade dans [Hiérarchie & rôles](/dashboard/staff/hierarchie/), sinon la matrice reste vide.
 
@@ -104,7 +104,7 @@ Les administrateurs Discord ne sont jamais filtrés par cette matrice.
 
 ### Presets
 
-Trois configurations types réécrivent tous les accès d'un coup : **Communauté générale**, **Gaming / Esport** et **Dev / Tech**. Elles demandent une confirmation, car *les règles d'accès actuelles seront écrasées, et les modifications en cours perdues*, et s'appliquent immédiatement plutôt que d'attendre la barre d'enregistrement.
+Trois configurations types réécrivent tous les accès d'un coup : **Communauté générale**, **Gaming / Esport** et **Dev / tech**. Elles demandent une confirmation, car *les règles d'accès actuelles seront écrasées, et les modifications en cours perdues*, et s'appliquent immédiatement plutôt que d'attendre la barre d'enregistrement.
 
 ---
 

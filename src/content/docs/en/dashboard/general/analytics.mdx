@@ -1,71 +1,102 @@
 ---
-title: Analytics
-description: Analyse your community's growth, engagement and activity, and export the charts.
+title: Statistics
+description: "Measure the server's activity, content, members, growth and moderation, compare periods, get alerts and reports."
 ---
 
-<p class="doc-lead">The <strong>Analytics</strong> page measures what actually happens on your server: messages, voice, joins, retention, moderation and invites, over the period you choose.</p>
+<p class="doc-lead">The <strong>Statistics</strong> page measures what really happens on your server: messages, voice, posted content, members, joins and leaves, moderation, staff, community site. Every chart compares with the previous period, and alerts or reports keep you posted without opening the dashboard.</p>
 
 :::note[Where to find it]
-The **General → Analytics** section: [Open Analytics ↗](https://dash.kotbo.fr/analytics).
-Collection is switched off by disabling the **Analytics** module from **Configuration → Modules**. Without it, nothing is recorded any more.
+The **General → Statistics** section: [Open statistics ↗](https://dash.kotbo.fr/analytics).
+Collection stops when you turn off the **Analytics** module under **Settings → Modules**. Without it, nothing is recorded anymore.
 :::
 
 ---
 
-## Choosing the period
+## Finding your way
 
-The offered periods are **24 hours**, **7 days**, **30 days**, **90 days**, **365 days**, or a **custom** range. The **Live Feed** shows the time of the last update.
+On the left, a bar lists the **sections**; each has its sub-tabs at the top of the page. The bar **collapses** into icons (it does so on its own on a narrow screen) and expands with a click. Sections marked **New** are recent. At the bottom of the bar, **On their own page** leads to [Server health](/en/dashboard/general/pulse/) and [Invites](/en/dashboard/moderation/invitations/).
 
-:::note[Which time zone the hours are read in]
-The charts state *Hours shown in …*. That zone is **yours**, not the server's: you pick it in your user settings, either automatic (your browser's) or explicitly. It only changes how charts and heatmaps are displayed, never the data collected.
+Each sub-tab has its own address: a shared link opens exactly the same view.
+
+### The filter bar
+
+* **Period**: **24 hours**, **7 days**, **30 days**, **90 days**, **365 days** or **Custom** (**From** / **To** dates, then **Apply**).
+* **Compare with previous period**: overlays the previous period as a dotted line and shows the changes.
+* A **channel or category** (*Whole server* by default) and a **role** (*All roles*).
+* **Without staff** takes the team out of the figures; **Count bots** only changes the member count, since bots never post in activity stats.
+* **Clear filters** goes back to the original view.
+
+Some sub-tabs only follow the period, or have their own time window (live, for instance): a banner says so.
+
+:::note[Which time zone hours are read in]
+Hours are shown in **your** time zone, not the server's: you pick it in [your preferences](/en/dashboard/general/profil/), automatically (the browser's) or explicitly. It only changes the display, never the collected data.
 :::
 
----
+### Saved views
 
-## The six categories
-
-| Category | What you find there |
-| --- | --- |
-| **Overview** | A general view of the period. |
-| **Engagement** | Messages, voice, members, network, commands. |
-| **Community** | Pulse, channels, social, word frequency. |
-| **Growth** | Retention, cohorts, churn, hourly heatmap, week comparison. |
-| **Moderation** | Moderation activity and staff performance. |
-| **Invites** | Analysis of the invite codes. |
+The **Views** menu saves the current tab, period and filters under a name, to come back in one click. **Share with the team** makes the view visible to everyone with access to statistics.
 
 ---
 
-## Engagement
+## Reading a chart
 
-* **Overall message activity** and **Overall voice activity**: the period's curve, with the **Total**, the **Peak**, the **Average / point** and the **Trend** against the start of the period. A **Raw / Average** toggle smooths the curve.
-* **Top chatters** and **Top voice users**, with the full ranking, a search by name and pagination. Like the channel tops, they only count the **period selected** at the top of the page, not the member's lifetime total.
-* **Popular text channels** and **popular voice channels**, by message volume and by time spent.
-* **Commands executed**: overall use of the bot's commands and a breakdown per command.
-* **Network**: the graph of interactions between members.
+The main activity chart is driven by its figure cards: clicking a metric (messages, voice, active members…) shows it in the chart, with its **Total**, **Average**, **Peak** and **Minimum**.
 
-### Members
+* **Time step**: **Auto**, **Hour**, **Day**, **Week** or **Month**. Hourly steps only exist for the whole server, over 14 days at most.
+* **Display**: **Line**, **Bars**, **Stacked by channel**, **Stacked by category** or **Table**.
+* **Smoothing**: **Moving average**, **Previous period** and **Forecast** (which needs 28 days of history, at daily step, over a period ending today).
+* Unusual days are flagged on the chart.
 
-* **Population flow**: joins and leaves, daily or cumulative, with per-day averages and the **net** balance.
-* **Active members**: peak concurrent activity, all-time peak, average and minimum.
-* **Members displaying the server tag**: how the number of members showing the official tag evolves.
-* A button lets you **sync existing members** to fill in the history.
+**Add a note** puts a dated marker on the charts ("tournament", "ad on another server"…). Clicking a point on the chart picks its date. Notes are visible to everyone on the team with access to statistics, with their author.
 
----
+Rankings (members, channels…) switch between **Table** and **Bars**, with the change from the previous period. **See all** opens the full ranking, with search and export.
 
-## Growth
-
-* **Returning members**: members active this week after 30 days or more away.
-* **Retention by source**: the share of members still present 90 days later, per invite.
-* **Join cohorts**: for each join week, the percentage still present at D+1, D+7 and D+30.
-* **DAU / WAU / MAU** and **stickiness** (DAU/MAU).
-* **Week vs week**: comparison of two periods on messages, voice time, joins, leaves and sanctions, with the absolute change and an estimated retention.
-* **Hourly heatmap**: messages by day and by hour.
+Clicking a member, a channel, a category or an invite opens its **card** in a window, with its charts, key figures and the same comparison with the previous period.
 
 ---
 
-## Invites
+## The sections
 
-**Total codes**, **active codes**, **total uses** and **average per code**, with the list of **popular codes** and **inactive codes**. A shortcut opens the [Invites](/en/dashboard/moderation/invitations/) page to act on them.
+| Section | Sub-tabs | What you find there |
+| --- | --- | --- |
+| **Overview** | Overview | The essentials of the period, compared with the previous period, plus a live summary. |
+| **Activity** | Messages, Voice, Live, Compare, Activity hours, Server health, Week over week, Commands, Daily Algo | Messages and voice, busiest channels, peak hours, commands used. |
+| **Content** | Overview, Emojis, Stickers, GIFs, Sites, Formatting, Words | What members post: message types, emojis (Unicode, from the server or elsewhere, and their origin server), stickers, GIFs and where they come from, linked sites, formatting, rising words. |
+| **Channels and categories** | Categories and channels, Response time, Channel health | Each category with its channels, text and voice together; how long it takes to get an answer; each channel's health. |
+| **Members** | Members, Engagement, Lifecycle, Concentration, Network, Social, Silent members | Who keeps the server alive: daily, weekly and monthly active members and their stickiness, lifecycle segments, how much of the activity a few members carry, the network of exchanges, members who went quiet. |
+| **Growth** | Joins and leaves, Onboarding funnel, Cohorts, Departures | Joins and leaves, where joins come from, steps between joining and the first message, cohort retention, departures by seniority and churn risk. |
+| **Moderation** | Moderation, Moderation trends | Sanctions, ongoing sanctions, recurring reasons, most sanctioned members, active moderators. |
+| **Tone** | Tone | Toxicity and emotions in conversations, measured by [AegisAI](/en/dashboard/moderation/aegis/). |
+| **Staff** | Staff directory, Staff performance, Tickets and responsiveness | The team, each member's performance, and ticket workload and responsiveness. |
+| **Website** | Site traffic | Traffic to the [community site](/en/dashboard/communaute/site/), measured without cookies. |
+| **Alerts and reports** | Alerts, Scheduled reports | See below. |
+
+### Live
+
+**Live** follows the server in real time, over the last 30 minutes: **Messages** and pace **Per minute (5 min)**, **Members writing**, **In voice**, **Online**, **Joins**, plus **Busy channels** and **Occupied voice channels**.
+
+### Compare
+
+**Compare segments** puts two or three **roles** or **channels** side by side over the chosen period, or the chosen period against another one (**Two periods**). Metrics: **Messages**, **Active members** or **Voice time**, day by day and as **Key figures**.
+
+---
+
+## Alerts and reports
+
+### Threshold alerts
+
+**New alert** tells you when a metric moves, for example "if messages drop 30% over a day":
+
+* a **Name**, the **Metric**, the **Window**, the **Condition** and the **Threshold**; the **In plain words** sentence sums up the rule;
+* a **Watched channel** (optional: whole server otherwise);
+* the **Cooldown after trigger (hours)**, so you don't get the same alert over and over;
+* recipients: a **Delivery channel** and/or **Staff members** **By direct message** (10 at most; a member with closed DMs receives nothing).
+
+Alerts are checked every 5 minutes. **Recent triggers** compares the measured value with the usual value. A drop in the [Server health](/en/dashboard/general/pulse/) score can be watched with an alert too.
+
+### Scheduled reports
+
+**New report** sends a **Weekly** or **Monthly** summary - the past week or month, compared with the previous period - on the chosen **Day** and time, in the server's time zone. Pick its **Sections** and recipients, as for an alert. **Send a test** delivers it right away.
 
 ---
 
@@ -73,18 +104,22 @@ The charts state *Hours shown in …*. That zone is **yours**, not the server's:
 
 The **Export** button offers three formats:
 
-* **CSV export**
-* **XLSX export**
-* **Image export**, which generates an image of every chart visible on screen
+* **Export CSV**
+* **Export XLSX**
+* **Export image**: generates an image of every chart visible on screen
 
-:::caution[You need data]
+:::caution[Data is needed]
 An export over an empty period is refused with the message *No chart data to export*.
 :::
 
 ---
 
-## Switching collection off
+## Stopping collection
 
-Turning the **Analytics** module off from the [module catalogue](/en/dashboard/configuration/modules/) stops all recording: messages, voice minutes, reactions, threads, joins and leaves, per-member statistics, word frequency and usage rankings.
+Turning off the **Analytics** module from the [module catalogue](/en/dashboard/configuration/modules/) stops all recording: messages, voice minutes, reactions, threads, joins and leaves, per-member statistics, message content, exchanges between members, word frequency and usage rankings.
 
-The other modules (moderation, tickets, levels and so on) keep working normally. Only the bot's technical measurements (execution times and errors, with no identity at all) are kept.
+Other modules (moderation, tickets, levels…) keep working normally. Only the bot's technical measurements (run times and errors, with no identity) are kept.
+
+:::note[What is never kept]
+Content statistics only keep counts: message types, emojis, domains of linked sites - never the text of messages nor a link's full address. Exchanges between members are counted per pair and per day, without their content.
+:::

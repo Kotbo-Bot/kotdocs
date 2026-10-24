@@ -1,99 +1,132 @@
 ---
-title: Tickets de support
-description: Configurez et gérez le système de support par tickets pour communiquer en privé avec vos membres depuis le dashboard.
+title: Tickets
+description: "Le centre de support du serveur : files de tickets, priorités et attribution, objectifs de délai, statistiques de support, réponses types et configuration."
 ---
 
-<p class="doc-lead">Le module <strong>Tickets</strong> permet à vos membres d’ouvrir un espace d'échange privé (salon textuel, fil ou message privé relayé) pour contacter directement votre équipe de staff.</p>
+<p class="doc-lead">Le module <strong>Tickets</strong> permet à vos membres d'ouvrir un espace d'échange privé (salon, fil ou message privé relayé) avec votre équipe. Depuis le dashboard, le staff les traite comme dans un outil de support : files, priorités, attribution, objectifs de délai et statistiques.</p>
 
 :::tip[Côté Discord]
-Pour voir comment se présente le panel, comment les membres ouvrent un ticket et comment le staff y répond sur Discord, consultez le [Guide d'utilisation Discord des Tickets](/discord/communaute/tickets).
+Pour voir comment se présente le panneau, comment les membres ouvrent un ticket et comment le staff y répond sur Discord, consultez le [guide Discord des tickets](/discord/communaute/tickets).
 :::
 
-:::note[Disponibilité]
-La gestion et la configuration du système se font depuis la section **Staff → Tickets & Satisfaction** de votre dashboard : [Accéder au module Tickets ↗](https://dash.kotbo.fr/tickets).
-L'accès aux onglets d'administration et de configuration est restreint aux administrateurs ou aux membres possédant les rôles d'accès configurés.
+:::note[Où la trouver]
+Section **Équipe → Tickets** : [Ouvrir les tickets ↗](https://dash.kotbo.fr/tickets).
+Les onglets de gestion et de configuration sont réservés aux administrateurs et aux rôles d'accès configurés.
 :::
+
+La page compte sept onglets : **Tickets**, **Performance**, **Transcriptions**, **Satisfaction**, **Réponses types**, **Liste noire** et **Configuration**.
 
 ---
 
-## Fonctionnement général du dashboard
+## Traiter les tickets (onglet Tickets)
 
-La page est divisée en six onglets principaux :
-1. **Tickets** : L'interface opérationnelle pour lire, répondre et gérer les tickets actifs.
-2. **Transcriptions** : L'historique des tickets archivés et fermés.
-3. **Satisfaction** : Le suivi des notes et commentaires laissés par vos membres après la fermeture de leur ticket.
-4. **Macros** : Les réponses toutes prêtes du staff, avec leurs actions attachées.
-5. **Blacklist** : La liste des membres privés d'ouverture de ticket.
-6. **Configuration** : Les réglages techniques du module.
+### Les files
 
----
+À gauche, les tickets sont rangés en **files**, chacune avec son compteur :
 
-## Gérer les tickets en temps réel (Onglet Tickets)
+| File | Contenu |
+| --- | --- |
+| **À traiter** | Les tickets où le membre attend une réponse du staff. |
+| **En cours** | Tous les tickets ouverts. |
+| **Non attribués** | Les tickets ouverts sans personne attitrée. |
+| **Mes tickets** | Ceux qui vous sont attribués. |
+| **Hors délai** | Ceux qui ont dépassé un [objectif de service](#objectifs-de-service). |
+| **À valider** | Les demandes en attente de validation, quand la validation préalable est activée. |
+| **Fermés** et **Tous** | L'historique. |
 
-Cet onglet est un véritable centre de support client intégré.
+Le champ **Rechercher un ticket** accepte un membre, une raison, une `#étiquette` ou un identifiant. Le tri bascule entre **Plus anciens d'abord** et **Plus récents d'abord**, et les touches `j` / `k` passent d'un ticket à l'autre.
 
-### 1. Filtrer et sélectionner un ticket
-La liste de gauche regroupe tous les tickets. Vous pouvez les filtrer par statut : **Tous**, **Ouvert**, **Pris en charge** (Claimed) ou **Fermé**. Cliquez sur un ticket pour charger sa discussion au centre.
+Dans la liste, chaque ticket signale s'il est **En attente d'une réponse du staff** ou **En attente du membre**, sa priorité quand elle est **Haute** ou **Urgente**, et à qui il est attribué.
 
-### 2. Discuter depuis le dashboard
-La zone centrale affiche les messages échangés. Vous pouvez **saisir un message** au bas de l'écran : il sera immédiatement envoyé dans le salon Discord correspondant, au nom du compte staff connecté.
+### La conversation
 
-### 3. Actions rapides du staff
-Des boutons d'action sont à votre disposition en haut à droite de la discussion :
-* **Prendre en charge** : Assigne le ticket à votre nom. Le bot met à jour le salon Discord pour notifier que vous vous ouvrez du membre.
-* **Fermer** : Ferme le ticket. Une fenêtre surgissante vous demande obligatoirement de saisir un **motif de fermeture**.
-* **Renommer** : Modifie le nom du salon Discord associé (ex: de `#ticket-001` à `#bug-resolu`).
-* **Réouvrir** : Pour un ticket fermé qui nécessite de nouveaux échanges.
-* **Sur-revendiquer** : Reprendre un ticket déjà pris en charge par quelqu'un d'autre, quand la configuration l'autorise.
-* **Archiver** / **Désarchiver** : Un ticket archivé **garde son salon**, qui passe en lecture seule au lieu d'être supprimé. Il porte alors le statut **Archivé**.
-* **Verrouiller** / **Déverrouiller** : Protège le ticket contre la suppression.
+Au centre s'affichent les messages du ticket. Le champ **Écrire un message…** répond directement : le message part dans le salon Discord du ticket, au nom du compte staff connecté.
+
+Quand [AegisAI](/dashboard/moderation/aegis/) analyse l'humeur des tickets, l'humeur du demandeur s'affiche sur chaque ticket.
+
+### Les propriétés
+
+À droite, le bloc des propriétés règle :
+
+* la **Priorité** : **Basse**, **Normale**, **Haute** ou **Urgente** ;
+* **Attribué à** : un membre du staff (la liste indique combien de tickets chacun a déjà en cours), ou **Personne** ;
+* les **Étiquettes**, pour classer les tickets et les retrouver dans la recherche ;
+* les **Objectifs** : le temps restant avant l'échéance de **1re réponse** et de **Résolution**, ou leur dépassement.
+
+En dessous, la fiche du membre résume son ancienneté, ses rôles, son **Casier** (avertissements, sourdines, exclusions, bans), ses tickets passés et leur note moyenne, et une **Note du staff**. **Dossier détaillé** ouvre son dossier sans quitter la page, où une sanction peut être appliquée ; **Fiche complète** ouvre sa [fiche membre](/dashboard/moderation/membres/).
+
+### Les actions
+
+| Action | Effet |
+| --- | --- |
+| **S'assigner** | Vous attribue le ticket. Le bot l'annonce dans le salon. |
+| **Sur-revendiquer** | Reprend un ticket déjà attribué à quelqu'un d'autre, si la configuration l'autorise. |
+| **Fermer** | Ferme le ticket. Une **Raison de la fermeture** peut être ajoutée, elle est facultative. |
+| **Réouvrir** | Rouvre un ticket fermé. |
+| **Archiver** / **Désarchiver** | Un ticket archivé **garde son salon**, qui passe en lecture seule. |
+| **Verrouiller** / **Déverrouiller** | Protège le ticket contre la suppression (voir ci-dessous). |
+| **Renommer** | Change le nom du salon Discord. |
+| **Restaurer** | Recrée le salon d'un ticket supprimé, avec tout l'historique des messages, noms et avatars d'origine. Trois restaurations au plus par ticket ; les pièces jointes d'origine ne sont pas restaurées. |
+| **Supprimer** | Supprime le salon sur Discord et génère une transcription. |
 
 ### Protéger un ticket contre la suppression
 
-Le bouton **Verrouiller** ouvre une fenêtre **Protéger contre la suppression** : *tant que la protection tient, ce ticket ne peut être supprimé ni depuis le dashboard ni depuis Discord.*
+**Verrouiller** ouvre **Protéger contre la suppression** : tant que la protection est active, le ticket ne peut être supprimé ni depuis le dashboard ni depuis Discord. Choisissez une **Durée de la protection** (*7 jours*, *30 jours*, *90 jours* ou *Sans échéance*) et un **Motif** facultatif.
 
-* **Durée de la protection** : *7 jours*, *30 jours*, *90 jours* ou *Sans échéance*.
-* **Motif** (facultatif), par exemple *litige en cours, pièce d'un dossier de modération*.
+Le ticket affiche alors **Protégé contre la suppression**, avec l'auteur et l'échéance du verrou.
 
-Un ticket protégé affiche un bandeau **Protégé contre la suppression**, avec l'auteur du verrou et son échéance. Toute tentative de suppression renvoie : *ce ticket est protégé, levez d'abord le verrou.*
-* **Restaurer** : Si le salon Discord a été supprimé accidentellement, recrée instantanément le salon avec tout l'historique des messages conservé.
-* **Supprimer** : Efface définitivement le ticket et ses données de la base.
+### Valider une demande
 
-### 4. Accès direct au Dossier Membre
-À côté du nom de l'utilisateur ayant ouvert le ticket, un bouton permet d'ouvrir son **Dossier Membre** dans une fenêtre modale. Sans quitter la page de tickets, vous pouvez consulter ses antécédents et appliquer une sanction immédiate :
-* Avertissement (**WARN**)
-* Exclusion temporaire (**TIMEOUT**)
-* Expulsion (**KICK**)
-* Bannissement (**BAN**)
+Avec la validation préalable, une demande n'ouvre aucun salon tant qu'elle n'est pas acceptée. Elle apparaît dans la file **À valider** :
+
+* **Valider la demande** crée le ticket ;
+* **Refuser** demande un **Motif communiqué au membre**, qui reçoit le refus en message privé.
+
+La même décision peut se prendre depuis la carte publiée dans le salon de validation sur Discord.
 
 ---
 
-## Historiques des tickets (Onglet Transcriptions)
+## Mesurer le support (onglet Performance)
 
-Lorsqu'un ticket est fermé :
-* Kotbo compile l'ensemble de la discussion sous forme de page HTML propre.
-* Le fichier est stocké de manière sécurisée.
-* Dans l'onglet **Transcriptions**, cliquez sur un ticket archivé pour générer un **lien d'accès temporaire signé**. Ce lien vous permet de lire le script complet dans votre navigateur ou de le partager avec votre équipe.
+L'onglet donne les délais du support en **médiane**, avec le 90e centile pour repérer les tickets oubliés, sur la **Période** choisie. **Comparer à la période d'avant** superpose la période précédente.
 
----
-
-## Suivi de la qualité (Onglet Satisfaction)
-
-À la fermeture d'un ticket, le bot envoie un message privé ou un message dans le salon au membre, lui demandant d'évaluer le support reçu (de 1 à 5 étoiles) et d'ajouter un commentaire facultatif.
-
-Dans l'onglet **Satisfaction**, vous visualisez :
-* Votre note moyenne globale.
-* La répartition des évaluations (Très insatisfait, Insatisfait, Neutre, Satisfait, Très satisfait).
-* La liste chronologique des commentaires détaillés laissés par les utilisateurs.
-
-### Republier les avis sur Discord
-
-* **Salon des avis** : chaque avis y est republié en embed - note, auteur, staff concerné et commentaire. Laissez vide pour désactiver.
-* **Masquer l'auteur de l'avis** : l'embed affiche *Membre anonyme* à la place du membre. Le dashboard, lui, continue d'afficher l'auteur.
+* Le bloc **En cours** compte les tickets sans personne attitrée et ceux qui attendent une réponse du staff.
+* **Par membre du staff** : tickets pris en charge, délais médians et satisfaction de chacun.
+* **Par type** et **Par étiquette** : où se concentrent les demandes.
+* **Notes reçues** : la répartition des notes de satisfaction.
 
 ---
 
-## Réponses toutes prêtes (Onglet Macros)
+## Transcriptions (onglet Transcriptions)
+
+L'onglet reprend l'ancienne page **Transcriptions**, dont l'adresse `/transcripts-list` mène désormais ici. Il liste les transcriptions de **tickets** et de **salons** :
+
+* un ticket est transcrit quand on le **supprime**, et de nouveau quand on l'**archive**, pour que l'archive reflète son dernier état ;
+* la commande `/transcript` et l'import de messages comme preuves dans un [rapport de sanction](/dashboard/moderation/sanctions/) produisent les transcriptions de salons.
+
+La colonne **Type** distingue les deux : **Ticket** ou `/transcript`. **Consulter** ouvre la transcription complète dans un nouvel onglet.
+
+La suppression est réservée à qui gère les réglages du serveur. Une confirmation la précède : la transcription disparaît du tableau de bord et son lien ne marchera plus.
+
+:::danger[Suppression définitive]
+Une transcription supprimée n'est pas récupérable. Si elle sert de preuve dans un rapport de sanction, le rapport perd sa pièce jointe.
+:::
+
+---
+
+## Suivi de la qualité (onglet Satisfaction)
+
+À la fermeture d'un ticket, le bot demande au membre de noter le support reçu, de 1 à 5 étoiles. L'onglet **Satisfaction** affiche :
+
+* la note moyenne et la répartition des notes ;
+* la **Satisfaction par staff** ;
+* les **Avis récents**, avec un filtre **Avec commentaire**.
+
+La question de commentaire et la republication des avis sur Discord se règlent dans la [configuration](#sondage-de-satisfaction).
+
+---
+
+## Réponses types (onglet Réponses types)
 
 Une **macro** met à un clic une réponse que le staff réécrit ticket après ticket, et lui attache ce qui suit d'habitude.
 
@@ -125,113 +158,111 @@ Dans le salon du ticket, le bouton **Macros** ouvre le sélecteur. Discord n'acc
 
 ---
 
-## Blacklist des tickets (Onglet Blacklist)
+## Liste noire (onglet Liste noire)
 
-L'onglet **Blacklist** empêche certains membres d'ouvrir un ticket, sans passer par une sanction Discord.
+L'onglet **Liste noire des tickets** empêche certains membres d'ouvrir un ticket, sans passer par une sanction Discord.
 
-* **Identifiant Discord** : l'ID du membre à bloquer. Un identifiant mal formé est refusé avec le message *Identifiant Discord invalide*.
+* **Identifiant Discord** : l'ID du membre à bloquer.
 * **Raison** : elle est **communiquée au membre** lorsqu'il tente d'ouvrir un ticket. Laissée vide, elle s'affiche comme *Aucune raison précisée*.
-* **Durée (jours)** ou **Définitif** : choisissez un blocage temporaire ou permanent.
-* **Autoriser la réouverture de ses anciens tickets** : la blacklist ferme la création de nouveaux tickets ; cochez pour lui laisser malgré tout demander la réouverture d'un dossier déjà traité. L'entrée porte alors la mention **Réouverture autorisée**.
-* Cliquez sur **Ajouter** pour valider.
+* **Durée (jours)** : vide, le blocage est **Définitif**.
+* **Autoriser la réouverture de ses anciens tickets** : le membre ne peut plus ouvrir de ticket, mais peut encore demander à rouvrir un ticket déjà traité. L'entrée porte alors la mention **Réouverture autorisée**.
 
-Chaque entrée de la liste indique qui l'a créée (*Ajouté par …*), ce qui permet de retracer la décision. Tant que la liste est vide, l'onglet affiche *Aucun membre blacklisté*.
+Chaque entrée indique qui l'a créée (*Ajouté par …*). **Retirer** lève le blocage.
 
 ---
 
-## Configurer le module (Onglet Configuration)
+## Configurer le module (onglet Configuration)
 
-Pour que vos membres puissent ouvrir des tickets, vous devez configurer les bases et envoyer le panel d'ouverture sur votre serveur.
+En haut de l'onglet, **Mise en route** crée ce qui manque - la catégorie des tickets, le salon du panneau et le salon des journaux - en gardant ce que vous avez déjà choisi. **Envoyer le message** publie le panneau d'ouverture dans son salon.
 
-### 1. Paramètres réseau et rôles (Accordéon Mode)
-* **Catégorie des tickets** : Sélectionnez la catégorie Discord sous laquelle les salons de tickets seront créés.
-* **Rôle Staff** : Le rôle Discord qui aura l'autorisation de voir et de répondre à tous les tickets créés (par exemple `@Support Staff`).
-* **Salon des logs** : Le salon où Kotbo enverra un récapitulatif à chaque ouverture, prise en charge et fermeture de ticket.
-* **Mode d'échange** :
-  * `CHANNEL` : Crée un salon textuel privé par ticket (Recommandé).
-  * `THREAD` : Crée un fil privé sous le salon du panel.
-  * `DM` : Ouvre une discussion en messages privés avec l'utilisateur et relaie ses messages dans un salon staff dédié.
+Les réglages sont regroupés en sections dépliables.
 
-### 2. Le visuel d'ouverture (Accordéon Embed)
-Configurez le message que les membres verront pour ouvrir un ticket :
-* Saisissez le **Titre**, la **Description**, la **Couleur** et le **Texte du bouton** du panel.
-* **Type de sélecteur** : Choisissez entre des **Boutons** individuels (limité à 5) ou un **Menu déroulant** (Dropdown) si vous proposez de nombreuses catégories de support.
+### Salons et rôles
 
-### 3. Les catégories de tickets (Types de tickets)
-Vous pouvez configurer plusieurs choix de support (ex: « Signaler un bug », « Question boutique », « Plaintes ») :
-* Pour chaque type, cliquez sur **Ajouter un type de ticket**.
-* Personnalisez son libellé, sa description, son émoji et son style de bouton (Vert, Bleu, Gris, Rouge).
-* **Personnalisation par catégorie** : Vous pouvez écraser la catégorie et le rôle Staff par défaut pour chaque type (ex: envoyer les tickets « Recrutement » dans une catégorie RH restreinte aux administrateurs).
-* **Anonymat** : Permet de masquer l'identité du membre au staff (le ticket affiche *Utilisateur anonyme*).
-* **Relais Serveur Staff** : Relaye les messages vers un autre serveur Discord si nécessaire.
-* **Formulaire d'ouverture personnalisé (Questions)** : 
-  Pour chaque type de ticket, vous pouvez configurer jusqu'à **5 questions personnalisées** que l'utilisateur devra obligatoirement ou facultativement remplir dans une fenêtre surgissante (Modal Discord) avant l'ouverture de son ticket :
-  * Cliquez sur **Ajouter une question** pour concevoir un nouveau champ.
-  * Saisissez le **Libellé de la question** (ex: *« Quel est votre identifiant en jeu ? »*).
-  * Indiquez une **Indication / Placeholder** pour guider le membre (ex: *« Entrez votre pseudo exact »*).
-  * Choisissez le **Type de réponse** : *Ligne courte* (pour un pseudo, un identifiant ou une valeur courte) ou *Paragraphe long* (pour une explication détaillée).
-  * Cochez la case **Champ obligatoire** pour forcer l'utilisateur à répondre.
-  * Si aucune question personnalisée n'est configurée, Kotbo affichera le formulaire standard avec deux questions par défaut : *« Sujet de la demande »* et *« Description détaillée »*.
+* **Catégorie des tickets par défaut**, **Salon du panneau d'ouverture**, **Salon des journaux et transcriptions** et **Rôle staff support par défaut**.
+* **Salon de relais des messages privés (mode MP)** : où arrivent les messages des tickets ouverts en message privé.
+* **Autoriser la sur-revendication** : un membre du staff peut reprendre un ticket déjà revendiqué ; **Qui peut sur-revendiquer ?** l'ouvre à *Tout le staff* ou au *Grade supérieur ou égal*.
+* **Prise en charge automatique** : dès qu'un membre du staff écrit dans un ticket ouvert, il en devient le référent.
 
-  **Les cinq types de réponse** se répartissent en deux familles :
+Un salon ou un rôle introuvable sur le serveur est signalé : le module ne fonctionne pas tant qu'il pointe dessus.
 
-  | Type | Où la question est posée |
-  | --- | --- |
-  | **Ligne courte** et **Paragraphe long** | Dans la fenêtre d'ouverture (modal Discord). |
-  | **Menu déroulant**, **Boutons radios** et **Fichier joint** | *Interactif* : la question n'est pas posée dans le formulaire d'ouverture, le bot la pose dans le ticket juste après sa création. |
+### Apparence du message
 
-  Les types à choix demandent la liste des **Choix / Options**, séparés par des virgules. Discord n'affiche que les **5 premiers** choix en boutons radios.
+Le panneau d'ouverture : **Titre**, **Description**, **Texte du bouton**, **Couleur**, images, auteur et pied de page. Le **Type d'interaction** affiche un bouton par type de ticket (**Boutons**) ou un **Menu déroulant** unique.
 
-  :::caution[Une question sans intitulé bloque l'enregistrement]
-  *La question N du type « … » n'a pas d'intitulé : Discord refuserait le formulaire.*
-  :::
+### Message d'accueil dans le ticket
 
+Le message envoyé à l'ouverture du ticket, avec ses variables (`{type_label}`, `{user}`, `{staff_mention}`, `{reason}`, `{description}`) et sa **Couleur du message**.
 
-### 4. Archivage (Accordéon Archivage)
+### Validation et verrouillage
 
-Un ticket archivé garde son salon : il passe en lecture seule au lieu d'être supprimé.
+* **Verrouiller jusqu'à la prise en charge** : le salon reste visible par l'auteur et le staff, mais personne n'y écrit tant qu'un membre du staff ne l'a pas pris en charge.
+* **Validation préalable du ticket** : la demande est transmise au staff, et le salon n'est créé qu'après acceptation. Le **Salon de validation** reçoit les cartes de décision (vide : le salon des journaux).
 
-* **Catégorie d'archives** : les salons archivés y sont déplacés. Laissée vide, le salon reste où il est et seules ses permissions changent.
-* **L'auteur garde l'accès en lecture** : activé, le membre continue de voir son ticket archivé sans pouvoir y écrire.
+Chaque type de ticket peut suivre ces réglages ou décider autrement.
 
-### 5. Historique côté membre (Accordéon Historique)
+### Archivage
 
-Un bouton sous le panneau d'ouverture donne au membre accès à ses tickets clos, à leur transcription, et aux gestes que vous autorisez ici.
+* **Catégorie d'archives** : les salons archivés y sont déplacés. Vide, le salon reste où il est et seules ses permissions changent.
+* **L'auteur garde l'accès en lecture** : le membre continue de voir son ticket archivé sans pouvoir y écrire.
 
-* **Bouton « Mes anciens tickets »** : ajoute le bouton sous l'embed d'ouverture. Le panneau qui s'ouvre est éphémère - chacun ne voit que ses propres tickets.
-* **Réouverture par le membre** : le membre peut demander la réouverture d'un ticket clos, dans la limite de **3 réouvertures** avec des délais croissants.
-* **Suppression par le membre** : le membre peut effacer définitivement l'un de ses anciens tickets et sa transcription. Les tickets verrouillés restent protégés.
+**Historique côté membre** ajoute sous le panneau un bouton **Mes anciens tickets** : chacun y voit ses tickets clos et leur transcription. **Réouverture par le membre** l'autorise à demander la réouverture d'un ticket clos (3 réouvertures au plus, avec des délais croissants) et **Suppression par le membre** à effacer l'un de ses anciens tickets ; les tickets verrouillés restent protégés.
 
-### 6. Prise en charge (Accordéon Mode)
+### Inactivité
 
-* **Prise en charge automatique** : dès qu'un membre du staff écrit dans un ticket ouvert, il en devient automatiquement le référent.
-* **Verrouiller jusqu'à la prise en charge** : le salon reste visible par l'auteur et le staff, mais personne n'y écrit tant qu'aucun membre du personnel ne l'a pris en charge. Le réglage s'active globalement, ou type de ticket par type de ticket.
-* **Autoriser la sur-revendication** : un membre du staff peut reprendre un ticket déjà revendiqué. Le sous-réglage **Qui peut sur-revendiquer ?** ouvre le geste à *Tout le staff* ou au seul *Grade supérieur ou égal*.
+* **Activer les rappels** : un message automatique quand le créateur ne répond plus, après un **Délai (heures)**, avec le texte de votre choix.
+* **Relancer le staff quand un membre attend** : si personne du staff n'a répondu au membre après le **Délai sans réponse (minutes)**, le bot mentionne la personne qui a pris le ticket, sinon le rôle staff. Une relance par attente, comptée dans les statistiques.
 
-### 7. Quotas (Accordéon Quotas)
+### Avertissement d'enregistrement
 
-Des limites d'ouverture côté membre, et un plafond de charge côté staff. Chaque interrupteur commande son seuil.
+**Afficher l'avertissement avant chaque ticket** prévient le membre, avant la création de son ticket, que l'échange sera enregistré, transcrit et archivé. Il le lit dans un message que lui seul voit, et le ticket est créé une fois le **Délai de lecture** écoulé (5 à 30 secondes ; 10 à 15 laissent le temps de lire). Le **Texte de l'avertissement** est modifiable, et un aperçu le montre avec son compte à rebours.
+
+### Objectifs de service
+
+Deux délais à tenir, suivis dans la liste des tickets et dans la file **Hors délai** :
+
+* **Première réponse (minutes)** ;
+* **Résolution (heures)** : entre l'ouverture et la fermeture.
+
+Vide, un délai n'a **Aucun objectif**.
+
+### Quotas
+
+Des limites d'ouverture côté membre, et un plafond de charge côté staff. Chaque quota s'active indépendamment, et un type de ticket peut ajuster le seuil.
 
 | Quota | Ce qu'il limite |
 | --- | --- |
 | **Tickets ouverts simultanément** | Le nombre de tickets qu'un membre peut avoir en cours en même temps. |
 | **Délai entre deux ouvertures** | Empêche d'enchaîner les tickets sans laisser le temps de répondre. |
 | **Quota sur une période** | Plafonne le nombre d'ouvertures sur une fenêtre glissante (*Tickets maximum* sur *N heures*). |
-| **Limiter les réouvertures** | Le nombre maximum de réouvertures d'un même ticket. |
 
-Le **plafond de charge par modérateur** compte les tickets pris en charge et encore ouverts. Trois modes : **Désactivé**, **Avertir** ou **Bloquer**. Des **rôles qui passent outre** peuvent en être exemptés.
+La **Charge maximale par modérateur** compte les tickets pris en charge et encore ouverts ; au-delà, le staff est averti ou refusé.
 
-### 8. Gestion de l'inactivité (Accordéon Relance)
-Activez les **relances d'inactivité** pour fermer ou avertir automatiquement les membres qui ne répondent plus :
-* Définissez le délai en heures (ex : 24 heures).
-* Saisissez le message de relance automatique (ex : *« Bonjour <code>{'{user}'}</code>, votre ticket est inactif... »*).
+### Sondage de satisfaction
 
----
+* **Demander un commentaire** : après avoir noté, le membre peut ajouter un commentaire libre. La **Question posée** est modifiable, et le bouton disparaît du message privé passé le **Délai** (30 à 900 secondes). La note reste enregistrée même sans commentaire.
+* **Salon des avis** : chaque avis y est republié - note, auteur, staff concerné et commentaire. Vide, rien n'est republié.
+* **Masquer l'auteur de l'avis** : l'avis republié affiche *Membre anonyme*. Le dashboard, lui, continue d'afficher l'auteur.
 
-## Mettre en service le panel
+### Types de tickets
 
-Une fois tous vos réglages effectués :
-1. Cliquez sur **Enregistrer** dans la barre inférieure verte pour sauvegarder la configuration.
-2. Dans le bloc de configuration, sélectionnez le **Salon du panel** (ex: `#support-tickets`).
-3. Cliquez sur le bouton **Envoyer le panel** en haut à droite de l'écran de configuration.
-4. Kotbo publie instantanément le message embed avec son bouton ou menu de sélection dans le salon choisi. Les membres peuvent désormais cliquer dessus pour ouvrir un ticket.
+Plusieurs choix de support (« Signaler un bug », « Question boutique »…). **Ajouter un type** puis réglez :
+
+* le **Libellé du bouton / option**, l'**Emoji**, la **Couleur bouton** et la **Description de l'option** (pour le menu déroulant) ;
+* le **Mode d'ouverture** : **Nouveau salon**, **Messages privés (MP)**, **Fil de discussion**, ou **Par défaut (global)** ;
+* la **Catégorie cible** et un **Rôle staff spécifique** (vides : ceux par défaut) ;
+* le **Verrouillage avant prise en charge** et la **Validation préalable**, propres au type ;
+* l'**Anonymat du staff** en mode MP, et la création du ticket sur le [serveur du staff](/dashboard/cross-serveur/serveurs-staff/) pour un ticket interne (RH, plainte…).
+
+**Activer le formulaire de questions pour ce type** pose jusqu'à **5 questions** avant l'ouverture. Sans question personnalisée, Kotbo pose *Sujet* et *Description*.
+
+| Type de réponse | Où la question est posée |
+| --- | --- |
+| **Ligne courte** et **Paragraphe long** | Dans la fenêtre d'ouverture (modal Discord). |
+| **Menu déroulant**, **Boutons radios** et **Fichier joint** | Dans le ticket, juste après sa création : le bot la pose lui-même. |
+
+Les types à choix demandent leurs **Choix / options**, séparés par des virgules ; Discord n'affiche que les 5 premiers en boutons. **Champ obligatoire** force la réponse.
+
+:::caution[Une question sans intitulé bloque l'enregistrement]
+Discord refuserait le formulaire : Kotbo refuse d'enregistrer un type dont une question n'a pas d'intitulé.
+:::

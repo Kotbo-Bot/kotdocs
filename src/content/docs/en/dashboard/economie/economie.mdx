@@ -1,16 +1,16 @@
 ---
-title: Economy & RPG
+title: Economy
 description: Manage the local currency, the text adventures, the item shop, the black market and the player profiles.
 ---
 
 <p class="doc-lead">The <strong>Economy & RPG</strong> module adds a local currency, an item shop, random text adventures and player guilds.</p>
 
 :::note[Where to find it]
-The **Economy & RPG → Economy & RPG** section: [Open the economy ↗](https://dash.kotbo.fr/economy).
-The module is off by default: turn it on with the **Module status** switch at the top of the page.
+The **Economy & games → Economy** section: [Open the economy ↗](https://dash.kotbo.fr/economy).
+The **Economy & RPG** module is off by default: the **Module disabled** banner at the top of the page offers to turn it on. It also powers the [RPG game](/en/dashboard/economie/rpg/) page.
 :::
 
-The page is split into eight tabs: **Configuration**, **Shop Items**, **Recipes**, **Bosses & Monsters**, **Raid**, **Quests**, **Black market** and **Players & Leaderboard**.
+The page has five tabs: **Configuration**, two **Shop** tabs - the first for game items, the second for offers sold to members -, **Black market** and **Players**. The game tabs (recipes, bestiary, dungeons, Tower, raid…) moved to the [RPG game](/en/dashboard/economie/rpg/) page.
 
 :::tip[To get going quickly]
 Choosing an economy pace - daily rewards, cooldown, energy - has its own page: [Quick setup](/en/dashboard/economie/configuration-rapide/).
@@ -28,16 +28,20 @@ A **Public page** button, visible from every tab, opens the public clan RPG boar
 
 ### Module activation
 
-* **Enable RPG Adventures (RNG)**: unlocks travel and random events. Players set off on an adventure from the `/rpg` hub, not from a command of their own.
-* **Enable Item Shop**: allows buying gear, equipping weapons and using potions.
-* **Enable RPG Guild System**: allows founding alliances, cooperating and holding a guild vault.
+* **RPG adventures**: unlocks travel and random events. Players set off on an adventure from the `/rpg` hub, not from a command of their own.
+* **Item shop**: allows buying gear, equipping weapons and using potions.
+* **RPG guilds**: allows founding alliances, cooperating and holding a guild vault.
+
+### RPG channels
+
+**RPG channels** limits `/rpg`, `/raid`, `/market` and `/tower` to some channels, threads included. Empty, they are allowed everywhere; administrators are not affected. Each command can also have its own list under [Commands](/en/dashboard/configuration/commandes/): saving here applies the same list to all of them.
 
 ### Settings
 
 * **Currency name**, **Currency emoji** and **Currency image** (PNG, JPG or SVG; the image takes priority on the dashboard).
-* **Minimum** and **Maximum Daily Reward**, **Daily Cooldown (Hours)**.
-* **Adventure Cooldown (Min)**.
-* **Maximum Energy** and **Energy Recovery / Hour**.
+* **Minimum** and **Maximum daily reward**, **Delay between two daily rewards (hours)**.
+* **Delay between two adventures (minutes)**.
+* **Maximum energy** and **Energy regained per hour**.
 
 ### Anti-abuse limits
 
@@ -58,7 +62,7 @@ Every reset now asks you to type `RESET` to confirm. The operation permanently d
 
 ---
 
-## Shop Items tab
+## First Shop tab: game items
 
 The **Create item** button opens a form:
 
@@ -93,8 +97,8 @@ An item of the **SCROLL (Parchemin d'enchantement)** type applies an enchantment
 On consumption, an item can grant something other than RPG stats:
 
 * **Level XP reward**: server progression XP.
-* **Clan points reward**: paid to the buyer's clan. They are only granted while the RPG to clans bridge is open, in the *Bosses & Monsters* tab - otherwise Kotbo warns that the item is not sellable.
-* **Raid assaults granted**: drunk during an open raid, the potion grants these assaults on top of the quota, up to the cap set on the *Raid* tab.
+* **Clan points reward**: paid to the buyer's clan. They are only granted while the RPG to clans bridge is open, in the *Bosses & Monsters* tab of the [RPG game](/en/dashboard/economie/rpg/) - otherwise Kotbo warns that the item is not sellable.
+* **Raid assaults granted**: drunk during an open raid, the potion grants these assaults on top of the quota, up to the cap set on the *Raid* tab of the [RPG game](/en/dashboard/economie/rpg/).
 
 :::caution[An item follows the module that pays it]
 *Removed from the shop: the module granting its reward is disabled.* An item carrying one of these rewards disappears from the shop while its module is off.
@@ -110,137 +114,40 @@ It only affects items **created on this server**: the shipped catalogue is share
 
 ---
 
-## Recipes tab
+## Second Shop tab: offers
 
-**Crafting recipes** describe what a player can craft at the workshop, from materials looted off monsters or bought.
+This second tab sells perks to members for the bot's currency. Offers are set up here and bought on Discord with `/boutique`, or on the **Shop** page of the [Community site](/en/dashboard/communaute/site/).
 
-The **New recipe** button asks for the **crafted item**, its **materials** (each must name an existing item), the **coin cost** and the **required level**.
+### Offers
 
-**Shipped** recipes are shared by every server and cannot be edited here. Without recipes of your own, the server only uses those.
+**New offer** asks for an **Offer type**:
 
----
-
-## Bosses & Monsters tab
-
-The **server bestiary** lists the creatures your members fight. A filter separates **All**, **Bosses** and **Monsters**.
-
-### Bestiary difficulty
-
-Three tiers rewrite the stats, rewards, loot chances and respawn delay of every creature in the category at once:
-
-| Tier | Effect |
+| Type | What it delivers |
 | --- | --- |
-| **Easy** | Short fights, for a server that is starting out or plays now and then. |
-| **Medium** | The balance shipped with the bot, neither forgiving nor punishing. |
-| **Hard** | Creatures that take a beating and hit back, but pay more. |
+| **Role** | A role, forever or for a **Duration (days)**. Buying again extends the current duration. |
+| **RPG items** | Items added to the member's RPG inventory. |
+| **XP** | Level XP. |
+| **Subscription** | A role whose price is charged every **Period (days)**. If the balance falls short, the member gets grace days, then the role is removed. |
+| **Service** | Staff deliver it by hand (custom emoji, private channel…). Always subject to review. |
 
-Bosses and monsters are set separately. Nothing is locked: a creature can still be edited afterwards, and the next tier starts from your own tweaks. Applying a tier asks for confirmation, since it also rewrites creatures you already customised, keeping their gaps proportionally. The confirmation states how many creatures are concerned and previews the health before and after.
+Each offer has a **Name**, a **Price**, a **Description**, a **Category** (which groups offers on the site) and an **Image**. The **Rules** block adds a **Stock**, a **Limit per member**, a **Minimum level**, a list of roles (**Reserved for**), **Staff review before delivery** and the **Can be gifted to another member** option.
 
-Kotbo recommends a tier from actual results: *your players win N% of their M fights over the last X days, the … tier would suit them better*, or *the current tier holds up*. Without enough fights over the period, it recommends nothing.
+Only roles Kotbo can assign are listed; an offer whose role has moved above the bot's says so. **Move up** and **Move down** set the display order.
 
-Two safeguards:
+### Orders to review
 
-* **Low-level** creatures only take part of the tier, so the early game stays open.
-* **Clan points**, and loot that grants XP or clan points, are **never** touched.
+An offer that needs review, or a service, shows up under **To review**: the amount is held, **Approve** delivers the offer, **Decline** refunds the member and sends them the reason you typed. **Latest orders** lists purchases, subscription renewals and purchases made on the site.
 
-### Customising a creature
+### Promo codes
 
-Creatures shipped with the bot are shared by every server. The **Customise** button creates a copy owned by this server without touching the original; **Reset** brings it back at any time. A built-in creature cannot be renamed: the name is what links it back to the original.
+**New code** creates a **Percentage** or **Amount** discount, on the whole shop or on the **Offers covered**. A code is 2 to 32 letters, digits or dashes, and can have **Max uses** and a **Valid until** date. Each member can use it only once.
 
-A creature sheet carries its **name**, **emoji**, **description**, **level**, **health**, **XP reward**, **coin reward**, **clan points on victory** and, for a boss, its **respawn delay**.
+### Settings
 
-Badges say where a creature comes from: **Built-in**, **Server-made**, **Customised**, **Hand-tuned** (stats set by hand, no longer following the tier), **Boss** or **Disabled**. Every row also shows its win rate over the last few days.
-
-### Loot
-
-One loot at most is rolled per victory, in list order. Each entry names an **item** (which must exist in the shop or in the global catalogue), its **chance** in percent and optional **bonus coins**. With no loot, victory only grants XP and coins.
-
-### Clan points on victories
-
-A switch at the top of the tab grants the winner's clan the reward set on each creature. Turning it off suspends the RPG's contribution to the clan standings without zeroing every reward. A player without a clan earns nothing.
-
-### Import and export
-
-**Export** downloads this server's bestiary as JSON. **Import** replaces creatures with the same name and adds the rest; nothing is deleted, and loot whose item does not exist on this server is stripped on import.
-
----
-
-## Raid tab
-
-Once a week a boss opens for a few hours. Each team faces **its own instance**, with a health pool that follows its size: every team runs the same trial, and the largest one cannot monopolise the health bar.
-
-### What counts as a team
-
-* **Server clans** *(recommended)*: membership is read from the Discord role. Rewards go through clan points, with the season, the standings and debt repayment.
-* **RPG guilds**: membership is read from the game profile. Team points go to guild XP instead of clan points.
-
-The raid needs one of the two: without a team module, it cannot be enabled.
-
-### Opening
-
-* **Automatic opening**: the raid opens on the configured **day** and **hour**, in the server timezone. Turn it off to launch it by hand only.
-* **Duration (hours)**: the window during which members can strike.
-* **Announcement**: the message carries the assault button and each team's progress bar. Without an announcement, nobody can strike.
-* **Raid boss**: a specific boss, or *Random among enabled bosses*.
-
-The **Launch a raid now** button opens the window right away. Save your settings first: the launch uses what is saved, not what is on screen.
-
-:::note[Changing the boss mid-week]
-The next raid's window is written ahead of time, with the boss drawn at that moment. Picking another boss and then **saving** takes over the pending window, so the current week. A fixed boss is named by its **name**: renaming or disabling its sheet in *Bosses & Monsters* makes it unreachable, and the selector says so - *… (unavailable: boss disabled)*.
-:::
-
-### Balance and rewards
-
-* **HP per member**, with a **minimum HP** and a **maximum HP**. A preview announces what a team of 3 and a team of 20 face.
-* **Assaults per member**, **Energy per assault** and **Purchasable assaults per member** (through potions; at zero, nothing can be bought).
-* **Team XP**, **Team coins**, **Team clan points** or **Team guild XP**, all set per member.
-* **Consolation for a failing team (%)**: the share of the pool paid to a team that struck without bringing its boss down. At zero, only victory pays.
-
-A team's pool follows its size and is shared between participants: **30% split evenly**, the rest in proportion to damage.
-
-### Raid bosses and spells
-
-Raid boss sheets belong to the server. Each picks its **spells** from the shipped catalogue: one spell per turn when it is off cooldown, with phase spells (*Below N%*) taking priority. With no spell, the boss only hits.
-
-**Restore shipped bosses** puts back the ones that are missing, without touching yours.
-
-### Following a raid
-
-A **Raid running** block shows the teams engaged and their progress. At the close, the **last raid results** stay on screen until the next one opens: teams, top strikers, damage and assaults. The tab also keeps the history of **past raids**.
-
----
-
-## Quests tab
-
-Game goals to reach within a time window.
-
-A quest defines its **goal**, its **target** and its **window (hours)**. The available goals cover monsters killed, bosses downed, raid assaults and raid damage, items looted, items crafted, successful upgrades, adventures resolved, fishing, daily rewards, shop or black market purchases and coins spent.
-
-The window is clock-aligned: 24 h resets at midnight UTC, 6 h at 00, 06, 12 and 18. Every team therefore runs the same clock.
-
-Two scopes:
-
-* **Personal**: each member has their own progress. The reward is paid automatically on the action that reaches the target, with nothing for the player to do.
-* **Team**: the whole team pushes the same counter. The reward is split in proportion - 30% evenly, the rest by what each member brought - and paid automatically on completion.
-
-The **Repeatable within the day** switch decides what happens once the quest has paid out:
-
-* **On**: the quest resets as soon as it pays, and the player can run it as many times as they like inside the window. Its card carries the **Repeatable** tag.
-* **Off**: the quest pays once every 24 h. Finished sooner, it waits out the delay before paying.
-
-A disabled quest is no longer offered and stops counting. Clan points are only paid while the RPG to clans bridge is open, in the *Bosses & Monsters* tab.
-
----
-
-## Players & Leaderboard tab
-
-The table ranks players with the **Rank**, **Player**, **Balance**, **Stats & Gear**, **HP & Energy** and **Location & Guild** columns. A search field accepts a nickname or an ID.
-
-The **Edit** button opens the player's profile, where you can adjust their **balance**, **RPG level**, **experience**, **health points**, **energy**, **attack (ATK)**, **defense (DEF)** and **speed (SPD)**.
-
-:::danger[Reset players]
-The **Reset players** button erases the stored RPG profiles: balances, levels, inventories. **The search box does not narrow it down**: every player in the list is affected.
-:::
+* **Shop open**: when closed, nothing sells, but running subscriptions continue.
+* **Orders to review channel**: Kotbo notifies the staff there for each pending order.
+* **Sales log**: one line per delivered sale.
+* **Subscription grace days**: time to top up before the role is removed (0 = removed right away).
 
 ---
 
@@ -255,3 +162,15 @@ Offers are drawn from the purchasable items. With no active shop, the black mark
 * **Opening rhythm**: **Period (days)**, the average gap between two openings, the exact moment staying random, and **Opening duration (minutes)**.
 * **Drawn offers**: **Offers per member**, **Max purchases per offer**, **Minimum discount (%)** and **Maximum discount (%)**.
 * **Announcement**: *None, discovered through `/rpg`*, *Message in a channel*, or *Message + role mention*.
+
+---
+
+## Players tab
+
+The table ranks players with the **Rank**, **Player**, **Balance**, **Stats & Gear**, **HP & Energy** and **Location & Guild** columns. A search field accepts a nickname or an ID.
+
+The **Edit** button opens the player's profile, where you can adjust their **balance**, **RPG level**, **experience**, **health points**, **energy**, **attack (ATK)**, **defense (DEF)** and **speed (SPD)**.
+
+:::danger[Reset players]
+The **Reset players** button erases the stored RPG profiles: balances, levels, inventories. **The search box does not narrow it down**: every player in the list is affected.
+:::

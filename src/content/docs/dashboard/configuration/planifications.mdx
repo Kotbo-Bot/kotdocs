@@ -1,12 +1,12 @@
 ---
-title: Planifications de tâches
+title: Tâches planifiées
 description: Automatisez la réinitialisation d'un salon, la sauvegarde du serveur ou l'export de données à intervalle régulier.
 ---
 
 <p class="doc-lead">Les <strong>Planifications</strong> exécutent automatiquement une action à intervalle régulier, sans que personne n'ait à y penser.</p>
 
 :::note[Où la trouver]
-Section **Configuration → Planifications** : [Ouvrir les planifications ↗](https://dash.kotbo.fr/schedules).
+Section **Réglages → Tâches planifiées** : [Ouvrir les planifications ↗](https://dash.kotbo.fr/schedules).
 :::
 
 ---
@@ -26,7 +26,7 @@ Section **Configuration → Planifications** : [Ouvrir les planifications ↗](h
 | --- | --- |
 | **Réinitialisation de salon (nuke)** | Clone le salon cible, supprime l'original, puis publie un message signalant la réinitialisation dans le nouveau salon. |
 | **Sauvegarde complète du serveur** | Crée une [sauvegarde](/dashboard/configuration/sauvegardes/) automatiquement. Elle inclut membres, rôles, salons, emojis et stickers, mais **jamais les messages**. |
-| **Exportation des données (Logs & Profils)** | Produit un export des journaux et des profils. |
+| **Export des données (journaux et profils)** | Produit un export des journaux et des profils. |
 | **Message programmé** | Poste un message dans un salon, avec un embed facultatif. |
 
 #### Message programmé
@@ -54,7 +54,7 @@ La réinitialisation ne vide pas le salon : elle en crée une copie et supprime 
 * **Chaque jour à minuit**
 * **Chaque semaine** (dimanche à minuit)
 * **Chaque mois** (le 1ᵉʳ à minuit)
-* **Personnalisée (Expression Cron)**
+* **Personnalisée**
 
 L'expression cron suit le format Unix standard `minute heure jour mois jour-de-la-semaine`. Par exemple, `0 12 * * *` déclenche la tâche chaque midi.
 

@@ -1,32 +1,32 @@
 ---
-title: Messages d’accueil & de départ
-description: Apprenez à configurer les messages automatiques envoyés lors de l’arrivée ou du départ d’un membre depuis le dashboard.
+title: Bienvenue et départs
+description: "Configurer les messages d'arrivée, de départ et de boost, les rôles automatiques, le fil d'accueil et les tests A/B du message de bienvenue."
 ---
 
 import DashboardScreenshot from '../../../../components/DashboardScreenshot.astro';
 
-<p class="doc-lead">Souhaitez la bienvenue aux nouveaux membres et informez votre communauté des départs avec des messages automatiquement personnalisés.</p>
+<p class="doc-lead">Souhaitez la bienvenue aux nouveaux membres, saluez les départs et remerciez les boosts avec des messages personnalisés, donnez des rôles automatiques, et comparez plusieurs messages d'accueil pour garder celui qui fait rester le plus de monde.</p>
 
 :::tip[Côté Discord]
 Pour voir des exemples de rendu de ces messages sur Discord et tester la configuration, consultez le [Rendu des messages sur Discord](/discord/communaute/accueil-depart).
 :::
 
-Dans la barre latérale, ouvrez **Communauté → Annonces & Auto-Rôle** ([Accéder aux Annonces ↗](https://dash.kotbo.fr/announcement)), puis choisissez l’onglet **Accueil** ou **Départ**. La page compte trois autres onglets, décrits plus bas.
+Dans la barre latérale, ouvrez **Communication → Bienvenue et départs** ([Ouvrir Bienvenue et départs ↗](https://dash.kotbo.fr/announcement)). La page compte six onglets : **Accueil**, **Départs**, **Boosts**, **Rôles automatiques**, **Fil d'accueil** et **Tests A/B**.
 
 <DashboardScreenshot
   file="dashboard-welcome.webp"
-  alt="Écran réel Annonces et Auto-Rôle de Kotbo, onglet Accueil"
-  caption="L’écran Annonces & Auto-Rôle réel, ouvert sur l’onglet Accueil."
+  alt="Écran réel Bienvenue et départs de Kotbo, onglet Accueil"
+  caption="L'onglet Accueil de la page Bienvenue et départs."
 />
 
 ## Configurer le message de bienvenue
 
 <div class="step-list">
-  <div class="step-item"><div><h3>Ouvrez l’onglet « Accueil »</h3><p>Dans <strong>Annonces & Auto-Rôle</strong>, l’onglet se trouve juste sous le titre de la page.</p></div></div>
-  <div class="step-item"><div><h3>Activez « Message de Bienvenue »</h3><p>L’interrupteur se trouve en haut à droite du bloc.</p></div></div>
+  <div class="step-item"><div><h3>Ouvrez l'onglet « Accueil »</h3><p>Il se trouve juste sous le titre de la page.</p></div></div>
+  <div class="step-item"><div><h3>Activez « Message de bienvenue »</h3><p>L'interrupteur se trouve en haut à droite du bloc.</p></div></div>
   <div class="step-item"><div><h3>Choisissez le salon de diffusion</h3><p>Sélectionnez un salon texte visible par les nouveaux membres, par exemple <code>#bienvenue</code>.</p></div></div>
-  <div class="step-item"><div><h3>Rédigez le message</h3><p>Ajoutez les variables ci-dessous pour adapter automatiquement le texte à chaque arrivée.</p></div></div>
-  <div class="step-item"><div><h3>Vérifiez l’aperçu puis enregistrez</h3><p>Le rendu Discord est actualisé dans la page. Cliquez sur <strong>Enregistrer</strong> dans la barre inférieure.</p></div></div>
+  <div class="step-item"><div><h3>Rédigez le message</h3><p>Partez d'un texte de <strong>Modèles</strong> ou écrivez le vôtre, avec les variables ci-dessous.</p></div></div>
+  <div class="step-item"><div><h3>Vérifiez l'aperçu puis enregistrez</h3><p>L'<strong>Aperçu du rendu Discord</strong> est actualisé dans la page. Cliquez sur <strong>Enregistrer</strong> dans la barre inférieure.</p></div></div>
 </div>
 
 ## Variables disponibles
@@ -36,8 +36,10 @@ Dans la barre latérale, ouvrez **Communauté → Annonces & Auto-Rôle** ([Acc�
   <tbody>
     <tr><td><code>{'{user}'}</code></td><td>Mentionne le membre, par exemple <strong>@JeanDupont</strong>.</td></tr>
     <tr><td><code>{'{username}'}</code></td><td>Affiche son nom sans mention.</td></tr>
+    <tr><td><code>{'{displayName}'}</code></td><td>Affiche le pseudo qu'il porte sur le serveur.</td></tr>
     <tr><td><code>{'{server}'}</code></td><td>Affiche le nom de votre serveur.</td></tr>
     <tr><td><code>{'{memberCount}'}</code></td><td>Affiche le nombre total de membres.</td></tr>
+    <tr><td><code>{'{boostCount}'}</code></td><td>Affiche le nombre de boosts actuel.</td></tr>
   </tbody>
 </table>
 
@@ -50,7 +52,7 @@ Tu es notre {memberCount}e membre !
 
 ## Ajouter une image de bienvenue
 
-Activez **Image de bienvenue** pour joindre un bandeau avec l’avatar du nouveau membre. Vous pouvez fournir une URL d’image de fond personnalisée ; sans URL, Kotbo utilise son visuel par défaut.
+Activez **Activer l'image de bienvenue** pour joindre un bandeau avec l'avatar du nouveau membre. Le champ **URL de fond d'image personnalisée (optionnel)** change le fond ; sans URL, Kotbo utilise son visuel par défaut.
 
 :::tip
 Choisissez une image large, lisible et peu chargée. Testez son rendu en thème clair et sombre si elle contient du texte.
@@ -58,35 +60,59 @@ Choisissez une image large, lisible et peu chargée. Testez son rendu en thème 
 
 ## Configurer le message de départ
 
-Ouvrez l’onglet **Départ** en haut de la même page. Le formulaire fonctionne de la même manière : activez le message, choisissez un salon et rédigez le texte. La variable <code>{'{user}'}</code> peut ne plus produire une mention cliquable après le départ ; utilisez <code>{'{username}'}</code> si vous souhaitez seulement afficher le nom.
-
+Ouvrez l'onglet **Départs**. Le formulaire fonctionne de la même manière : activez le **Message de départ**, choisissez un salon et rédigez le texte. La variable <code>{'{user}'}</code> peut ne plus produire une mention cliquable après le départ ; utilisez <code>{'{username}'}</code> si vous souhaitez seulement afficher le nom.
 
 ---
 
 ## Les autres onglets de la page
 
-La page **Annonces & Auto-Rôle** ne se limite pas à l'accueil et au départ : elle compte cinq onglets.
-
-### Auto-Rôles
-
-Trois attributions automatiques de rôle, indépendantes l'une de l'autre. Chacune peut rester sur **Aucun (Désactivé)**.
-
-* **Auto-Rôle à l'arrivée** : attribue un rôle à tout nouveau membre qui rejoint le serveur.
-* **Auto-Rôle Tag du Serveur** : attribue un rôle aux membres qui arborent le tag officiel du serveur sur leur profil Discord. Le rôle est retiré dès que le membre retire le tag.
-* **Auto-Rôle Mot-clé dans la présence** : attribue un rôle selon ce que le membre affiche dans sa présence Discord.
-  * **Mot-clé à détecter** : le texte recherché, par exemple `.gg/kotbo`.
-  * **Où chercher** : **Statut personnalisé**, **Activité en cours**, ou **Les deux**.
-
 ### Boosts
 
-L'onglet **Annonces de Boost Custom** permet de remercier publiquement les membres qui boostent le serveur, avec son propre message et son propre salon. L'option **Activer l'image de boost** y joint un visuel généré.
+L'onglet **Boosts** porte les **Annonces de boost custom** : remercier publiquement les membres qui boostent le serveur, avec son propre message et son propre salon. **Activer l'image de boost** y joint un visuel généré, dont le fond se change par une URL.
 
-### Thread d'accueil
+### Rôles automatiques
 
-Kotbo peut ouvrir un fil privé pour chaque nouveau membre et y dérouler un scénario d'accueil.
+Trois attributions automatiques de rôle, indépendantes l'une de l'autre. Chacune peut rester sur **Aucun (désactivé)**.
 
-* **Séquence de messages** : les messages envoyés dans l'ordre, avant le menu final. Chaque message de la séquence doit avoir un contenu, sinon l'enregistrement est refusé. Sans séquence, le bot passe directement au menu final.
-* **Pages de présentation du menu** : chaque page devient un bouton ou une option du menu final. Sans page configurée, le menu final n'affiche aucun bouton.
-  * **Action au clic** : **Afficher un embed**, **Gérer un rôle**, ou **Lien**.
-* **Indicateur de frappe** : affiche « est en train d'écrire » avant chaque message, pour un rendu plus naturel.
-* **Archivage automatique** : referme le fil après la période choisie.
+* **Auto-Rôle à l'arrivée** : attribue un rôle à tout nouveau membre qui rejoint le serveur.
+* **Auto-Rôle tag du serveur** : attribue un rôle aux membres qui arborent le tag officiel du serveur à côté de leur pseudo. Discord indique lui-même qui le porte : rien à saisir. Le rôle est retiré dès que le membre retire le tag.
+* **Auto-Rôle Mot-clé dans la présence** : attribue un rôle selon ce que le membre affiche sur Discord, et le retire quand le mot-clé disparaît.
+  * **Mot-clé à détecter** : le texte recherché, par exemple `.gg/kotbo`.
+  * **Où chercher** : **Statut personnalisé**, **Activité en cours**, ou **Les deux**.
+  * Le rôle peut être **Le même que l'auto-rôle tag**, ou un rôle distinct.
+
+:::note[Les membres déjà présents]
+Un auto-rôle ne s'applique qu'aux membres dont le tag ou le statut change après son activation. **Rescanner les membres** rattrape ceux qui étaient déjà là.
+:::
+
+### Fil d'accueil
+
+Quand un membre arrive, Kotbo ouvre un fil rien que pour lui, y envoie quelques messages comme s'il les tapait, puis lui présente le serveur.
+
+* **Salon où ouvrir les fils**, **Type de fil** (**Public** ou **Privé**), **Nom du fil** et **Archivage automatique**.
+* **Indicateur de frappe** : affiche « est en train d'écrire » avant chaque message.
+* **Supprimer les fils inactifs** : efface les fils d'accueil sans activité après le **Délai d'inactivité (heures)**, pour qu'ils ne s'accumulent pas.
+* **Nom et avatar par défaut** des messages ; chaque message de la séquence peut les remplacer.
+* **Séquence de messages scénarisés** : les messages envoyés dans l'ordre, avant le menu final, chacun avec son **Délai avant envoi**. Chaque message doit avoir un contenu, sinon l'enregistrement est refusé. Sans séquence, Kotbo passe directement au menu final.
+* **Menu de présentation final** : un message (titre, description, couleur, images) avec des **Boutons** ou un **Menu déroulant**.
+* **Pages de présentation du menu** : chaque page devient un bouton ou une option du menu final. Sans page, le menu n'affiche aucun bouton.
+  * **Action au clic** : **Afficher un message enrichi**, **Gérer un rôle** ou **Lien**. Un lien mène à un salon du serveur ou à une adresse externe ; en style **Boutons**, Discord affiche alors un vrai bouton lien.
+  * Pour un rôle, le **Comportement** est **Ajouter**, **Retirer**, **Basculer** ou **Exclusif** : un **Groupe exclusif** remplace automatiquement tout autre rôle du même groupe.
+
+### Tests A/B
+
+**Tests A/B de l'accueil** essaie plusieurs messages de bienvenue en même temps : chaque arrivant reçoit une version au hasard, et Kotbo compare qui reste et qui se met à parler.
+
+**Nouveau test** demande :
+
+* un **Nom** et une **Hypothèse**, pour vous souvenir dans un mois de ce que vous attendiez ;
+* la **Mesure principale**, celle qui désigne la gagnante : **Toujours là à J+1**, **Toujours là à J+7**, **Toujours là à J+30** ou **A parlé dans la 1re semaine** ;
+* au moins deux versions, chacune avec un **Nom de la version**, un **Poids** (sa part des arrivants), un **Message de bienvenue** (vide : le message actuel de l'onglet Accueil), la **Carte d'accueil** (avec, sans, ou comme la configuration) et le **Fil d'accueil**.
+
+**Lancer** démarre le test, **Arrêter** le termine. **Résultats** compare les versions : arrivants, messages en première semaine, et la chance de battre la version **Contrôle**. Un arrivant ne compte qu'une fois son délai de mesure écoulé.
+
+Une version est déclarée gagnante au-delà de 95 % de chances, avec au moins 30 arrivants mesurés par version. **Appliquer** fait d'elle le message d'accueil du serveur.
+
+:::caution[Il faut un message d'accueil actif]
+Si le message de bienvenue est désactivé ou n'a pas de salon, un test ne change rien : réglez d'abord l'onglet **Accueil**.
+:::
