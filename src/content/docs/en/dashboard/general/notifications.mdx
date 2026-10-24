@@ -1,42 +1,75 @@
 ---
 title: Notifications
-description: Find the staff's internal notifications, filtered by area, and mark them as read.
+description: "One inbox for everything that concerns you, across all your servers: filters, quick actions, archives and a say in what reaches you by DM."
 ---
 
-<p class="doc-lead">The <strong>Inbox</strong> gathers the internal notifications aimed at the staff: moderation alerts, new applications, team summons and system messages.</p>
+<p class="doc-lead">The <strong>Notifications</strong> page gathers everything that concerns you, <strong>across all your servers</strong>: absence requests to approve, applications, security alerts, tickets, system messages. It replaces the former inbox.</p>
 
 :::note[Where to find it]
-The **General → Notifications** section: [Open the inbox ↗](https://dash.kotbo.fr/notifications).
-This is a **core** module, it cannot be disabled.
+The **General → Notifications** section: [Open notifications ↗](https://dash.kotbo.fr/notifications). The old `/inbox` address leads there too.
+The page does not depend on any module: everyone sees their own notifications there.
 :::
 
 ---
 
-## Filtering by area
+## The three views
 
-Notifications are split into tabs:
+The tabs at the top sort the inbox:
 
 | Tab | Content |
 | --- | --- |
-| **All** | Every notification. |
-| **Moderation** | Sanctions, automatic alerts, reports. |
-| **Recruitment** | New applications and processing steps. |
-| **Staff** | Meetings, absences, team decisions. |
-| **System** | Technical messages and instance alerts. |
+| **Inbox** | Current notifications, read or not. |
+| **Unread** | Only the ones you have not read yet. The tab's counter tallies them. |
+| **Archived** | The ones you put away. They stay available. |
 
-When a tab is empty, Kotbo says explicitly which one has nothing to show.
+Two lists narrow the display down:
+
+* **Server**: *All servers*, or a single one. The list also includes servers that sent you notifications even if you no longer have access to them.
+* **Category**: *All categories*, or one of the nine - **Team**, **Planning**, **Recruitment**, **Moderation**, **Security**, **Tickets**, **Partnerships**, **Community** and **System**.
+
+Notifications load in batches: **Load more** shows the next ones. When there is nothing, the page says *All clear*.
 
 ---
 
 ## Handling a notification
 
-On each entry:
+Each notification shows its category and its server. Several notifications of the same kind, close together in time, are **grouped** into a single line that reads *N in total*.
 
-* **View** opens the item concerned: a ticket, an application, a meeting.
-* **Mark as read** removes it from the unread counter.
+| Button | Effect |
+| --- | --- |
+| **Open** | Opens the item concerned in the dashboard, on the right server. |
+| **Mark as read** / **Mark as unread** | Changes its state without moving it. |
+| **Archive** / **Move back to inbox** | Puts it in the archives, or takes it out. |
+| **Delete** | Removes it from your inbox. |
 
-The **Mark all as read** button clears the counter at once, and the refresh button reloads the list.
+### Deciding without leaving the page
 
-:::tip[The home widget]
-The **Inbox** widget on the [Home](/en/dashboard/general/accueil/) page shows the number of unread notifications. Add it to your layout if you do not visit this page often.
+Some notifications carry a decision. An **absence request** and a **resignation request** show **Approve** and **Reject** right away: the decision goes through the module concerned, with its own permissions, then the notification moves to the archives.
+
+At the top of the page, **Mark all as read** clears the counter (for the server picked in the filter, if any), and the refresh button reloads the list.
+
+:::tip[The bell in the top bar]
+The bell at the top of the dashboard shows the number of unread notifications and the latest ones. Its **All notifications** link leads to this page.
 :::
+
+---
+
+## Choosing what you receive
+
+The page's **Settings** button opens [My preferences](/en/dashboard/general/profil/#what-you-receive), where the **What you receive** grid sets three channels, category by category:
+
+| Column | Effect |
+| --- | --- |
+| **Dashboard** | The notification shows up on this page and in the bell. |
+| **DM** | Kotbo also sends it to you as a direct message on Discord. |
+| **Daily summary** | The category's DMs arrive as a single message each morning. **DM** must be on. |
+
+The grid is saved to your account: it applies to all your servers, and to the bot's DMs as well as the dashboard.
+
+:::note[What always gets through]
+What directly concerns you - a sanction, a decision on your request - arrives no matter what, even if the category is off.
+:::
+
+### Turning off a type of DM from Discord
+
+Every notification DM carries a **Stop this type** button, except the ones that always get through. One click turns off DMs for that category; Kotbo confirms and reminds you that you can turn them back on from the dashboard. DMs of the same category sent a few moments apart are grouped into a single message.

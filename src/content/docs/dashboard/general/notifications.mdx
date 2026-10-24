@@ -1,42 +1,75 @@
 ---
 title: Notifications
-description: Retrouvez les notifications internes du staff, filtrées par domaine, et marquez-les comme lues.
+description: "Une seule boîte pour tout ce qui vous concerne, sur tous vos serveurs : filtres, actions rapides, archives et choix de ce que vous recevez en MP."
 ---
 
-<p class="doc-lead">L'<strong>Inbox</strong> rassemble les notifications internes destinées au staff : alertes de modération, nouvelles candidatures, convocations d'équipe et messages système.</p>
+<p class="doc-lead">La page <strong>Notifications</strong> rassemble tout ce qui vous concerne, <strong>sur tous vos serveurs</strong> : demandes d'absence à valider, candidatures, alertes de sécurité, tickets, messages système. Elle remplace l'ancienne boîte de réception.</p>
 
 :::note[Où la trouver]
-Section **Général → Notifications** : [Ouvrir la boîte de réception ↗](https://dash.kotbo.fr/notifications).
-C'est un module **cœur**, il ne peut pas être désactivé.
+Section **Général → Notifications** : [Ouvrir les notifications ↗](https://dash.kotbo.fr/notifications). L'ancienne adresse `/inbox` y mène aussi.
+La page ne dépend d'aucun module : chaque personne y voit ses propres notifications.
 :::
 
 ---
 
-## Filtrer par domaine
+## Les trois vues
 
-Les notifications sont réparties en onglets :
+Les onglets en haut de page trient la boîte :
 
 | Onglet | Contenu |
 | --- | --- |
-| **Tout** | L'ensemble des notifications. |
-| **Modération** | Sanctions, alertes automatiques, signalements. |
-| **Recrutement** | Nouvelles candidatures et étapes de traitement. |
-| **Staff** | Réunions, absences, décisions d'équipe. |
-| **Système** | Messages techniques et alertes de l'instance. |
+| **Boîte** | Les notifications en cours, lues ou non. |
+| **Non lues** | Seulement celles que vous n'avez pas encore lues. Le compteur de l'onglet les dénombre. |
+| **Archivées** | Celles que vous avez rangées. Elles restent consultables. |
 
-Quand un onglet est vide, Kotbo indique explicitement lequel n'a rien à afficher.
+Deux listes affinent l'affichage :
+
+* **Serveur** : *Tous les serveurs*, ou un seul. La liste reprend aussi les serveurs d'où viennent des notifications même si vous n'y avez plus accès.
+* **Famille** : *Toutes les familles*, ou l'une des neuf - **Équipe**, **Planning**, **Recrutement**, **Modération**, **Sécurité**, **Tickets**, **Partenariats**, **Communauté** et **Système**.
+
+Les notifications arrivent par lots : **Charger plus** affiche les suivantes. Quand il n'y a rien, la page affiche *Rien à signaler*.
 
 ---
 
 ## Traiter une notification
 
-Sur chaque entrée :
+Chaque notification affiche sa famille et son serveur. Plusieurs notifications du même genre, rapprochées dans le temps, sont **regroupées** en une seule ligne qui indique *N au total*.
 
-* **Voir** ouvre l'élément concerné : un ticket, une candidature, une réunion.
-* **Marquer comme lu** la retire du compteur de non-lues.
+| Bouton | Effet |
+| --- | --- |
+| **Ouvrir** | Ouvre l'élément concerné dans le dashboard, sur le bon serveur. |
+| **Marquer comme lue** / **Marquer comme non lue** | Change son état sans la déplacer. |
+| **Archiver** / **Remettre dans la boîte** | La range dans les archives, ou l'en sort. |
+| **Supprimer** | L'efface de votre boîte. |
 
-Le bouton **Tout marquer comme lu** vide le compteur d'un coup, et le bouton d'actualisation recharge la liste.
+### Décider sans quitter la page
 
-:::tip[Le widget d'accueil]
-Le widget **Notifications** de la page [Accueil](/dashboard/general/accueil/) affiche le nombre de notifications non lues. Ajoutez-le à votre mise en page si vous ne passez pas souvent par cette page.
+Certaines notifications portent une décision. Une **demande d'absence** et une **demande de démission** affichent directement **Approuver** et **Refuser** : la décision passe par le module concerné, avec ses propres droits, puis la notification part aux archives.
+
+En haut de page, **Tout marquer comme lu** vide le compteur (du serveur choisi dans le filtre, s'il y en a un), et le bouton d'actualisation recharge la liste.
+
+:::tip[La cloche du bandeau]
+La cloche en haut du dashboard affiche le nombre de notifications non lues et les dernières reçues. Son lien **Toutes les notifications** mène à cette page.
 :::
+
+---
+
+## Choisir ce que vous recevez
+
+Le bouton **Réglages** de la page ouvre [Mes préférences](/dashboard/general/profil/#ce-que-vous-recevez), où la grille **Ce que tu reçois** règle, famille par famille, trois canaux :
+
+| Colonne | Effet |
+| --- | --- |
+| **Dashboard** | La notification arrive dans cette page et dans la cloche. |
+| **MP** | Kotbo vous l'envoie aussi en message privé sur Discord. |
+| **Résumé du jour** | Les MP de la famille partent en un seul message, chaque matin. Il faut que **MP** soit activé. |
+
+La grille est enregistrée sur votre compte : elle vaut pour tous vos serveurs, et pour les MP du bot comme pour le dashboard.
+
+:::note[Ce qui arrive toujours]
+Ce qui vous concerne directement - une sanction, une décision sur votre demande - arrive quoi qu'il en soit, même si la famille est coupée.
+:::
+
+### Couper un type de MP depuis Discord
+
+Chaque MP de notification porte un bouton **Ne plus recevoir ce type**, sauf ceux qui arrivent toujours. Un clic coupe les MP de cette famille ; Kotbo confirme et rappelle qu'on peut les réactiver depuis le dashboard. Les MP de même famille envoyés à quelques instants d'écart sont regroupés en un seul message.
