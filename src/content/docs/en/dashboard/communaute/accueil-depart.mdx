@@ -1,32 +1,32 @@
 ---
 title: Welcome & goodbye
-description: Learn how to configure the automatic messages sent when a member joins or leaves, from the dashboard.
+description: "Set up join, leave and boost messages, automatic roles, the welcome thread and A/B tests of the welcome message."
 ---
 
 import DashboardScreenshot from '../../../../../components/DashboardScreenshot.astro';
 
-<p class="doc-lead">Welcome new members and let your community know about departures with messages that personalise themselves automatically.</p>
+<p class="doc-lead">Welcome new members, see off those who leave and thank boosters with personalised messages, hand out automatic roles, and compare several welcome messages to keep the one that makes the most people stay.</p>
 
 :::tip[On the Discord side]
 To see how these messages look on Discord and to test your configuration, read [How the messages render on Discord](/en/discord/communaute/accueil-depart).
 :::
 
-In the sidebar, open **Communication → Welcome & goodbye** ([Open Announcements ↗](https://dash.kotbo.fr/announcement)), then pick the **Welcome** or **Leave** tab. The page has three more tabs, described further down.
+In the sidebar, open **Communication → Welcome & goodbye** ([Open Welcome & goodbye ↗](https://dash.kotbo.fr/announcement)). The page has six tabs: **Welcome**, **Goodbyes**, **Boosts**, **Auto roles**, **Welcome thread** and **A/B tests**.
 
 <DashboardScreenshot
   file="dashboard-welcome.webp"
-  alt="Real Kotbo Announcements and Auto-Role screen, Welcome tab"
-  caption="The real Announcements & Auto-Role screen, open on the Welcome tab."
+  alt="Kotbo's real Welcome & goodbye screen, Welcome tab"
+  caption="The Welcome tab of the Welcome & goodbye page."
 />
 
-## Configure the welcome message
+## Setting up the welcome message
 
 <div class="step-list">
-  <div class="step-item"><div><h3>Open the “Welcome” tab</h3><p>In <strong>Announcements & Auto-Role</strong>, the tab sits just below the page title.</p></div></div>
-  <div class="step-item"><div><h3>Turn on “Welcome Message”</h3><p>The toggle is in the top right of the block.</p></div></div>
-  <div class="step-item"><div><h3>Choose the channel to post in</h3><p>Pick a text channel that new members can see, for example <code>#welcome</code>.</p></div></div>
-  <div class="step-item"><div><h3>Write the message</h3><p>Add the variables below so the text adapts automatically to each arrival.</p></div></div>
-  <div class="step-item"><div><h3>Check the preview, then save</h3><p>The Discord preview refreshes on the page. Click <strong>Save</strong> in the bottom bar.</p></div></div>
+  <div class="step-item"><div><h3>Open the "Welcome" tab</h3><p>It sits right under the page title.</p></div></div>
+  <div class="step-item"><div><h3>Turn on "Welcome Message"</h3><p>The switch is at the top right of the block.</p></div></div>
+  <div class="step-item"><div><h3>Pick the broadcast channel</h3><p>Select a text channel new members can see, for example <code>#welcome</code>.</p></div></div>
+  <div class="step-item"><div><h3>Write the message</h3><p>Start from one of the <strong>Presets</strong> or write your own, with the variables below.</p></div></div>
+  <div class="step-item"><div><h3>Check the preview, then save</h3><p>The <strong>Discord Preview</strong> refreshes in the page. Click <strong>Save</strong> in the bottom bar.</p></div></div>
 </div>
 
 ## Available variables
@@ -36,8 +36,10 @@ In the sidebar, open **Communication → Welcome & goodbye** ([Open Announcement
   <tbody>
     <tr><td><code>{'{user}'}</code></td><td>Mentions the member, for example <strong>@JohnDoe</strong>.</td></tr>
     <tr><td><code>{'{username}'}</code></td><td>Shows their name without a mention.</td></tr>
+    <tr><td><code>{'{displayName}'}</code></td><td>Shows the nickname they use on the server.</td></tr>
     <tr><td><code>{'{server}'}</code></td><td>Shows your server's name.</td></tr>
     <tr><td><code>{'{memberCount}'}</code></td><td>Shows the total number of members.</td></tr>
+    <tr><td><code>{'{boostCount}'}</code></td><td>Shows the current number of boosts.</td></tr>
   </tbody>
 </table>
 
@@ -48,45 +50,69 @@ Welcome {user} to {server}!
 You are our member number {memberCount}!
 ```
 
-## Add a welcome image
+## Adding a welcome image
 
-Turn on **Welcome image** to attach a banner featuring the new member's avatar. You can supply a custom background image URL; without one, Kotbo uses its default artwork.
+Turn on **Enable welcome image** to attach a banner with the new member's avatar. The **Custom background image URL (Optional)** field changes the background; without a URL, Kotbo uses its default artwork.
 
 :::tip
-Choose a wide, legible and uncluttered image. Test how it looks in both light and dark themes if it contains text.
+Pick a wide, readable, uncluttered image. If it contains text, check how it renders in both light and dark themes.
 :::
 
-## Configure the leave message
+## Setting up the leave message
 
-Open the **Leave** tab at the top of the same page. The form works the same way: enable the message, choose a channel and write the text. The <code>{'{user}'}</code> variable may no longer produce a clickable mention once the member has left; use <code>{'{username}'}</code> if you only want to show the name.
-
+Open the **Goodbyes** tab. The form works the same way: turn on the **Leave Message**, pick a channel and write the text. The <code>{'{user}'}</code> variable may no longer produce a clickable mention after the member has left; use <code>{'{username}'}</code> if you only want to show the name.
 
 ---
 
-## The other tabs on the page
-
-The **Announcements & Auto-Role** page is not limited to welcome and leave: it has five tabs.
-
-### Auto-Roles
-
-Three automatic role assignments, independent from each other. Each one can be left on **None (Disabled)**.
-
-* **Join Auto-Role**: assigns a role to any new member joining the server.
-* **Server Tag Auto-Role**: assigns a role to members displaying the server's official tag on their Discord profile. The role is removed as soon as the member drops the tag.
-* **Presence Keyword Auto-Role**: assigns a role based on what the member shows in their Discord presence.
-  * **Keyword to detect**: the text being searched for, for example `.gg/kotbo`.
-  * **Where to look**: **Custom status**, **Current activity**, or **Both**.
+## The page's other tabs
 
 ### Boosts
 
-The **Custom Boost Announcements** tab lets you publicly thank members who boost the server, with its own message and its own channel. The **Enable boost image** option attaches a generated visual.
+The **Boosts** tab holds **Custom Boost Announcements**: thank members who boost the server publicly, with its own message and its own channel. **Enable boost image** attaches a generated banner, whose background can be changed through a URL.
 
-### Welcome Thread
+### Auto roles
 
-Kotbo can open a private thread for each new member and run a welcome script inside it.
+Three automatic role assignments, independent from one another. Each can stay on **None (Disabled)**.
 
-* **Message sequence**: the messages sent in order, before the final menu. Every message in the sequence must have content, otherwise saving is refused. With no sequence, the bot goes straight to the final menu.
-* **Menu introduction pages**: each page becomes a button or an option in the final menu. With no page configured, the final menu shows no buttons.
-  * **Click action**: **Display embed**, **Manage role**, or **Link**.
-* **Typing indicator**: displays "is typing" before each message, for a more natural feel.
-* **Auto-archive**: closes the thread after the chosen period.
+* **Join Auto-Role**: gives a role to every new member who joins the server.
+* **Server Tag Auto-Role**: gives a role to members who wear the server's official tag next to their name. Discord itself says who wears it: nothing to type. The role is removed as soon as the member drops the tag.
+* **Presence Keyword Auto-Role**: gives a role based on what the member shows on Discord, and removes it when the keyword disappears.
+  * **Keyword to detect**: the text to look for, for example `.gg/kotbo`.
+  * **Where to look**: **Custom status**, **Current activity**, or **Both**.
+  * The role can be **Same as the tag auto-role**, or a separate one.
+
+:::note[Members already on the server]
+An auto-role only applies to members whose tag or status changes after it is enabled. **Rescan members** catches up with those who were already there.
+:::
+
+### Welcome thread
+
+When a member joins, Kotbo opens a thread just for them, sends a few messages as if typing them, then shows them around the server.
+
+* **Thread parent channel**, **Thread mode** (**Public** or **Private**), **Thread name template** and **Auto-archive**.
+* **Typing indicator**: shows "is typing" before each message.
+* **Delete inactive threads**: removes welcome threads with no activity after the **Inactivity delay (hours)**, so they don't pile up.
+* **Default name and avatar** for the messages; each message in the sequence can override them.
+* **Scripted message sequence**: messages sent in order, before the final menu, each with its **Delay before sending**. Each message needs content, or saving is refused. Without a sequence, Kotbo goes straight to the final menu.
+* **Final introduction menu**: a message (title, description, colour, images) with **Buttons** or a **Dropdown menu**.
+* **Menu introduction pages**: each page becomes a button or option in the final menu. Without pages, the menu shows no buttons.
+  * **Click action**: **Display embed**, **Manage role** or **Link**. A link leads to a server channel or an external URL; in **Buttons** style, Discord then shows a real link button.
+  * For a role, the **Behavior** is **Add**, **Remove**, **Toggle** or **Exclusive**: an **Exclusive group** automatically replaces any other role from the same group.
+
+### A/B tests
+
+**Welcome A/B tests** tries several welcome messages at once: each newcomer gets a random version, and Kotbo compares who stays and who starts talking.
+
+**New test** asks for:
+
+* a **Name** and a **Hypothesis**, to remember in a month what you expected;
+* the **Primary metric**, the one that picks the winner: **Still here on day 1**, **Still here on day 7**, **Still here on day 30** or **Talked in the first week**;
+* at least two versions, each with a **Version name**, a **Weight** (its share of newcomers), a **Welcome message** (empty: the current message from the Welcome tab), the **Welcome card** (with, without, or same as configuration) and the **Welcome thread**.
+
+**Start** launches the test, **Stop** ends it. **Results** compares versions: newcomers, messages in week 1, and the chance of beating the **Control** version. A newcomer only counts once its measurement delay has passed.
+
+A version is declared the winner above a 95% chance, with at least 30 newcomers measured per version. **Apply** makes it the server's welcome message.
+
+:::caution[An active welcome message is required]
+If the welcome message is disabled or has no channel, a test changes nothing: set up the **Welcome** tab first.
+:::
