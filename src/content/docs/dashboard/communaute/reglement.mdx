@@ -31,7 +31,7 @@ Chaque article porte un badge <span class="dash-badge active">Visible</span> ou 
 
 ### Supprimer
 
-La suppression demande de taper un mot de confirmation.
+La suppression demande une confirmation.
 
 :::danger[Effet sur les rapports]
 Supprimer un article le retire de **tous les futurs rapports de sanction**. Les rapports déjà rédigés conservent leur référence.
@@ -49,14 +49,27 @@ La **synchronisation automatique** garde le message Discord aligné sur la liste
 
 ---
 
-## Vérification par le règlement
+## Parcours d'arrivée (onglet Vérification)
 
-Cette option ajoute un bouton d'acceptation sous le message du règlement.
+Le **Parcours d'arrivée** montre ce qu'un nouveau membre traverse avant d'accéder au serveur, dans l'ordre. Chaque étape est facultative et affiche si elle est **Active** ou **Inactive**.
 
-* **Vérification** : active le bouton.
-* **Rôle attribué** : le rôle donné après acceptation. Laissez vide pour que Kotbo crée automatiquement un rôle `Vérifié`.
-* **Verrouiller** : masque les autres salons tant que le membre n'a pas accepté.
+1. **Captcha d'entrée** : bloque les comptes automatisés dès l'arrivée. Il se règle aussi depuis l'[Anti-raid](/dashboard/moderation/anti-raid/) (**Ouvrir l'Anti-raid**) et demande que ce module soit allumé.
+2. **Vérification d'identité** : repère les doubles comptes grâce à une connexion Discord. Elle se règle aussi depuis les [Comptes suspects](/dashboard/moderation/double-comptes/) et demande que ce module soit allumé.
+3. **Acceptation du règlement** : le membre accepte le règlement publié d'un clic et reçoit son rôle.
+   * **Bouton « J'accepte »** : ajoute le bouton sous le règlement publié. Il apparaît ou disparaît à la prochaine publication.
+   * **Rôle attribué** : le rôle donné au clic. Vide, Kotbo crée un rôle `Vérifié` au premier clic.
+   * **Masquer les autres salons** : tant qu'il n'a pas accepté, le membre ne voit que le salon du règlement.
+
+:::note[Les mêmes réglages qu'ailleurs]
+Le captcha et la vérification d'identité sont les mêmes réglages que dans le groupe Protection : les modifier ici les modifie là-bas aussi.
+:::
 
 :::warning[Attention aux permissions]
-Activer la vérification peut créer des conflits de permissions Discord et donner par mégarde un accès en lecture à `@everyone` sur certains salons privés. Vérifiez que vos salons privés **refusent explicitement** la permission de lire les messages au rôle `@everyone` avant d'activer cette option. Kotbo affiche cet avertissement et demande une confirmation.
+Masquer les autres salons peut créer des conflits de permissions Discord et donner par mégarde un accès en lecture à `@everyone` sur certains salons privés. Vérifiez que vos salons privés **refusent explicitement** la permission de lire les messages au rôle `@everyone` avant de l'activer.
 :::
+
+---
+
+## Qui gère le règlement (onglet Accès)
+
+L'onglet **Accès** choisit quels rôles du staff peuvent voir ou modifier le règlement.

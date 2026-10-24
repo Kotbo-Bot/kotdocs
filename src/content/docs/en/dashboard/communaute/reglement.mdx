@@ -31,7 +31,7 @@ Each article carries a <span class="dash-badge active">Visible</span> or <span c
 
 ### Deleting
 
-Deletion requires typing a confirmation word.
+Deletion asks for confirmation.
 
 :::danger[Effect on reports]
 Deleting an article removes it from **all future sanction reports**. Reports already written keep their reference.
@@ -49,14 +49,27 @@ Deleting an article removes it from **all future sanction reports**. Reports alr
 
 ---
 
-## Verification through the rules
+## Arrival flow (Verification tab)
 
-This option adds an acceptance button under the rules message.
+The **Arrival flow** shows what a new member goes through before accessing the server, in order. Every step is optional and shows whether it is **On** or **Off**.
 
-* **Verification**: turns the button on.
-* **Assigned role**: the role granted on acceptance. Leave it empty for Kotbo to create a `Vérifié` role automatically.
-* **Lock**: hides the other channels until the member accepts.
+1. **Entry captcha**: blocks automated accounts on arrival. It is also set from [Anti-raid](/en/dashboard/moderation/anti-raid/) (**Open Anti-raid**) and needs that module to be on.
+2. **Identity verification**: spots alt accounts through a Discord login. It is also set from [Suspicious accounts](/en/dashboard/moderation/double-comptes/) and needs that module to be on.
+3. **Rules acceptance**: the member accepts the published rules in one click and gets their role.
+   * **"I accept" button**: adds the button under the published rules. It appears or disappears the next time the rules are published.
+   * **Assigned role**: the role given on click. Empty, Kotbo creates a `Verified` role on the first click.
+   * **Hide other channels**: until they accept, the member only sees the rules channel.
 
-:::warning[Mind the permissions]
-Enabling verification can create Discord permission conflicts and inadvertently give `@everyone` read access to some private channels. Check that your private channels **explicitly deny** the read messages permission to `@everyone` before turning this on. Kotbo shows this warning and asks for confirmation.
+:::note[The same settings as elsewhere]
+The captcha and identity verification are the same settings as in the Protection group: changing them here changes them there too.
 :::
+
+:::warning[Watch out for permissions]
+Hiding other channels can create Discord permission conflicts and accidentally give `@everyone` read access to some private channels. Check that your private channels **explicitly deny** the read messages permission to the `@everyone` role before turning it on.
+:::
+
+---
+
+## Who manages the rules (Access tab)
+
+The **Access** tab picks which staff roles can view or edit the rules.
