@@ -1,5 +1,5 @@
 ---
-title: Gestion des membres
+title: Membres
 description: Recherchez, filtrez et ouvrez les dossiers détaillés des membres de votre communauté depuis le dashboard.
 ---
 
@@ -14,12 +14,7 @@ L'accès demande un rôle de modération ou d'administration.
 
 ## Les indicateurs en tête de page
 
-Quatre chiffres résument l'état de votre communauté :
-
-* **Total membres**
-* le nombre de membres **en ligne** ;
-* le nombre de membres **partis** ;
-* le nombre de **bots**.
+Quatre chiffres résument l'état de votre communauté : le **Total membres**, puis le nombre de membres **présents**, de membres **partis** et de **bots**.
 
 ---
 
@@ -47,10 +42,35 @@ Le sélecteur **Par page** contrôle le nombre de lignes affichées, et le compt
 
 ## Lire une ligne
 
-Chaque ligne affiche le membre, sa colonne **Activité** (dernière activité, exprimée en minutes, heures ou jours, ou *Jamais*) et sa colonne **Messages**.
+Chaque ligne affiche le membre, sa colonne **Activité** (dernière activité, exprimée en minutes, heures ou jours, ou *Jamais*) et sa colonne **Messages**. Cliquer sur un membre ouvre sa fiche.
 
-Le bouton **Dossier** ouvre la fiche complète du membre : historique de sanctions, rôles, arrivée, activité, et les actions de modération applicables directement depuis le dashboard.
+---
+
+## La fiche d'un membre
+
+Chaque membre a sa page, à l'adresse `/members/` suivie de son identifiant : on peut la mettre en favori ou la partager avec le staff. Elle existe aussi pour un membre parti, marqué **Parti**.
+
+L'en-tête donne la date d'arrivée, la création du compte, la **Dernière activité** et l'inviteur (**Invité par**), avec **Copier l'ID**. Deux boutons y mènent plus loin :
+
+* **Dossier détaillé** ouvre le dossier de modération dans une fenêtre, avec ses onglets ;
+* **Modérer** applique directement une sanction.
+
+La fiche rassemble ensuite :
+
+| Bloc | Contenu |
+| --- | --- |
+| **Points d'attention** | Ce qui mérite un coup d'œil : sanctions en cours, double compte suspecté, signalements en attente, avertissements répétés, compte créé peu avant son arrivée, comptes liés, arrivées répétées, invités qui repartent vite. |
+| **Note du staff** | Une note interne, modifiable avec **Modifier**. |
+| **En bref** | Messages et vocal sur 90 jours, jours actifs (avec la série en cours et le record), niveau, réputation reçue, solde, membres invités (et combien sont toujours là), tickets ouverts et leur note moyenne, suggestions et formulaires, concours gagnés. |
+| **Rôles** | Les rôles du membre. |
+| **Activité** | Les messages par jour, avec un point sous la barre les jours de vocal. |
+| **Chronologie** | Tout ce qui concerne le membre, du plus récent au plus ancien, filtrable : **Tout**, **Arrivées**, **Modération**, **Support**, **Communauté**, **Changements**. |
+| **Niveau de risque** | Le nombre d'avertissements, le score pondéré et l'ancienneté de la dernière sanction. |
+| **Où il parle** et **Avec qui** | Ses salons les plus fréquentés et les membres avec qui il échange le plus. |
+| **Comptes liés** | Les doubles comptes repérés, **validés** ou **à vérifier**. |
+
+Quand [AegisAI](/dashboard/moderation/aegis/) est actif, une carte résume aussi le climat de ses messages.
 
 :::tip[Depuis les autres pages]
-Le dossier d'un membre est aussi accessible en cliquant sur son nom depuis les pages [Sanctions](/dashboard/moderation/sanctions/), [Logs Discord](/dashboard/moderation/logs/) et [Multi-comptes](/dashboard/moderation/double-comptes/).
+Le dossier d'un membre s'ouvre aussi en cliquant sur son nom depuis les pages [Sanctions](/dashboard/moderation/sanctions/), [Journaux](/dashboard/moderation/logs/), [Comptes suspects](/dashboard/moderation/double-comptes/) ou [Tickets](/dashboard/communaute/tickets/). Le lien **Fiche complète** du dossier mène à cette page.
 :::
