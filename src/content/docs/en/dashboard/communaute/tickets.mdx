@@ -130,27 +130,25 @@ The comment question and reposting reviews on Discord are set in the [configurat
 
 A **macro** puts a reply the staff keeps rewriting one click away, and attaches what usually comes next.
 
-The **Nouvelle macro** button asks for:
+The **New macro** button asks for:
 
-* **Nom**, **Catégorie** and **Emoji**.
-* **Contenu**: the text sent, 2000 characters maximum - the limit of a Discord message. The `{user}`, `{staff}`, `{ticket_id}`, `{ticket_type}` and `{server}` variables are replaced in it.
-* **Types de ticket concernés** and **Rôles autorisés**: empty, the macro applies to every type and all staff.
-* **Mots-clés de suggestion**: macros whose keyword appears in the request move to the top of the picker.
-
-The macro editor is labelled in French in the dashboard.
+* **Name**, **Category** and **Emoji**.
+* **Content**: the text sent, 2000 characters maximum - the limit of a Discord message. The `{user}`, `{staff}`, `{ticket_id}`, `{ticket_type}` and `{server}` variables are replaced in it.
+* **Ticket types covered** and **Allowed roles**: empty, the macro applies to every type and all staff.
+* **Suggestion keywords**: macros whose keyword appears in the request move to the top of the picker.
 
 ### Attached actions
 
 A macro can do more than write:
 
-* **Requalifier en**: change the ticket's type.
-* **Ajouter le rôle** and **Retirer le rôle**.
-* **Déclencher l'enquête de satisfaction**: trigger the satisfaction survey.
-* **Fermer le ticket**: applied last, since the others need a ticket that is still open.
+* **Change type to**: change the ticket's type.
+* **Add the role** and **Remove the role**.
+* **Trigger the satisfaction survey**.
+* **Close the ticket**: applied last, since the others need a ticket that is still open.
 
 ### Automatic sending
 
-**Envoyer automatiquement à l'ouverture** posts the macro as soon as the ticket is created.
+**Send automatically on open** posts the macro as soon as the ticket is created.
 
 :::note[Its actions do not apply]
 A macro sent on opening posts its text but does not apply its actions: closing or retyping a ticket that was just born would do more harm than good.
@@ -230,15 +228,16 @@ Empty, a time has **No target**.
 
 ### Quotas
 
-Opening limits on the member side, and a workload cap on the staff side. Each quota is turned on separately, and a ticket type can adjust the threshold. This section is labelled in French in the dashboard.
+Opening limits on the member side, and a workload cap on the staff side. Each quota is turned on separately, and a ticket type can adjust the threshold.
 
 | Quota | What it limits |
 | --- | --- |
-| **Tickets ouverts simultanément** | How many tickets a member can have open at the same time. |
-| **Délai entre deux ouvertures** | Stops members from opening ticket after ticket without leaving time to answer. |
-| **Quota sur une période** | Caps openings over a rolling window (*Tickets maximum* over *N hours*). |
+| **Tickets open at the same time** | How many tickets a member can have open at the same time. |
+| **Delay between two openings** | Stops members from opening ticket after ticket without leaving time to answer. |
+| **Quota over a period** | Caps openings over a rolling window (*Maximum tickets* over *N hours*). |
+| **Limit reopenings** | How many times the same ticket can be reopened. The delays between two reopenings (24 h, then 7 days) apply no matter what. |
 
-**Charge maximale par modérateur** (maximum load per moderator) counts tickets claimed and still open; beyond it, staff are warned or refused.
+The **Maximum load per moderator** counts tickets claimed and still open; beyond it, staff are warned or refused.
 
 ### Satisfaction survey
 

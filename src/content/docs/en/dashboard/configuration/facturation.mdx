@@ -10,8 +10,8 @@ The **Billing** entry sits at the bottom of the sidebar, above your profile: [Op
 It is not visible to everyone - see *Who can access it* below.
 :::
 
-:::caution[This page is not translated]
-Billing is displayed in French whatever your dashboard language, and prices are shown in euros. Its labels are quoted verbatim below.
+:::note[Plan names]
+The page follows your dashboard language, but plan names and descriptions come from the server and stay in French (*Gratuit*, *Sur mesure*…). Prices are shown in euros.
 :::
 
 ---
@@ -32,7 +32,7 @@ Every paid plan opens the **whole catalogue**, including modules added later. Wh
 A server on the **Gratuit** plan has no active module: the bot is present, but its commands, events and settings pages stay closed. Only the dashboard, the module catalogue, the settings and the billing page answer.
 :::
 
-The server's size decides which plan is offered: a single card carries a purchase button, the one for your tier. The others show *Offre inférieure*, point to the portal through **Changer d'offre** for a change mid-subscription, or read *Compris dans votre accord* on a server on the Sur mesure plan.
+The server's size decides which plan is offered: a single card carries a purchase button, the one for your tier. The others show *Lower plan*, point to the portal through **Change plan** for a change mid-subscription, or read *Included in your agreement* on a server on the Sur mesure plan.
 
 ---
 
@@ -44,29 +44,29 @@ Pick a plan: the first fifteen days are not billed. Stripe asks for a card, but 
 
 When the trial is not offered, the page says why:
 
-* *Vous avez déjà utilisé votre essai gratuit sur un serveur.*
-* *Ce serveur a déjà bénéficié de son essai gratuit.*
-* *Ce serveur est déjà abonné : le changement d'offre se fait au prorata depuis le portail Stripe.*
-* *Cette offre ne comporte pas d'essai gratuit.*
+* *You already used your free trial on a server.*
+* *This server already had its free trial.*
+* *This server is already subscribed: plan changes are prorated from the Stripe portal.*
+* *This plan has no free trial.*
 
 ---
 
 ## Subscribing and managing
 
-The **Mensuel / Annuel** switch changes the prices shown; the saving announced on the yearly option is the **smallest** of the discounts, the one true for every plan. Prices include tax and are **per Discord server**.
+The **Monthly / Yearly** switch changes the prices shown; the saving announced on the yearly option is the **smallest** of the discounts, the one true for every plan. Prices include tax and are **per Discord server**.
 
 The purchase button opens a Stripe-hosted checkout page, then brings you back to billing. While Stripe confirms, the plan may take a few seconds to update on screen.
 
 The checkout page asks you to accept the terms of service: Kotbo opens the modules as soon as the payment is confirmed, which requires your express request for immediate delivery.
 
-Once subscribed, **Gérer mon abonnement** opens the Stripe portal: payment method, invoices, prorated plan changes and cancellation. Access is kept until the end of the period already paid for.
+Once subscribed, **Manage my subscription** opens the Stripe portal: payment method, invoices, prorated plan changes and cancellation. Access is kept until the end of the period already paid for.
 
-The subscription status is spelled out next to the plan name: *Actif*, *Période d'essai*, *Paiement en échec*, *Impayé*, *Résilié*, *Paiement incomplet*, *Paiement abandonné* or *En pause*.
+The subscription status is spelled out next to the plan name: *Active*, *Trial period*, *Payment failed*, *Unpaid*, *Cancelled*, *Payment incomplete*, *Payment abandoned* or *Paused*.
 
-After a successful payment, a box confirms the plan chosen, recalls that its modules open within seconds with nothing to reinstall, and offers **Voir mes nouveaux modules** (see my new modules).
+After a successful payment, a box confirms the plan chosen, recalls that its modules open within seconds with nothing to reinstall, and offers **See my new modules**.
 
-:::tip[Ton serveur a grandi (your server has grown)]
-When a subscribed server goes past its plan's member bracket, the page says so, presents the plan made for its size and offers to switch from the Stripe portal, which prorates the change. These messages are written in French.
+:::tip[Your server has grown]
+When a subscribed server goes past its plan's member bracket, the page says so, presents the plan made for its size and offers to switch from the Stripe portal, which prorates the change.
 :::
 
 ### Annual renewal
@@ -93,4 +93,4 @@ Billing is not open to the whole staff:
 
 ## Self-hosted instances
 
-On an installation without a Stripe key - self-hosted or white-label - the page shows *Facturation non activée sur cette instance*. Every module then follows the server configuration, with no commercial plan. That is normal behaviour, not an error.
+On an installation without a Stripe key - self-hosted or white-label - the page shows *Billing is not enabled on this instance*. Every module then follows the server configuration, with no commercial plan. That is normal behaviour, not an error.

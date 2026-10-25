@@ -128,18 +128,18 @@ La question de commentaire et la republication des avis sur Discord se règlent 
 
 ## Réponses types (onglet Réponses types)
 
-Une **macro** met à un clic une réponse que le staff réécrit ticket après ticket, et lui attache ce qui suit d'habitude.
+Une **réponse type** met à un clic une réponse que le staff réécrit ticket après ticket, et lui attache ce qui suit d'habitude.
 
-Le bouton **Nouvelle macro** demande :
+Le bouton **Nouvelle réponse type** demande :
 
 * **Nom**, **Catégorie** et **Emoji**.
 * **Contenu** : le texte envoyé, 2000 caractères maximum - la limite d'un message Discord. Les variables `{user}`, `{staff}`, `{ticket_id}`, `{ticket_type}` et `{server}` y sont remplacées.
 * **Types de ticket concernés** et **Rôles autorisés** : vide, la macro vaut pour tous les types et tout le staff.
-* **Mots-clés de suggestion** : les macros dont un mot-clé apparaît dans la demande remontent en tête du sélecteur.
+* **Mots-clés de suggestion** : les réponses types dont un mot-clé apparaît dans la demande remontent en tête du sélecteur.
 
 ### Actions attachées
 
-Une macro peut faire plus qu'écrire :
+Une réponse type peut faire plus qu'écrire :
 
 * **Requalifier en** : changer le type du ticket.
 * **Ajouter le rôle** et **Retirer le rôle**.
@@ -148,10 +148,10 @@ Une macro peut faire plus qu'écrire :
 
 ### Envoi automatique
 
-**Envoyer automatiquement à l'ouverture** poste la macro dès la création du ticket.
+**Envoyer automatiquement à l'ouverture** poste la réponse type dès la création du ticket.
 
 :::note[Ses actions ne s'appliquent pas]
-Une macro envoyée à l'ouverture publie son texte mais n'applique pas ses actions : fermer ou requalifier un ticket qui vient de naître ferait plus de dégâts qu'autre chose.
+Une réponse type envoyée à l'ouverture publie son texte mais n'applique pas ses actions : fermer ou requalifier un ticket qui vient de naître ferait plus de dégâts qu'autre chose.
 :::
 
 Dans le salon du ticket, le bouton **Macros** ouvre le sélecteur. Discord n'accepte que 25 entrées : les plus utilisées passent en tête.
@@ -235,6 +235,7 @@ Des limites d'ouverture côté membre, et un plafond de charge côté staff. Cha
 | **Tickets ouverts simultanément** | Le nombre de tickets qu'un membre peut avoir en cours en même temps. |
 | **Délai entre deux ouvertures** | Empêche d'enchaîner les tickets sans laisser le temps de répondre. |
 | **Quota sur une période** | Plafonne le nombre d'ouvertures sur une fenêtre glissante (*Tickets maximum* sur *N heures*). |
+| **Limiter les réouvertures** | Le nombre de fois qu'un même ticket peut être rouvert. Les délais entre deux réouvertures (24 h, puis 7 jours) s'appliquent quoi qu'il arrive. |
 
 La **Charge maximale par modérateur** compte les tickets pris en charge et encore ouverts ; au-delà, le staff est averti ou refusé.
 
