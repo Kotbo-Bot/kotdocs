@@ -3,6 +3,8 @@ title: Server health
 description: "The server's daily health score, what pushes it up or down, how it compares with servers of the same size, its forecasts and the drop alert."
 ---
 
+import DashboardScreenshot from '../../../../../components/DashboardScreenshot.astro';
+
 <p class="doc-lead">The <strong>Server health</strong> page gives your server a score out of 100 every day, explains what pushes it up or down, compares it with servers of the same size, projects its growth and flags unusual days.</p>
 
 :::note[Where to find it]
@@ -13,6 +15,12 @@ It depends on the **Analytics** module: without activity collection, there is no
 The score is computed **every night** for the previous day. The **Recompute** button computes it right away and rebuilds the available history.
 
 The page has three tabs: **Overview**, **Health** and **Predictions**.
+
+<DashboardScreenshot
+  file="dashboard-pulse.webp"
+  alt="Kotbo's Server health screen, Overview tab"
+  caption="The Overview tab: today's score, what pushes it up or down, and the six dimensions. Fictitious data."
+/>
 
 ---
 

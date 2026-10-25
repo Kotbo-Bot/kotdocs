@@ -3,6 +3,8 @@ title: Santé du serveur
 description: "La note de santé quotidienne du serveur, ce qui la fait monter ou baisser, sa comparaison avec des serveurs de même taille, ses prévisions et l'alerte de chute."
 ---
 
+import DashboardScreenshot from '../../../../components/DashboardScreenshot.astro';
+
 <p class="doc-lead">La page <strong>Santé du serveur</strong> donne chaque jour une note sur 100 à votre serveur, explique ce qui la fait monter ou baisser, la compare à des serveurs de même taille, projette sa croissance et signale les journées anormales.</p>
 
 :::note[Où la trouver]
@@ -13,6 +15,12 @@ Elle dépend du module **Analytics** : sans collecte d'activité, il n'y a rien 
 La note est calculée **chaque nuit** pour la veille. Le bouton **Recalculer** la calcule tout de suite et reconstruit l'historique disponible.
 
 La page compte trois onglets : **Aperçu**, **Santé** et **Prédictions**.
+
+<DashboardScreenshot
+  file="dashboard-pulse.webp"
+  alt="Écran Santé du serveur de Kotbo, onglet Aperçu"
+  caption="L'onglet Aperçu : la note du jour, ce qui la fait monter ou baisser, et les six dimensions. Données fictives."
+/>
 
 ---
 
