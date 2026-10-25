@@ -10,39 +10,52 @@ The **Team → Staff members** section: [Open the directory ↗](https://dash.ko
 Access is controlled by the **Permissions** tab on the same page.
 :::
 
-Four indicators open the page: **Members** on the team, configured **Staff Roles**, active **Warnings** and **Active Polls**.
+Four key figures open the page, and each leads to the matching tab: **Team** (with tutors and suspended members), **Active warnings** (and how many members are close to the threshold), **Activity drop** this week and **Ongoing polls** (and the ones you have not voted in). The tabs carry their counters too.
 
 ---
 
 ## Members tab
 
+The directory is a table: member, grade, **Hierarchies**, **Warnings** (with a gauge that fills up towards the demotion threshold), activity and **Actions**.
+
+* **Search a staff member** filters by name.
+* The filter switches between **All**, **Active**, **Suspended**, **Tutors** and **Warned**, with their counters.
+* **Sort by** **Grade**, **Name**, **Tenure** or **Activity**.
+
 ### Adding a member
 
 <div class="step-list">
   <div class="step-item"><div><h3>Click Add a member</h3><p>The form opens.</p></div></div>
-  <div class="step-item"><div><h3>Point at the Discord user</h3><p>The field accepts a mention, a nickname or a Discord ID; the ID fills in automatically.</p></div></div>
-  <div class="step-item"><div><h3>Pick the global grade</h3><p>And, if needed, tick <strong>Create a tutoring track</strong> to start a supervised trial period right away.</p></div></div>
+  <div class="step-item"><div><h3>Point to the Discord user</h3><p>The field accepts a mention, a username or a Discord ID; the ID fills in automatically.</p></div></div>
+  <div class="step-item"><div><h3>Pick the global grade</h3><p>And, if needed, tick <strong>Create a tutoring</strong> to start a supervised trial period right away.</p></div></div>
 </div>
 
 ### Importing from Discord
 
-The **Import** button adds every holder of a Discord role into a hierarchy at once, at a chosen destination grade. Kotbo then reports how many members were analysed, imported and skipped (already present).
+The **Import** button adds every holder of a Discord role to a hierarchy at once, at a chosen target grade. Kotbo then shows how many members were scanned, imported and skipped (already there).
 
-### Acting on a record
+### Acting on a member
 
-Each card shows the member, their grade, their start date on the team, their warning count and their activity (messages, minutes, sanctions).
+**Promote** and **Demote** always stay visible on the row; Kotbo warns when the maximum or minimum grade is reached. The **…** menu holds the rest:
 
 | Action | Effect |
 | --- | --- |
-| **Promote** / **Demote** | Moves the grade by one step. Kotbo warns when the minimum or maximum grade is reached. |
-| **Designate as Tutor** | Adds the **Tutor** badge and makes the member eligible to supervise an apprentice. |
+| **Warn** | An internal warning, which counts towards automatic demotion. |
+| **Designate as Tutor** / **Remove tutor status** | Makes the member eligible to supervise an apprentice. |
 | **Manage hierarchies** | Links the member to secondary hierarchies, each with its own grade. |
-| **Suspend** | Removes their Discord staff roles, but keeps their record, grade and history. Reversible at any time. |
-| **Dismiss** | Removes the member from the staff. |
+| **Suspend** / **Reinstate** | Keeps the grade and history, but cuts staff permissions. Reversible at any time. |
+| **Blacklist** | Removes from staff and blocks any return (see [Discipline](/en/dashboard/staff/discipline/)). |
+| **Dismiss** | Removes the member from staff. |
+
+Before dismissing a member, Kotbo spells out what the removal affects: their grade and rankings.
 
 :::tip[Suspend rather than dismiss]
-Suspension is made for long absences or situations still under review: the member keeps their whole history and gets their roles back on reinstatement.
+Suspension is meant for long absences or situations under review: the member keeps their whole history and gets their permissions back when reinstated.
 :::
+
+### A staff member's case file
+
+Clicking a member opens their usual case file, with an extra **Staff** tab: when they joined the staff and their current grade, **At a glance** (messages, voice, sanctions issued, progression score, 7-day pace, tenure), **Hierarchies**, **History** and **Discipline**, which recalls the demotion and blacklist thresholds. The **Promote**, **Demote** and **Warn** buttons are there too.
 
 ---
 
@@ -56,11 +69,14 @@ Until a hierarchy exists, Kotbo invites you to create one and assign roles to it
 
 ## Leadership tab
 
-This view analyses the team's performance.
+This view follows the team's activity.
 
-* **Score distribution** and **Activity comparison** as charts.
-* The table shows the **Progression Score**, the **Activity (30d / 7d)** in messages per day, and the **Status / Alerts**.
-* A member whose activity collapses is flagged <span class="dash-badge kick">INACTIVITY DETECTED</span>; the others carry the <span class="dash-badge active">ACTIVE</span> badge.
+* **Activity drop this week** lists at the top the members whose pace is falling.
+* **Activity Comparison**: each member's messages per day, the month's average in grey and the week's in colour.
+* The **Average score**, **Week vs month**, **Members tracked** and **Declining** figures.
+* **Activity per member**: score, **30d Average**, **7d Average** and status, sortable by **Alerts first**, **Score** or **Activity**. A member whose activity collapses is marked <span class="dash-badge kick">INACTIVITY DETECTED</span>; the others are **Steady**.
+
+Until the team has a few days of activity, the tab says so.
 
 ---
 
@@ -75,7 +91,7 @@ Two settings control who sees what:
 
 ## Global configuration
 
-The **Global Configuration** block on the *Staff Roles* tab carries the team-wide settings:
+The **Global Configuration** block on the *Staff roles* tab carries the team-wide settings:
 
 * **Base Staff Role** and **Trial Staff Role**.
 * **Meeting announcement channel** and **Meeting voice / conference channel**.

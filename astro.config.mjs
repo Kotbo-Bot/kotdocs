@@ -52,7 +52,7 @@ export default defineConfig({
         group('Configuration (Dashboard)', 'Configuration (Dashboard)', [
           group('Général', 'General', [
             page('Accueil', 'Home', 'dashboard/general/accueil'),
-            page('Bien démarrer', 'Bien démarrer', 'dashboard/general/prise-en-main'),
+            page('Bien démarrer', 'Getting started', 'dashboard/general/prise-en-main'),
             page('Santé du serveur', 'Server health', 'dashboard/general/pulse'),
             page('Notifications', 'Notifications', 'dashboard/general/notifications'),
             page('Statistiques', 'Statistics', 'dashboard/general/analytics'),

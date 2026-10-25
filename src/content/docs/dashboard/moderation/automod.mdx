@@ -3,6 +3,8 @@ title: Filtres (modération automatique)
 description: Configurez les filtres de sécurité automatiques pour protéger votre serveur en temps réel depuis le dashboard.
 ---
 
+import DashboardScreenshot from '../../../../components/DashboardScreenshot.astro';
+
 <p class="doc-lead">Le module <strong>Modération automatique (AutoMod)</strong> permet de bloquer instantanément les comportements néfastes et les messages indésirables avant même qu’un modérateur n’ait à intervenir.</p>
 
 :::tip[Côté Discord]
@@ -101,6 +103,12 @@ Placez le rôle du bot **au-dessus** des rôles ADMINISTRATOR, sans quoi les ann
 ---
 
 ## Tester une règle sur l'historique (onglet Simulateur)
+
+<DashboardScreenshot
+  file="dashboard-filters-simulator.webp"
+  alt="Onglet Simulateur de la page Filtres de Kotbo"
+  caption="Le Simulateur : choisissez une règle, réglez-la, puis rejouez-la sur les messages passés."
+/>
 
 L'onglet **Simulateur** rejoue une règle sur les messages passés, sans rien sanctionner : vous voyez quels messages elle aurait touchés avant de l'activer. Le bouton **Tester** d'un filtre ouvre directement le simulateur sur ce filtre, avec ses réglages.
 

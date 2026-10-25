@@ -3,6 +3,8 @@ title: Filters (auto moderation)
 description: Configure the automatic security filters that protect your server in real time from the dashboard.
 ---
 
+import DashboardScreenshot from '../../../../../components/DashboardScreenshot.astro';
+
 <p class="doc-lead">The <strong>Auto moderation (AutoMod)</strong> module instantly blocks harmful behaviour and unwanted messages before a moderator ever has to step in.</p>
 
 :::tip[On the Discord side]
@@ -101,6 +103,12 @@ Place the bot's role **above** the ADMINISTRATOR roles, otherwise the automatic 
 ---
 
 ## Testing a rule on past messages (Simulator tab)
+
+<DashboardScreenshot
+  file="dashboard-filters-simulator.webp"
+  alt="Simulator tab of Kotbo's Filters page"
+  caption="The Simulator: pick a rule, set it up, then replay it on past messages."
+/>
 
 The **Simulator** tab replays a rule on past messages without sanctioning anyone: you see which messages it would have hit before turning it on. A filter's **Test** button opens the simulator straight on that filter, with its settings.
 

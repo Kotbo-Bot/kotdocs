@@ -3,18 +3,24 @@ title: Membres du staff
 description: Gérez les membres de votre équipe, leurs grades, leurs suspensions et suivez leur activité.
 ---
 
-<p class="doc-lead">L'<strong>Annuaire</strong> est la fiche d'équipe de votre serveur : qui fait partie du staff, à quel grade, depuis quand, et avec quelle activité.</p>
+<p class="doc-lead">La page <strong>Gestion du personnel</strong> est la fiche d'équipe de votre serveur : qui fait partie du staff, à quel grade, depuis quand, et avec quelle activité.</p>
 
 :::note[Où la trouver]
 Section **Équipe → Membres du staff** : [Ouvrir l'annuaire ↗](https://dash.kotbo.fr/staff-management/members).
 L'accès est contrôlé par l'onglet **Permissions** de la même page.
 :::
 
-Quatre indicateurs ouvrent la page : **Membres** dans l'équipe, **Rôles Staff** configurés, **Avertissements** actifs et **Sondages actifs**.
+Quatre chiffres clés ouvrent la page, et chacun mène à l'onglet concerné : **Équipe** (avec les tuteurs et les suspendus), **Avertissements actifs** (et combien de membres approchent du seuil), **Baisse d'activité** cette semaine et **Sondages en cours** (et ceux où vous n'avez pas voté). Les onglets portent aussi leurs compteurs.
 
 ---
 
 ## Onglet Membres
+
+L'annuaire est un tableau : membre, grade, **Hiérarchies**, **Avertissements** (avec une jauge qui se remplit vers le seuil de rétrogradation), activité et **Actions**.
+
+* **Chercher un membre du staff** filtre par nom.
+* Le filtre bascule entre **Tous**, **Actifs**, **Suspendus**, **Tuteurs** et **Avertis**, avec leurs compteurs.
+* **Trier par** **Grade**, **Nom**, **Ancienneté** ou **Activité**.
 
 ### Ajouter un membre
 
@@ -28,21 +34,28 @@ Quatre indicateurs ouvrent la page : **Membres** dans l'équipe, **Rôles Staff*
 
 Le bouton **Importer** ajoute d'un coup tous les porteurs d'un rôle Discord dans une hiérarchie, à un grade de destination choisi. Kotbo affiche ensuite le nombre de membres analysés, importés et ignorés (déjà présents).
 
-### Agir sur une fiche
+### Agir sur un membre
 
-Chaque carte affiche le membre, son grade, sa date d'entrée dans l'équipe, son nombre d'avertissements et son activité (messages, minutes, sanctions).
+**Promouvoir** et **Rétrograder** restent toujours visibles sur la ligne ; Kotbo prévient quand le grade maximum ou minimum est atteint. Le menu **…** porte le reste :
 
 | Action | Effet |
 | --- | --- |
-| **Promouvoir** / **Rétrograder** | Change le grade d'un cran. Kotbo prévient quand le grade minimum ou maximum est atteint. |
-| **Désigner comme tuteur** | Ajoute le badge **Tuteur** et rend le membre éligible à l'encadrement d'un apprenti. |
+| **Avertir** | Un avertissement interne, qui compte pour la rétrogradation automatique. |
+| **Désigner comme tuteur** / **Retirer le statut de tuteur** | Rend le membre éligible à l'encadrement d'un apprenti. |
 | **Gérer les hiérarchies** | Associe le membre à des hiérarchies secondaires, chacune avec son propre grade. |
-| **Suspendre** | Retire ses rôles Discord staff, mais conserve sa fiche, son grade et son historique. Réversible à tout moment. |
+| **Suspendre** / **Réintégrer** | Garde le grade et l'historique, mais coupe les permissions staff. Réversible à tout moment. |
+| **Mettre en liste noire** | Retire du staff et bloque tout retour (voir [Discipline](/dashboard/staff/discipline/)). |
 | **Démettre** | Retire le membre du staff. |
 
+Avant de démettre un membre, Kotbo chiffre ce que la suppression touche : son grade et ses classements.
+
 :::tip[Suspendre plutôt que démettre]
-La suspension est faite pour les absences longues ou les situations en cours d'examen : le membre garde tout son historique et retrouve ses rôles à la réintégration.
+La suspension est faite pour les absences longues ou les situations en cours d'examen : le membre garde tout son historique et retrouve ses permissions à la réintégration.
 :::
+
+### Le dossier d'un membre du staff
+
+Cliquer sur un membre ouvre son dossier habituel, avec un onglet **Staff** en plus : entrée dans le staff et grade actuel, **En bref** (messages, vocal, sanctions données, score de progression, rythme sur 7 jours, ancienneté), **Hiérarchies**, **Parcours** et **Discipline**, qui rappelle les seuils de rétrogradation et de liste noire. Les boutons **Promouvoir**, **Rétrograder** et **Avertir** y sont aussi.
 
 ---
 
@@ -56,11 +69,14 @@ Tant qu'aucune hiérarchie n'existe, Kotbo invite à en créer et à y assigner 
 
 ## Onglet Leadership
 
-Cette vue analyse les performances de l'équipe.
+Cette vue suit l'activité de l'équipe.
 
-* **Distribution des scores** et **Comparaison d'Activité** sous forme de graphiques.
-* Le tableau affiche le **Score progression**, l'**Activité (30 j / 7 j)** en messages par jour, et le **Statut / alertes**.
-* Un membre dont l'activité s'effondre est marqué <span class="dash-badge kick">INACTIVITÉ DÉTECTÉE</span> ; les autres portent le badge <span class="dash-badge active">ACTIF</span>.
+* **Baisse d'activité cette semaine** liste en tête les membres dont le rythme chute.
+* **Comparaison d'Activité** : les messages par jour de chacun, moyenne du mois en gris et de la semaine en couleur.
+* Les chiffres **Score moyen**, **Semaine vs mois**, **Membres suivis** et **En baisse**.
+* **Activité par membre** : score, **Moyenne 30j**, **Moyenne 7j** et statut, triable par **Alertes d'abord**, **Score** ou **Activité**. Un membre dont l'activité s'effondre est marqué <span class="dash-badge kick">INACTIVITÉ DÉTECTÉE</span> ; les autres sont **Stable**.
+
+Tant que l'équipe n'a pas quelques jours d'activité, l'onglet l'indique.
 
 ---
 
@@ -75,7 +91,7 @@ Deux réglages contrôlent qui voit quoi :
 
 ## Configuration globale
 
-Le bloc **Configuration globale** de l'onglet *Rôles Staff* porte les réglages transverses à l'équipe :
+Le bloc **Configuration globale** de l'onglet *Rôles du staff* porte les réglages transverses à l'équipe :
 
 * **Rôle staff de base** et **Rôle staff en test**.
 * **Salon d'annonce des réunions** et **Salon vocal / conférence des réunions**.

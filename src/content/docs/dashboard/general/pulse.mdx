@@ -1,38 +1,75 @@
 ---
 title: Santé du serveur
-description: Suivez le score de santé quotidien de votre serveur, ses prévisions de croissance et ses anomalies d'activité.
+description: "La note de santé quotidienne du serveur, ce qui la fait monter ou baisser, sa comparaison avec des serveurs de même taille, ses prévisions et l'alerte de chute."
 ---
 
-<p class="doc-lead"><strong>Pulse</strong> attribue chaque jour un score de santé à votre serveur, projette sa croissance et signale les anomalies d'activité.</p>
+import DashboardScreenshot from '../../../../components/DashboardScreenshot.astro';
+
+<p class="doc-lead">La page <strong>Santé du serveur</strong> donne chaque jour une note sur 100 à votre serveur, explique ce qui la fait monter ou baisser, la compare à des serveurs de même taille, projette sa croissance et signale les journées anormales.</p>
 
 :::note[Où la trouver]
-Section **Général → Santé du serveur** : [Ouvrir Pulse ↗](https://dash.kotbo.fr/pulse). La page est en **bêta**.
+Section **Général → Santé du serveur** : [Ouvrir Santé du serveur ↗](https://dash.kotbo.fr/pulse). La page est en **bêta**.
 Elle dépend du module **Analytics** : sans collecte d'activité, il n'y a rien à analyser.
 :::
 
-Le Pulse est calculé **chaque nuit** sur la journée écoulée. Le bouton **Recalculer** reconstruit l'historique disponible.
+La note est calculée **chaque nuit** pour la veille. Le bouton **Recalculer** la calcule tout de suite et reconstruit l'historique disponible.
+
+La page compte trois onglets : **Aperçu**, **Santé** et **Prédictions**.
+
+<DashboardScreenshot
+  file="dashboard-pulse.webp"
+  alt="Écran Santé du serveur de Kotbo, onglet Aperçu"
+  caption="L'onglet Aperçu : la note du jour, ce qui la fait monter ou baisser, et les six dimensions. Données fictives."
+/>
 
 ---
 
 ## Onglet Aperçu
 
-Le score du jour est décomposé en cinq sous-scores :
+### La note du jour
 
-* **Activité**
-* **Modération**
-* **Croissance**
-* **Engagement**
-* **Santé**
+La note sur 100 est qualifiée de **Excellent**, **Bon**, **Moyen**, **Faible** ou **Critique**, avec sa tendance face aux 7 derniers jours. Elle s'accompagne :
 
-Chaque score est qualifié de **Excellent**, **Bon**, **Moyen**, **Faible** ou **Critique**.
+* d'une **fiabilité**, qui dépend du nombre de membres actifs, du recul (jours d'historique) et des signaux disponibles ;
+* d'une **comparaison anonyme** avec des serveurs Kotbo de même taille, le même jour et avec le même barème. Il faut assez de serveurs comparables pour qu'elle s'affiche.
 
-Les **métriques de la journée** détaillent messages, vocal, membres actifs, arrivées / départs, sanctions et tickets résolus.
+La note tient compte du jour de la semaine (un dimanche est comparé à vos dimanches habituels) et de la taille du serveur : un petit serveur n'est pas jugé sur les chiffres d'un grand.
 
 :::caution[Le score du jour est provisoire]
-Tant que la journée n'est pas terminée, Kotbo affiche un score partiel et le signale explicitement.
+Tant que la journée n'est pas terminée, la page affiche un score partiel, marqué *Aujourd'hui (en cours)*.
 :::
 
-L'**Évolution sur 30 jours** replace la journée dans sa tendance.
+### Pourquoi cette note
+
+Ce bloc liste les facteurs en points gagnés ou perdus par rapport à une note neutre de 50 : **Ce qui la fait monter** et **Ce qui la fait baisser**. Chaque facteur mène à la page où agir.
+
+### Évolution sur 30 jours
+
+La courbe replace la journée dans sa tendance, avec la **Moyenne sur 7 jours** et les cinq sous-notes. Des triangles marquent les jours avec une alerte ou une forme exceptionnelle. Cliquer sur un jour affiche son détail : messages, vocal, membres actifs, arrivées / départs, sanctions et tickets résolus.
+
+### Alertes et conseils
+
+La page commente la note plutôt que de la laisser brute : activité en sommeil, sanctions élevées, départs nombreux, tickets en attente, salons en mauvaise santé, ou au contraire excellente dynamique. Quand l'historique est trop court, elle le dit.
+
+### Être prévenu d'une chute
+
+**Me prévenir si la note chute** crée une alerte : chaque matin, Kotbo compare la note de la veille à votre semaine et vous prévient, dans un salon ou en message privé, si elle **baisse d'au moins** le pourcentage choisi. **Gérer les alertes** ouvre les [alertes des Statistiques](/dashboard/general/analytics/#alertes-sur-seuil), où elle se modifie comme les autres.
+
+---
+
+## Onglet Santé
+
+L'onglet détaille les cinq sous-notes, chacune avec ce qu'elle mesure, son poids dans la note (*N % de la note*) et ses facteurs :
+
+| Sous-note | Ce qu'elle mesure |
+| --- | --- |
+| **Activité** | Messages et vocal, comparés à vos jours habituels. |
+| **Engagement** | Qui participe, qui revient (rapport entre membres actifs du jour et du mois), et si les messages trouvent une réponse. |
+| **Croissance** | Arrivées et départs, lissés sur la semaine. |
+| **Modération** | Sanctions et climat des échanges, dont la toxicité mesurée par [AegisAI](/dashboard/moderation/aegis/) quand il est actif. |
+| **Santé** | État des salons et suivi des tickets. |
+
+Une sous-note sans rien à mesurer reste neutre.
 
 ---
 
@@ -50,37 +87,18 @@ Le module s'active dans [Réglages → Modules](/dashboard/configuration/modules
 
 ---
 
-## Alertes & recommandations
-
-Pulse commente le score plutôt que de le laisser brut. Quelques exemples de ce qu'il signale :
-
-* *Activité très faible, le serveur est en sommeil.*
-* *Taux de sanctions élevé, vérifiez les conflits en cours.*
-* *Le serveur perd des membres, analysez les causes.*
-* *N départs pour M arrivées, la rétention est faible.*
-* *Faible engagement, peu de membres participent activement.*
-* *N tickets ouverts en attente.*
-* *N salons en mauvaise santé détectés.*
-* *Excellente dynamique, le serveur est en pleine forme !*
-
-Quand l'historique est trop court, Pulse le dit : *Pas encore assez de données pour un diagnostic fiable.*
-
----
-
 ## Onglet Prédictions
 
 ### Prévision de croissance
 
-Projection du nombre de membres à **7 jours** et à **30 jours**, avec une moyenne de membres gagnés par jour et un indice de **confiance**. Une confiance faible signale un historique court ou irrégulier.
-
-Le graphique distingue l'**observé**, le **prédit** et un **intervalle à 80 %**.
+Projection du nombre de membres **à 7 jours** et **à 30 jours**, avec les membres gagnés par jour et une **Fiabilité**. Une fiabilité faible signale un historique court ou irrégulier. Les **Séries projetées** montrent l'observé et, en pointillés, la projection sur 7 jours avec sa fourchette probable.
 
 Il faut au moins **cinq jours complets** d'historique pour projeter une tendance.
 
-### Saisonnalité
+### Semaine type et journée type
 
-Kotbo identifie le **jour le plus actif**, le **jour le plus calme**, l'**heure de pointe** et l'**heure creuse** (en UTC). En dessous de 14 jours observés, le profil est signalé comme peu fiable.
+La **Semaine type** montre les jours les plus et les moins actifs ; la **Journée type**, les messages par heure, à l'heure du serveur, avec l'heure de pointe et l'heure creuse. En dessous de 14 jours observés, le profil est signalé comme peu fiable.
 
 ### Anomalies détectées
 
-Un **pic** ou une **chute** anormale est signalé avec sa date, sa valeur observée et la valeur attendue. C'est le bon endroit pour retrouver le jour où quelque chose s'est passé sans que personne ne l'ait remarqué.
+Les jours qui sortent nettement de l'habitude - tendance et jour de semaine pris en compte - sont listés avec leur date, leur valeur observée et la valeur attendue. C'est le bon endroit pour retrouver le jour où quelque chose s'est passé sans que personne ne l'ait remarqué.

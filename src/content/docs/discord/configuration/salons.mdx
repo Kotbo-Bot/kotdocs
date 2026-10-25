@@ -11,11 +11,11 @@ Pour configurer les compteurs, les générateurs de vocaux et le Honeypot, consu
 
 ---
 
-## 1. Auto-Thread (Fils automatiques)
+## 1. Fils automatiques
 
-* **Déclenchement** : Lorsqu'un utilisateur envoie un message dans un salon configuré en Auto-Thread (ex: `#suggestions` ou `#projets`), Kotbo réagit instantanément.
-* **Création du fil** : Le bot crée un fil de discussion (thread) sous le message d'origine, en utilisant le message comme en-tête.
-* **Intérêt** : Cela permet de garder les salons principaux propres en déportant les commentaires sous chaque sujet spécifique.
+* **Déclenchement** : quand un message arrive dans un salon configuré, Kotbo essaie ses configurations dans l'ordre ; la première qui accepte le message ouvre un fil sous lui, nommé selon ses règles (première ligne, nom de l'auteur, date…).
+* **Messages non conformes** : si le salon le prévoit, un message qu'aucune configuration n'accepte est retiré après un délai, avec un court avertissement.
+* **Renommer un fil** : c'est le bot qui crée le fil, donc seuls les modérateurs peuvent le renommer depuis Discord. Les autres utilisent `/fil renommer` dans le fil, si la configuration autorise l'auteur ou tout le monde.
 
 ---
 

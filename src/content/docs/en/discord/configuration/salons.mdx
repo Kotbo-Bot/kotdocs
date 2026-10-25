@@ -11,11 +11,11 @@ To configure the counters, the voice channel generators and the Honeypot, read t
 
 ---
 
-## 1. Auto-Thread (automatic threads)
+## 1. Automatic threads
 
-* **Trigger**: when a user posts a message in a channel configured for Auto-Thread (for example `#suggestions` or `#projects`), Kotbo reacts instantly.
-* **Thread creation**: the bot creates a thread under the original message, using that message as its header.
-* **Why it helps**: it keeps your main channels tidy by moving comments into a thread under each specific topic.
+* **Trigger**: when a message arrives in a configured channel, Kotbo tries its configurations in order; the first one that accepts the message opens a thread under it, named by its rules (first line, author's name, date…).
+* **Non-matching messages**: if the channel says so, a message no configuration accepts is removed after a delay, with a short warning.
+* **Renaming a thread**: the bot creates the thread, so only moderators can rename it from Discord. Others use `/thread rename` (`/fil renommer` in French) in the thread, if the configuration allows the author or everyone.
 
 ---
 

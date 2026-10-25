@@ -1,28 +1,32 @@
 ---
-title: Bien démarrer
+title: Getting started
 description: See what is left to configure, where to start, and lay out the whole server structure in one go.
 ---
+
+import DashboardScreenshot from '../../../../../components/DashboardScreenshot.astro';
 
 <p class="doc-lead">The <strong>Getting set up</strong> page answers two questions: what to do right now, and what is still missing. It reads the server's real configuration rather than a counter of completed steps: a setting you clear becomes "to do" again.</p>
 
 :::note[Where to find it]
-The **General → Bien démarrer** section: [Open it ↗](https://dash.kotbo.fr/setup). The page is in **beta**.
+The **General → Getting started** section: [Open it ↗](https://dash.kotbo.fr/setup).
 The former *Build my server* page was merged into it: laying out the structure and checking what is left to set are the same moment.
 :::
 
-:::caution[Part of this page is not translated]
-The *Build my server* block follows the dashboard language, but the rest of the page - the next actions, the progress ring, the groups of points - is displayed in French whatever your language. Those labels are quoted verbatim below.
-:::
+<DashboardScreenshot
+  file="dashboard-setup.webp"
+  alt="Kotbo's Getting started screen"
+  caption="The next three actions, the progress bar and the start of the server creation card. Fictitious data."
+/>
 
 ---
 
 ## The next three actions
 
-At the top of the page, three cards name the points that are missing the most, in the recommended order. Each says what the setting brings, exactly what is missing, and leads straight to the page concerned. The first one is marked **À faire maintenant**.
+At the top of the page, three cards name the points that are missing the most, in the recommended order. Each says what the setting brings, exactly what is missing, and guides you to the field to fill in on the page concerned. The first one is marked **Do this now**.
 
 ## Progress
 
-A ring shows the percentage of points settled and the `done / total` count. Next to it, Kotbo names the next point to handle, or announces *Tout est configuré* when none is left.
+A **Progress** line, at the top of the page, shows the percentage of points settled and the *N of M set* count, or *All set* when none is left.
 
 ---
 
@@ -75,7 +79,7 @@ Every channel states its audience:
 | **Private: visible to the Unverified role only** | Disappears once the captcha is passed. |
 | **Read-only** | Only Kotbo posts there; members can react with emojis. |
 
-Several channels arrive already wired: the highlights channel to [Starlight](/en/dashboard/communaute/starlight/), the announcement channel to auto-thread, the temporary voice channel generator, or the trap channel pinned at the very top of the server, outside any category.
+Several channels arrive already wired: the highlights channel to [Highlighted messages](/en/dashboard/communaute/starlight/), the announcement channel to auto-thread, the temporary voice channel generator, or the trap channel pinned at the very top of the server, outside any category.
 
 ### How the Member role is earned
 
@@ -123,11 +127,27 @@ Below the setup block, the points are grouped in three, each with its own counte
 
 | Group | What it covers |
 | --- | --- |
-| **Essentiel** | Without these three, the rest works badly or silently: log channel, moderator role, time zone. |
-| **Modération** | What it takes to run the server and make decisions defensible: rules published, protection enabled, sanction alert channel. |
-| **Vie du serveur** | What brings members back: working tickets, ticket quotas, welcoming newcomers. |
+| **Essential** | Without these three, the rest works badly or silently: log channel, moderator role, time zone. |
+| **Moderation** | What it takes to run the server and make decisions defensible: rules published, protection enabled, sanction alert channel. |
+| **Server life** | What brings members back: working tickets, ticket quotas, welcoming newcomers. |
 
-Every line says **why** the point matters, and shows a *manque : …* tag while it is unsettled. A click opens the page where it is set.
+Every line says **why** the point matters, and shows *Missing: …* while it is unsettled. A click opens the page where it is set.
+
+---
+
+## Quick setups
+
+Under the list, the **Quick setups** block gathers complete setups in a single choice, to fine-tune module by module afterwards. Only those you can open appear:
+
+| Card | What it sets |
+| --- | --- |
+| **Security** | A [protection level](/en/dashboard/moderation/configuration-rapide/) sets filters and anti-raid at once. |
+| **Economy** | A [pace](/en/dashboard/economie/configuration-rapide/) sets rewards, the daily cooldown and energy. |
+| **Levels** | A ready-made XP curve, to adjust afterwards. |
+| **Prestige** | A rank ladder and its rewards, in one choice. |
+| **Channel health** | Alert thresholds matching the server's size. |
+
+These quick setups no longer have menu entries of their own.
 
 ---
 
