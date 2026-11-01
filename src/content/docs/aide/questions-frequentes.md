@@ -9,7 +9,7 @@ La page dépend de votre niveau d’accès, d’un module désactivé, ou de l�
 
 ## Le bot est là mais ne répond à rien
 
-Un serveur sans abonnement est en offre **Gratuit**, qui n’ouvre aucun module : le bot est présent mais inerte. Souscrivez depuis la page [Offres & facturation](/dashboard/configuration/facturation/) pour ouvrir le catalogue.
+Un serveur sans abonnement est en offre **Gratuit** : la modération, les logs, l'accueil, les niveaux et les tickets répondent, mais pas les modules de l'offre complète (staff, AegisAI, site, économie…). Vérifiez aussi que le module est allumé dans [Modules](/dashboard/configuration/modules/). Voir [Offres & facturation](/dashboard/configuration/facturation/).
 
 ## Le dashboard ne s’ouvre pas, je suis renvoyé sur un parcours d’écrans
 

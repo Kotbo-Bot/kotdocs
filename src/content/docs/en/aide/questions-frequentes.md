@@ -9,7 +9,7 @@ The page depends on your access level, on a disabled module, or on the server's 
 
 ## The bot is there but responds to nothing
 
-A server without a subscription is on the **Free** plan, which opens no module: the bot is present but idle. Subscribe from the [Plans & billing](/en/dashboard/configuration/facturation/) page to open the catalogue.
+A server without a subscription is on the **Free** plan: moderation, logs, welcome, levels and tickets respond, but full-plan modules (staff, AegisAI, website, economy…) do not. Also check that the module is switched on in [Modules](/en/dashboard/configuration/modules/). See [Plans & billing](/en/dashboard/configuration/facturation/).
 
 ## The dashboard won't open, I'm sent through a series of screens instead
 
