@@ -1,0 +1,106 @@
+---
+// Barre du site au-dessus de la doc : mêmes rubriques que la barre de kotbo.fr (Nav.svelte de la
+// landing), pour passer de la documentation au blog ou à l'accueil sans repasser par l'URL.
+// Les chemins sont absolus : la doc est servie sous /docs, sur le même domaine que la landing.
+const en = Astro.currentLocale === 'en';
+const home = en ? '/en' : '/';
+const links = en
+  ? [
+      { label: 'Home', href: '/en' },
+      { label: 'Features', href: '/en/features' },
+      { label: 'Docs', href: '/docs/en/', current: true },
+      { label: 'Blog', href: '/en/blog' },
+    ]
+  : [
+      { label: 'Accueil', href: '/' },
+      { label: 'Fonctionnalités', href: '/fonctionnalites' },
+      { label: 'Documentation', href: '/docs/', current: true },
+      { label: 'Blog', href: '/blog' },
+    ];
+---
+
+<div class="site-bar">
+  <a class="site-bar__brand" href={home} aria-label={en ? 'Kotbo, home' : 'Kotbo, accueil'}>
+    <img src="/favicon.svg" alt="" width="22" height="22" />
+    <span>Kotbo</span>
+  </a>
+  <nav aria-label={en ? 'Main navigation' : 'Navigation principale'}>
+    {
+      links.map((link) => (
+        <a href={link.href} aria-current={link.current ? 'page' : undefined}>
+          {link.label}
+        </a>
+      ))
+    }
+  </nav>
+  <a class="site-bar__cta" href="https://dash.kotbo.fr">Dashboard</a>
+</div>
+
+<style>
+  .site-bar {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 0.4rem 1rem;
+    background: #09090b;
+    border-bottom: 1px solid #27272a;
+    color: #a1a1aa;
+    font-size: var(--sl-text-sm);
+  }
+  :global(:root[data-theme='light']) .site-bar {
+    background: #ffffff;
+    border-bottom-color: #e4e4e7;
+    color: #52525b;
+  }
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+  .site-bar__brand {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-inline-end: auto;
+    font-weight: 800;
+    color: #fafafa;
+  }
+  :global(:root[data-theme='light']) .site-bar__brand {
+    color: #09090b;
+  }
+  nav {
+    display: flex;
+    gap: 0.25rem;
+    overflow-x: auto;
+  }
+  nav a {
+    padding: 0.35rem 0.7rem;
+    border-radius: 0.5rem;
+    font-weight: 500;
+    white-space: nowrap;
+  }
+  nav a:hover,
+  nav a[aria-current='page'] {
+    background: color-mix(in srgb, currentColor 12%, transparent);
+    color: #fafafa;
+  }
+  :global(:root[data-theme='light']) nav a:hover,
+  :global(:root[data-theme='light']) nav a[aria-current='page'] {
+    color: #09090b;
+  }
+  .site-bar__cta {
+    padding: 0.35rem 0.8rem;
+    border-radius: 0.6rem;
+    background: #4f46e5;
+    color: #fff;
+    font-weight: 700;
+  }
+  .site-bar__cta:hover {
+    background: #4338ca;
+  }
+  @media (max-width: 640px) {
+    .site-bar__brand span,
+    .site-bar__cta {
+      display: none;
+    }
+  }
+</style>
