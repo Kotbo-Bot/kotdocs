@@ -123,7 +123,7 @@ const t = isEnglish
 
     <div class="discord-response" style="display: none;">
       <div class="discord-avatar">
-        <img src="/favicon.svg" alt="Kotbo Avatar" />
+        <img src={`${import.meta.env.BASE_URL}/favicon.svg`.replace(/\/+/g, '/')} alt="Kotbo Avatar" />
       </div>
       
       <!-- Typing/Loading State -->

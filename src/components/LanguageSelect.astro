@@ -1,11 +1,13 @@
 ---
-const pathname = Astro.url.pathname;
+// Le site est servi sous `base` (/docs) : on travaille sur le chemin sans, puis on le remet.
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+const pathname = Astro.url.pathname.slice(base.length) || '/';
 const isEnglish = pathname === '/en' || pathname.startsWith('/en/');
 const rootPath = isEnglish ? pathname.replace(/^\/en(?=\/|$)/, '') || '/' : pathname;
 
 const languages = [
-  { code: 'fr', short: 'FR', label: 'Français', href: rootPath },
-  { code: 'en', short: 'EN', label: 'English', href: rootPath === '/' ? '/en/' : `/en${rootPath}` },
+  { code: 'fr', short: 'FR', label: 'Français', href: `${base}${rootPath}` },
+  { code: 'en', short: 'EN', label: 'English', href: `${base}${rootPath === '/' ? '/en/' : `/en${rootPath}`}` },
 ];
 
 const activeCode = isEnglish ? 'en' : 'fr';

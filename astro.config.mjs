@@ -1,5 +1,6 @@
 import { defineConfig } from 'astro/config';
 import starlight from '@astrojs/starlight';
+import remarkBaseLinks from './src/plugins/remark-base-links.mjs';
 
 // Une entrée de la barre latérale : libellé français, libellé anglais, page.
 const page = (label, en, slug) => ({ label, translations: { en }, slug });
@@ -7,7 +8,10 @@ const page = (label, en, slug) => ({ label, translations: { en }, slug });
 const group = (label, en, items) => ({ label, translations: { en }, items });
 
 export default defineConfig({
-  site: 'https://docs.kotbo.fr',
+  // Servi sous kotbo.fr/docs : le build est copié dans celui de la landing.
+  site: 'https://kotbo.fr',
+  base: '/docs',
+  markdown: { remarkPlugins: [remarkBaseLinks] },
   integrations: [
     starlight({
       title: 'Kotbo Docs',
