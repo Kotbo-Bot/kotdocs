@@ -1,0 +1,130 @@
+---
+// En-tête de la doc, calqué sur la barre du haut de kotbo.fr (Nav.svelte de la landing) : même
+// logo, mêmes rubriques, même bouton Dashboard. La recherche, le thème et la langue restent ceux
+// de Starlight. Les chemins sont absolus : la doc est servie sous /docs, sur le domaine de la landing.
+import LanguageSelect from './LanguageSelect.astro';
+import Search from '@astrojs/starlight/components/Search.astro';
+import ThemeSelect from '@astrojs/starlight/components/ThemeSelect.astro';
+
+const en = Astro.currentLocale === 'en';
+const links = en
+  ? [
+      { label: 'Staff management', href: '/en/discord-staff-management' },
+      { label: 'Features', href: '/en/features' },
+      { label: 'Docs', href: '/docs/en/', current: true },
+      { label: 'Blog', href: '/en/blog' },
+    ]
+  : [
+      { label: 'Gestion du staff', href: '/gestion-staff-discord' },
+      { label: 'Fonctionnalités', href: '/fonctionnalites' },
+      { label: 'Documentation', href: '/docs/', current: true },
+      { label: 'Blog', href: '/blog' },
+    ];
+---
+
+<div class="header">
+  <a class="brand" href={en ? '/en' : '/'} aria-label={en ? 'Kotbo, home' : 'Kotbo, accueil'}>
+    <img src="/favicon.svg" alt="" width="32" height="32" />
+    <span>Kotbo</span>
+  </a>
+  <nav class="links" aria-label={en ? 'Main navigation' : 'Navigation principale'}>
+    {
+      links.map((link) => (
+        <a href={link.href} aria-current={link.current ? 'page' : undefined}>
+          {link.label}
+        </a>
+      ))
+    }
+  </nav>
+  <div class="search print:hidden"><Search /></div>
+  <div class="right sl-hidden md:sl-flex print:hidden">
+    <ThemeSelect />
+    <LanguageSelect />
+    <a class="cta" href="https://dash.kotbo.fr">Dashboard</a>
+  </div>
+</div>
+
+<style>
+  :global(:root) {
+    --sl-nav-height: 4rem;
+  }
+  /* Fond et filet de la landing (night / line), dans les deux thèmes. */
+  :global(header.header) {
+    background: color-mix(in srgb, #09090b 90%, transparent);
+    border-bottom: 1px solid #27272a;
+    backdrop-filter: blur(12px);
+  }
+  :global(:root[data-theme='light'] header.header) {
+    background: color-mix(in srgb, #ffffff 90%, transparent);
+    border-bottom-color: #e4e4e7;
+  }
+  .header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    height: 100%;
+  }
+  .brand {
+    display: flex;
+    align-items: center;
+    gap: 0.625rem;
+    flex-shrink: 0;
+    color: var(--sl-color-white);
+    text-decoration: none;
+    font-size: 1.25rem;
+    font-weight: 800;
+    letter-spacing: -0.025em;
+  }
+  .brand img {
+    border-radius: 0.5rem;
+  }
+  .links {
+    display: none;
+    gap: 0.25rem;
+  }
+  .links a {
+    padding: 0.5rem 0.75rem;
+    border-radius: 0.5rem;
+    color: #a1a1aa;
+    font-size: var(--sl-text-sm);
+    font-weight: 500;
+    white-space: nowrap;
+    text-decoration: none;
+  }
+  :global(:root[data-theme='light']) .links a {
+    color: #52525b;
+  }
+  .links a:hover,
+  .links a[aria-current='page'] {
+    background: color-mix(in srgb, currentColor 14%, transparent);
+    color: var(--sl-color-white);
+  }
+  .search {
+    display: flex;
+    flex: 1;
+    justify-content: flex-end;
+    min-width: 0;
+  }
+  .right {
+    align-items: center;
+    gap: 0.5rem;
+  }
+  .cta {
+    padding: 0.55rem 1rem;
+    border-radius: 0.75rem;
+    background: #4f46e5;
+    color: #fff;
+    font-size: var(--sl-text-sm);
+    font-weight: 700;
+    white-space: nowrap;
+    text-decoration: none;
+  }
+  .cta:hover {
+    background: #4338ca;
+  }
+  @media (min-width: 64rem) {
+    .links {
+      display: flex;
+    }
+  }
+</style>

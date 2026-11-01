@@ -179,7 +179,7 @@ export default defineConfig({
         ]),
       ],
       components: {
-        Banner: './src/components/SiteBar.astro',
+        Header: './src/components/Header.astro',
         Head: './src/components/Head.astro',
         LanguageSelect: './src/components/LanguageSelect.astro',
       },
