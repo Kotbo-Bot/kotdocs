@@ -18,4 +18,4 @@ bun run build
 bun run preview
 ```
 
-Le build statique est généré dans `dist/`. Chaque push sur `main` déclenche le déploiement GitHub Pages sur `https://docs.kotbo.fr/`.
+Le build statique est généré dans `dist/`. Chaque push sur `main` déclenche le déploiement GitHub Pages sur `https://kotbo.fr/docs/`.

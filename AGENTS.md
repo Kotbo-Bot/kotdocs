@@ -85,7 +85,7 @@ The build must complete with zero Astro errors. Check desktop and mobile renderi
 
 ## Links and deployment
 
-- The production site is `https://docs.kotbo.fr/`.
+- The production site is `https://kotbo.fr/docs/`.
 - The site is served from the root of its custom domain. Do not add the former `/kotbo-docs` base path to links or assets.
 - Prefer relative links between documentation pages.
 - A push to `main` triggers the GitHub Pages workflow.
