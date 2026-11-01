@@ -7,6 +7,17 @@ import Default from '@astrojs/starlight/components/Head.astro';
 <meta property="og:site_name" content="KotDoc" />
 
 <script is:inline>
+  // Même domaine que la landing : on reprend son choix de thème (clé « kotbo-theme »).
+  try {
+    var kt = localStorage.getItem('kotbo-theme');
+    if (kt === 'light' || kt === 'dark') {
+      localStorage.setItem('starlight-theme', kt);
+      document.documentElement.dataset.theme = kt;
+    }
+  } catch (e) {}
+</script>
+
+<script is:inline>
   (function() {
     const updateKbdState = (event, isPressed) => {
       const pressedKey = event.key ? event.key.toUpperCase() : '';
