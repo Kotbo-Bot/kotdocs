@@ -1,6 +1,6 @@
 ---
 title: Offres & facturation
-description: Comprendre les offres Kotbo, souscrire, profiter de l'essai gratuit et gérer son abonnement.
+description: Comprendre les offres Kotbo, souscrire, utiliser un code de parrainage et gérer son abonnement.
 ---
 
 <p class="doc-lead">L'offre d'un serveur détermine les modules disponibles. La page <strong>Facturation</strong> affiche l'offre en cours, propose les offres supérieures, et renvoie vers Stripe pour tout ce qui touche au paiement.</p>
@@ -33,18 +33,24 @@ Les anciennes offres **Pro** et **Ultimate** ne se vendent plus. Un serveur qui 
 
 ---
 
-## L'essai gratuit
+## Parrainage et essai gratuit
 
-L'offre complète s'essaie **15 jours**, une seule fois par compte Discord. Sans abonnement à la fin de l'essai, le serveur repasse en **Gratuit** : les modules de base continuent de tourner, les autres se mettent en pause avec leurs réglages.
+L'essai de l'offre complète ne s'obtient qu'avec un **code de parrainage**. Saisissez-le dans **Tu as un code de parrainage ?** avant de vous abonner : les **15 premiers jours** sont offerts, puis votre **première facture a 10 % de remise**. Sans code, l'abonnement est payant dès la souscription.
 
-Choisissez une offre : les quinze premiers jours ne sont pas facturés. Une carte est demandée par Stripe, mais n'est débitée qu'à la fin de l'essai, et résilier avant n'entraîne aucun prélèvement.
+Une carte est demandée par Stripe, mais n'est débitée qu'à la fin de l'essai, et résilier avant n'entraîne aucun prélèvement. Sans abonnement à la fin de l'essai, le serveur repasse en **Gratuit** : les modules de base continuent de tourner, les autres se mettent en pause avec leurs réglages.
 
-Quand l'essai n'est pas proposé, la page dit pourquoi :
+Le parrainage vaut une fois par compte Discord et une fois par serveur. Votre propre code ne marche pas pour vous. Quand il n'est plus possible, la page dit pourquoi :
 
-* *Vous avez déjà utilisé votre essai gratuit sur un serveur.*
-* *Ce serveur a déjà bénéficié de son essai gratuit.*
+* *Tu as déjà profité d'un essai sur un serveur : le parrainage s'applique une fois par compte Discord.*
+* *Ce serveur a déjà profité de son essai : le parrainage ne s'applique plus ici.*
 * *Ce serveur est déjà abonné : le changement d'offre se fait au prorata depuis le portail Stripe.*
 * *Cette offre ne comporte pas d'essai gratuit.*
+
+### Votre code à partager
+
+En bas de la page **Facturation**, **Ton code de parrainage** affiche votre code personnel (`KOTBO-…`) avec un bouton **Copier**, et le nombre de serveurs qui l'ont utilisé. Un serveur qui s'abonne avec ce code a les mêmes avantages : 15 jours offerts, puis 10 % de remise sur sa première facture.
+
+Dans le parcours de configuration, le code se saisit dans **Tu as un code ? Parrainage, partenaire…** : un code `KB-…` reste un code d'activation, tout autre code est pris comme code de parrainage.
 
 ---
 
