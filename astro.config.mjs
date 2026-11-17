@@ -1,9 +1,18 @@
 import { defineConfig } from 'astro/config';
 import starlight from '@astrojs/starlight';
 import remarkBaseLinks from './src/plugins/remark-base-links.mjs';
+import { planOf } from './src/plans.mjs';
 
 // Une entrée de la barre latérale : libellé français, libellé anglais, page.
-const page = (label, en, slug) => ({ label, translations: { en }, slug });
+// Une couronne marque les pages de l'offre Plus (pleine) ou bridées en gratuit (pâle).
+const PLAN_BADGES = {
+  plus: { text: '👑', variant: 'caution', class: 'plan-badge plan-badge--plus' },
+  freemium: { text: '👑', variant: 'default', class: 'plan-badge plan-badge--freemium' },
+};
+const page = (label, en, slug) => {
+  const plan = planOf(slug);
+  return { label, translations: { en }, slug, ...(plan && { badge: PLAN_BADGES[plan] }) };
+};
 // Un groupe : mêmes libellés, puis ses entrées.
 const group = (label, en, items) => ({ label, translations: { en }, items });
 
@@ -56,6 +65,7 @@ export default defineConfig({
         group('Configuration (Dashboard)', 'Configuration (Dashboard)', [
           group('Général', 'General', [
             page('Accueil', 'Home', 'dashboard/general/accueil'),
+            page('Identité', 'Identity', 'dashboard/configuration/custom-bot'),
             page('Bien démarrer', 'Getting started', 'dashboard/general/prise-en-main'),
             page('Santé du serveur', 'Server health', 'dashboard/general/pulse'),
             page('Notifications', 'Notifications', 'dashboard/general/notifications'),
@@ -137,7 +147,6 @@ export default defineConfig({
           group('Intégrations', 'Integrations', [
             page('Connecter une IA', 'Connect an AI', 'aide/mcp'),
             page('Webhooks sortants', 'Outgoing webhooks', 'dashboard/configuration/webhooks'),
-            page('Bot personnalisé', 'Custom bot', 'dashboard/configuration/custom-bot'),
             page('Liens de salons', 'Channel links', 'dashboard/communaute/liens-salons'),
             page('Serveur du staff', 'Staff server', 'dashboard/cross-serveur/serveurs-staff'),
             page('Partenariats', 'Partnerships', 'dashboard/cross-serveur/partenariats'),
@@ -182,6 +191,7 @@ export default defineConfig({
         Header: './src/components/Header.astro',
         Head: './src/components/Head.astro',
         LanguageSelect: './src/components/LanguageSelect.astro',
+        PageTitle: './src/components/PageTitle.astro',
       },
     }),
   ],

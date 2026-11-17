@@ -333,3 +333,15 @@
   border-color: var(--sl-color-gray-4) !important;
   box-shadow: none !important;
 }
+
+/* Couronne de l'offre Plus dans la barre latérale (voir src/plans.mjs). */
+.sl-badge.plan-badge {
+  border: 0;
+  background: transparent;
+  padding: 0;
+  font-size: 0.8rem;
+}
+.sl-badge.plan-badge--freemium {
+  opacity: 0.5;
+  filter: grayscale(0.6);
+}
