@@ -1,56 +1,97 @@
 ---
 title: Bot personnalisé
-description: Faire tourner Kotbo sous votre propre nom, votre avatar et votre application Discord.
+description: Changer le profil du bot sur votre serveur, mettre votre dashboard sur votre domaine, ou remplacer Kotbo par votre propre bot.
 ---
 
-<p class="doc-lead">Le <strong>Custom Bot</strong> fait tourner Kotbo sous votre propre application Discord : votre nom, votre avatar, votre identité aux yeux de vos membres.</p>
-
-:::caution[Fonctionnalité sur demande]
-Cette page est marquée **WIP** dans le dashboard. La fonctionnalité est disponible **sur demande** : contactez l'administrateur de Kotbo en message privé sur Discord pour l'activer. Il s'agit d'un **service payant**.
-:::
+<p class="doc-lead">La page <strong>Identité</strong> fait du bot celui de votre serveur : son nom, son avatar, sa bio, et si vous le voulez, votre propre application Discord et votre dashboard sur votre domaine.</p>
 
 :::note[Où la trouver]
-La page n'apparaît plus dans le menu tant que l'offre n'est pas ouverte à tous : on y accède par son adresse, [dash.kotbo.fr/custom-bot ↗](https://dash.kotbo.fr/custom-bot). Le service est disponible sur demande : contacte l'administrateur de Kotbo en message privé sur Discord pour l'activer (service payant).
+**Identité** est juste sous **Accueil**, en haut de la barre latérale : [Ouvrir Identité ↗](https://dash.kotbo.fr/custom-bot).
+:::
+
+:::caution[Réservé à l'offre Plus]
+Sur l'offre Gratuit, la page affiche *L'identité du bot est réservée à l'offre Plus* et un bouton **Voir les offres**. Si un bot personnalisé lancé auparavant tourne encore, la page le signale et propose de l'**Arrêter**.
+:::
+
+La page propose trois niveaux, du plus simple au plus complet. Vous pouvez vous arrêter au premier.
+
+---
+
+## 1. Le profil du bot
+
+Le bloc **Profil du bot** change l'apparence de Kotbo **sur ce serveur uniquement** : les autres serveurs gardent Kotbo tel quel.
+
+* **Nom** : devient le pseudo de Kotbo sur ce serveur.
+* **Avatar** et **Bannière** : importez une image.
+* **Bio** : le texte du profil, avec un compteur de caractères.
+
+Une fois votre propre bot branché (voir plus bas), ce bloc s'applique à **votre** bot, et ajoute **Statut**, **Type d'activité** et **Texte d'activité** (*Joue à*, *Regarde*, *Streame* avec son **URL du stream**…).
+
+:::tip[Le nom change peu souvent]
+Discord limite les changements de nom à **deux par heure**. Si Discord refuse une partie du profil, la page indique ce qui n'est pas passé ; le reste est enregistré.
 :::
 
 ---
 
-## Ce que cela change
+## 2. Votre dashboard sur votre domaine
 
-* Le bot apparaît sur votre serveur avec **votre nom** et **votre avatar**.
-* Les commandes slash sont enregistrées sous **votre application Discord**.
-* Les messages, embeds et panneaux publiés portent votre identité plutôt que celle de Kotbo.
-
-Toutes les fonctionnalités décrites dans cette documentation restent identiques : seule la façade change.
-
----
-
-## Ce que cela ne change pas
-
-* Les **noms des commandes** et leurs options : ils restent ceux de Kotbo.
-* Les **permissions Discord** requises par chaque module.
-* Le fonctionnement du dashboard, qui reste hébergé au même endroit.
-
----
-
-## Demander l'activation
-
-:::caution[Réservé à l'offre CUSTOM]
-Le Custom Bot n'est ouvert qu'aux serveurs sur l'**offre CUSTOM**. Un serveur sur une autre offre se voit refuser l'enregistrement et le démarrage d'un bot personnalisé, y compris en dehors du dashboard. Seul l'**arrêt** reste possible, pour qu'un serveur qui change d'offre puisse couper un bot déjà lancé.
-:::
-
-En attendant l'ouverture de la configuration en libre-service, la mise en place passe par l'administrateur de votre instance Kotbo :
+**Dashboard sur ton domaine** ouvre le dashboard sur votre propre adresse (par exemple `panel.monserveur.fr`), aux couleurs de votre bot. Vos membres s'y connectent avec Discord et arrivent directement sur votre serveur.
 
 <div class="step-list">
-  <div class="step-item"><div><h3>Créez votre application Discord</h3><p>Depuis le portail développeur Discord, avec le nom et l'avatar souhaités.</p></div></div>
-  <div class="step-item"><div><h3>Contactez l'administrateur de Kotbo</h3><p>Par message privé sur Discord, en précisant le serveur concerné.</p></div></div>
-  <div class="step-item"><div><h3>Invitez le bot personnalisé</h3><p>Une fois l'application configurée, invitez-la sur votre serveur avec les mêmes permissions que Kotbo.</p></div></div>
+  <div class="step-item"><div><h3>1. Choisis l'adresse</h3><p>Saisissez le domaine puis enregistrez : la page affiche alors les enregistrements à créer.</p></div></div>
+  <div class="step-item"><div><h3>2. Ajoute ces enregistrements DNS</h3><p>Chez votre registrar (OVH, Cloudflare, Gandi…), créez les deux enregistrements indiqués (un <code>CNAME</code> et un <code>TXT</code>), puis cliquez sur <strong>Vérifier</strong>. Chaque ligne passe à <em>Trouvé</em> une fois en place.</p></div></div>
+  <div class="step-item"><div><h3>3. Relie ton application Discord</h3><p>Copiez le <strong>Client ID</strong> et le <strong>Client Secret</strong> de votre application (portail développeur Discord, onglet OAuth2), et ajoutez l'<strong>URL de retour à déclarer</strong> dans « Redirects ».</p></div></div>
 </div>
 
-:::danger[Ne partagez jamais votre token]
-Le token de votre application Discord donne un contrôle total sur le bot. Transmettez-le uniquement par le canal indiqué par l'administrateur, et régénérez-le si vous avez le moindre doute.
+Une fois le domaine vérifié, la page affiche *Domaine prêt* le temps que le certificat HTTPS soit émis (environ une minute), puis *… est en ligne* avec un bouton **Ouvrir mon dashboard**.
+
+:::caution[Cloudflare]
+Laissez le proxy désactivé (nuage gris) sur ces enregistrements : le certificat HTTPS ne peut pas être émis derrière.
 :::
 
-:::note[Le secret OAuth n'est jamais réaffiché]
-Le token et le secret OAuth sont chiffrés en base. Le champ du secret n'est pas prérempli : laissé vide, il conserve celui déjà enregistré. Si Kotbo signale un secret illisible, ressaisissez-le.
+:::note[Pas encore ouvert partout]
+Si la page affiche *Les domaines perso ne sont pas encore ouverts sur cette instance Kotbo*, la fonction n'est pas encore disponible sur votre instance.
+:::
+
+---
+
+## 3. Votre propre bot
+
+**Ton propre bot** est optionnel. Votre application Discord, avec son token, fait tout ce que fait Kotbo sous son propre nom, puis Kotbo quitte le serveur. Rien n'est perdu, et vous pouvez revenir à Kotbo à tout moment.
+
+Le parcours se fait en cinq étapes, cochées au fur et à mesure :
+
+<div class="step-list">
+  <div class="step-item"><div><h3>Connecte ton bot</h3><p>Créez une application sur le <strong>Portail développeur</strong> Discord, puis collez le token de l'onglet Bot et cliquez sur <strong>Connecter</strong>. Le token est testé avant d'être enregistré.</p></div></div>
+  <div class="step-item"><div><h3>Démarre-le</h3><p>Kotbo lance votre bot. Il se connecte en quelques secondes, mais n'agit pas encore sur votre serveur.</p></div></div>
+  <div class="step-item"><div><h3>Mets ton dashboard en ligne <em>(optionnel)</em></h3><p>Le domaine perso décrit plus haut. Sans lui, le serveur n'aura plus de dashboard une fois Kotbo parti.</p></div></div>
+  <div class="step-item"><div><h3>Invite ton bot</h3><p><strong>Inviter mon bot</strong> l'ajoute depuis Discord ; revenez ensuite sur la page et cliquez sur <strong>Vérifier</strong>.</p></div></div>
+  <div class="step-item"><div><h3>Remplace Kotbo</h3><p><strong>Retirer Kotbo</strong> : votre bot reprend tous les modules et réglages, puis Kotbo quitte le serveur.</p></div></div>
+</div>
+
+:::caution[Sans domaine perso, plus de dashboard]
+Si vous remplacez Kotbo sans avoir mis votre dashboard en ligne, vous ne pourrez plus configurer le serveur vous-même. Avec un domaine, reconnectez-vous sur votre adresse : c'est là que le serveur se gère désormais.
+:::
+
+En cas de souci, la page affiche la **Dernière erreur** rencontrée par votre bot, avec un lien vers le portail développeur quand le problème vient de l'application.
+
+### Revenir à Kotbo
+
+Une fois Kotbo remplacé, la page affiche *Ton bot sert ce serveur*. Pour revenir :
+
+1. **Réinviter Kotbo** sur le serveur.
+2. **Revenir à Kotbo** : votre bot est arrêté et Kotbo reprend le serveur avec tous vos réglages.
+
+Votre bot reste membre du serveur : expulsez-le si vous ne vous en servez plus.
+
+Avant d'avoir remplacé Kotbo, vous pouvez aussi désactiver votre bot : il est arrêté, et Kotbo reprend l'identité choisie dans **Profil du bot**.
+
+---
+
+:::danger[Ne partagez jamais votre token]
+Le token de votre application donne un contrôle total sur le bot. Ne le collez que dans cette page, et régénérez-le sur le portail développeur au moindre doute.
+:::
+
+:::note[Les secrets ne sont jamais réaffichés]
+Le token et le Client Secret sont chiffrés. Leurs champs ne sont pas préremplis : laissés vides, ils conservent la valeur enregistrée. Si la page signale un secret illisible, ressaisissez le token et le Client Secret.
 :::
