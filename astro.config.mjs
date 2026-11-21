@@ -131,6 +131,7 @@ export default defineConfig({
             page('Tickets', 'Tickets', 'dashboard/communaute/tickets'),
             page('Tutorat', 'Tutoring', 'dashboard/staff/tutorat'),
             page('Planning', 'Schedule', 'dashboard/staff/planning'),
+            page('Listes de suivi', 'Doing lists', 'dashboard/staff/listes-suivi'),
             page('Sondages', 'Polls', 'dashboard/staff/sondages'),
             page('Discipline', 'Discipline', 'dashboard/staff/discipline'),
           ]),

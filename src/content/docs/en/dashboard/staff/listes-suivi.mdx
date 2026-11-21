@@ -1,0 +1,96 @@
+---
+title: Doing lists
+description: Trello-style boards to follow staff projects, with stages, assigned cards and pinned suggestions or tickets.
+---
+
+<p class="doc-lead"><strong>Doing lists</strong> are boards split into stages: one card per task, dragged from one column to the next, assigned to a staff member and then added to their schedule. Suggestions, tickets and schedule tasks can be pinned to them.</p>
+
+:::note[Where to find it]
+Section **Team → Doing lists**: [Open doing lists ↗](https://dash.kotbo.fr/doing-lists).
+The page is for the server's staff. Creating and moving cards requires the right to moderate or configure the module; deleting a list requires the delete right.
+:::
+
+---
+
+## Create a list
+
+<div class="step-list">
+  <div class="step-item"><div><h3>Click New list</h3><p>On a server with no list yet, the button reads <strong>Create my first list</strong>.</p></div></div>
+  <div class="step-item"><div><h3>Name it</h3><p><strong>Name</strong> (for example <em>Shop redesign</em>) and, if needed, a <strong>Description</strong>.</p></div></div>
+  <div class="step-item"><div><h3>Pick its key</h3><p>The <strong>Key</strong> prefixes every card reference: <code>BOUT-12</code>. Left empty, it is taken from the name. It has 2 to 10 letters or digits and starts with a letter.</p></div></div>
+  <div class="step-item"><div><h3>Link modules (optional)</h3><p>Under <strong>Linked modules</strong>, tick <strong>Suggestions</strong> or <strong>Tickets</strong>: their items can then be pinned to the list from their own page. Then <strong>Create list</strong>.</p></div></div>
+</div>
+
+The list starts with three stages: **To do**, **In progress** and **Done**. The index shows each list as a card, with its progress.
+
+:::tip[Changing the key later]
+Changing the key from **Edit list** renames every reference in the list: `BOUT-12` becomes `SHOP-12` everywhere.
+:::
+
+---
+
+## The board
+
+Each list has its own page. **Add a card** at the top of a stage creates a free card; you then drag it from stage to stage with the mouse, or with your finger on a phone.
+
+* **Filter cards…** searches titles, references, labels and the assignee's name.
+* **My cards** keeps only the ones assigned to you.
+
+While a filter is on, cards can no longer be dragged: clear it to rearrange the board.
+
+### Stages
+
+**Add a stage** creates a new one (*In review*, *Blocked*, *To test*…). A stage's menu lets you rename it, **Move left** or **right**, or delete it: its cards move to another stage, they are not erased.
+
+* **Card limit**: a full stage refuses new cards. Left empty, the stage has no limit.
+* **Final stage**: a card dropped here is done, and so is its linked schedule task.
+
+The small number at the top of a stage adds up the story points of its cards.
+
+---
+
+## A card's details
+
+Clicking a card opens its details. Everything is saved as you go, with no button to press.
+
+| Field | Use |
+| --- | --- |
+| **Title** and **Stage** | What the card is about, and where it stands. |
+| **Assigned to** | The staff member in charge. The card then shows up in their [schedule](/en/dashboard/staff/planning/) tasks. |
+| **Priority** | **No priority**, **Low**, **Medium** or **High**. |
+| **Due date** | The expected date. |
+| **Labels** | Free words (*bug*, *shop*, *urgent*), ten at most. Press Enter to add. |
+| **Description** and **Checklist** | The context, then the points to tick. |
+
+**More fields** unfolds the rest:
+
+* **Type**: **Task**, **Bug**, **Story** or **Epic**.
+* **Estimate**: in points.
+* **Parent card**, and the list of its **Sub-tasks**.
+* **Linked cards**: a card **blocks**, **is blocked by**, **relates to**, **duplicates** or **is duplicated by** another card, found by its reference (`BOUT-12`) or its title. A blocked card carries the **Blocked** badge on the board.
+
+At the bottom, **Activity** traces the history (creation, stage changes, assignment, edits, links) and the **Comments** thread.
+
+:::caution[Removing a card]
+Removing a free card from the list deletes it with its details. An assigned card leaves its task in the person's schedule.
+:::
+
+---
+
+## Pin a suggestion, a ticket or a task
+
+From the [Suggestions](/en/dashboard/communaute/suggestions/) page, [Tickets](/en/dashboard/communaute/tickets/) or a [Schedule](/en/dashboard/staff/planning/) task, the **Doing lists** button offers the lists linked to that module: **Add to this list**. The item becomes a card that points back to its original (**Open in Suggestions**…).
+
+Removing that item from the list leaves the original untouched. So does deleting a whole list: only its cards go away.
+
+---
+
+## Create a card from Discord
+
+On a message, right-click then **Apps → Kotbo actions → Créer une carte de suivi** turns it into a card. The window asks for the **list key** (empty: the server's first list) and a **title** (empty: the start of the message).
+
+The action is for the server's staff, and needs the Doing lists module to be on.
+
+:::note[With tutoring]
+A [tutoring](/en/dashboard/staff/tutorat/) can carry its own list of missions: they are the same boards.
+:::

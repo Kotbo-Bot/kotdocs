@@ -1,0 +1,96 @@
+---
+title: Listes de suivi
+description: Des tableaux façon Trello pour suivre les chantiers du staff, avec étapes, cartes attribuées et suggestions ou tickets épinglés.
+---
+
+<p class="doc-lead">Les <strong>Listes de suivi</strong> sont des tableaux à étapes : une carte par tâche, que l'on glisse d'une colonne à l'autre, que l'on attribue à un membre du staff et qui rejoint alors son planning. Suggestions, tickets et tâches du planning peuvent y être épinglés.</p>
+
+:::note[Où la trouver]
+Section **Équipe → Listes de suivi** : [Ouvrir les listes de suivi ↗](https://dash.kotbo.fr/doing-lists).
+La page est réservée au staff du serveur. Créer et déplacer des cartes demande le droit de modérer ou de configurer le module ; supprimer une liste demande le droit de suppression.
+:::
+
+---
+
+## Créer une liste
+
+<div class="step-list">
+  <div class="step-item"><div><h3>Cliquez sur Nouvelle liste</h3><p>Sur un serveur sans liste, le bouton s'appelle <strong>Créer ma première liste</strong>.</p></div></div>
+  <div class="step-item"><div><h3>Nommez-la</h3><p><strong>Nom</strong> (par exemple <em>Refonte boutique</em>) et, si besoin, une <strong>Description</strong>.</p></div></div>
+  <div class="step-item"><div><h3>Choisissez sa clé</h3><p>La <strong>Clé</strong> préfixe la référence de chaque carte : <code>BOUT-12</code>. Laissée vide, elle est tirée du nom. Elle fait 2 à 10 lettres ou chiffres et commence par une lettre.</p></div></div>
+  <div class="step-item"><div><h3>Reliez des modules (optionnel)</h3><p>Dans <strong>Modules reliés</strong>, cochez <strong>Suggestions</strong> ou <strong>Tickets</strong> : leurs éléments pourront être épinglés dans la liste depuis leur propre page. Puis <strong>Créer la liste</strong>.</p></div></div>
+</div>
+
+La liste démarre avec trois étapes : **À faire**, **En cours** et **Terminé**. L'index présente chaque liste en carte, avec son avancement (*3/8 terminée(s)*).
+
+:::tip[Changer la clé plus tard]
+Modifier la clé depuis **Modifier la liste** renomme toutes les références de la liste : `BOUT-12` devient `SHOP-12` partout.
+:::
+
+---
+
+## Le tableau
+
+Chaque liste a sa propre page. **Ajouter une carte** en haut d'une étape crée une carte libre ; on la glisse ensuite d'une étape à l'autre à la souris, ou au doigt sur téléphone.
+
+* **Filtrer les cartes…** cherche dans les titres, les références, les étiquettes et le nom de la personne attribuée.
+* **Mes cartes** ne garde que celles qui vous sont attribuées.
+
+Tant qu'un filtre est actif, les cartes ne se déplacent plus à la souris : retirez-le pour réorganiser le tableau.
+
+### Les étapes
+
+**Ajouter une étape** en crée une nouvelle (*En revue*, *Bloqué*, *À tester*…). Le menu d'une étape permet de la renommer, de la **Déplacer à gauche** ou **à droite**, ou de la supprimer : ses cartes passent alors dans une autre étape, elles ne sont pas effacées.
+
+* **Limite de cartes** : une étape pleine refuse les nouvelles cartes (*L'étape « En revue » est pleine*). Laissée vide, l'étape n'a pas de limite.
+* **Étape de fin** : une carte posée ici est terminée, et la tâche du planning qui lui est liée aussi.
+
+Le petit nombre affiché en tête d'étape additionne les points d'estimation de ses cartes.
+
+---
+
+## La fiche d'une carte
+
+Cliquer sur une carte ouvre sa fiche. Tout s'enregistre au fur et à mesure, sans bouton à presser.
+
+| Champ | Usage |
+| --- | --- |
+| **Titre** et **Étape** | Ce que la carte décrit, et où elle en est. |
+| **Attribuée à** | Le membre du staff responsable. La carte apparaît alors dans les tâches de son [planning](/dashboard/staff/planning/). |
+| **Priorité** | **Sans priorité**, **Basse**, **Moyenne** ou **Haute**. |
+| **Échéance** | La date attendue. |
+| **Étiquettes** | Mots libres (*bug*, *boutique*, *urgent*), dix au plus. Entrée pour ajouter. |
+| **Description** et **Checklist** | Le contexte, puis les points à cocher. |
+
+**Plus de champs** déplie le reste :
+
+* **Type** : **Tâche**, **Bug**, **Story** ou **Epic**.
+* **Estimation** : en points.
+* **Carte parente**, et la liste de ses **Sous-tâches**.
+* **Cartes liées** : un lien **bloque**, **est bloquée par**, **est liée à**, **duplique** ou **est dupliquée par** une autre carte, retrouvée par sa référence (`BOUT-12`) ou son titre. Une carte bloquée porte le badge **Bloquée** sur le tableau.
+
+En bas de la fiche, **Activité** retrace l'historique (création, changements d'étape, attribution, modifications, liens) et le fil des **Commentaires**.
+
+:::caution[Retirer une carte]
+Retirer une carte libre de la liste la supprime avec ses détails. Une carte attribuée laisse sa tâche dans le planning de la personne.
+:::
+
+---
+
+## Épingler une suggestion, un ticket ou une tâche
+
+Depuis la page [Suggestions](/dashboard/communaute/suggestions/), [Tickets](/dashboard/communaute/tickets/) ou une tâche du [Planning](/dashboard/staff/planning/), le bouton **Listes de suivi** propose les listes reliées à ce module : **Ajouter à cette liste**. L'élément devient une carte qui renvoie vers son original (**Ouvrir dans Suggestions**…).
+
+Retirer cet élément de la liste ne touche pas l'original. Supprimer une liste entière non plus : seules ses cartes disparaissent.
+
+---
+
+## Créer une carte depuis Discord
+
+Sur un message, un clic droit puis **Applications → Actions Kotbo → Créer une carte de suivi** en fait une carte. La fenêtre demande la **clé de la liste** (vide : la première liste du serveur) et un **titre** (vide : le début du message).
+
+L'action est réservée au staff du serveur, et demande que le module Listes de suivi soit activé.
+
+:::note[Avec le tutorat]
+Un [tutorat](/dashboard/staff/tutorat/) peut porter sa propre liste de missions : ce sont les mêmes tableaux.
+:::
