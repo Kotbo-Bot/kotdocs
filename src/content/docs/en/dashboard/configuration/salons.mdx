@@ -189,6 +189,16 @@ Members create their own temporary voice channel and run it themselves with butt
 The temporary channel stays in sync with its category: this block is added on top. If the category denies your members access, the created channel denies it too.
 :::
 
+### Per-person settings and visibility
+
+* **Allow saving personal settings**: the owner gets their settings (name, slots, lock…) back on every new channel, from the panel's "My settings" menu. On transfer, the new owner's settings apply if they have any, otherwise the channel keeps its own.
+* **Default visibility of created channels**:
+  * **Visible to everyone**: everyone sees the channel; *Open* or *Locked* only sets who can join.
+  * **Follows access**: open, it is visible to all; locked, it is hidden from everyone but the allowed.
+  * **Private (hidden)**: hidden from everyone except the owner, the allowed and the default roles, even when open.
+
+A member blocked by the owner never sees the channel. The owner can change their channel's visibility from the panel.
+
 ### Panel
 
 As soon as a channel is created, Kotbo posts a **management message** with buttons in its chat: lock or unlock, rename, limit the number of slots, kick or ban an intruder, open or close the chat.
