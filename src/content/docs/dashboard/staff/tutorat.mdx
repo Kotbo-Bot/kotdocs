@@ -1,87 +1,79 @@
 ---
 title: Tutorat & formation
-description: Encadrez les nouveaux membres du staff avec un tuteur, une checklist de transmission et des rapports périodiques.
+description: Accompagnez chaque nouveau membre du staff jusqu'à sa validation, avec un tuteur, des objectifs, des missions et des points d'étape réguliers.
 ---
 
-<p class="doc-lead">Le module <strong>Tutorat</strong> encadre la période d'essai d'un nouveau membre du staff : un tuteur, une checklist d'acquis, des rapports réguliers et une validation finale.</p>
+<p class="doc-lead">Le <strong>Tutorat</strong> accompagne un nouveau membre du staff jusqu'à sa validation : un tuteur, des objectifs à acquérir, des missions, un carnet de bord et des points d'étape réguliers. Kotbo s'occupe du suivi et des rappels.</p>
 
 :::note[Où la trouver]
 Section **Équipe → Tutorat** : [Ouvrir le tutorat ↗](https://dash.kotbo.fr/tutoring).
-Le module dépend de l'[Annuaire staff](/dashboard/staff/annuaire/). Le statut de tuteur se donne depuis la fiche d'un membre.
+Le module dépend de l'[Annuaire staff](/dashboard/staff/annuaire/). Le statut de tuteur se donne depuis la fiche d'un membre du staff.
 :::
 
 ---
 
-## Créer un tutorat
+## Ce que chacun voit
 
-<div class="step-list">
-  <div class="step-item"><div><h3>Cliquez sur Créer un tutorat</h3><p>Kotbo charge la liste des membres du staff.</p></div></div>
-  <div class="step-item"><div><h3>Choisissez l'apprenti</h3><p>Un membre du staff en période de test.</p></div></div>
-  <div class="step-item"><div><h3>Assignez un tuteur</h3><p>Facultatif : sans tuteur, la période est <em>autonome</em>.</p></div></div>
-  <div class="step-item"><div><h3>Fixez le grade visé et la durée</h3><p>La <strong>durée planifiée</strong> s'exprime en jours.</p></div></div>
-</div>
+La page s'adapte à la personne qui l'ouvre :
 
-Un tutorat peut aussi être créé automatiquement à l'ajout d'un membre dans l'annuaire, ou à l'issue d'un entretien oral réussi dans le module [Recrutement](/dashboard/staff/recrutement/).
+* **Mon tutorat** : le vôtre, si vous êtes tutoré.
+* **Mes tutorés** : ceux que vous suivez comme tuteur, avec les points d'étape en retard.
+* **Tous les tutorats** : réservé aux administrateurs et à qui a le droit de gérer le tutorat. Filtres **En cours** et **Terminés**, et recherche par nom ou grade.
+
+Chaque tutorat s'affiche en carte : le grade visé, le tuteur, les objectifs acquis et le jour en cours sur la durée prévue.
 
 ---
 
-## Onglet Dashboard Tuteur
+## Lancer un tutorat
 
-C'est la vue du tuteur sur ses apprentis. Pour chacun :
+<div class="step-list">
+  <div class="step-item"><div><h3>Cliquez sur Nouveau tutorat</h3><p>La fenêtre de création s'ouvre.</p></div></div>
+  <div class="step-item"><div><h3>Choisissez la personne et son tuteur</h3><p><strong>Personne à tutorer</strong> ne propose que les membres du staff sans tutorat en cours. Dans <strong>Tuteur</strong>, les tuteurs désignés passent en premier ; <strong>Plus tard</strong> permet de lancer le tutorat sans tuteur.</p></div></div>
+  <div class="step-item"><div><h3>Fixez le cadre</h3><p><strong>Hiérarchie</strong>, <strong>Grade visé</strong> et <strong>Durée prévue (jours)</strong>.</p></div></div>
+  <div class="step-item"><div><h3>Ajoutez des missions (optionnel)</h3><p><strong>Créer une liste de missions</strong> ouvre une <a href="/dashboard/staff/listes-suivi/">liste de suivi</a> dont les cartes sont attribuées au tutoré et arrivent dans son planning. Puis <strong>Lancer le tutorat</strong>.</p></div></div>
+</div>
 
-* sa **progression** dans la checklist ;
-* la date du **prochain rapport** : *Dans N jours* ou *À faire dès que possible* ;
-* son **activité vocale** et le nombre de sessions ;
-* ses **absences à venir**.
+---
 
-La **Checklist de transmission** liste les acquis, chacun pouvant passer de **Connu** à **Acquis**. Un item validé affiche sa date et le nom du validateur.
+## La fiche d'un tutorat
 
-### Faire un rapport
+Cliquer sur une carte ouvre la fiche du tutorat.
 
-Le bouton **Faire un rapport** publie un point d'étape sur l'évolution de l'apprenti, avec une tonalité **Positif**, **Neutre** ou **Négatif**.
+* **Objectifs** : ceux du parcours qui s'appliquent à ce tutorat. Chacun se coche **Vu** (expliqué ou montré) puis **Acquis** (fait seul, sans aide).
+* **Missions** : **Confier** une mission la crée dans la liste de missions, attribuée au tutoré. **Ouvrir la liste** mène au tableau complet. Sans liste, **Créer la liste de missions** la met en place.
+* **Carnet de bord** : tenu par la personne tutorée, qui y note ce qu'elle a fait, appris ou ce qui la bloque. Le tuteur le lit avant chaque point d'étape.
+* **Points d'étape** : l'historique des bilans, avec leur rythme (*Tous les 7 j*).
+* **Présence** : le temps passé en vocal et les absences à venir.
+
+### Faire un point d'étape
+
+**Faire un point d'étape** demande un **Ressenti** (*Ça avance bien*, *À suivre* ou *Inquiétant*) et **Le point** : ce qui va, ce qui reste à travailler, la suite. La personne tutorée le lit. Puis **Enregistrer le point**.
+
+Kotbo relance chaque jour les tuteurs dont un point d'étape approche ou traîne.
 
 ### Conclure
 
-* **Valider** clôt le tutorat avec succès. Kotbo compare la **durée actuelle** à la **durée requise** ; si le temps minimum n'est pas atteint, un lien permet de **forcer la validation**.
-* **Échec** marque le tutorat comme non concluant.
+**Conclure** affiche où en est le tutorat (jours écoulés sur le minimum, objectifs acquis, nombre de points d'étape), puis demande la **Décision** :
 
-Dans les deux cas, un champ **Notes finales** permet de laisser un commentaire sur la période.
+* **Valider** : le tutorat se termine et la personne est prévenue qu'elle est validée.
+* **Ne pas valider** : le tutorat se termine sans validation ; la personne est prévenue qu'un responsable reviendra vers elle.
 
----
+Le **Mot de fin** reste sur la fiche. Avant la durée minimale, seul un administrateur peut valider, avec **Valider quand même**.
 
-## Onglet Ma Progression
-
-C'est la vue de l'apprenti :
-
-* sa progression et son tuteur attitré, avec un raccourci **Contacter sur Discord** ;
-* son **activité vocale** et ses **absences** ;
-* le **dernier retour** publié par son tuteur ;
-* un **Carnet de bord** où il note au fil de l'eau ce qu'il a appris.
-
-Quand personne n'est en tutorat, la page affiche *Vous n'êtes pas en période de tutorat actuellement*.
-
----
-
-## Onglet Configuration
-
-### Paramètres
-
-* **Intervalle des rapports (jours)** : la fréquence attendue des points d'étape.
-* **Rappels avant échéance (jours)**.
-* **Temps minimum en test (jours)** : la durée sous laquelle une validation demande à être forcée.
-* **Activité vocale** : affiche ou masque les statistiques vocales.
-* **Absences** : affiche ou masque les absences.
-* **Notifications DM** : rappels automatiques envoyés aux tuteurs.
-
-### Checklist de formation
-
-Le bouton **Nouvel item** crée un objectif :
-
-* **Titre de l'objectif** : par exemple *Utilisation de la console admin*.
-* **Catégorie** : *Outils*, *Savoir*, *Accès*, ou la vôtre.
-* **Description détaillée** affichée au mentor et à l'apprenti.
-* **Hiérarchie ciblée** et **Grade ciblé** : laissez sur *Commun* pour que l'item s'applique partout.
-
-:::tip[Une checklist par branche]
-Cibler la hiérarchie évite de demander à un animateur les acquis d'un modérateur. Gardez en *Commun* uniquement ce que tout le staff doit savoir.
+:::caution[Supprimer un tutorat]
+Les objectifs cochés, les points d'étape et le carnet de bord sont effacés. La liste de missions, elle, reste.
 :::
+
+---
+
+## Le parcours
+
+Le bouton **Parcours** ouvre le **Parcours de tutorat** : les objectifs à acquérir, rangés par étape, et le rythme des tutorats.
+
+* **Ajouter un objectif** : un **Objectif** (*Savoir appliquer une sanction avec le bot*), des **Précisions**, une **Étape** pour les regrouper (*Semaine 1*, *Outils*, *Modération*…) et, si besoin, le grade visé auquel il s'applique. Sans grade, l'objectif vaut pour tous les tutorats.
+* **Rythme** :
+  * **Durée minimale (jours)** : avant, seul un administrateur peut valider.
+  * **Point d'étape tous les (jours)** : compté depuis le dernier point d'étape.
+  * **Rappel au tuteur (jours avant)** : `0` pour ne pas en envoyer.
+
+Supprimer un objectif le retire du parcours et de tous les tutorats, avec ce qui y était coché.

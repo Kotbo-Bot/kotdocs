@@ -1,87 +1,79 @@
 ---
 title: Tutoring & training
-description: Supervise new staff members with a tutor, a handover checklist and periodic reports.
+description: Guide each new staff member to validation, with a tutor, objectives, missions and regular check-ins.
 ---
 
-<p class="doc-lead">The <strong>Tutoring</strong> module supervises a new staff member's trial period: a tutor, a checklist of skills, regular reports and a final validation.</p>
+<p class="doc-lead"><strong>Tutoring</strong> guides a new staff member until they are validated: a tutor, objectives to acquire, missions, a logbook and regular check-ins. Kotbo handles the follow-up and the reminders.</p>
 
 :::note[Where to find it]
-The **Team → Tutoring** section: [Open tutoring ↗](https://dash.kotbo.fr/tutoring).
-The module depends on the [Staff directory](/en/dashboard/staff/annuaire/). Tutor status is granted from a member's record.
+Section **Team → Tutoring**: [Open tutoring ↗](https://dash.kotbo.fr/tutoring).
+The module depends on the [Staff directory](/en/dashboard/staff/annuaire/). Tutor status is given from a staff member's profile.
 :::
 
 ---
 
-## Creating a tutoring track
+## What everyone sees
+
+The page adapts to whoever opens it:
+
+* **My tutoring**: yours, if you are being tutored.
+* **My tutees**: those you follow as a tutor, with overdue check-ins.
+* **All tutorings**: for administrators and anyone allowed to manage tutoring. **Ongoing** and **Finished** filters, and search by name or grade.
+
+Each tutoring shows as a card: the target grade, the tutor, the objectives acquired and the current day out of the planned length.
+
+---
+
+## Start a tutoring
 
 <div class="step-list">
-  <div class="step-item"><div><h3>Click Create a tutoring track</h3><p>Kotbo loads the list of staff members.</p></div></div>
-  <div class="step-item"><div><h3>Pick the apprentice</h3><p>A staff member in their trial period.</p></div></div>
-  <div class="step-item"><div><h3>Assign a tutor</h3><p>Optional: with no tutor, the period is <em>self-directed</em>.</p></div></div>
-  <div class="step-item"><div><h3>Set the target grade and duration</h3><p>The <strong>planned duration</strong> is expressed in days.</p></div></div>
+  <div class="step-item"><div><h3>Click New tutoring</h3><p>The creation window opens.</p></div></div>
+  <div class="step-item"><div><h3>Pick the person and their tutor</h3><p><strong>Person to tutor</strong> only lists staff members without an ongoing tutoring. In <strong>Tutor</strong>, designated tutors come first; <strong>Later</strong> starts the tutoring with no tutor yet.</p></div></div>
+  <div class="step-item"><div><h3>Set the frame</h3><p><strong>Hierarchy</strong>, <strong>Target grade</strong> and <strong>Planned length (days)</strong>.</p></div></div>
+  <div class="step-item"><div><h3>Add missions (optional)</h3><p><strong>Create a missions list</strong> opens a <a href="/en/dashboard/staff/listes-suivi/">doing list</a> whose cards are assigned to the tutee and land in their schedule. Then <strong>Start tutoring</strong>.</p></div></div>
 </div>
 
-A track can also be created automatically when a member is added to the directory, or after a successful oral interview in the [Recruitment](/en/dashboard/staff/recrutement/) module.
-
 ---
 
-## Tutor Dashboard tab
+## A tutoring's page
 
-This is the tutor's view of their apprentices. For each one:
+Clicking a card opens the tutoring's page.
 
-* their **progress** through the checklist;
-* the date of the **next report**: *In N days* or *To do as soon as possible*;
-* their **voice activity** and session count;
-* their **upcoming absences**.
+* **Objectives**: those of the programme that apply to this tutoring. Each one is ticked **Seen** (explained or shown) then **Acquired** (done alone, without help).
+* **Missions**: **Give** creates a mission in the missions list, assigned to the tutee. Opening the list leads to the full board. Without a list, **Create the missions list** sets it up.
+* **Logbook**: kept by the tutee, who writes down what they did, learnt or what is blocking them. The tutor reads it before each check-in.
+* **Check-ins**: the history of reviews, with their rhythm (*Every 7 d*).
+* **Presence**: time spent in voice and upcoming absences.
 
-The **Handover Checklist** lists the skills, each moving from **Known** to **Acquired**. A validated item shows its date and the validator's name.
+### Add a check-in
 
-### Writing a report
+**Add a check-in** asks for a **Feeling** (*Going well*, *To watch* or *Worrying*) and the **Check-in** itself: what works, what still needs work, what comes next. The tutee reads it. Then **Save check-in**.
 
-The **Write a Report** button publishes a progress note on the apprentice, with a **Positive**, **Neutral** or **Negative** tone.
+Kotbo reminds tutors every day when a check-in is coming up or overdue.
 
-### Concluding
+### Conclude
 
-* **Validate** closes the track successfully. Kotbo compares the **current duration** with the **required duration**; if the minimum time is not met, a link lets you **force the validation**.
-* **Fail** marks the track as unsuccessful.
+**Conclude** shows where the tutoring stands (days elapsed against the minimum, objectives acquired, number of check-ins), then asks for the **Decision**:
 
-In both cases, a **Final notes** field lets you leave a comment on the period.
+* **Validate**: the tutoring ends and the person is told they are validated.
+* **Do not validate**: the tutoring ends without validation; the person is told a manager will get back to them.
 
----
+The **Closing note** stays on the page. Before the minimum length, only an administrator can validate, with **Validate anyway**.
 
-## My Progress tab
-
-This is the apprentice's view:
-
-* their progress and their assigned tutor, with a **Contact on Discord** shortcut;
-* their **voice activity** and their **absences**;
-* the **latest feedback** published by their tutor;
-* a **Logbook** where they record what they learn as they go.
-
-When nobody is in tutoring, the page shows *You are not currently in a tutoring period*.
-
----
-
-## Configuration tab
-
-### Settings
-
-* **Report interval (days)**: how often progress notes are expected.
-* **Reminders before the deadline (days)**.
-* **Minimum trial time (days)**: the duration below which validation must be forced.
-* **Voice activity**: shows or hides the voice statistics.
-* **Absences**: shows or hides absences.
-* **DM notifications**: automatic reminders sent to tutors.
-
-### Training checklist
-
-The **New Item** button creates an objective:
-
-* **Objective title**: for example *Using the admin console*.
-* **Category**: *Tools*, *Knowledge*, *Access*, or your own.
-* **Detailed description** shown to both mentor and apprentice.
-* **Target hierarchy** and **Target grade**: leave on *Common* for the item to apply everywhere.
-
-:::tip[One checklist per branch]
-Targeting the hierarchy avoids asking an event host for a moderator's skills. Keep only what the whole staff must know as *Common*.
+:::caution[Deleting a tutoring]
+Ticked objectives, check-ins and the logbook are erased. The missions list stays.
 :::
+
+---
+
+## The programme
+
+The **Programme** button opens the **Tutoring programme**: the objectives to acquire, grouped by stage, and the tutoring rhythm.
+
+* **Add an objective**: an **Objective** (*Know how to apply a sanction with the bot*), **Details**, a **Stage** to group them (*Week 1*, *Tools*, *Moderation*…) and, if needed, the target grade it applies to. Without a grade, the objective applies to every tutoring.
+* **Rhythm**:
+  * **Minimum length (days)**: before that, only an administrator can validate.
+  * **Check-in every (days)**: counted from the last check-in.
+  * **Tutor reminder (days before)**: `0` sends none.
+
+Deleting an objective removes it from the programme and from every tutoring, along with what was ticked.
