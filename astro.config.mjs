@@ -149,7 +149,6 @@ export default defineConfig({
             page('Webhooks sortants', 'Outgoing webhooks', 'dashboard/configuration/webhooks'),
             page('Liens de salons', 'Channel links', 'dashboard/communaute/liens-salons'),
             page('Serveur du staff', 'Staff server', 'dashboard/cross-serveur/serveurs-staff'),
-            page('Partenariats', 'Partnerships', 'dashboard/cross-serveur/partenariats'),
           ]),
         ]),
         group('Utilisation & Commandes (Discord)', 'Usage & commands (Discord)', [
@@ -164,7 +163,6 @@ export default defineConfig({
             page('Suggestions', 'Suggestions', 'discord/communaute/suggestions'),
             page('Salons fun', 'Fun channels', 'discord/communaute/salons-fun'),
             page('Tickets de support', 'Support tickets', 'discord/communaute/tickets'),
-            page('Daily Algo', 'Daily Algo', 'discord/communaute/daily-algo'),
             page('Clans, saisons et paris', 'Clans, seasons and bets', 'discord/communaute/clans'),
           ]),
           group('Économie et jeux', 'Economy & games', [
