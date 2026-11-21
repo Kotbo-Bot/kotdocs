@@ -130,6 +130,29 @@ Here is the class structure of the public page, so you can target elements preci
 
 ---
 
+## Recruitment forms
+
+A form's **Recruitment Link** switch ties it to [Recruitment](/en/dashboard/staff/recrutement/): its answers arrive as applications. Discord login is always required on it.
+
+### Automatic closing
+
+A recruitment form can close on its own:
+
+* **Close at X pending applications**: Kotbo closes it when too many applications are waiting for a decision, and reopens it as soon as one is decided.
+* **Close at X hires**: Kotbo closes it once the hire cap is reached. You then reopen it manually or raise the cap. The count either restarts **on each reopening** or covers **every hire from this form**.
+
+### Recruitment panels
+
+A panel is a Discord message showing each position's status (*OPEN* / *CLOSED*) with an apply button, and it updates itself when a form opens or closes.
+
+**New panel** asks for a **Title** (*CONTRIBUTOR RECRUITMENT*), a **Channel** and the **Positions shown, in order**, then **Publish**. At least one form must be linked to recruitment. Deleting a panel removes the Discord message, without touching the forms.
+
+:::note[Gratuit plan]
+On Gratuit, a server has up to 3 forms, 1 of them for recruitment.
+:::
+
+---
+
 ## Sharing, security and responses
 
 Once your form is saved:
