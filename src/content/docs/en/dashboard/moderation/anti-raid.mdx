@@ -5,7 +5,7 @@ description: Detect join waves, trigger emergency locks, require a captcha at th
 
 import DiscordCommand from '../../../../../components/DiscordCommand.astro';
 
-<p class="doc-lead">The <strong>Security → Anti-raid</strong> page gathers everything that protects the door of your server: join-wave detection, instant emergency locks, new-member captcha, scam filter and invite control.</p>
+<p class="doc-lead">The <strong>Security → Anti-raid</strong> page gathers everything that protects the door of your server: the Shield alert level, join-wave detection, instant emergency locks, new-member captcha, scam filter, scam images (Kotbo Vision), quarantine and invite control.</p>
 
 :::note[Where to find it]
 The **Protection → Anti-raid** section: [Open anti-raid ↗](https://dash.kotbo.fr/security/anti-raid).
@@ -33,6 +33,25 @@ Below the toggles, three counters recall the number of **pending reports**, **in
 
 ---
 
+## The Shield alert level
+
+At the top of the **Detection & locks** tab, the **Shield** card sets the server's alert level, from 5 (calm) to 1 (full lockdown). Each level hardens the server on its own; going back to 5 undoes what Shield had turned on, without touching what the team had set up itself. The level never changes by itself: someone on the team always raises or lowers it.
+
+| Level | Effect |
+| --- | --- |
+| **5 - All clear** | Medium Discord verification. |
+| **4 - Watchful** | Captcha on, otherwise high verification. |
+| **3 - Alert** | Highest verification, captcha for everyone, DMs closed. |
+| **2 - Critical** | Captcha frozen: arrivals are held until the alert ends. Without a captcha, raid mode turns on. |
+| **1 - Disaster** | Server locked: `@everyone` can no longer write, react or speak. |
+
+Without a captcha configured (channel and role), Shield raises Discord verification and, at levels 2 and 1, turns raid mode on. Kotbo asks for confirmation before moving to Shield 2 or 1.
+
+* **Team panel**: five buttons to change the level from Discord. Pick a team-only channel then **Post**, or **Create #shield** to let Kotbo create the channel. Anyone who can see that channel can use the buttons: open it to team roles only.
+* **Status voice channel**: its name shows the level ("🔵 Shield 5"), and nobody can join it. **Create the status channel** sets it up. Discord allows two renames every ten minutes: when changes come close together, the panel remains the reference.
+
+---
+
 ## Silencing channels: the lockdown
 
 Channel lockdown is run from Discord, not from the dashboard. It denies `@everyone` the right to write, to open threads and to react in text channels, and to connect and speak in voice channels.
@@ -46,6 +65,7 @@ Channel lockdown is run from Discord, not from the dashboard. It denies `@everyo
 * **portee** (scope): *Le salon* - the channel, the default - *Sa catégorie entière* - its whole category - or *Tout le serveur* - the whole server.
 * **salon**: the channel or category targeted, the current channel by default.
 * **raison**: shown in the channel and in the audit log.
+* **silencieux** (silent): posts no message in the locked channels, or in the reopened ones with `off`.
 
 `/protection lockdown off` reopens with the **same scope**, and gives every permission it touched its original state back - a channel that already denied `@everyone` the right to write still denies it afterwards. `/protection status` reports how many channels are currently locked.
 
@@ -77,7 +97,8 @@ Kotbo compares every arrival to the creation date of the Discord account and han
 
 * **Minimum account age**: the switch for this guard.
 * **Minimum age** and **Unit**: a threshold in *Days* or *Months*. Past a year, Kotbo warns that a large share of legitimate arrivals will be caught.
-* **Action**: *Alert only*, *Kick* or *Ban*.
+* **Action**: *Alert only*, *Kick*, *Quarantine until the required age*, *Ban until the required age* or *Ban permanently*.
+  * In quarantine, the account joins without seeing anything (Jail role, see the [Quarantine](#quarantine-tab) tab) and leaves quarantine on its own the day it reaches the required age. It is told that date by DM. Without a Jail role, it becomes a ban until the same date.
 * **Alert channel**: every account turned away or flagged is posted there.
 * **DM message**: sent before the kick or the ban.
 * **Exempt members (IDs)**: one ID per line, to let a legitimate new account in.
@@ -111,6 +132,11 @@ In *Only the selected ones* mode with no role ticked, nobody gets any role back 
 
 This captcha filters automated accounts at the door. It is separate from the identity verification of the [Alt accounts](/en/dashboard/moderation/double-comptes/) module.
 
+* **Trigger**:
+  * *Always: every arrival* takes the captcha, raid or not.
+  * *Automatic: during a raid or a Shield alert*: outside a raid, arrivals walk straight in; from Shield 3, everyone takes the captcha.
+  * *Smart: automatic + accounts with a suspicious profile*: on top of that, the captcha is asked of very new accounts, accounts with the default avatar or a generated username, flagged as spammers or quarantined by Discord. A member exempted by the team is never treated as suspicious.
+* **Captcha in the server's look**: the server icon is set into the captcha image, and its colours reused.
 * **Captcha**: arrivals must solve a code before they can access the server.
 * **Mode**:
   * *Image*: the code is displayed.
@@ -125,11 +151,11 @@ This captcha filters automated accounts at the door. It is separate from the ide
 
 ### Scam filter
 
-Blocks phishing links (fake Nitro, fake Steam) and known scam images.
+Blocks phishing links (fake Nitro, fake Steam), fake crypto or casino giveaways and fake "easy money" job offers. Known scam images belong to the [Kotbo Vision](#kotbo-vision-tab) tab. **Test on past messages** shows what the filter would have deleted.
 
 * **Scam filter**: analyses domains and the text patterns typical of phishing campaigns.
-* **Image filter**: compares posted images with fingerprints already identified on the server, fed automatically by the honeypot. The comparison is perceptual, so a re-compressed or slightly cropped screenshot is still recognised.
 * **QR code filter**: Discord login QR phishing contains no link at all, so no domain filter can catch it. Images carrying a QR code sent by an account with no history are blocked. The **Messages before being considered established** field sets how many messages a member needs before they can share a QR again (wifi, 2FA…).
+* **Read text in images**: reads the text of images posted by an account with no history and compares it with known scam domains and texts. Reading happens on Kotbo's side, no image is sent to a third party. It catches photographed or cropped screenshots, but costs CPU: turn it on if the server is targeted by these campaigns. The **Messages before being considered established** threshold applies too.
 * **Action**: *Delete*, *Delete and warn*, *Delete and timeout*, *Delete and ban*.
 * **Timeout (minutes)** and **Alert channel**.
 * **Extra blocked domains** and **Exempt domains**: one domain per line.
@@ -143,6 +169,55 @@ Rewards members who display the server tag on their profile. The role is granted
 * **Reports**: members can report a message or a member to a staff channel.
 * **Anonymous reports**: hides the reporter in the staff embed. It reduces fear of retaliation, at the cost of being able to trace report abuse.
 * **Reports channel** and **Delay between two reports (s)**, to limit abuse.
+
+---
+
+## Kotbo Vision tab
+
+Kotbo Vision compares every posted image (attachments, embeds, forwarded messages, stickers) with known scam images. A cropped, flipped, re-compressed or screenshotted variant is still recognised. The filter is **on by default**.
+
+* **Certain** match: the message is deleted and its author sanctioned.
+* **Uncertain** match: the message is deleted as a precaution, with no sanction, and sent for review.
+
+Settings:
+
+* **Sanction** and **Duration**: delete only, warning, quarantine (Jail), kick or ban, from 1 hour to permanent. Without a Jail role, quarantine becomes a timeout.
+* **Review channel**: where uncertain images land. Without a channel, they stay silent.
+* **Tell the member by DM**: explains why the message disappeared and what to do if the account was hacked.
+* **Delete when unsure**: turned off, an uncertain message stays in place until the staff decides.
+
+### Catalogues and your lists
+
+* **Global catalog**: the scam images Kotbo has recorded across all servers.
+* **Server catalog**: images caught by the honeypot, confirmed in review or added with a right-click.
+* **Custom lists**: your own banned images, whatever they show. Name the list (*Fake support*), **Create**, then drop the images. Keep one kind of image per list: mixing unrelated content skews variant detection.
+
+### To review
+
+Images close to a banned one, without certainty, wait here for a decision: **Confirm** the ban (the author is then sanctioned) or **Dismiss**. An image added by mistake leaves a catalogue with **Allow**.
+
+:::tip[Adding from Discord]
+On a message, right-click then **Apps → Kotbo actions → Ajouter à Kotbo Vision** files its images into a list or the server catalog. The action requires the *Manage Server* permission.
+:::
+
+---
+
+## Quarantine tab
+
+Quarantine (Jail) keeps the member on the server, but they can no longer see anything. It is used by `/sanction jail`, Kotbo Vision, the honeypot, the tag automod and suspicious arrivals.
+
+* **Create the Jail role**: Kotbo creates the role, hides it from every channel (including channels created later) and opens a `#quarantaine` channel where the staff talks with the members concerned. **Repair the role** puts the denial back wherever it is missing.
+* **Quarantine channel**: the only channel visible in quarantine. Optional.
+* **Remove the member's roles**: without it, a role that opens a channel would cancel the quarantine. Roles are given back when it is lifted.
+* **Sync Discord AutoMod quarantine**: when Discord's native AutoMod quarantines a profile (blocked username, bio or server tag), Kotbo applies the Jail quarantine too and lifts it as soon as the member fixes their profile.
+
+**Quarantined members** lists the people concerned, the origin (manual, another server's tag, account too new, Discord quarantine) and the automatic release date. A permanent quarantine is lifted with `/sanction unjail`.
+
+<DiscordCommand
+  command="/sanction jail membre:@Username duree:7d raison:Advertising in DMs"
+/>
+
+Without **duree**, the quarantine is permanent. `/protection jail setup` creates or repairs the role from Discord; its **salon** option also creates the `#quarantaine` channel.
 
 ---
 
@@ -178,9 +253,6 @@ Where a member came from, and who came through the same door. When a raider is e
 2. Kotbo shows the **referral chain** and the accounts that joined through the same invite.
 3. You can quarantine the whole lineage in a single action.
 
-### Scam fingerprints
-
-The list of scam images captured by the honeypot. **Global** fingerprints are shared across servers and cannot be deleted here; local fingerprints can be removed.
 
 ---
 

@@ -5,7 +5,7 @@ description: Détectez les vagues d'arrivées, activez les verrous d'urgence, im
 
 import DiscordCommand from '../../../../components/DiscordCommand.astro';
 
-<p class="doc-lead">La page <strong>Sécurité → Anti-raid</strong> réunit tout ce qui protège l'entrée du serveur : détection des vagues d'arrivées, verrous d'urgence immédiats, captcha des nouveaux membres, filtre anti-arnaque et contrôle des invitations.</p>
+<p class="doc-lead">La page <strong>Sécurité → Anti-raid</strong> réunit tout ce qui protège l'entrée du serveur : niveau d'alerte Shield, détection des vagues d'arrivées, verrous d'urgence immédiats, captcha des nouveaux membres, filtre anti-arnaque, images d'arnaque (Kotbo Vision), quarantaine et contrôle des invitations.</p>
 
 :::note[Où la trouver]
 Section **Protection → Anti-raid** : [Ouvrir l'anti-raid ↗](https://dash.kotbo.fr/security/anti-raid).
@@ -33,6 +33,25 @@ Sous les bascules, trois compteurs rappellent le nombre de **signalements en att
 
 ---
 
+## Le niveau d'alerte Shield
+
+En tête de l'onglet **Détection & verrous**, la carte **Shield** règle le niveau d'alerte du serveur, de 5 (calme) à 1 (verrouillage total). Chaque niveau durcit le serveur tout seul ; revenir à 5 annule ce que Shield avait activé, sans toucher à ce que l'équipe avait mis en place elle-même. Le niveau ne change jamais seul : c'est toujours quelqu'un de l'équipe qui le monte ou le baisse.
+
+| Niveau | Effet |
+| --- | --- |
+| **5 - Tout va bien** | Vérification Discord moyenne. |
+| **4 - Vigilance** | Captcha activé, sinon vérification élevée. |
+| **3 - Alerte** | Vérification maximale, captcha pour tous, MP fermés. |
+| **2 - Critique** | Captcha gelé : les arrivants sont retenus jusqu'à la fin de l'alerte. Sans captcha, le mode raid s'active. |
+| **1 - Catastrophe** | Serveur verrouillé : `@everyone` ne peut plus écrire, réagir ni parler. |
+
+Sans captcha configuré (salon et rôle), Shield renforce la vérification Discord et, aux niveaux 2 et 1, active le mode raid. Kotbo demande une confirmation avant de passer en Shield 2 ou 1.
+
+* **Panneau de l'équipe** : cinq boutons pour changer de niveau depuis Discord. Choisissez un salon réservé à l'équipe puis **Publier**, ou **Créer #shield** pour que Kotbo crée le salon. Toute personne qui voit ce salon peut se servir des boutons : ouvrez-le aux seuls rôles de l'équipe.
+* **Salon vocal de statut** : son nom affiche le niveau (« 🔵 Shield 5 »), et personne ne peut s'y connecter. **Créer le salon de statut** le met en place. Discord limite les renommages à deux toutes les dix minutes : en cas de changements rapprochés, le panneau reste la référence.
+
+---
+
 ## Faire taire des salons : le lockdown
 
 Le verrouillage de salons se commande depuis Discord, et non depuis le dashboard. Il refuse à `@everyone` l'écriture, les fils et les réactions dans les salons textuels, la connexion et la parole dans les vocaux.
@@ -46,6 +65,7 @@ Le verrouillage de salons se commande depuis Discord, et non depuis le dashboard
 * **portee** : *Le salon* (par défaut), *Sa catégorie entière* ou *Tout le serveur*.
 * **salon** : le salon ou la catégorie visé, le salon actuel par défaut.
 * **raison** : affichée dans le salon et dans le journal d'audit.
+* **silencieux** : ne publie aucun message dans les salons verrouillés, ou rouverts avec `off`.
 
 `/protection lockdown off` rouvre avec la **même portée**, et rend à chaque permission touchée son état d'origine - un salon qui refusait déjà l'écriture à `@everyone` le refuse toujours après coup. `/protection status` indique le nombre de salons actuellement verrouillés.
 
@@ -77,7 +97,8 @@ Kotbo compare chaque arrivée à la date de création du compte Discord et trait
 
 * **Ancienneté minimale du compte** : interrupteur de la garde.
 * **Ancienneté minimale** et **Unité** : un seuil en *Jours* ou en *Mois*. Au-delà d'un an, Kotbo prévient qu'une grande partie des arrivées légitimes sera concernée.
-* **Action** : *Signaler uniquement*, *Expulser* ou *Bannir*.
+* **Action** : *Signaler uniquement*, *Expulser*, *Quarantaine jusqu'à l'âge requis*, *Bannir jusqu'à l'âge requis* ou *Bannir définitivement*.
+  * En quarantaine, le compte entre sans rien voir (rôle Jail, voir l'onglet [Quarantaine](#onglet-quarantaine)) et en sort tout seul le jour où il atteint l'âge requis. Il est prévenu de cette date en MP. Sans rôle Jail configuré, c'est un bannissement jusqu'à la même date.
 * **Salon d'alerte** : chaque compte refoulé ou signalé y est publié.
 * **Message envoyé en MP** : envoyé avant l'expulsion ou le bannissement.
 * **Membres exemptés (identifiants)** : un identifiant par ligne, pour laisser entrer un compte récent légitime.
@@ -111,6 +132,12 @@ En mode *Seulement ceux sélectionnés* sans aucun rôle coché, personne ne ret
 
 Ce captcha filtre les comptes automatisés à l'arrivée. Il est distinct de la vérification d'identité du module [Multi-comptes](/dashboard/moderation/double-comptes/).
 
+* **Déclenchement** :
+  * *En permanence : chaque arrivée* passe le captcha, raid ou pas.
+  * *Automatique : pendant un raid ou une alerte Shield* : hors raid, les arrivants entrent directement ; à partir de Shield 3, tout le monde passe le captcha.
+  * *Intelligent : automatique + comptes au profil suspect* : en plus, le captcha est demandé aux comptes très récents, à l'avatar par défaut, au pseudo généré, signalés comme spammeurs ou mis en quarantaine par Discord. Un membre exempté par l'équipe n'est jamais considéré comme suspect.
+* **Captcha à l'image du serveur** : l'icône du serveur est incrustée dans l'image du captcha, et ses couleurs reprises.
+
 * **Captcha** : les arrivants doivent résoudre un code avant d'accéder au serveur.
 * **Mode** :
   * *Image* : le code est affiché.
@@ -125,11 +152,11 @@ Ce captcha filtre les comptes automatisés à l'arrivée. Il est distinct de la 
 
 ### Filtre anti-arnaque
 
-Bloque les liens de phishing (faux Nitro, faux Steam) et les images d'arnaque connues.
+Bloque les liens de phishing (faux Nitro, faux Steam), les faux giveaways crypto ou casino et les faux recrutements « revenu facile ». Les images d'arnaque connues relèvent de l'onglet [Kotbo Vision](#onglet-kotbo-vision). **Tester sur l'historique** montre ce que le filtre aurait supprimé.
 
 * **Filtre anti-arnaque** : analyse les domaines et les combinaisons de texte typiques des campagnes de phishing.
-* **Filtre d'images** : compare les images postées aux empreintes déjà identifiées sur le serveur, alimentées automatiquement par le honeypot. La comparaison est perceptuelle, donc une capture recompressée ou légèrement recadrée reste reconnue.
 * **Filtre de codes QR** : le phishing par QR de connexion Discord ne contient aucun lien, aucun filtre de domaine ne peut l'attraper. Les images porteuses d'un code QR envoyées par un compte sans historique sont bloquées. Le champ **Messages avant d'être considéré comme installé** définit à partir de combien de messages un membre peut à nouveau partager un QR (wifi, 2FA…).
+* **Lecture du texte des images** : lit le texte des images postées par un compte sans historique et le compare aux domaines et textes d'arnaque connus. La lecture se fait chez Kotbo, aucune image n'est envoyée à un tiers. Elle rattrape les captures photographiées ou recadrées, mais consomme du processeur : à activer si le serveur est visé par ces campagnes. Le seuil **Messages avant d'être considéré comme installé** s'applique aussi.
 * **Action** : *Supprimer*, *Supprimer et avertir*, *Supprimer et exclure*, *Supprimer et bannir*.
 * **Exclusion (minutes)** et **Salon d'alerte**.
 * **Domaines bloqués supplémentaires** et **Domaines exemptés** : un domaine par ligne.
@@ -143,6 +170,55 @@ Récompense les membres qui arborent le tag du serveur sur leur profil. Le rôle
 * **Signalements** : les membres peuvent signaler un message ou un membre vers un salon staff.
 * **Signalements anonymes** : masque l'auteur du signalement dans l'encart staff. Réduit la peur des représailles, au prix de la traçabilité des abus de signalement.
 * **Salon des signalements** et **Délai entre deux signalements (s)**, pour limiter les abus.
+
+---
+
+## Onglet Kotbo Vision
+
+Kotbo Vision compare chaque image postée (pièces jointes, embeds, messages transférés, stickers) aux images d'arnaque connues. Une variante recadrée, retournée, recompressée ou prise en capture reste reconnue. Le filtre est **actif par défaut**.
+
+* Correspondance **certaine** : le message est supprimé et son auteur sanctionné.
+* Correspondance **incertaine** : le message est supprimé par précaution, sans sanction, et part en vérification.
+
+Réglages :
+
+* **Sanction** et **Durée** : *Supprimer seulement*, *Avertissement*, *Quarantaine (Jail)*, *Expulsion* ou *Bannissement*, de 1 heure à permanente. Sans rôle Jail, la quarantaine devient un timeout.
+* **Salon de vérification** : où arrivent les images incertaines. Sans salon, elles restent silencieuses.
+* **Prévenir le membre en MP** : explique pourquoi le message a disparu et rappelle quoi faire si le compte a été piraté.
+* **Supprimer en cas de doute** : désactivé, le message incertain reste en place jusqu'à la décision du staff.
+
+### Les catalogues et vos listes
+
+* **Catalogue global** : les images d'arnaque recensées par Kotbo sur l'ensemble des serveurs.
+* **Catalogue du serveur** : les images captées par le honeypot, confirmées en vérification ou ajoutées par clic droit.
+* **Listes personnalisées** : vos propres images interdites, quel que soit leur contenu. Nommez la liste (*Faux support*), **Créer**, puis déposez les images. Gardez un seul type d'image par liste : mélanger des contenus sans rapport fausse la détection des variantes.
+
+### À vérifier
+
+Les images proches d'une image interdite, sans certitude, attendent ici une décision : **Confirmer** l'interdit (l'auteur est alors sanctionné) ou **Écarter**. Une image ajoutée par erreur se retire d'un catalogue avec **Autoriser**.
+
+:::tip[Ajouter depuis Discord]
+Sur un message, clic droit puis **Applications → Actions Kotbo → Ajouter à Kotbo Vision** range ses images dans une liste ou dans le catalogue du serveur. L'action demande la permission *Gérer le serveur*.
+:::
+
+---
+
+## Onglet Quarantaine
+
+La quarantaine (Jail) garde le membre sur le serveur, mais il n'y voit plus rien. Elle sert à `/sanction jail`, à Kotbo Vision, au honeypot, à l'automod des tags et aux arrivées suspectes.
+
+* **Créer le rôle Jail** : Kotbo crée le rôle, le masque sur tous les salons (y compris ceux créés plus tard) et ouvre un salon `#quarantaine` où le staff échange avec les membres concernés. **Réparer le rôle** repose le refus là où il manque.
+* **Salon de quarantaine** : le seul salon visible en quarantaine. Facultatif.
+* **Retirer les rôles du membre** : sans cela, un rôle qui ouvre un salon annulerait la quarantaine. Les rôles sont rendus à la levée.
+* **Synchroniser la quarantaine AutoMod Discord** : quand l'AutoMod natif de Discord met un profil en quarantaine (pseudo, bio ou tag de serveur bloqué), Kotbo applique aussi la quarantaine Jail et la lève dès que le membre corrige son profil.
+
+**Membres en quarantaine** liste les personnes concernées, l'origine (*Manuelle*, *Tag d'un autre serveur*, *Compte trop récent*, *Quarantaine Discord*) et la date de levée automatique. Une quarantaine permanente se lève avec `/sanction unjail`.
+
+<DiscordCommand
+  command="/sanction jail membre:@Pseudo duree:7d raison:Publicité en MP"
+/>
+
+Sans **duree**, la quarantaine est permanente. `/protection jail setup` crée ou répare le rôle depuis Discord ; son option **salon** crée aussi le salon `#quarantaine`.
 
 ---
 
@@ -178,9 +254,6 @@ D'où vient un membre, et qui est entré par la même porte. Quand un raideur es
 2. Kotbo affiche la **chaîne de parrainage** et les comptes entrés par la même invitation.
 3. Vous pouvez mettre l'ensemble du lignage en quarantaine en une action.
 
-### Empreintes d'arnaque
-
-Liste des images d'arnaque captées par le honeypot. Les empreintes **globales** sont partagées entre serveurs et ne peuvent pas être supprimées ici ; les empreintes locales peuvent être retirées.
 
 ---
 
