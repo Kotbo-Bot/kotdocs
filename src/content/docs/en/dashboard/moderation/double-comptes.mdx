@@ -78,6 +78,15 @@ Verification is not triggered by the join score alone: accumulated warnings can 
 * **Decay**: you can count only the warnings from the last N days, so an old mistake does not follow a member forever.
 
 
+### Requesting a verification by hand
+
+The staff can also request a verification from a specific member, from their profile, the `/request-verification` command or the **Request verification** context menu. An "i" on the profile explains what the member will go through. Limits prevent abuse:
+
+* a pending request blocks the next one, and a member can only be re-verified once a week on a server;
+* past 5 requests in 10 minutes, a moderator's next ones are refused for a while.
+
+The member's detailed file keeps the history of verifications requested from them.
+
 ### 5. Configuration
 Tune the bot's sensitivity and the automatic sanctions.
 
