@@ -1,9 +1,9 @@
 ---
 title: Reaction roles
-description: Deploy messages with interactive buttons so your members can assign their own roles.
+description: Post button messages so your members can assign their own roles.
 ---
 
-<p class="doc-lead">The <strong>Reaction Roles</strong> module posts a message with buttons on Discord. One click grants the associated role, and depending on the mode you choose, a second click removes it or not.</p>
+<p class="doc-lead">The <strong>Reaction roles</strong> module posts a message with buttons on Discord. One click grants the associated role; depending on the chosen mode, a second click removes it, or taking another one removes the previous one.</p>
 
 :::note[Where to find it]
 The **Community → Reaction roles** section: [Open reaction roles ↗](https://dash.kotbo.fr/reaction-roles).
@@ -12,56 +12,63 @@ Kotbo needs the **Manage roles** permission, and its own role must sit **above**
 
 ---
 
-## Deploying a panel
+## Deploy a panel
+
+**Deploy a Panel** opens a four-step window, with the **Preview on Discord** in a folding panel. On a server with no menu, the page offers the templates straight away.
 
 <div class="step-list">
-  <div class="step-item"><div><h3>Click Deploy a Panel</h3><p>The form opens with a live Discord preview on the right.</p></div></div>
-  <div class="step-item"><div><h3>Fill in the title and channel</h3><p><strong>Panel Title / Message</strong> (for example <em>Pick your notification roles</em>) and <strong>Destination Channel</strong>.</p></div></div>
-  <div class="step-item"><div><h3>Choose the button mode</h3><p><strong>Button mode</strong> applies to the whole panel, and each button may depart from it. See below.</p></div></div>
-  <div class="step-item"><div><h3>Add your buttons</h3><p>For each button: an <strong>Emoji</strong> (optional), a <strong>Button Label</strong>, an <strong>Associated Role</strong>, the <strong>Colour of this button</strong> and optionally a <strong>Mode of this button</strong>. The <strong>Add a button</strong> button creates more.</p></div></div>
-  <div class="step-item"><div><h3>Deploy</h3><p>Click <strong>Deploy Panel</strong>. Kotbo posts the message on Discord.</p></div></div>
+  <div class="step-item"><div><h3>Start from a template (optional)</h3><p><strong>Colors</strong> (one name colour at a time), <strong>Pronouns</strong>, <strong>Notifications</strong>, or <strong>Blank</strong>. The template fills the menu with suggested roles; nothing is created until you publish.</p></div></div>
+  <div class="step-item"><div><h3>How many roles can a member take?</h3><p>See <a href="#the-three-modes">the three modes</a>.</p></div></div>
+  <div class="step-item"><div><h3>The buttons</h3><p>For each: an <strong>Emoji</strong> (optional), the <strong>Button text</strong> and the <strong>Role given</strong>. <strong>Add a button</strong> creates more; the handle reorders them by drag and drop, or with the up and down arrows.</p></div></div>
+  <div class="step-item"><div><h3>Where to publish</h3><p>Title, <strong>Destination Channel</strong> and <strong>Message text</strong> (empty: Kotbo keeps the text explaining how to take the roles). Then <strong>Deploy Panel</strong>.</p></div></div>
 </div>
 
-:::caution[Label and role are required]
-All buttons must have a label **and** a role, otherwise Kotbo refuses to deploy.
+A role suggested by a template that doesn't exist yet is created on publish, with no permission at all; Kotbo tells you how many roles it will create. **Pick an existing role instead** swaps it for one of the server's roles.
+
+Closing the window (or **Esc**) before publishing asks for confirmation: *Close without publishing* clears what you had prepared.
+
+:::caution[Text and role required]
+Every button needs a text **and** a role, otherwise Kotbo refuses to publish.
 :::
 
 ---
 
-## Toggle or grant only
+## The three modes
 
 | Mode | What a click does |
 | --- | --- |
-| **Toggle** | One click grants the role, a second one removes it. |
-| **Grant only** | The role is granted once: clicking again does not remove it. |
+| **Several** | The member takes and removes the roles they want. |
+| **Several, for good** | Once taken, a role can't be removed from here. |
+| **Just one** | Taking one removes the other, clicking again removes it. For colours or region. |
 
-The mode is first chosen for the **whole panel**. Each button then keeps **Panel mode** or sets its own, which lets you mix a notification role members can switch off with an access role they do not hand back.
+In the several-roles modes, each button can depart from the menu in its options: **Second click on this button** → **Same as the menu**, **Keeps the role** or **Removes the role**. You can thus mix a notification role members can switch off with an access role they don't give back.
 
-The text under the message title follows the mode in use: Kotbo states that the roles cannot be removed from there, or that some of them cannot be removed once granted.
-
----
-
-## Button colours
-
-Every button carries its own Discord colour: **Grey**, **Blue**, **Green** or **Red**. It has no effect on the granting; it is there to tell families of roles apart in a panel that holds many.
+The text under the title follows the chosen mode: Kotbo says roles can't be removed from here, that only one may be taken, or that some can't be removed once obtained.
 
 ---
 
-## The live preview
+## More options
 
-The **Live Preview (Discord)** panel reproduces exactly how the message will look before publishing. You can click the buttons there to check their layout.
+The **More options** panel of a button or of the menu sets the rest:
+
+* the button's Discord colour (**Grey**, **Blue**, **Green** or **Red**), with no effect on granting;
+* **Member count on buttons**: shows "Red · 12", the number of members who have the role (not clicks: toggling several times doesn't inflate it), updated a few seconds after a click;
+* the message's **Bar color**, or the default.
 
 ---
 
-## Managing deployed panels
+## Managing published menus
 
-The **Deployed Panels** list shows each menu with its channel and roles. Two actions are available:
+Each published menu shows as a card, like a mini Discord preview, with its channel, its roles and the number of members per role.
 
-* **Edit**: reopens the form on the existing panel. Title, buttons, roles, colours and modes can all be changed, and **the Discord message is updated as soon as you save** - there is nothing to republish.
-* **Delete**: *Delete this role menu?* The panel's Discord message is deleted as well.
+* **Edit**: reopens the window. The Discord message is updated on save, nothing to republish.
+* **Duplicate**: creates a copy of the menu, to publish elsewhere.
+* **Delete from dashboard**: also deletes the Discord message.
 
-:::caution[Changing the channel republishes the panel]
-If you point a deployed panel at another channel, Kotbo posts a new message in the chosen channel and **deletes the old one**. Members lose the original message, its pins and any links pointing at it.
+:::caution[Changing channel republishes the panel]
+If you pick another channel while editing a menu, Kotbo posts a new message in that channel and **deletes the old one**. Members lose the original message, its pins and the links pointing to it.
 :::
 
-If a channel or a role has been deleted from the server, Kotbo shows it as **Unknown channel** or **Unknown role** with its ID, which makes it easy to spot the panels that need fixing.
+Kotbo flags on each card what keeps the menu from working: the message is no longer on Discord, or roles it can't give (role not found, managed by an integration, placed above the bot, or the **Manage roles** permission missing). A member who clicks a blocked role gets an explanation too.
+
+Roles taken and removed are tracked in the [Logs](/en/dashboard/moderation/logs/), the **Reaction roles** tab of [Statistics](/en/dashboard/general/analytics/) and [Triggers](/en/dashboard/communaute/declencheurs/).

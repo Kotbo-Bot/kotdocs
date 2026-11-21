@@ -1,67 +1,74 @@
 ---
 title: Rôles par réaction
-description: Déployez des messages avec boutons interactifs pour que vos membres s'attribuent eux-mêmes leurs rôles.
+description: Publiez des messages à boutons pour que vos membres s'attribuent eux-mêmes leurs rôles.
 ---
 
-<p class="doc-lead">Le module <strong>Reaction Roles</strong> publie sur Discord un message contenant des boutons. Un clic attribue le rôle associé, et selon le mode choisi, un second clic le retire ou non.</p>
+<p class="doc-lead">Le module <strong>Rôles par réaction</strong> publie sur Discord un message à boutons. Un clic attribue le rôle associé ; selon le mode choisi, un second clic le retire, ou en prendre un autre retire le précédent.</p>
 
 :::note[Où la trouver]
-Section **Communauté → Rôles par réaction** : [Ouvrir les reaction roles ↗](https://dash.kotbo.fr/reaction-roles).
+Section **Communauté → Rôles par réaction** : [Ouvrir les rôles par réaction ↗](https://dash.kotbo.fr/reaction-roles).
 Kotbo doit disposer de la permission **Gérer les rôles**, et son rôle doit être **au-dessus** des rôles qu'il attribue dans la hiérarchie du serveur.
 :::
 
 ---
 
-## Déployer un panel
+## Publier un message de rôles
+
+**Publier un message de rôles** ouvre une fenêtre en quatre étapes, avec l'**Aperçu sur Discord** dans un volet dépliant. Sur un serveur sans menu, la page propose directement les modèles.
 
 <div class="step-list">
-  <div class="step-item"><div><h3>Cliquez sur Déployer un Panel</h3><p>Le formulaire s'ouvre avec un aperçu Discord en direct sur la droite.</p></div></div>
-  <div class="step-item"><div><h3>Renseignez le titre et le salon</h3><p><strong>Titre du Panel / Message</strong> (par exemple <em>Sélectionnez vos rôles de notification</em>) et <strong>Salon de destination</strong>.</p></div></div>
-  <div class="step-item"><div><h3>Choisissez le mode des boutons</h3><p><strong>Mode des boutons</strong> s'applique à tout le panneau, et chaque bouton peut s'en écarter. Voir ci-dessous.</p></div></div>
-  <div class="step-item"><div><h3>Ajoutez vos boutons</h3><p>Pour chaque bouton : un <strong>Émoji</strong> (optionnel), un <strong>Libellé bouton</strong>, un <strong>Rôle associé</strong>, la <strong>Couleur de ce bouton</strong> et éventuellement un <strong>Mode de ce bouton</strong>. Le bouton <strong>Ajouter un bouton</strong> en crée d'autres.</p></div></div>
-  <div class="step-item"><div><h3>Déployez</h3><p>Cliquez sur <strong>Déployer le Panel</strong>. Kotbo publie le message sur Discord.</p></div></div>
+  <div class="step-item"><div><h3>Partir d'un modèle (facultatif)</h3><p><strong>Couleurs</strong> (une couleur de pseudo à la fois), <strong>Pronoms</strong>, <strong>Notifications</strong>, ou <strong>Vide</strong>. Le modèle remplit le menu avec des rôles proposés ; rien n'est créé tant que vous ne publiez pas.</p></div></div>
+  <div class="step-item"><div><h3>Combien de rôles un membre peut prendre ?</h3><p>Voir <a href="#les-trois-modes">les trois modes</a>.</p></div></div>
+  <div class="step-item"><div><h3>Les boutons</h3><p>Pour chacun : un <strong>Émoji</strong> (facultatif), le <strong>Texte du bouton</strong> et le <strong>Rôle donné</strong>. <strong>Ajouter un bouton</strong> en crée d'autres ; la poignée les réordonne par glisser-déposer, ou avec les flèches haut et bas.</p></div></div>
+  <div class="step-item"><div><h3>Où le publier</h3><p><strong>Titre du message</strong>, <strong>Salon de destination</strong> et <strong>Texte du message</strong> (vide : Kotbo garde le texte qui explique comment prendre les rôles). Puis <strong>Publier le message</strong>.</p></div></div>
 </div>
 
-:::caution[Libellé et rôle obligatoires]
-Tous les boutons doivent avoir un libellé **et** un rôle, sinon Kotbo refuse le déploiement.
+Un rôle proposé par un modèle qui n'existe pas encore est créé à la publication, sans aucune permission ; Kotbo dit combien de rôles il va créer. **Choisir un rôle existant à la place** le remplace par un rôle du serveur.
+
+Fermer la fenêtre (ou **Échap**) avant de publier demande une confirmation : *Fermer sans publier* efface ce que vous aviez préparé.
+
+:::caution[Texte et rôle obligatoires]
+Tous les boutons doivent avoir un texte **et** un rôle, sinon Kotbo refuse la publication.
 :::
 
 ---
 
-## Bascule ou attribution définitive
+## Les trois modes
 
 | Mode | Ce que fait un clic |
 | --- | --- |
-| **Bascule** | Un clic attribue le rôle, un second le retire. |
-| **Attribution définitive** | Le rôle est attribué une seule fois : recliquer ne le retire pas. |
+| **Plusieurs** | Le membre prend et retire les rôles qu'il veut. |
+| **Plusieurs, pour de bon** | Une fois pris, un rôle ne se retire plus d'ici. |
+| **Un seul** | En prendre un retire l'autre, recliquer le retire. Pour les couleurs ou la région. |
 
-Le mode se choisit d'abord pour **tout le panneau**. Chaque bouton garde ensuite **Mode du panneau** ou impose le sien, ce qui permet de mélanger un rôle de notification qu'on peut couper et un rôle d'accès qu'on ne rend pas.
+Dans les modes à plusieurs rôles, chaque bouton peut s'écarter du menu dans ses options : **Second clic sur ce bouton** → **Comme le menu**, **Garde le rôle** ou **Retire le rôle**. On mélange ainsi un rôle de notification qu'on peut couper et un rôle d'accès qu'on ne rend pas.
 
-Le texte sous le titre du message suit le mode retenu : Kotbo annonce que les rôles ne se retirent pas d'ici, ou que certains d'entre eux ne se retirent plus une fois obtenus.
-
----
-
-## La couleur des boutons
-
-Chaque bouton porte sa propre couleur Discord : **Gris**, **Bleu**, **Vert** ou **Rouge**. Elle n'a aucun effet sur l'attribution ; elle sert à distinguer des familles de rôles dans un panneau qui en compte beaucoup.
+Le texte sous le titre suit le mode retenu : Kotbo annonce que les rôles ne se retirent pas d'ici, qu'il n'en faut prendre qu'un, ou que certains ne se retirent plus une fois obtenus.
 
 ---
 
-## L'aperçu en direct
+## Options secondaires
 
-Le panneau **Aperçu live (Discord)** reproduit le rendu exact du message avant publication. Vous pouvez y cliquer sur les boutons pour vérifier leur disposition.
+Le volet **Options secondaires** d'un bouton ou du menu règle le reste :
+
+* la couleur Discord du bouton (**Gris**, **Bleu**, **Vert** ou **Rouge**), sans effet sur l'attribution ;
+* **Nombre de membres sur les boutons** : affiche « Rouge · 12 », le nombre de membres qui ont le rôle (pas de clics : basculer plusieurs fois ne le gonfle pas), mis à jour quelques secondes après un clic ;
+* **Couleur de la barre** du message, ou **Par défaut**.
 
 ---
 
-## Gérer les panels déployés
+## Gérer les menus publiés
 
-La liste **Panels Déployés** affiche chaque menu avec son salon et ses rôles. Deux actions sont disponibles :
+Chaque menu publié s'affiche en carte, comme un mini-aperçu Discord, avec son salon, ses rôles et le nombre de membres par rôle.
 
-* **Modifier** : rouvre le formulaire sur le panneau existant. Titre, boutons, rôles, couleurs et modes se changent, et **le message Discord est mis à jour dès l'enregistrement** - il n'y a rien à republier.
-* **Supprimer** : *Supprimer ce menu de rôles ?* Le message Discord du panneau est supprimé lui aussi.
+* **Modifier** : rouvre la fenêtre. Le message Discord est mis à jour dès l'enregistrement, rien à republier.
+* **Dupliquer** : crée une copie du menu, à publier ailleurs.
+* **Supprimer du tableau de bord** : supprime aussi le message Discord.
 
 :::caution[Changer de salon republie le panneau]
-Si vous désignez un autre salon en modifiant un panneau déployé, Kotbo publie un nouveau message dans le salon choisi et **supprime l'ancien**. Les membres perdent le message d'origine, ses épingles et les liens qui pointaient dessus.
+Si vous choisissez un autre salon en modifiant un menu, Kotbo publie un nouveau message dans le salon choisi et **supprime l'ancien**. Les membres perdent le message d'origine, ses épingles et les liens qui pointaient dessus.
 :::
 
-Si un salon ou un rôle a disparu du serveur, Kotbo l'affiche comme **Salon inconnu** ou **Rôle inconnu** avec son identifiant, ce qui permet de repérer les panels à corriger.
+Kotbo signale sur chaque carte ce qui empêche le menu de fonctionner : le message n'est plus sur Discord, ou des rôles qu'il ne peut pas donner (rôle introuvable, géré par une intégration, placé au-dessus du bot, ou permission **Gérer les rôles** manquante). Le membre qui clique sur un rôle bloqué reçoit lui aussi une explication.
+
+Les rôles pris et retirés sont suivis dans les [Journaux](/dashboard/moderation/logs/), l'onglet **Rôles par réaction** des [Statistiques](/dashboard/general/analytics/) et les [Déclencheurs](/dashboard/communaute/declencheurs/).
