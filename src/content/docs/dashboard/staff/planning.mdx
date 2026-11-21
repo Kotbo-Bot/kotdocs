@@ -18,18 +18,34 @@ Toutes les dates saisies sur cette page - absences, appels, tâches - sont inter
 
 ## Lire l'agenda
 
-Quatre calendriers se superposent, activables séparément dans **Mes calendriers** :
+Le volet **Mes calendriers** affiche ou masque chaque calque. Ceux de l'équipe :
 
 | Calendrier | Contenu |
 | --- | --- |
 | **Réunions** | Les points d'équipe, détaillés [plus bas](#les-réunions). |
 | **Appels Discord** | Les appels vocaux planifiés. |
 | **Absences** | Les indisponibilités déclarées. |
-| **Tâches** | Les tâches assignées. |
+| **Tâches** | Les tâches assignées, y compris les cartes des [listes de suivi](/dashboard/staff/listes-suivi/). |
+| **Alertes de couverture** | Les jours où trop de membres du staff sont absents en même temps. |
+| **Présence en vocal** | Le temps passé en vocal par le staff. |
 
-Le panneau **Personnes** filtre l'agenda sur un ou plusieurs membres, avec les raccourcis **Aucun** et **Tous**.
+Le groupe **Serveur** ajoute, en lecture seule, ce que le serveur a déjà de daté : **Événements du serveur**, **Fins de giveaways**, **Publications planifiées**, **Fins de périodes de test** et **Fins de sanctions**. Chaque élément renvoie vers sa page pour le modifier.
+
+Le panneau **Personnes** filtre l'agenda sur un ou plusieurs membres, avec les raccourcis **Moi seulement**, **Aucun** et **Tous**. **Rechercher** trouve un élément sur la période affichée.
+
+L'agenda s'affiche par jour, semaine, mois ou en liste **Agenda** ; sur téléphone, par jour, deux jours ou en liste. Au clavier : ← → pour naviguer, **T** pour aujourd'hui, **D**, **W**, **M** ou **A** pour changer de vue.
+
+À la souris, une réunion, un appel ou une tâche se déplace d'un créneau ou d'un jour à l'autre, et s'allonge par son bord bas. Au doigt, un balayage horizontal change de période.
 
 La vue **Ma journée** affiche vos échéances du jour et, quand il n'y a rien, la mention *Ta journée est libre !*.
+
+### S'abonner depuis un autre agenda
+
+**S'abonner depuis un autre agenda** donne un lien iCal personnel : vos réunions, appels, tâches et absences apparaissent dans Google Agenda, Outlook ou le calendrier de votre téléphone, et s'y mettent à jour tout seuls. Dans Google Agenda : **Autres agendas**, **+**, puis **À partir de l'URL**. Dans Outlook : **Ajouter un calendrier**, puis **S'abonner à partir du web**.
+
+:::caution[Ce lien est personnel]
+Quiconque a le lien voit votre planning. Ne le partagez pas.
+:::
 
 ---
 
@@ -50,6 +66,14 @@ Sous les dates, Kotbo rappelle dans quel fuseau l'heure est interprétée. Pour 
 
 Le salon d'annonce et le salon vocal des réunions se règlent dans [Réglages du serveur](/dashboard/configuration/centre-gestion/), onglet **Salons et rôles** : champs **Annonces réunions** et **Vocal réunions**.
 
+La **Répétition** crée la série d'un coup : **Chaque semaine**, **Toutes les deux semaines** ou **Chaque mois**, un nombre de fois donné. Elle vaut aussi pour les appels.
+
+Le type **Événement du serveur** crée, lui, l'événement Discord visible par tout le serveur ; l'annonce et l'inscription se règlent ensuite dans [Événements](/dashboard/communaute/evenements/).
+
+### Répondre à une réunion
+
+Sur la fiche d'une réunion où vous êtes attendu, **Tu viens ?** propose **Je viens**, **Je m'excuse** (avec une raison) ou **Absent**. La réponse compte dans la liste des présences, comme celle donnée depuis les boutons Discord.
+
 ### Suivre une réunion
 
 Cliquez sur une réunion de l'agenda pour ouvrir sa fiche. Elle passe par les statuts **Planifiée**, **En cours**, **Terminée** et **Annulée** :
@@ -68,10 +92,14 @@ La suppression est définitive. Kotbo demande ensuite s'il faut aussi nettoyer D
 <div class="step-list">
   <div class="step-item"><div><h3>Créez un élément de type Absence</h3><p>Depuis <strong>Nouvel événement</strong>.</p></div></div>
   <div class="step-item"><div><h3>Renseignez le motif</h3><p>Le <strong>motif de l'absence</strong> est obligatoire. Le type se choisit parmi <em>Vacances / Congés</em>, <em>Maladie / Médical</em>, <em>Examens / Études</em> ou <em>Autre motif</em>.</p></div></div>
-  <div class="step-item"><div><h3>Choisissez le supérieur à notifier</h3><p>Ce champ est obligatoire : c'est lui qui recevra la demande.</p></div></div>
+  <div class="step-item"><div><h3>Choisissez le supérieur à notifier</h3><p>Ce champ est obligatoire : c'est lui qui recevra la demande. Kotbo propose votre tuteur si vous êtes en période de test, le fondateur du serveur, puis les membres de votre grade ou d'un grade supérieur.</p></div></div>
 </div>
 
 Une absence est <span class="dash-badge warn">En attente</span> jusqu'à sa validation, puis <span class="dash-badge active">Approuvé</span>.
+
+### Alerte de couverture
+
+Le planning prévient dès qu'un nombre de membres du staff choisi sont absents le même jour : la journée apparaît dans le calque **Alertes de couverture**, avec la liste des absents.
 
 ### Notifications d'absence
 

@@ -16,20 +16,36 @@ Every date entered on this page - absences, calls, tasks - is read in the **serv
 
 ---
 
-## Reading the agenda
+## Reading the calendar
 
-Four calendars overlay each other, each toggled separately under **My calendars**:
+The **My calendars** panel shows or hides each layer. The team's:
 
 | Calendar | Content |
 | --- | --- |
-| **Meetings** | Team check-ins, covered [below](#meetings). |
+| **Meetings** | Team meetings, detailed [below](#meetings). |
 | **Discord calls** | Scheduled voice calls. |
 | **Absences** | Declared unavailability. |
-| **Tasks** | Assigned tasks. |
+| **Tasks** | Assigned tasks, including [doing list](/en/dashboard/staff/listes-suivi/) cards. |
+| **Coverage alerts** | Days when too many staff members are away at once. |
+| **Voice presence** | Time the staff spent in voice. |
 
-The **People** panel filters the agenda on one or more members, with **None** and **All** shortcuts.
+The **Server** group adds, read-only, what the server already has on a date: **Server events**, **Giveaway endings**, **Scheduled posts**, **Trial period endings** and **Sanction endings**. Each item links to its own page for editing.
 
-The **My day** view shows your deadlines for today and, when there is nothing, the message *Your day is free!*.
+The **People** panel filters the calendar on one or more members, with the **Only me**, **None** and **All** shortcuts. **Search** finds an item over the displayed period.
+
+The calendar shows by day, week, month or as an **Agenda** list; on a phone, by day, two days or as a list. Keyboard: ← → to move, **T** for today, **D**, **W**, **M** or **A** to change view.
+
+With the mouse, a meeting, a call or a task moves from one slot or day to another, and stretches from its bottom edge. With a finger, a horizontal swipe changes the period.
+
+The **My day** view shows your deadlines of the day and, when there is nothing, says your day is free.
+
+### Subscribing from another calendar
+
+**Subscribe from another calendar** gives a personal iCal link: your meetings, calls, tasks and absences show up in Google Calendar, Outlook or your phone's calendar, and update by themselves.
+
+:::caution[This link is personal]
+Anyone with the link sees your planning. Do not share it.
+:::
 
 ---
 
@@ -50,6 +66,14 @@ Under the dates, Kotbo shows which time zone the time is read in. For a meeting,
 
 The announcement channel and the voice channel for meetings are set in [Server settings](/en/dashboard/configuration/centre-gestion/), **Channels and roles** tab: the **Meeting Announcements** and **Meeting Voice** fields.
 
+**Repeat** creates the series in one go: **Every week**, **Every two weeks** or **Every month**, a given number of times. It works for calls too.
+
+The **Server event** type creates the Discord event visible to the whole server; its announcement and sign-ups are then set in [Events](/en/dashboard/communaute/evenements/).
+
+### Replying to a meeting
+
+On a meeting you are expected at, **Are you coming?** offers **I'm coming**, **Excuse me** (with a reason) or **Absent**. The reply counts in the attendance list, just like one given through the Discord buttons.
+
 ### Following a meeting
 
 Click a meeting on the agenda to open its card. It goes through the **Scheduled**, **In progress**, **Completed** and **Cancelled** statuses:
@@ -68,10 +92,14 @@ Deletion is permanent. Kotbo then asks whether to clean up Discord too: **Delete
 <div class="step-list">
   <div class="step-item"><div><h3>Create an Absence item</h3><p>From <strong>New event</strong>.</p></div></div>
   <div class="step-item"><div><h3>Fill in the reason</h3><p>The <strong>absence reason</strong> is required. The type is picked among <em>Holidays / Leave</em>, <em>Illness / Medical</em>, <em>Exams / Studies</em> or <em>Other reason</em>.</p></div></div>
-  <div class="step-item"><div><h3>Pick the superior to notify</h3><p>This field is required: they are the one who will receive the request.</p></div></div>
+  <div class="step-item"><div><h3>Pick the superior to notify</h3><p>This field is required: they are the one who will receive the request. Kotbo offers your tutor if you are in a trial period, the server founder, then members of your grade or a higher one.</p></div></div>
 </div>
 
 An absence is <span class="dash-badge warn">Pending</span> until approval, then <span class="dash-badge active">Approved</span>.
+
+### Coverage alert
+
+The planning warns you as soon as a chosen number of staff members are away on the same day: the day shows in the **Coverage alerts** layer, with the list of who is away.
 
 ### Absence notifications
 
