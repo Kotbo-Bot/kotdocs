@@ -1,49 +1,88 @@
 ---
 title: Reputation
-description: Track the recognition your members give each other.
+description: Let your members thank each other, with role tiers, rewards and safeguards against abuse.
 ---
 
 <p class="doc-lead">The <strong>Reputation</strong> module lets your members thank each other. Unlike XP, which rewards the amount of activity, reputation rewards how useful others found someone.</p>
 
 :::note[Where to find it]
 The **Levels → Reputation** section: [Open reputation ↗](https://dash.kotbo.fr/reputation).
-Votes are cast from Discord; the dashboard is where you read them. The `/rep` commands are covered in [Levels, leaderboards and reputation](/en/discord/xp/progression/).
+Thanks are given from Discord, with `/rep give`, from a message's menu (**Apps → Kotbo actions → Donner de la réputation**) or by reaction if you turn it on. The `/rep` commands are covered in [Levels, leaderboards and reputation](/en/discord/xp/progression/).
 :::
 
 :::note[What the bot refuses]
-A member gets **three votes a day**, counted in the server's time zone. Past that the vote is refused - and a vote that slipped through on a double submission is cancelled afterwards. Nobody can vote for themselves, nor for a bot.
+Each member has a number of votes per day, counted in the server's time zone. Nobody can thank themselves or a bot.
 :::
 
 ---
 
-## The indicators
+## Overview tab
 
-Three figures summarise the module's activity:
+The **Module status** panel sums up activity: **Votes per member per day**, thanks over 7 days, members who thank (7 days), **Role tiers**, active safeguards and the last thanks.
 
-* **Total votes**: how many votes have been cast since it went live.
-* **Unique voters**: how many different members have voted.
-* **Total rep given**: the cumulative points handed out.
+Kotbo adds advice when needed: no role tier yet (a role at 10, 50 or 100 points gives a visible goal, with a button to create one), or no thanks for a week.
 
-:::tip[Read the gap]
-A high vote count from few unique voters usually means a handful of very active members rather than a widespread habit. That is the signal to watch to avoid mutual back-scratching.
+The **Reputation Leaderboard** reads over a **Period**: **7 days**, **30 days** or **All time**. Clicking a member opens their profile.
+
+---
+
+## History tab
+
+Every thanks, newest first: who thanked whom, when, with **Open message** when it was given from a message. Staff adjustments show up too. Clicking a member filters the history on what they gave or received; **All members** clears the filter.
+
+The staff can **Remove this thanks** or **Undo the adjustment**: points, rewards and tier roles follow.
+
+---
+
+## Tiers tab
+
+At each threshold of reputation received, the member gets the chosen role. **Add a tier** asks for the **Points** and the **Role given**. Roles stack; removing a vote removes the roles the member no longer reaches.
+
+* **Announcement channel**: a message there announces each tier reached, with its **Announcement preview**. Without a channel, the role is given with no announcement.
+
+:::caution[Some roles can't be given]
+Kotbo warns when a role was deleted, is managed by an integration or sits above the bot's role. Move the bot's role higher in the Discord server settings. The tab then shows *Needs fixing*.
 :::
 
 ---
 
-## Reputation ranking
+## Settings tab
 
-The list ranks members by the reputation they received. Until anyone votes, Kotbo shows *No votes yet* and explains that member-to-member votes will appear here.
+### Thanks settings
+
+* **Votes per member per day**.
+* **Thank with a reaction**: reacting under a message with the **Thanks emoji** gives its author a point, within the day's votes. A refusal stays silent so the channel doesn't get cluttered.
+
+### Rewards for the thanked member
+
+**XP per thanks** and **Coins per thanks**: what each thanks received earns. `0` for nothing.
+
+### Anti-abuse safeguards
+
+Optional. They limit who can thank, who can be thanked and where, so friends can't pass points back and forth and throwaway accounts can't farm them:
+
+* **Minimum account age** and **Minimum time on the server**;
+* **Wait before thanking the same member**;
+* **Excluded roles** and **Excluded channels**.
+
+A refused thanks comes with a clear message, except by reaction.
+
+### Points management
+
+Staff only. Changes apply right away and are written to the audit log. They give neither XP nor coins, but tier roles follow the new total.
+
+* **Adjust**: give or remove a number of points from a member, with a reason.
+* **Reset a member**: removes every point they received.
+* **Reset the whole server**: deletes every thanks and adjustment. You have to type `RESET` to confirm.
+
+:::danger[Resets are final]
+Neither a member nor the server gets their points back afterwards.
+:::
 
 ---
 
-## Recent votes
+## Links with other modules
 
-The **Recent votes** block shows the latest exchanges as they happen: who thanked whom, and when. This is the view to check to spot unusual behaviour quickly.
-
-When nothing has been given recently, the section shows *No recent votes*.
-
----
-
-## Link with other modules
-
-[Quests](/en/dashboard/economie/quetes/) can include a **Give +rep** objective, which encourages the habit among members who would not think of it themselves.
+* [Quests](/en/dashboard/economie/quetes/) can include a **Give +rep** objective.
+* [Triggers](/en/dashboard/communaute/declencheurs/) fire when a member thanks or is thanked.
+* A member's profile links to their reputation history.

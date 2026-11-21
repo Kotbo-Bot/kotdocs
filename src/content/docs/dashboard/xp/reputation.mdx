@@ -1,49 +1,88 @@
 ---
 title: Réputation
-description: Suivez la reconnaissance que vos membres s'accordent entre eux.
+description: Laissez vos membres se remercier entre eux, avec des paliers de rôles, des gains et des garde-fous contre les abus.
 ---
 
 <p class="doc-lead">Le module <strong>Réputation</strong> permet à vos membres de se remercier entre eux. Contrairement à l'XP, qui récompense la quantité d'activité, la réputation récompense l'utilité perçue par les autres.</p>
 
 :::note[Où la trouver]
 Section **Niveaux → Réputation** : [Ouvrir la réputation ↗](https://dash.kotbo.fr/reputation).
-Les votes se donnent depuis Discord ; le dashboard sert à les consulter. Les commandes `/rep` sont détaillées dans [Niveaux, classements et réputation](/discord/xp/progression/).
+Les remerciements se donnent depuis Discord, avec `/rep give`, depuis le menu d'un message (**Applications → Actions Kotbo → Donner de la réputation**) ou par réaction si vous l'activez. Les commandes `/rep` sont détaillées dans [Niveaux, classements et réputation](/discord/xp/progression/).
 :::
 
 :::note[Ce que le bot refuse]
-Un membre dispose de **trois votes par jour**, comptés dans le fuseau du serveur. Au-delà, le vote est refusé - et un vote qui passerait malgré tout en cas de double envoi est annulé après coup. On ne peut ni se voter soi-même, ni voter pour un bot.
+Chaque membre dispose d'un nombre de votes par jour, compté dans le fuseau du serveur. On ne peut ni se remercier soi-même, ni remercier un bot.
 :::
 
 ---
 
-## Les indicateurs
+## Onglet Vue d'ensemble
 
-Trois chiffres résument l'activité du module :
+Le panneau **État du module** résume l'activité : **Votes par membre et par jour**, **Remerciements sur 7 jours**, **Membres qui remercient (7 jours)**, **Paliers de rôles**, **Garde-fous** actifs et **Dernier remerciement**.
 
-* **Total de votes** : le nombre de votes donnés depuis la mise en service.
-* **Votants uniques** : combien de membres différents ont voté.
-* **Total rep donné** : le cumul des points distribués.
+Kotbo y ajoute des conseils quand il le faut : **Aucun palier de rôle** (un rôle à 10, 50 ou 100 points donne un objectif visible, avec **Créer un palier**), ou **Aucun remerciement depuis une semaine**.
 
-:::tip[Lire l'écart]
-Un grand nombre de votes pour peu de votants uniques signale souvent quelques membres très actifs plutôt qu'une pratique répandue. C'est le signal à surveiller pour éviter les échanges de complaisance.
+Le **Classement réputation** se lit sur une **Période** : **7 jours**, **30 jours** ou **Depuis toujours**. Cliquer sur un membre ouvre sa fiche.
+
+---
+
+## Onglet Historique
+
+Chaque remerciement, du plus récent au plus ancien : qui a remercié qui, quand, avec **Voir le message** quand il a été donné depuis un message. Les ajustements du staff y figurent aussi. Cliquer sur un membre filtre l'historique sur ce qu'il a donné ou reçu ; **Tous les membres** retire le filtre.
+
+Le staff peut **Retirer ce remerciement** ou **Annuler l'ajustement** : les points, les gains et les rôles de palier suivent.
+
+---
+
+## Onglet Paliers
+
+À chaque seuil de réputation reçue, le membre obtient le rôle choisi. **Ajouter un palier** demande les **Points** et le **Rôle donné**. Les rôles se cumulent ; retirer un vote retire les rôles que le membre n'atteint plus.
+
+* **Salon d'annonce** : un message y annonce chaque palier atteint, avec son **Aperçu de l'annonce**. Sans salon, le rôle est donné sans annonce.
+
+:::caution[Des rôles ne pourront pas être donnés]
+Kotbo prévient quand un rôle a été supprimé, est géré par une intégration ou se trouve au-dessus du rôle du bot. Placez le rôle du bot plus haut dans les réglages du serveur Discord. L'onglet porte alors la mention *À corriger*.
 :::
 
 ---
 
-## Classement Réputation
+## Onglet Réglages
 
-La liste classe les membres par réputation reçue. Tant que personne n'a voté, Kotbo affiche *Aucun vote pour le moment* et précise que les votes entre membres apparaîtront ici.
+### Réglages des remerciements
 
----
+* **Votes par membre et par jour**.
+* **Remercier par réaction** : réagir sous un message avec l'**Emoji de remerciement** donne un point à son auteur, dans la limite des votes du jour. Un refus reste silencieux pour ne pas encombrer le salon.
 
-## Votes récents
+### Gains du membre remercié
 
-Le bloc **Votes récents** montre les derniers échanges au fil de l'eau : qui a remercié qui, et quand. C'est la vue à consulter pour repérer rapidement un comportement anormal.
+**XP par remerciement** et **Pièces par remerciement** : ce que rapporte chaque remerciement reçu. `0` pour aucun gain.
 
-Quand rien n'a été donné récemment, la section affiche *Aucun vote récent*.
+### Garde-fous anti-abus
+
+Facultatifs. Ils limitent qui peut remercier, qui peut être remercié et où, pour éviter qu'on se renvoie des points entre amis ou depuis des comptes jetables :
+
+* **Âge minimum du compte** et **Ancienneté minimum sur le serveur** ;
+* **Attente avant de remercier le même membre** ;
+* **Rôles exclus** et **Salons exclus**.
+
+Un remerciement refusé l'est avec un message clair, sauf par réaction.
+
+### Gestion des points
+
+Réservée au staff. Les changements s'appliquent tout de suite et sont inscrits au journal d'audit. Ils ne donnent ni XP ni pièces, mais les rôles de palier suivent le nouveau total.
+
+* **Ajuster** : donner ou retirer un nombre de points à un membre, avec un **Motif**.
+* **Remettre un membre à zéro** : retire tous les points qu'il a reçus.
+* **Remettre tout le serveur à zéro** : supprime tous les remerciements et ajustements. Il faut taper `REINITIALISER` pour confirmer.
+
+:::danger[Les remises à zéro sont définitives]
+Ni un membre, ni le serveur ne retrouvent leurs points après coup.
+:::
 
 ---
 
 ## Lien avec les autres modules
 
-Les [Quêtes](/dashboard/economie/quetes/) peuvent inclure un objectif **Donner des +rep**, ce qui encourage la pratique auprès des membres qui n'y pensent pas d'eux-mêmes.
+* Les [Quêtes](/dashboard/economie/quetes/) peuvent inclure un objectif **Donner des +rep**.
+* Les [Déclencheurs](/dashboard/communaute/declencheurs/) partent quand un membre remercie ou est remercié.
+* La fiche d'un membre renvoie vers son historique de réputation.
