@@ -28,6 +28,8 @@ L'historique, les rapports de sanction, les échelles progressives et l'archivag
 * `/sanction tempban` : Bannit pour une durée donnée.
 * `/sanction softban` : Bannit puis débannit aussitôt, ce qui supprime les messages du membre des **sept derniers jours**.
 * `/sanction tableau` : Applique le palier suivant d'une **échelle progressive**, en la nommant. L'option **bypass** force un palier précis.
+* `/sanction jail` : Met le membre en quarantaine : il reste sur le serveur sans rien y voir, et ses rôles lui sont rendus à la levée. Sans **duree**, la quarantaine est permanente. Le rôle se prépare dans [Anti-raid → Quarantaine](/dashboard/moderation/anti-raid/#onglet-quarantaine).
+* `/sanction unjail` : Lève la quarantaine et rend les rôles.
 * `/sanction list` : Liste les sanctions d'un membre.
 
 Chaque sanction accepte une **raison**, et les durées s'écrivent en clair : `30m`, `2h`, `3j`, `1 semaine`.
@@ -48,6 +50,20 @@ Un clic droit sur **un membre**, puis **Applications → Sanctionner**, ouvre la
 * `/request-verification` : Demande une vérification de sécurité à un membre. Il est mis en exclusion temporaire le temps de la passer. Menu contextuel : **Demander vérification**.
 
 Le menu contextuel **Voir le Casier**, sur un clic droit **sur un membre**, ouvre le même dossier.
+
+### Convoquer un membre
+
+<DiscordCommand
+  command="/convoquer membre:@Camille raison:Échange sur tes messages d'hier delai:48 expiration:Alerter la modération"
+/>
+
+Kotbo publie la convocation dans le salon, que le membre confirme d'un ✅, et ouvre un fil « Convocation • membre » où il propose un créneau ou se dit disponible tout de suite. Accuser réception, écrire dans le fil ou proposer un créneau suspend l'échéance.
+
+* **delai** : le temps laissé pour répondre, en heures (48 par défaut).
+* **expiration** : ce qui se passe sans aucune réponse à temps - *Alerter la modération* (par défaut), *Avertissement automatique*, *Exclusion de 24 h automatique* ou *Rien*.
+* **salon_attente** : un salon vocal où le membre attend qu'on le prenne.
+
+La commande demande la permission **Exclure des membres**.
 
 ---
 
@@ -94,6 +110,8 @@ Réservé au staff :
 * **Purger jusqu'ici** : demande *Gérer les messages*.
 * **Créer un thread** : demande *Créer des fils publics*.
 * **Supprimer + avertir** : demande *Exclure des membres*.
+* **Ajouter à Kotbo Vision** et **Interdire des emojis / stickers** : demandent *Gérer le serveur*. Voir [Kotbo Vision](/dashboard/moderation/anti-raid/#onglet-kotbo-vision) et l'[onglet Emojis](/dashboard/moderation/automod/#onglet-emojis) des filtres.
+* **Créer une carte de suivi** : réservé au staff du serveur, voir [Listes de suivi](/dashboard/staff/listes-suivi/).
 
 ### Sur un membre
 

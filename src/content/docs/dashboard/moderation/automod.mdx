@@ -18,6 +18,22 @@ Vous devez être administrateur du serveur pour modifier ces réglages. Assurez-
 
 ---
 
+## Les onglets
+
+| Onglet | Contenu |
+| --- | --- |
+| **Filtres de Kotbo** et **Filtres de Discord** | Les filtres de contenu ci-dessous, appliqués par Kotbo ou synchronisés avec l'AutoMod natif. |
+| **Bots et admins** | Ajout de bots, rôles des bots, retrait d'urgence des droits admin et Admin Permission Lock. |
+| **Anti-spam** | Le rythme d'envoi. |
+| **Serveurs & fichiers** | Publicité pour d'autres serveurs et extensions de fichiers. Voir [plus bas](#onglet-serveurs--fichiers). |
+| **Emojis** | Emojis et stickers interdits. Voir [plus bas](#onglet-emojis). |
+| **Exceptions** | Rôles et salons ignorés par tous les filtres. |
+| **Simulateur** | Rejouer une règle sur les messages passés. |
+| **Pseudos** | Voir [Pseudos](/dashboard/moderation/pseudos/). |
+| **Tags** | L'automod des tags de serveur. Voir [plus bas](#onglet-tags-automod-des-tags). |
+
+---
+
 ## Les sanctions disponibles
 
 Chaque filtre s'active indépendamment et dispose de son propre menu **Action**, qui détermine ce que Kotbo fait en cas d'infraction :
@@ -77,6 +93,9 @@ Les listes de mots ne sont pas maintenues par Kotbo : le filtre utilise les **li
 Empêche tout membre autre que le propriétaire du serveur d'ajouter des bots. Un bot ajouté par quelqu'un d'autre est automatiquement expulsé ou banni.
 * **Personnes autorisées à ajouter des bots** : la liste des exceptions.
 * **Que faire du bot ajouté** : **Expulser le bot** ou **Bannir le bot**.
+* **Rôles des bots** : donnés à chaque bot dès son arrivée, à la place du rôle automatique. Les rôles d'intégration, ceux placés au-dessus de Kotbo et ceux qui donnent *Administrateur* sont ignorés.
+
+Pour laisser entrer un bot ponctuellement, le propriétaire tape `/bypass bot` : le bot choisi peut rejoindre une fois dans les 10 minutes sans être expulsé, et l'autorisation est journalisée. Sans option, la commande liste les bots autorisés en ce moment.
 
 :::caution[Réservé au propriétaire]
 Seul le propriétaire du serveur Discord peut activer, désactiver ou configurer ce filtre. Les autres membres du staff n'y touchent pas, même avec un accès complet au dashboard.
@@ -98,6 +117,103 @@ Seul le propriétaire du serveur peut activer, désactiver ou configurer Admin P
 
 :::warning[Position du rôle]
 Placez le rôle du bot **au-dessus** des rôles ADMINISTRATOR, sans quoi les annulations automatiques ne pourront pas s'appliquer.
+:::
+
+---
+
+## Onglet Serveurs & fichiers
+
+### Autres serveurs
+
+Bloque la publicité pour d'autres serveurs sans gêner vos partenaires. Votre propre serveur passe toujours, et les membres qui peuvent gérer le serveur ou les messages ne sont jamais visés.
+
+* **Invitations** : y compris celles de `ptb.` et `canary.`, et celles cachées dans un embed, un bouton ou un message transféré.
+* **Messages transférés et liens de salon** : un message transféré depuis un autre serveur, ou un lien vers l'un de ses salons ou événements.
+* **Tags de serveur affichés** : le membre est mis en quarantaine (Jail) tant qu'il affiche le tag d'un serveur visé, et libéré dès qu'il le retire.
+* **Invitations d'ami et de groupe**.
+
+Chaque élément se règle sur **Suivre la liste**, **Toujours autorisées** ou **Toujours supprimées**. La **Liste des serveurs** fonctionne en *Liste noire* (les serveurs listés sont refusés) ou en *Liste blanche* (seuls les serveurs listés passent) : collez une invitation (`discord.gg/partenaire`) puis **Ajouter**.
+
+:::caution[Liste blanche vide]
+Une liste blanche vide refuse toutes les invitations vers d'autres serveurs.
+:::
+
+### Extensions de fichiers
+
+Bloque des familles de fichiers ou n'autorise que celles que vous choisissez : **Exécutables**, **Images**, **Vidéos**, **Archives**, **Documents**, et jusqu'à 50 **Extensions en plus**.
+
+* **Règle du serveur** : en liste noire, les extensions cochées sont refusées ; en liste blanche, seules elles passent. Une liste blanche sans extension refuse tous les fichiers.
+* **Règles par salon ou catégorie** : une règle de salon l'emporte sur celle de sa catégorie, qui l'emporte sur celle du serveur.
+* **Toujours refuser les fichiers déguisés** : un exécutable renommé en `.png`, ou une « image » que Discord n'arrive pas à lire, est supprimé partout, même sans liste blanche.
+
+**Sanction des messages supprimés** s'applique aux deux blocs : *Message supprimé seulement*, avertissement, quarantaine, expulsion ou bannissement, une sanction au plus par minute et par membre.
+
+---
+
+## Onglet Emojis
+
+Interdit des emojis et des stickers précis, ou tous ceux d'un serveur. Le message qui les contient est toujours supprimé.
+
+* **Sanction des prochains ajouts** : la sanction attachée aux éléments que vous ajoutez ensuite (avertissement, timeout, quarantaine, expulsion, softban ou bannissement). Chaque élément garde la sienne, modifiable dans la liste.
+* **Interdire un emoji Discord** : un emoji natif.
+* **Interdire les emojis d'un serveur** : cherchez un serveur connu de Kotbo, puis **Tout interdire** ou cliquez sur les emojis et stickers à interdire un par un.
+
+**Éléments interdits** liste ce qui est bloqué ; **Autoriser à nouveau** lève l'interdiction.
+
+:::tip[Depuis Discord]
+Sur un message, clic droit puis **Applications → Actions Kotbo → Interdire des emojis / stickers** propose les emojis et stickers du message, natifs compris. L'action demande la permission *Gérer le serveur*.
+:::
+
+---
+
+## Onglet Tags (automod des tags)
+
+Contrôle le tag de serveur que vos membres affichent à côté de leur pseudo, à l'arrivée et à chaque changement. Le tag de votre propre serveur ne déclenche jamais rien, et le staff (*Gérer le serveur* ou *Gérer les messages*) est toujours exempté.
+
+### Commencer par un modèle
+
+Sur un serveur sans règle, **Par où commencer ?** propose des modèles prêts à l'emploi, que vous ajusterez ensuite :
+
+| Modèle | Effet |
+| --- | --- |
+| **Ticket, puis expulsion** | Un ticket demande de retirer le tag ; s'il est encore là 24 h après, expulsion. |
+| **Bannir un serveur ennemi** | Quiconque affiche le tag de ce serveur est banni à l'arrivée. |
+| **Bloquer un mot dans les tags** | Quarantaine pour tout tag qui contient un mot (*RAID*, *NUKE*…), quel que soit le serveur. |
+| **Autoriser des serveurs amis** | Les tags de vos partenaires ne déclenchent jamais rien. |
+| **Anti-raid par tag** | Une vague d'arrivées avec le même tag est mise en quarantaine et le tag bloqué 24 h. |
+| **Liste partagée Kotbo** | Quarantaine pour les tags des serveurs bloqués par plusieurs serveurs Kotbo. |
+| **Protéger mon tag** | Quarantaine pour les faux tags qui imitent le vôtre (lettres cyrilliques, 0 pour O…). |
+| **Comptes récents à surveiller** | Une alerte quand un compte de moins de 7 jours arrive avec le tag d'un autre serveur. |
+
+### Règles
+
+**Nouvelle règle** vise un serveur précis ou un texte de tag (*Contient*, *Exact* ou *Expression régulière*) et choisit l'action, avec une escalade possible (*puis expulsion après 24 h*). Quand plusieurs règles s'appliquent, la réponse la plus forte l'emporte.
+
+### Détections automatiques
+
+Elles repèrent les comportements suspects sans que vous ayez à nommer un serveur :
+
+* **Vague d'arrivées avec le même tag** : plusieurs personnes arrivent en peu de temps avec le même tag. Le **Seuil** est *Adaptatif* (la sensibilité *Doux*, *Normal* ou *Strict* sert de plancher, relevé si le serveur reçoit beaucoup d'arrivées en temps normal) ou *Fixe*. **Bloquer ensuite le tag pendant** une durée, et **Signaler aux autres serveurs Kotbo** pour alimenter la liste partagée (votre serveur reste anonyme).
+* **Adoption en masse d'un tag** : des membres déjà présents prennent le même tag en peu de temps.
+* **Compte récent avec un tag** : un compte tout neuf arrive avec le tag d'un autre serveur.
+* **Tag qui imite le tien** : un faux tag presque identique au vôtre. Attend que votre serveur ait un tag connu de Kotbo.
+* **Liste partagée Kotbo** : un serveur y entre quand plusieurs serveurs Kotbo différents l'ont bloqué ou signalé.
+* **Liste blanche seulement** : seuls les tags autorisés passent, tout autre tag déclenche l'action.
+
+Les tags bloqués après une vague apparaissent avec leur date de fin ; **Rendre définitif** prolonge le blocage pour de bon.
+
+### Réglages, test et journal
+
+* **Contrôler à l'arrivée** et **Contrôler quand un membre change de tag**.
+* **Salon des alertes** : sans choix, les alertes vont dans le salon de logs.
+* **Rôles exemptés**.
+* **Mode test** : tout est noté au journal et signalé au staff, rien n'est appliqué. Utile pour vérifier une règle avant de la laisser agir.
+* **Analyser le serveur** passe les membres actuels au crible de la configuration, montre combien seraient concernés, puis **Appliquer maintenant** traite chacun, une personne à la fois.
+
+Le **Journal** retrace chaque décision, la plus récente en haut, et **Vagues récentes** les dernières vagues détectées avec la suite donnée.
+
+:::note[La quarantaine demande le rôle Jail]
+Sans rôle Jail configuré dans [Anti-raid → Quarantaine](/dashboard/moderation/anti-raid/#onglet-quarantaine), la quarantaine des tags devient un timeout.
 :::
 
 ---

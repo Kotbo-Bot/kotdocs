@@ -32,6 +32,8 @@ The history, the sanction reports, the progressive scales and the archiving are 
 * `/sanction tempban`: Bans for a given duration.
 * `/sanction softban`: Bans then immediately unbans, which deletes the member's messages from the **last seven days**.
 * `/sanction tableau`: Applies the next step of a **progressive scale**, named in the command. The **bypass** option forces a specific tier.
+* `/sanction jail`: Quarantines the member: they stay on the server without seeing anything, and their roles are given back when it is lifted. Without **duree**, the quarantine is permanent. The role is set up in [Anti-raid → Quarantine](/en/dashboard/moderation/anti-raid/#quarantine-tab).
+* `/sanction unjail`: Lifts the quarantine and gives the roles back.
 * `/sanction list`: Lists a member's sanctions.
 
 Every sanction takes a **raison** (reason), and durations are written plainly: `30m`, `2h`, `3d`, `1 week`.
@@ -52,6 +54,20 @@ Right-click **a member**, then **Apps → Sanction**, and the same dialog opens 
 * `/request-verification`: Asks a member to pass a security verification. They are timed out while it lasts. Context menu: **Request verification**.
 
 The **View Case File** context menu, on a right-click **on a member**, opens the same record.
+
+### Summoning a member
+
+<DiscordCommand
+  command="/summon membre:@Camille raison:About your messages yesterday delai:48 expiration:Alert the moderators"
+/>
+
+Kotbo posts the summons in the channel, which the member confirms with a ✅, and opens a "Convocation • member" thread where they suggest a time slot or say they are available right away. Acknowledging, writing in the thread or suggesting a slot pauses the deadline.
+
+* **delai**: the time given to reply, in hours (48 by default).
+* **expiration**: what happens with no reply in time - *Alert the moderators* (default), *Automatic warning*, *Automatic 24 h timeout* or *Nothing*.
+* **salon_attente**: a voice channel where the member waits to be picked up.
+
+The command requires the **Timeout Members** permission. French-language Discord clients show it as `/convoquer`.
 
 ---
 
@@ -98,6 +114,8 @@ Staff only:
 * **Purger jusqu'ici** (purge up to here): requires *Manage Messages*.
 * **Créer un thread** (create a thread): requires *Create Public Threads*.
 * **Supprimer + avertir** (delete and warn): requires *Timeout Members*.
+* **Ajouter à Kotbo Vision** and **Interdire des emojis / stickers**: require *Manage Server*. See [Kotbo Vision](/en/dashboard/moderation/anti-raid/#kotbo-vision-tab) and the filters' [Emojis tab](/en/dashboard/moderation/automod/#emojis-tab).
+* **Créer une carte de suivi** (create a tracking card): for the server's staff, see [Doing lists](/en/dashboard/staff/listes-suivi/).
 
 ### On a member
 

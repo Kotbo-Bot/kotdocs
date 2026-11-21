@@ -18,6 +18,22 @@ You must be a server administrator to change these settings. Make sure Kotbo's D
 
 ---
 
+## The tabs
+
+| Tab | Content |
+| --- | --- |
+| **Kotbo filters** and **Discord filters** | The content filters below, applied by Kotbo or synced with Discord's native AutoMod. |
+| **Bots and admins** | Bot additions, bot roles, emergency admin rights removal and Admin Permission Lock. |
+| **Anti-spam** | Posting rate. |
+| **Servers & files** | Advertising for other servers and file extensions. See [below](#servers--files-tab). |
+| **Emojis** | Banned emojis and stickers. See [below](#emojis-tab). |
+| **Exceptions** | Roles and channels ignored by every filter. |
+| **Simulator** | Replay a rule on past messages. |
+| **Nicknames** | See [Nicknames](/en/dashboard/moderation/pseudos/). |
+| **Tags** | The server tag automod. See [below](#tags-tab-tag-automod). |
+
+---
+
 ## Available sanctions
 
 Every filter is enabled on its own and has its own **Action** menu, which decides what Kotbo does when a rule is broken:
@@ -77,6 +93,9 @@ The word lists are not maintained by Kotbo: the filter uses **Discord's predefin
 Prevents anyone other than the server owner from adding bots. A bot added by someone else is automatically kicked or banned.
 * **People allowed to add bots**: the list of exceptions.
 * **What to do with the added bot**: **Kick the bot** or **Ban the bot**.
+* **Bot roles**: given to each bot as soon as it joins, instead of the automatic role. Integration roles, roles above Kotbo and roles granting *Administrator* are ignored.
+
+To let a bot in once, the owner types `/bypass bot`: the chosen bot can join once within 10 minutes without being kicked, and the exemption is logged. Without an option, the command lists the bots currently allowed.
 
 :::caution[Owner only]
 Only the Discord server owner can enable, disable or configure this filter. Other staff members cannot touch it, even with full dashboard access.
@@ -98,6 +117,103 @@ Only the server owner can enable, disable or configure Admin Permission Lock.
 
 :::warning[Role position]
 Place the bot's role **above** the ADMINISTRATOR roles, otherwise the automatic reverts cannot be applied.
+:::
+
+---
+
+## Servers & files tab
+
+### Other servers
+
+Blocks advertising for other servers without getting in your partners' way. Your own server always gets through, and members who can manage the server or messages are never targeted.
+
+* **Invites**: including `ptb.` and `canary.` ones, and those hidden in an embed, a button or a forwarded message.
+* **Forwarded messages and channel links**: a message forwarded from another server, or a link to one of its channels or events.
+* **Displayed server tags**: the member is quarantined (Jail) while they display a targeted server's tag, and released as soon as they remove it.
+* **Friend and group invites**.
+
+Each item is set to **Follow the list**, **Always allowed** or **Always deleted**. The **Server list** works as a *Blocklist* (listed servers are refused) or an *Allowlist* (only listed servers get through): paste an invite (`discord.gg/partner`) then **Add**.
+
+:::caution[Empty allowlist]
+An empty allowlist refuses every invite to another server.
+:::
+
+### File extensions
+
+Blocks families of files or only allows the ones you pick: **Executables**, **Images**, **Videos**, **Archives**, **Documents**, and up to 50 **Extra extensions**.
+
+* **Server rule**: as a blocklist, ticked extensions are refused; as an allowlist, only they get through. An allowlist with no extension refuses every file.
+* **Rules per channel or category**: a channel rule beats its category's, which beats the server's.
+* **Always refuse disguised files**: an executable renamed `.png`, or an "image" Discord cannot read, is deleted everywhere, even without an allowlist.
+
+**Sanction for deleted messages** applies to both blocks: delete only, warning, quarantine, kick or ban, one sanction per minute per member at most.
+
+---
+
+## Emojis tab
+
+Bans specific emojis and stickers, or all of a server's. The message containing them is always deleted.
+
+* **Sanction for new entries**: the sanction attached to the items you add next (warning, timeout, quarantine, kick, softban or ban). Each item keeps its own, editable in the list.
+* **Ban a Discord emoji**: a native emoji.
+* **Ban a server's emojis**: search a server Kotbo knows, then **Ban all** or click the emojis and stickers to ban one by one.
+
+**Banned items** lists what is blocked; allowing an item again lifts the ban.
+
+:::tip[From Discord]
+On a message, right-click then **Apps → Kotbo actions → Interdire des emojis / stickers** offers the message's emojis and stickers, native ones included. The action requires the *Manage Server* permission.
+:::
+
+---
+
+## Tags tab (tag automod)
+
+Checks the server tag your members display next to their name, on join and on every change. Your own server's tag never triggers anything, and the staff (*Manage Server* or *Manage Messages*) is always exempt.
+
+### Start from a template
+
+On a server with no rule, the start screen offers ready-made templates that you adjust afterwards:
+
+| Template | Effect |
+| --- | --- |
+| **Ticket, then kick** | A ticket asks the member to remove the tag; if it is still there 24 h later, kick. |
+| **Ban a hostile server** | Anyone displaying that server's tag is banned on join. |
+| **Block a word in tags** | Quarantine for any tag containing a word (*RAID*, *NUKE*…), whatever the server. |
+| **Allow friendly servers** | Your partners' tags never trigger anything. |
+| **Tag-based anti-raid** | A wave of joins with the same tag is quarantined and the tag blocked for 24 h. |
+| **Kotbo shared list** | Quarantine for the tags of servers blocked by several Kotbo servers. |
+| **Protect my tag** | Quarantine for fake tags imitating yours (Cyrillic letters, 0 for O…). |
+| **Watch new accounts** | An alert when an account under 7 days old joins with another server's tag. |
+
+### Rules
+
+**New rule** targets a specific server or a tag text (contains, exact or regular expression) and picks the action, with optional escalation (*then kick after 24 h*). When several rules apply, the strongest response wins.
+
+### Automatic detections
+
+They spot suspicious behaviour without you having to name a server:
+
+* **Wave of joins with the same tag**: several people join within a short time with the same tag. The **Threshold** is *Adaptive* (the *Soft*, *Normal* or *Strict* sensitivity is a floor, raised if the server normally gets many joins) or *Fixed*. **Then block the tag for** a duration, and **Report to other Kotbo servers** to feed the shared list (your server stays anonymous).
+* **Mass adoption of a tag**: members already on the server take the same tag within a short time.
+* **New account with a tag**: a brand-new account joins with another server's tag.
+* **Tag imitating yours**: a fake tag almost identical to yours. Waits until your server has a tag known to Kotbo.
+* **Kotbo shared list**: a server enters it once several different Kotbo servers have blocked or reported it.
+* **Allowlist only**: only allowed tags get through, any other tag triggers the action.
+
+Tags blocked after a wave show their end date; **Make permanent** keeps the block for good.
+
+### Settings, test and log
+
+* **Check on join** and **Check when a member changes tag**.
+* **Alert channel**: if none is picked, alerts go to the logs channel.
+* **Exempt roles**.
+* **Test mode**: everything is written to the log and reported to the staff, nothing is applied. Handy to check a rule before letting it act.
+* **Scan the server** runs current members through the configuration, shows how many would be affected, then **Apply now** handles each one, one person at a time.
+
+The **Log** traces every decision, newest first, and **Recent waves** the latest detected waves with the follow-up given.
+
+:::note[Quarantine needs the Jail role]
+Without a Jail role set up in [Anti-raid → Quarantine](/en/dashboard/moderation/anti-raid/#quarantine-tab), tag quarantine becomes a timeout.
 :::
 
 ---
