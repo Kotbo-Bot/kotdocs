@@ -61,6 +61,25 @@ Members who can manage messages and bot messages are never affected. Kotbo needs
 
 Each configuration can be **Duplicated**, turned off or deleted. Deleting a configuration leaves the threads already created in place.
 
+### Discussion panels
+
+Below the configurations, **Discussion panels** posts a message with buttons: each button opens a **Public thread**, a **Private thread** (only the author, added members and moderators can see it) or a **Forum post**, after a short form. The member who opens it then manages it, like their temporary voice channel.
+
+**New panel** (or **Create my first panel**) is set up in four blocks, with the **Preview in Discord**:
+
+1. **The message**: **Panel channel**, **Panel name** (only visible in the dashboard), **Message title**, **Message text**, **Color** and **Image**.
+2. **The buttons**: for each, the **Button text**, an **Emoji**, the **Button color** and **What the button opens**, then:
+   * the form: the title question and **Short** or **Long** answer questions, with their maximum length and whether the answer is required;
+   * the created thread: thread name (with variables, and a name preview), starter message (empty: the author's mention then their answers), archiving after inactivity, slowmode and roles mentioned on opening (in a private thread, the mention brings the role's members in);
+   * the rules: open threads per member, delay between two threads (minutes), claimable after (days) (the owner's silence before someone else can take the thread over; `0`: only if they left the server), allowed roles and join requests (the thread is announced with an "Ask to join" button the owner accepts, refuses or bans);
+   * for a forum, the tags: tags applied automatically, tags to choose from in the form, and a "resolved" tag that adds a "Resolved" button applying it and closing the post.
+3. **The log**: the log channel, where every opened thread and every owner action (rename, ban, transfer…) is recorded.
+4. Post in the channel, then update the message after an edit.
+
+Each panel shows where it is posted and how many threads are open. Deleting it removes its message; threads already opened stay, but their owners lose the "Manage" menu.
+
+In their thread, the owner has the **Manage** menu and the `/thread` commands (`/fil` on French-language clients): `manage`, `close`, `reopen`, `lock`, `unlock`, `slowmode`, `pin`, `add`, `remove`, `ban`, `unban`, `trust`, `untrust`, `transfer`, `claim` and `resolve` (forum post).
+
 ---
 
 ## 3. Pinned message (stuck to the bottom of a channel)

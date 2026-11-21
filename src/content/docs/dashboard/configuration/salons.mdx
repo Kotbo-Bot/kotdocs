@@ -61,6 +61,25 @@ Les membres qui peuvent gérer les messages et les messages des bots ne sont jam
 
 Chaque configuration peut être **Dupliquée**, désactivée ou supprimée. Supprimer une configuration laisse en place les fils déjà créés.
 
+### Panneaux de discussion
+
+Sous les configurations, **Panneaux de discussion** publie un message à boutons : chaque bouton ouvre un **Fil public**, un **Fil privé** (seuls l'auteur, les membres ajoutés et les modérateurs le voient) ou un **Post de forum**, après un court formulaire. Le membre qui l'ouvre le gère ensuite, comme son vocal temporaire.
+
+**Nouveau panneau** (ou **Créer mon premier panneau**) se règle en quatre blocs, avec l'**Aperçu dans Discord** :
+
+1. **Le message** : **Salon du panneau**, **Nom du panneau** (visible seulement dans le dashboard), **Titre du message**, **Texte du message**, **Couleur** et **Image**.
+2. **Les boutons** : pour chacun, le **Texte du bouton**, un **Emoji**, la **Couleur du bouton** et **Ce que le bouton ouvre**, puis :
+   * **Le formulaire** : la **Question du titre** et des questions de réponse **Courte** ou **Longue**, avec leur **Longueur maximale** et **Réponse obligatoire** ;
+   * **Le fil créé** : **Nom du fil** (avec des variables, et son **Aperçu du nom**), **Message de départ** (vide : la mention de l'auteur puis ses réponses), **Archivage après inactivité**, **Mode lent** et **Rôles mentionnés à l'ouverture** (dans un fil privé, la mention y fait entrer les membres du rôle) ;
+   * **Les règles** : **Fils ouverts par membre**, **Délai entre deux fils (minutes)**, **Réclamable après (jours)** (le silence du propriétaire avant qu'un autre puisse reprendre le fil ; `0` : seulement s'il a quitté le serveur), **Rôles autorisés** et **Demandes d'accès** (le fil est annoncé avec un bouton « Demander à rejoindre », que le propriétaire accepte, refuse ou bannit) ;
+   * pour un forum, **Les tags** : **Tags posés d'office**, **Tags au choix** proposés dans le formulaire, et un **Tag « résolu »** qui ajoute un bouton « Résolu » posant ce tag et fermant le post.
+3. **Le journal** : le **Salon du journal**, où chaque fil ouvert et chaque action de propriétaire (renommage, bannissement, transfert…) sont notés.
+4. **Publier dans le salon**, puis **Mettre à jour le message** après une modification.
+
+Chaque panneau affiche où il est publié et le nombre de fils ouverts. Le supprimer retire son message ; les fils déjà ouverts restent, mais leurs propriétaires perdent le menu « Gérer ».
+
+Dans son fil, le propriétaire dispose du menu **Gérer** et des commandes `/fil` : `gerer`, `fermer`, `rouvrir`, `verrouiller`, `deverrouiller`, `lent`, `epingler`, `ajouter`, `retirer`, `bannir`, `debannir`, `confiance`, `retirer-confiance`, `transferer`, `reclamer` et `resolu` (post de forum).
+
 ---
 
 ## 3. Message épinglé (collé en bas de salon)
