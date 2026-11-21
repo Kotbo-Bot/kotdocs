@@ -1,60 +1,75 @@
 ---
 title: Suggestions
-description: Consultez et modérez les suggestions de votre communauté avec vote en temps réel depuis le dashboard.
+description: Recevez les idées de vos membres, suivez leurs votes et répondez-y depuis le dashboard.
 ---
 
-<p class="doc-lead">Le module <strong>Suggestions</strong> permet à vos membres de soumettre des propositions d'amélioration pour le serveur, d'y voter (pour/contre) directement sur Discord, et de vous laisser y répondre depuis le dashboard.</p>
+<p class="doc-lead">Le module <strong>Suggestions</strong> permet à vos membres de proposer des idées pour le serveur, d'y voter (pour ou contre) sur Discord, et à votre équipe d'y répondre depuis le dashboard.</p>
 
 :::tip[Côté Discord]
-Pour voir comment soumettre des propositions et voter sur Discord, consultez le [Guide Discord des Suggestions](/discord/communaute/suggestions).
+Pour voir comment proposer et voter sur Discord, consultez le [Guide Discord des Suggestions](/discord/communaute/suggestions).
 :::
 
 :::note[Disponibilité]
-Le système de suggestions est configurable depuis la section **Communauté → Suggestions** de votre dashboard : [Accéder au module Suggestions ↗](https://dash.kotbo.fr/suggestions).
-La modération des suggestions nécessite les permissions de modérateur ou d'administrateur.
+Section **Communauté → Suggestions** : [Accéder au module Suggestions ↗](https://dash.kotbo.fr/suggestions).
+Les membres proposent avec `/suggest`, le bouton du salon ou le [site du serveur](/dashboard/communaute/site/). Trancher une suggestion demande les permissions de modérateur ou d'administrateur.
 :::
 
 ---
 
-## Activer et configurer le module
+## Onglet À traiter
 
-Pour commencer à recevoir des suggestions de vos membres, vous devez activer le système et définir le salon où les suggestions seront publiées sous forme d'encarts interactifs (embeds).
+Le panneau **État du module** résume les réglages (commentaire de décision, votes après approbation, qui peut proposer, seuil de votes, garde-fous) et la **Dernière suggestion**. Kotbo y ajoute des conseils : **Aucun salon choisi**, suggestions en attente depuis longtemps, ou **Aucune nouvelle suggestion** depuis plusieurs jours.
 
-1. Accédez à la page **Communauté → Suggestions** du dashboard.
-2. Activez l'interrupteur **Système de suggestions** (dans le bloc *Configuration*).
-3. Dans le menu déroulant **Salon des suggestions**, choisissez le salon Discord où Kotbo publiera les nouvelles propositions.
-4. Enregistrez les modifications à l'aide de la barre d'action au bas de l'écran.
+* **File d'attente** : les suggestions qui attendent une décision, triées par **Les plus soutenues**, **Les plus anciennes** ou **Les plus récentes**. Les badges **Seuil atteint** et **En attente depuis longtemps** signalent celles à regarder d'abord.
+* **Par catégorie** : la répartition des suggestions entre vos catégories.
+* **Toutes les suggestions** : l'historique, filtrable par statut et par **Catégorie**.
+
+Chaque suggestion montre son score (votes pour moins votes contre), la **Réponse du staff** s'il y en a une, **Voir sur Discord** et la **Discussion** quand un fil est ouvert. Avec **Votants visibles du staff**, le bouton **Votants** liste qui a voté pour et contre. Cliquer sur l'auteur ouvre sa fiche.
+
+### Trancher
+
+**Trancher** ouvre la décision : **En attente**, **Approuvée**, **En cours**, **Implémentée** ou **Rejetée**, avec une **Réponse publique** affichée sous la suggestion sur Discord. Puis **Enregistrer la décision**.
+
+Une décision se revoit ensuite avec **Réviser**. **Remettre en attente** retire la réponse publiée et rouvre les votes.
+
+Kotbo met à jour le message sur Discord (couleur, statut, réponse et nom du modérateur), publie la décision dans le fil et, si **Prévenir l'auteur** est actif, la lui envoie en message privé.
 
 ---
 
-## Modérer les suggestions depuis le dashboard
+## Onglet Réglages
 
-Toutes les propositions actives sur votre serveur sont répertoriées sur la page **Communauté → Suggestions**.
+### Publication
 
-### 1. Filtrer la liste
-En haut de la page, des filtres rapides vous permettent de trier les suggestions par statut :
-* **Toutes** : Affiche l'ensemble des suggestions.
-* **En attente** : Suggestions soumises qui n'ont pas encore reçu de réponse ou de décision du staff.
-* **Approuvée** : Suggestions validées par l'équipe.
-* **Rejetée** : Suggestions refusées.
-* **Implémentée** : Suggestions appliquées et en ligne.
+* **Salon des suggestions** : là où sont publiées les suggestions envoyées par `/suggest`, par le bouton du salon ou par le site. Sans choix, elles partent dans le salon public du serveur, ou dans un salon dont le nom contient « suggest ».
+* **Fil de discussion** : ouvre un fil sous chaque nouvelle suggestion pour en discuter sans encombrer le salon. La décision y est aussi publiée.
+* **Aperçu du message** : la suggestion telle qu'elle apparaîtra, pour chaque statut.
 
-### 2. Répondre et décider
-Pour chaque suggestion affichée, vous pouvez visualiser le nombre de votes positifs et négatifs récoltés sur Discord.
+### Décisions
 
-Pour statuer sur une suggestion :
-1. Repérez la suggestion dans la liste.
-2. Dans le champ de texte sous la suggestion, renseignez le champ **Réponse ou commentaire public**.
-   :::warning[Commentaire obligatoire]
-   Vous devez obligatoirement saisir un commentaire ou une justification avant de pouvoir cliquer sur l'un des boutons de décision.
-   :::
-3. Cliquez sur le bouton correspondant à votre choix :
-   * **Approuver** : Valide l'idée (la suggestion passe au vert).
-   * **Refuser** : Refuse l'idée (la suggestion passe au rouge).
-   * **Implémentée** : Indique que la suggestion est désormais en service (la suggestion passe au bleu).
+* **Réponse publique obligatoire** : chaque décision doit s'accompagner d'une explication visible des membres.
+* **Votes ouverts après approbation** : les membres continuent de voter sur une suggestion approuvée, jusqu'à sa mise en place.
+* **Prévenir l'auteur** : il reçoit la décision et la réponse en message privé. Si ses messages privés sont fermés, il est mentionné dans le fil.
+* **Votants visibles du staff** : le staff voit qui a voté quoi. Les membres ne voient toujours que les compteurs.
 
-### 3. Synchronisation en temps réel
-Dès que vous validez une décision sur le dashboard :
-* Le statut de la suggestion est mis à jour sur la page.
-* Kotbo modifie instantanément le message original sur Discord (l'embed change de couleur, affiche votre commentaire de réponse et le nom du modérateur ayant pris la décision).
-* Votre réponse est visible par tous les membres sur Discord.
+### Récompense
+
+**XP** et **Pièces** reçues par l'auteur quand sa suggestion est approuvée, en cours ou mise en place. Elles ne sont versées qu'une fois, et reprises si la décision est annulée ou la suggestion supprimée.
+
+### Catégories
+
+**Nouvelle catégorie** puis **Ajouter** : les membres en choisissent une en proposant, dans la fenêtre comme dans `/suggest`.
+
+### Seuil de votes
+
+**Votes « pour » nécessaires** : une suggestion qui les atteint est signalée au staff, et le reste même si des votes partent ensuite. **Épingler le message** l'épingle dans le salon au seuil atteint, et la désépingle quand le staff tranche. Les [Déclencheurs](/dashboard/communaute/declencheurs/) peuvent aussi partir au seuil.
+
+### Qui peut proposer et garde-fous
+
+* **Rôles autorisés** : vide, tout le monde peut proposer. Les gestionnaires du serveur le peuvent toujours.
+* **Délai entre deux suggestions** (en minutes), **Âge minimum du compte** et **Ancienneté minimum sur le serveur** (en jours) : contre les propositions en rafale et les comptes créés pour l'occasion. `0` pour aucune exigence.
+
+### Mettre à jour les messages publiés
+
+**Mettre à jour** repasse les 100 dernières suggestions au format actuel sur Discord, utile après un changement de réglage.
+
+Les réglages s'enregistrent avec la barre en bas d'écran ; l'onglet porte la mention *À corriger* tant qu'un champ est invalide.

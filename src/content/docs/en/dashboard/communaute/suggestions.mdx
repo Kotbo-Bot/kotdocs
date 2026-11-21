@@ -1,60 +1,75 @@
 ---
 title: Suggestions
-description: Review and moderate your community's suggestions with real-time voting, from the dashboard.
+description: Collect your members' ideas, follow their votes and answer them from the dashboard.
 ---
 
-<p class="doc-lead">The <strong>Suggestions</strong> module lets your members submit ideas for improving the server, vote on them (up or down) directly on Discord, and lets you reply from the dashboard.</p>
+<p class="doc-lead">The <strong>Suggestions</strong> module lets your members submit ideas for the server, vote on them (for or against) on Discord, and lets your team answer from the dashboard.</p>
 
 :::tip[On the Discord side]
 To see how members submit ideas and vote on Discord, read the [Discord guide to Suggestions](/en/discord/communaute/suggestions).
 :::
 
 :::note[Availability]
-The suggestion system is configured from the **Community → Suggestions** section of your dashboard: [Open the Suggestions module ↗](https://dash.kotbo.fr/suggestions).
-Moderating suggestions requires moderator or administrator permissions.
+Section **Community → Suggestions**: [Open the Suggestions module ↗](https://dash.kotbo.fr/suggestions).
+Members suggest with `/suggest`, the channel button or the [server site](/en/dashboard/communaute/site/). Deciding on a suggestion requires moderator or administrator permissions.
 :::
 
 ---
 
-## Enable and configure the module
+## To review tab
 
-To start receiving suggestions from your members, you need to enable the system and choose the channel where suggestions will be posted as interactive embeds.
+The **Module status** panel sums up the settings (decision comment, votes after approval, who can suggest, vote threshold, safeguards) and the latest suggestion. Kotbo adds advice: no channel picked, suggestions waiting for a long time, or no new suggestion for several days.
 
-1. Go to the **Community → Suggestions** page of the dashboard.
-2. Turn on the **Suggestion system** toggle (in the *Configuration* block).
-3. In the **Suggestions channel** dropdown, choose the Discord channel where Kotbo will post new ideas.
-4. Save your changes using the action bar at the bottom of the screen.
+* **Queue**: suggestions waiting for a decision, sorted by **Most supported**, **Oldest** or **Newest**. The **Threshold reached** and **Waiting for a while** badges flag the ones to look at first.
+* **By category**: how suggestions split across your categories.
+* **All suggestions**: the history, filterable by status and category.
+
+Each suggestion shows its score (for votes minus against votes), the staff's answer if any, **View on Discord** and the **Discussion** when a thread is open. With **Voters visible to staff**, the **Voters** button lists who voted for and against. Clicking the author opens their profile.
+
+### Deciding
+
+**Decide** opens the decision: **Pending**, **Approved**, **In progress**, **Implemented** or **Rejected**, with a **Public answer** shown under the suggestion on Discord. Then **Save the decision**.
+
+A decision can be revisited with **Revise**. **Set back to pending** removes the published answer and reopens voting.
+
+Kotbo updates the message on Discord (colour, status, answer and the moderator's name), posts the decision in the thread and, if **Notify the author** is on, sends it to them by DM.
 
 ---
 
-## Moderating suggestions from the dashboard
+## Settings tab
 
-Every active suggestion on your server is listed on the **Community → Suggestions** page.
+### Publishing
 
-### 1. Filter the list
-At the top of the page, quick filters let you sort suggestions by status:
-* **All**: shows every suggestion.
-* **Pending**: submitted suggestions that have not yet had a reply or a staff decision.
-* **Approved**: suggestions accepted by the team.
-* **Rejected**: suggestions that were turned down.
-* **Implemented**: suggestions that are now live.
+* **Suggestions channel**: where suggestions sent with `/suggest`, the channel button or the site are posted. If none is picked, they go to the server's public channel, or to a channel whose name contains "suggest".
+* **Discussion thread**: opens a thread under each new suggestion to discuss it without cluttering the channel. The decision is posted there too.
+* **Message preview**: the suggestion as it will appear, for each status.
 
-### 2. Reply and decide
-For each suggestion shown, you can see the number of upvotes and downvotes collected on Discord.
+### Decisions
 
-To rule on a suggestion:
-1. Find the suggestion in the list.
-2. In the text field below it, fill in the **Public response or comment** field.
-   :::warning[Comment required]
-   You must enter a comment or a justification before any of the decision buttons will work.
-   :::
-3. Click the button matching your choice:
-   * **Approve**: accepts the idea (the suggestion turns green).
-   * **Reject**: turns the idea down (the suggestion turns red).
-   * **Implemented**: indicates the suggestion is now live (the suggestion turns blue).
+* **Public answer required**: every decision must come with an explanation members can see.
+* **Voting stays open after approval**: members keep voting on an approved suggestion until it is in place.
+* **Notify the author**: they get the decision and the answer by DM. If their DMs are closed, they are mentioned in the thread.
+* **Voters visible to staff**: the staff sees who voted what. Members still only see the counters.
 
-### 3. Real-time synchronisation
-As soon as you confirm a decision on the dashboard:
-* The suggestion's status is updated on the page.
-* Kotbo instantly edits the original message on Discord (the embed changes colour and shows your response comment along with the name of the moderator who decided).
-* Your reply is visible to every member on Discord.
+### Reward
+
+**XP** and **Coins** the author gets when their suggestion is approved, in progress or implemented. They are paid once, and taken back if the decision is undone or the suggestion deleted.
+
+### Categories
+
+Add a **New category**: members pick one when suggesting, in the window as in `/suggest`.
+
+### Vote threshold
+
+**"For" votes needed**: a suggestion reaching it is flagged to the staff, and stays flagged even if votes are withdrawn. **Pin the message** pins it in the channel when the threshold is reached, and unpins it when the staff decides. [Triggers](/en/dashboard/communaute/declencheurs/) can fire at the threshold too.
+
+### Who can suggest and safeguards
+
+* **Allowed roles**: empty, everyone can suggest. Server managers always can.
+* **Delay between two suggestions** (in minutes), **Minimum account age** and **Minimum time on the server** (in days): against bursts of suggestions and accounts created for the occasion. `0` for no requirement.
+
+### Updating published messages
+
+**Update** reformats the last 100 suggestions on Discord, handy after changing a setting.
+
+Settings are saved with the bar at the bottom of the screen; the tab shows *Needs fixing* while a field is invalid.
