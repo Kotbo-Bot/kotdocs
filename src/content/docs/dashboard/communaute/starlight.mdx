@@ -15,25 +15,42 @@ Section **Communauté → Messages à la une** : [Ouvrir Starlight ↗](https://
 
 ---
 
-## Publication
+## Onglet Vue d'ensemble
+
+Le panneau **État du module** résume les réglages (type de vote, seuil, récompense, paliers, garde-fous) et l'activité : messages **Affichés dans le salon** et **Dernier passage à la une**. Kotbo y signale ce qui bloque : **Aucun salon de publication**, salon supprimé, **Il manque des permissions au bot** (voir le salon, envoyer des messages, intégrer des liens, ajouter des réactions), ou **Beaucoup de messages à la une** quand un seuil trop bas rend le salon peu sélectif.
+
+* **Meilleurs messages** : la galerie des messages les mieux notés sur la période.
+* **Messages passés à la une** : tout l'historique, filtrable par salon, par **Période** et par membre, trié en **Plus récents** ou **Meilleur score**. Chaque entrée renvoie au **Message d'origine** et à sa **Republication**.
+
+Le staff peut **Retirer ce message de la une** (il n'y revient plus, et sa récompense est reprise ; **Rétablir** l'annule) ou **Exclure ce membre de la une**.
+
+---
+
+## Onglet Réglages
+
+### Publication
 
 * **Salon des highlights** : où les messages mis en avant sont republiés.
 * **Seuil de mise en avant** : le score (votes positifs moins négatifs) à atteindre pour être republié.
 * **Couleur de l'embed** : la couleur du highlight publié.
+* **Seuils par salon** : un seuil plus haut dans un salon très actif, plus bas dans un salon calme. Un fil suit son salon parent.
+
+L'**Aperçu du message** montre la republication telle qu'elle apparaîtra.
 
 ---
 
-## Barème de vote
+### Barème de vote
 
 * **Emojis positifs** : au moins un est requis. Le premier sert de compteur sur le highlight.
 * **Emojis négatifs** : retranchés du score. Laissez vide pour désactiver le vote négatif.
 * **Compter les réactions du highlight** : les votes posés sur le message republié alimentent le même score. C'est souvent là que les membres votent.
+* **Ignorer le vote de l'auteur** : sa réaction sur son propre message, ou sur son highlight, ne compte pas dans le score.
 
 Les emojis se saisissent au clavier ou se choisissent parmi ceux du serveur ; un emoji personnalisé s'accepte aussi par son identifiant.
 
 ---
 
-## Amorçage des réactions
+### Amorçage des réactions
 
 Poser les emojis de vote d'office, pour que personne n'ait à les chercher.
 
@@ -42,7 +59,7 @@ Poser les emojis de vote d'office, pour que personne n'ait à les chercher.
 
 ---
 
-## Portée
+### Portée
 
 * **Salons surveillés** : laissez vide pour surveiller tout le serveur.
 * **Salons exclus** : toujours prioritaires sur les salons surveillés.
@@ -50,7 +67,21 @@ Poser les emojis de vote d'office, pour que personne n'ait à les chercher.
 
 ---
 
-## Cycle de vie
+### Garde-fous
+
+* **Salons NSFW protégés** : un message d'un salon NSFW n'est jamais republié dans un salon tout public, quel que soit son score. Il l'est seulement si le salon des messages à la une est lui aussi NSFW.
+* **Âge maximum du message (jours)** : un message plus ancien n'entre plus à la une. `0` : aucune limite.
+* **Membres exclus** : leurs messages ne passent jamais à la une ; ceux qui y sont déjà en sont retirés à l'enregistrement.
+
+### Récompenses
+
+* **XP de l'auteur** et **Pièces de l'auteur** : ce que reçoit l'auteur au premier passage à la une d'un message. Repris si le staff retire le message.
+* **Prévenir l'auteur en privé** : un message privé lui annonce que son message est à la une, avec ses gains. Envoyé une seule fois par message.
+* **Paliers de rôles** : **Ajouter un palier** donne un **Rôle donné** à un nombre de **Messages à la une**. Un message retiré par le staff ne compte plus et peut faire perdre un palier. Kotbo signale les rôles qu'il ne peut pas donner.
+
+Les [Déclencheurs](/dashboard/communaute/declencheurs/) peuvent aussi réagir à un passage à la une.
+
+### Cycle de vie
 
 **Retirer sous le seuil** : le highlight est supprimé si le score repasse sous le seuil. Sinon, il reste publié une fois atteint.
 

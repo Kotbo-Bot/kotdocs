@@ -15,25 +15,42 @@ The **Community → Highlighted messages** section: [Open Starlight ↗](https:/
 
 ---
 
-## Publishing
+## Overview tab
+
+The **Module status** panel sums up the settings (vote type, threshold, reward, tiers, safeguards) and activity: messages shown in the channel and the last time a message was featured. Kotbo flags what is blocking: no publishing channel, deleted channel, **The bot is missing permissions** (view the channel, send messages, embed links, add reactions), or **Lots of featured messages** when too low a threshold makes the channel unselective.
+
+* **Top messages**: the gallery of the best-scored messages over the period.
+* **Featured messages**: the whole history, filterable by channel, **Period** and member, sorted by **Most recent** or **Best score**. Each entry links to the **Original message** and its **Repost**.
+
+The staff can **Remove this message from the featured channel** (it never comes back and its reward is taken back; **Restore** undoes it) or **Exclude this member from the featured channel**.
+
+---
+
+## Settings tab
+
+### Publishing
 
 * **Highlights channel**: where highlighted messages are reposted.
 * **Highlight threshold**: the score (upvotes minus downvotes) required to get reposted.
 * **Embed color**: the colour of the published highlight.
+* **Per-channel thresholds**: a higher threshold in a very active channel, a lower one in a quiet channel. A thread follows its parent channel.
+
+The **Message preview** shows the repost as it will appear.
 
 ---
 
-## Vote scale
+### Vote scale
 
 * **Upvote emojis**: at least one is required. The first one is used as the highlight counter.
 * **Downvote emojis**: subtracted from the score. Leave empty to disable downvoting.
 * **Count reactions on the highlight**: votes cast on the reposted message feed the same score. That is often where members vote.
+* **Ignore the author's vote**: their reaction on their own message, or on its highlight, doesn't count in the score.
 
 Emojis can be typed in or picked among the server's own; a custom emoji is also accepted by its ID.
 
 ---
 
-## Seeding reactions
+### Seeding reactions
 
 Add the vote emojis upfront, so nobody has to look for them.
 
@@ -42,7 +59,7 @@ Add the vote emojis upfront, so nobody has to look for them.
 
 ---
 
-## Scope
+### Scope
 
 * **Watched channels**: leave empty to watch the whole server.
 * **Excluded channels**: always take precedence over watched channels.
@@ -50,7 +67,21 @@ Add the vote emojis upfront, so nobody has to look for them.
 
 ---
 
-## Lifecycle
+### Safeguards
+
+* **NSFW channels protected**: a message from an NSFW channel is never reposted in an all-ages channel, whatever its score. It is only if the featured channel is NSFW too.
+* **Maximum message age (days)**: an older message no longer gets featured. `0`: no limit.
+* **Excluded members**: their messages are never featured; those already featured are removed on save.
+
+### Rewards
+
+* **Author XP** and **Author coins**: what the author gets the first time a message is featured. Taken back if the staff removes the message.
+* **Notify the author privately**: a DM tells them their message is featured, with what they earned. Sent once per message.
+* **Role tiers**: **Add a tier** gives a **Role given** at a number of **Featured messages**. A message removed by the staff no longer counts and can cost a tier. Kotbo flags roles it can't give.
+
+[Triggers](/en/dashboard/communaute/declencheurs/) can also react to a message being featured.
+
+### Lifecycle
 
 **Remove below threshold**: the highlight is deleted if the score falls back under the threshold. Otherwise it stays published once reached.
 
