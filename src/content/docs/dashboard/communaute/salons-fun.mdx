@@ -16,17 +16,30 @@ Les modifications nécessitent les permissions d'administration de Kotbo sur le 
 
 ---
 
+## La page en quatre onglets
+
+* **Parties** : l'état de chaque jeu actif (salon, score, dernier joueur) et ses boutons de remise à zéro.
+* **Confessions** : les dernières confessions anonymes, voir [plus bas](#confessions-anonymes).
+* **Rébus** : vos propres rébus emoji.
+* **Réglages** : les jeux à activer, les confessions et les règles communes.
+
+### Activer un jeu
+
+Dans **Réglages → Salons de jeu**, chaque jeu a sa tuile. **Activer** demande le **Salon Discord** où il se joue ; **Changer** en choisit un autre, **Désactiver le jeu** l'arrête. Le jeu démarre une fois les réglages enregistrés.
+
+Si un salon configuré a été supprimé de Discord, la tuile l'indique (*Salon introuvable*).
+
+---
+
 ## Salon de comptage
 
 Le jeu de comptage invite vos membres à compter le plus loin possible, dans l'ordre croissant (1, 2, 3, 4, etc.). 
 
-### Configuration du salon
-1. Accédez à **Communauté → Salons fun**.
-2. Dans le premier bloc **Salon de comptage**, ouvrez le menu déroulant **Salon Discord** et sélectionnez le salon dédié au jeu.
-3. Le bloc affiche en temps réel :
-   * **Nombre** : Le score actuel de la chaîne de comptage.
-   * **Dernier joueur** : L'identifiant (ID) du dernier utilisateur ayant validé un nombre.
-4. Si un membre fait une erreur ou que vous souhaitez remettre la partie à zéro, cliquez sur **Réinitialiser le comptage** (un message de confirmation s'affiche).
+### Suivi de la partie
+
+Dans **Parties**, la carte du comptage affiche le **Comptage en cours** et le **Dernier joueur**. **Réinitialiser le comptage** remet la partie à zéro, après confirmation.
+
+Dans le salon, Kotbo tient un message d'état reposté au fil de la partie : le record, la progression vers ce record, le dernier compteur et la date du dernier nombre. La commande `/stats-compteur` affiche les statistiques du jeu, dont le bilan de chaque joueur.
 
 :::note[Deux nombres envoyés en même temps]
 Un seul des deux compte : le message perdant est supprimé avec un avertissement, **sans casser la chaîne**. La même règle protège tous les salons de jeu, dont les messages sont traités dans l'ordre, salon par salon.
@@ -39,8 +52,8 @@ Un seul des deux compte : le message perdant est supprimé avec un avertissement
 Ce jeu collaboratif invite la communauté à écrire une histoire collective, un seul mot à la fois.
 
 ### Configuration du salon
-1. Dans le bloc central **One Word Story**, sélectionnez le salon textuel dédié à l'histoire dans le menu déroulant **Salon Discord**.
-2. La zone de statut affiche l'identifiant (ID) du **Dernier auteur** ayant écrit un mot.
+1. Dans **Réglages → Salons de jeu**, activez **One Word Story** et choisissez son salon.
+2. Dans **Parties**, la carte affiche le **Dernier auteur** ayant écrit un mot.
 3. Ce salon est entièrement régulé par le bot : les mauvais messages sont supprimés et les doubles envois bloqués sans intervention des modérateurs.
 
 ---
@@ -50,8 +63,8 @@ Ce jeu collaboratif invite la communauté à écrire une histoire collective, un
 Proposez à vos membres de deviner un nombre secret généré aléatoirement par le bot.
 
 ### Configuration du salon
-1. Dans le troisième bloc **Nombre Mystère**, sélectionnez le salon textuel de jeu dans le menu déroulant **Salon Discord**.
-2. Le bloc affiche la **Cible mystère** (visible uniquement par le staff sur le dashboard).
+1. Dans **Réglages → Salons de jeu**, activez **Nombre Mystère** et choisissez son salon.
+2. Dans **Parties**, la carte affiche la **Cible mystère**, masquée jusqu'au clic sur **Afficher le nombre mystère**. Elle n'est visible que du staff.
 3. Pour changer la valeur cible ou lancer une nouvelle partie manuellement, cliquez sur **Générer une nouvelle cible**. Une confirmation *Générer un nouveau nombre mystère ?* s'affiche avant validation.
 
 ---
@@ -61,8 +74,8 @@ Proposez à vos membres de deviner un nombre secret généré aléatoirement par
 Chaque mot doit commencer par la dernière lettre du précédent.
 
 ### Configuration du salon
-1. Dans le bloc **Chaîne de mots**, sélectionnez le salon dédié dans le menu déroulant **Salon Discord**.
-2. Le bloc affiche le **Dernier mot** joué et le **Dernier joueur**.
+1. Dans **Réglages → Salons de jeu**, activez **Chaîne de mots** et choisissez son salon.
+2. Dans **Parties**, la carte affiche le **Dernier mot** joué et le **Dernier joueur**.
 3. Le bouton **Réinitialiser la chaîne** repart de zéro, après confirmation.
 4. Les mots à ligature (`cœur`, `œuvre`) sont acceptés, et un mot ne peut pas se terminer par un tiret.
 
@@ -73,13 +86,13 @@ Chaque mot doit commencer par la dernière lettre du précédent.
 Les membres devinent l'expression cachée derrière une suite d'emojis.
 
 ### Configuration du salon
-1. Dans le bloc **Rébus Emoji**, sélectionnez le salon dédié.
-2. Le bloc affiche l'**Indice actuel** : c'est la même suite d'emojis que le bot publie dans le salon, pas un secret.
+1. Dans **Réglages → Salons de jeu**, activez **Rébus Emoji** et choisissez son salon.
+2. Dans **Parties**, la carte affiche l'**Indice actuel** : c'est la même suite d'emojis que le bot publie dans le salon, pas un secret.
 3. Le bouton **Nouveau rébus** en génère un autre, après confirmation. Kotbo l'annonce aussitôt dans le salon, comme après chaque bonne réponse.
 
 ### Écrire ses propres rébus
 
-Sous le salon, la section **Rébus du serveur** tient votre propre liste : ils sont tirés au hasard dans le salon, au même titre que ceux fournis par Kotbo. Le compteur affiche votre total sur un maximum de **200**.
+L'onglet **Rébus** tient votre propre liste : ils sont tirés au hasard dans le salon, au même titre que ceux fournis par Kotbo. Le compteur affiche votre total sur un maximum de **200**.
 
 <div class="step-list">
   <div class="step-item"><div><h3>Composez les emojis</h3><p>Tapez-les ou choisissez-les dans le sélecteur d'emojis.</p></div></div>
@@ -100,7 +113,7 @@ Un rébus n'est validé que si la réponse tapée figure dans la liste. Prévoye
 Interdit de répondre par oui ou par non.
 
 ### Configuration du salon
-1. Dans le bloc **Ni Oui ni Non**, sélectionnez le salon dédié.
+1. Dans **Réglages → Salons de jeu**, activez **Ni Oui ni Non** et choisissez son salon.
 2. Ce salon est régulé automatiquement : tout message contenant « oui » ou « non » est supprimé.
 
 ---
@@ -110,7 +123,7 @@ Interdit de répondre par oui ou par non.
 Seuls les emojis sont autorisés dans le salon.
 
 ### Configuration du salon
-1. Dans le bloc **Emoji uniquement**, sélectionnez le salon dédié.
+1. Dans **Réglages → Salons de jeu**, activez **Emoji uniquement** et choisissez son salon.
 2. Ce salon est régulé automatiquement : tout message contenant autre chose que des emojis est supprimé. Les emojis du serveur, les teintes de peau, les drapeaux et les touches numérotées passent sans encombre.
 
 ---
@@ -120,14 +133,30 @@ Seuls les emojis sont autorisés dans le salon.
 Une image par membre et par jour : chacun poste l'image qu'il trouve la meilleure aujourd'hui, de 00:00 à 23:59 à l'heure du serveur.
 
 ### Configuration du salon
-1. Dans le bloc **Image du jour**, sélectionnez le salon dédié.
+1. Dans **Réglages → Salons de jeu**, activez **Image du jour** et choisissez son salon.
 2. Ce salon est régulé automatiquement : un message sans image, ou une deuxième image dans la journée, est supprimé, avec un message qui explique pourquoi. Le staff n'est pas filtré.
+
+---
+
+## Confessions anonymes
+
+Les membres publient une confession sans nom avec `/confession envoyer`. Kotbo la poste, numérotée, dans le salon public des confessions.
+
+Dans **Réglages**, le bloc **Confessions anonymes** demande :
+
+* le salon public des confessions ;
+* un **Salon du journal staff (optionnel)**, où chaque confession est tracée ;
+* un **Délai entre deux confessions (secondes)**, par membre : `0` pour aucun délai, 86 400 au maximum (24 h).
+
+Les mots interdits des [Filtres](/dashboard/moderation/automod/) s'appliquent aussi aux confessions.
+
+L'onglet **Confessions** liste les dernières confessions, sans jamais en afficher l'auteur, avec les mentions *auteur révélé* ou *supprimée*. Un administrateur peut révéler l'auteur avec `/confession reveler` ou retirer une confession avec `/confession supprimer` ; chaque action est notée dans le journal staff.
 
 ---
 
 ## Mode punitif
 
-Un interrupteur commun à tous les jeux décide de ce qui se passe en cas d'erreur.
+Dans **Réglages → Règles**, un interrupteur commun à tous les jeux décide de ce qui se passe en cas d'erreur.
 
 * **Activé** : sur une erreur de comptage ou de chaîne de mots, le jeu **repart de zéro**.
 * **Désactivé** : le message fautif est supprimé et son auteur prévenu, **sans casser la progression**.

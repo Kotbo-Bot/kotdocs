@@ -16,17 +16,30 @@ Changes require Kotbo to have administrator permissions on the server.
 
 ---
 
+## The page in four tabs
+
+* **Games**: the state of every active game (channel, score, last player) and its reset buttons.
+* **Confessions**: the latest anonymous confessions, see [below](#anonymous-confessions).
+* **Riddles**: your own emoji riddles.
+* **Settings**: the games to turn on, confessions and the shared rules.
+
+### Turning a game on
+
+In **Settings → Game channels**, each game has its tile. **Enable** asks for the **Discord Channel** where it is played; **Change** picks another one, **Turn off the game** stops it. The game starts once the settings are saved.
+
+If a configured channel was deleted from Discord, the tile says so (*Channel not found*).
+
+---
+
 ## Counting channel
 
 The counting game invites your members to count as high as they can, in ascending order (1, 2, 3, 4, and so on).
 
-### Setting up the channel
-1. Go to **Community → Fun channels**.
-2. In the first block, **Counting Channel**, open the **Discord channel** dropdown and pick the channel dedicated to the game.
-3. The block shows, in real time:
-   * **Count**: the current score of the counting chain.
-   * **Last player**: the ID of the last user who posted a valid number.
-4. If a member makes a mistake or you want to reset the game, click **Reset the count** (a confirmation message appears).
+### Following the game
+
+In **Games**, the counting card shows the **Current count** and the **Last player**. **Reset counting** sets the game back to zero, after confirmation.
+
+In the channel, Kotbo keeps a status message reposted as the game goes: the record, progress towards it, the last counter and the time of the last number. The `/counting-stats` command shows the game's statistics, including each player's tally (`/stats-compteur` on French-language clients).
 
 :::note[Two numbers posted at once]
 Only one of them counts: the losing message is deleted with a warning, **without breaking the chain**. The same rule protects every game channel, whose messages are handled in order, channel by channel.
@@ -39,8 +52,8 @@ Only one of them counts: the losing message is deleted with a warning, **without
 This collaborative game invites the community to write a shared story, one word at a time.
 
 ### Setting up the channel
-1. In the middle block, **One Word Story**, select the text channel dedicated to the story from the **Discord channel** dropdown.
-2. The status area shows the ID of the **last author** who added a word.
+1. In **Settings → Game channels**, enable **One Word Story** and pick its channel.
+2. In **Games**, the card shows the **Last author** who added a word.
 3. This channel is entirely policed by the bot: invalid messages are deleted and double posts are blocked without any moderator involvement.
 
 ---
@@ -50,8 +63,8 @@ This collaborative game invites the community to write a shared story, one word 
 Challenge your members to guess a secret number generated at random by the bot.
 
 ### Setting up the channel
-1. In the third block, **Mystery Number**, select the game's text channel from the **Discord channel** dropdown.
-2. The block shows the **Mystery target** (visible only to staff, on the dashboard).
+1. In **Settings → Game channels**, enable **Mystery Number** and pick its channel.
+2. In **Games**, the card shows the **Mystery target**, hidden until you click **Show the mystery number**. Only the staff can see it.
 3. To change the target value or start a new round manually, click **Generate new target**. A *Generate a new mystery number?* confirmation appears before it applies.
 
 ---
@@ -61,8 +74,8 @@ Challenge your members to guess a secret number generated at random by the bot.
 Each word must start with the previous word's last letter.
 
 ### Setting up the channel
-1. In the **Word Chain** block, pick the dedicated channel from the **Discord Channel** dropdown.
-2. The block shows the **Last word** played and the **Last player**.
+1. In **Settings → Game channels**, enable **Word Chain** and pick its channel.
+2. In **Games**, the card shows the **Last word** played and the **Last player**.
 3. The **Reset the chain** button starts over, after confirmation.
 4. Words with ligatures (`cœur`, `œuvre`) are accepted, and a word cannot end with a hyphen.
 
@@ -73,13 +86,13 @@ Each word must start with the previous word's last letter.
 Members guess the phrase hidden behind a string of emojis.
 
 ### Setting up the channel
-1. In the **Emoji Riddle** block, pick the dedicated channel.
-2. The block shows the **Current clue**: it is the same string of emojis the bot posts in the channel, not a secret.
+1. In **Settings → Game channels**, enable **Emoji Riddle** and pick its channel.
+2. In **Games**, the card shows the **Current clue**: it is the same string of emojis the bot posts in the channel, not a secret.
 3. The **New riddle** button generates another one, after confirmation. Kotbo announces it in the channel right away, as it does after every correct answer.
 
 ### Writing your own riddles
 
-Below the channel, the **Server riddles** section holds your own list: they are drawn at random in the channel, just like the ones Kotbo ships. The counter shows your total out of a maximum of **200**.
+The **Riddles** tab holds your own list: they are drawn at random in the channel, just like the ones Kotbo ships. The counter shows your total out of a maximum of **200**.
 
 <div class="step-list">
   <div class="step-item"><div><h3>Compose the emojis</h3><p>Type them or pick them from the emoji picker.</p></div></div>
@@ -100,7 +113,7 @@ A riddle only counts as solved if the typed answer is in the list. Plan for the 
 No answering yes or no.
 
 ### Setting up the channel
-1. In the **Never Say Yes/No** block, pick the dedicated channel.
+1. In **Settings → Game channels**, enable **Never Say Yes/No** and pick its channel.
 2. The channel is moderated automatically: any message containing the French words "oui" or "non" is deleted.
 
 ---
@@ -110,7 +123,7 @@ No answering yes or no.
 Only emojis are allowed in the channel.
 
 ### Setting up the channel
-1. In the **Emoji Only** block, pick the dedicated channel.
+1. In **Settings → Game channels**, enable **Emoji Only** and pick its channel.
 2. The channel is moderated automatically: any message containing anything but emojis is deleted. Server emojis, skin tones, flags and keycap digits all get through.
 
 ---
@@ -120,14 +133,30 @@ Only emojis are allowed in the channel.
 One image per member per day: everyone posts the image they like best today, from 00:00 to 23:59 server time.
 
 ### Setting up the channel
-1. In the **Image of the day** block, select the dedicated channel.
+1. In **Settings → Game channels**, enable **Image of the day** and pick its channel.
 2. This channel is moderated automatically: a message without an image, or a second image the same day, is deleted, with a message explaining why. Staff are not filtered.
+
+---
+
+## Anonymous confessions
+
+Members post an unnamed confession with `/confession send` (`/confession envoyer` on French-language clients). Kotbo posts it, numbered, in the public confessions channel.
+
+In **Settings**, the **Anonymous confessions** block asks for:
+
+* the public confessions channel;
+* a **Staff log channel (optional)**, where every confession is traced;
+* a **Delay between two confessions (seconds)**, per member: `0` for none, 86,400 at most (24 h).
+
+The banned words of the [Filters](/en/dashboard/moderation/automod/) apply to confessions too.
+
+The **Confessions** tab lists the latest confessions, never showing their author, with the *author revealed* or *removed* marks. An administrator can reveal the author with `/confession reveal` or remove a confession with `/confession delete`; each action is written to the staff log.
 
 ---
 
 ## Punitive mode
 
-A single switch, shared by every game, decides what happens on a mistake.
+In **Settings → Rules**, a single switch shared by every game decides what happens on a mistake.
 
 * **On**: a counting or word-chain mistake **resets the game to zero**.
 * **Off**: the offending message is deleted and its author warned, **without breaking the progress**.
