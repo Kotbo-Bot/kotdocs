@@ -130,6 +130,15 @@ Exemple de configuration JSON pour un serveur MCP :
 ```
 *(Remplacez `mcp_VOTRE_CLIENT_SECRET` par le Client Secret complet copié à la création).*
 
+### Lire les données sans client MCP
+
+La même clé `mcp_…` ouvre aussi une API en lecture seule, pour un script ou un tableur : chaque outil de lecture MCP devient une adresse.
+
+* `GET /api/v1/VOTRE_ID_SERVEUR` liste les outils accessibles à la clé ;
+* `GET /api/v1/VOTRE_ID_SERVEUR/nom_de_l_outil?argument=valeur` renvoie son résultat en JSON.
+
+La clé passe dans l'en-tête `Authorization: Bearer mcp_…` ou `X-API-Key: mcp_…`. Elle garde les mêmes permissions et le même plafond qu'avec un client MCP, et demande la même offre.
+
 ---
 
 ## Diagnostics et Logs
