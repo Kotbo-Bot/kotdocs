@@ -47,7 +47,7 @@ Applying a template to an existing automation **replaces the whole current graph
 
 ## The triggers
 
-An automation has a single trigger. The palette holds forty-two of them, sorted by family.
+An automation has a single trigger. The palette holds forty-nine of them, sorted by family. A search (*reaction*, *ticket*, *level*…) finds them without scrolling the list.
 
 ### Members
 
@@ -60,6 +60,9 @@ An automation has a single trigger. The palette holds forty-two of them, sorted 
 | **Boost du serveur** | A member starts boosting. Discord does not report further boosts from a member who was already boosting. |
 | **Arrivée par invitation** | A member arrives through an invitation the bot could identify. |
 | **Passage de niveau** | A member gains a level. |
+| **Tag de serveur modifié** | A member adds, changes or removes the server tag shown on their Discord profile. |
+| **Ancienneté atteinte** | A member reaches a number of days on the server (1 to 3650), once per member. Only thresholds reached after activation count: older members don't all fire at once. |
+| **Membre inactif** | A member hasn't written anything for a number of days. It fires again if the member becomes active then goes quiet again; a member who never wrote counts from their arrival. |
 
 :::caution["Arrivée par invitation" depends on Logs]
 This trigger needs the **Logs** module enabled - it is what spots the invitation used - and the Discord **Manage Server** permission. Arrivals through the vanity URL are never attributed. Kotbo shows the reminder right on the trigger card.
@@ -102,6 +105,7 @@ A kicked or banned member has already left the server: only their username remai
 | **Avis sur un ticket** | The author of a closed ticket rates it from 1 to 5. Only the first rating counts, and the optional comment is not passed on. |
 | **Formulaire envoyé** | A custom form is submitted, from Discord or from its public page. The answers arrive grouped, one *Question: answer* line per filled field. |
 | **Suggestion publiée** | A member posts a suggestion. |
+| **Seuil de votes atteint** | A suggestion reaches the number of "for" votes set in [Suggestions](/en/dashboard/communaute/suggestions/), once per suggestion. With no threshold set, it never fires. |
 | **Suggestion traitée** | The staff approves, rejects or marks a suggestion as implemented. |
 
 For a ticket handled in DMs or relayed to the staff server, the channel is empty: the channel filter then leaves the case out.
@@ -116,6 +120,11 @@ For a ticket handled in DMs or relayed to the staff server, the channel is empty
 | **Victoire à un mini-jeu** | A member finds the mystery number or solves an emoji riddle. |
 | **Pari tranché** / **Pari annulé** | A referee names the winning side, or the stakes are returned. |
 | **Dette de clan creusée** / **soldée** | A member stakes points they do not hold, or finishes repaying. |
+| **Remerciement donné** / **Remerciement reçu** | A member thanks another (command, menu or reaction), once the vote is accepted. Staff adjustments don't count. |
+| **Message mis à la une** | A message is featured for the first time, once its rewards and tiers are applied. |
+| **Message retiré de la une** | Score back under the threshold, removal by the staff, a safeguard or the original message deleted. |
+| **Saison ouverte** | A season opens: by hand, on its start date or by chaining. |
+| **Saison clôturée** | A season ends, once the leaderboard is frozen and rewards given. With no ranked member, nothing fires. |
 
 :::caution["Victoire à un mini-jeu" needs the fun channels]
 Without the **Fun channels** module enabled and a channel set for the game, nobody can win and the automation will never fire. Kotbo says so on the card and offers the right link. A reset from the dashboard does not count as a win.
@@ -161,6 +170,10 @@ On a message: **Supprimer un message**, **Réagir à un message**, **Épingler u
 
 Rewarding and tracking: **Donner des pièces**, **Retirer des pièces** (never below zero), **Donner de l'XP** - with level-up and reward roles - and **Ajouter une note au membre**, which writes a dated line into their moderation note. Finally, **Ouvrir un ticket** opens a support ticket on a member's behalf.
 
+**Tenir un message à jour** (keep a message up to date) posts a message on the first run, then edits it on later runs instead of posting a new one: ideal for a dashboard or a counter. It is posted again if it was deleted or the channel changes.
+
+**Variables** keep a counter from one run to the next, for a member or for the server: **Ajouter à une variable** (add to) and **Définir une variable** (set), which conditions can then test (*the member's points variable is at least 10*).
+
 :::note[Actions that depend on a module]
 **Donner des pièces** and **Retirer des pièces** fail if the Economy module is disabled, **Donner de l'XP** if the Leveling module is, and **Ouvrir un ticket** if the Tickets module is. **Donner un rôle temporaire** only removes at expiry the role it granted itself: a member who already had it keeps it.
 :::
@@ -177,6 +190,7 @@ An identical sanction issued within thirty seconds is ignored. That is also what
 * **Aiguillage**: compares a text value against a list of cases.
 * **Pour chaque**: walks a list and runs the loop body for every element.
 * **Attendre**: suspends the run. It resumes even after a bot restart.
+* **Délai de récupération** (cooldown): *at most once every…* N seconds, minutes, hours or days, per member, per channel or for the whole server. While it runs, the following steps don't execute.
 
 In the Steps view, conditions are offered as sentences, and only those the trigger can fill in appear: the role, the account age, the time spent on the server, the member's run frequency, the content or the length of the message, the channel, the emoji, the sanction type, the form and its answers, the fate of a suggestion, a ticket's rating and type, the invitation code, the mini-game won, or the server's member count.
 
@@ -196,6 +210,14 @@ Kotbo validates the graph before saving and lists the **issues to fix**: *Start 
 
 A saved automation starts **paused**; the switch on its card enables it.
 
+On save, Kotbo also checks what it already knows: module off, missing permission in a chosen channel, role out of reach, deleted channel or role. The automation is saved anyway, and a list of the steps the bot won't be able to do appears, each with a link to the step.
+
+### Dry run
+
+**Test** runs the automation without sending or changing anything on Discord: the event is a sample, or the one from the last run, and the member is you (you can pick another member to try with). The test goes through the same checks as a real run and fails on the right step, with the same reason. It reserves no cooldown and writes no variable.
+
+Editing an automation then leaving the editor without saving asks for confirmation.
+
 ---
 
 ## Following what runs
@@ -208,7 +230,9 @@ An enabled automation that has produced nothing for more than a day says so on i
 
 The **Runs** tab lists the passes with their status - *Running*, *Waiting*, *Completed*, *Failed*, *Cancelled* - and the number of blocks visited. Two menus filter the list **by status** and **by automation**, the **Show failures** button keeps only the misses, and **Load older runs** goes further back. A waiting run shows when it is due to resume, and a failed run names the step at fault.
 
-Click a run to **replay it on the graph**: the path is replayed step by step, with the inputs and outputs recorded at each block.
+Click a run to **replay it on the graph**: the path is replayed step by step, with the inputs and outputs recorded at each block. The panel shows what happened (or, for a test, what would have happened): the message as it went out on Discord, the role given or removed. When a permission is missing, it says what to set and where; **Fix in editor** opens the editor on the faulty step.
+
+An automation's creator is told at the first failure of a series, in the dashboard inbox and by DM depending on their preferences. The link opens the replay of the failed run.
 
 :::note[The log does not grow forever]
 Every night Kotbo deletes completed runs older than **30 days**, then everything beyond the **1000 most recent runs** of each automation. Waiting and running executions are never touched, and the counters on the card do not move.
@@ -218,7 +242,9 @@ Every night Kotbo deletes completed runs older than **30 days**, then everything
 
 ## Managing the list
 
-Every card offers **Edit**, **Duplicate**, **Pause** or **Enable**, and **Delete**.
+Every card offers **Edit**, **Duplicate**, **Pause** or **Enable**, and **Delete**. A search filters the list by name.
+
+An automation whose trigger depends on a removed module is marked as paused by its module: it won't fire any more, and can't be saved as is.
 
 :::danger[Deleting takes the history with it]
 *Permanently delete this workflow and its history?* Past runs disappear along with the automation.

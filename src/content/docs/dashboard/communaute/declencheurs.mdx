@@ -43,7 +43,7 @@ Appliquer un modèle sur une automatisation existante **remplace tout le graphe 
 
 ## Les déclencheurs
 
-Une automatisation n'a qu'un seul déclencheur. La palette en compte quarante-deux, rangés par famille.
+Une automatisation n'a qu'un seul déclencheur. La palette en compte quarante-neuf, rangés par famille. Une recherche (*réaction*, *ticket*, *niveau*…) les retrouve sans parcourir la liste.
 
 ### Membres
 
@@ -56,6 +56,9 @@ Une automatisation n'a qu'un seul déclencheur. La palette en compte quarante-de
 | **Boost du serveur** | Un membre commence à booster. Discord ne signale pas les boosts suivants d'un membre qui boostait déjà. |
 | **Arrivée par invitation** | Un membre arrive par une invitation que le bot a pu identifier. |
 | **Passage de niveau** | Un membre gagne un niveau. |
+| **Tag de serveur modifié** | Un membre ajoute, change ou retire le tag de serveur affiché sur son profil Discord. |
+| **Ancienneté atteinte** | Un membre atteint un nombre de jours sur le serveur (de 1 à 3650), une seule fois par membre. Seuls les seuils atteints après l'activation comptent : les anciens membres ne partent pas tous d'un coup. |
+| **Membre inactif** | Un membre n'a rien écrit depuis un nombre de jours. Il repart si le membre redevient actif puis se tait de nouveau ; un membre qui n'a jamais écrit compte depuis son arrivée. |
 
 :::caution[« Arrivée par invitation » dépend des Logs]
 Ce déclencheur demande le module **Logs** actif - c'est lui qui repère l'invitation utilisée - et la permission Discord **Gérer le serveur**. Les arrivées par l'URL personnalisée ne sont jamais attribuées. Kotbo affiche le rappel directement sur la carte du déclencheur.
@@ -98,6 +101,7 @@ Un membre expulsé ou banni a déjà quitté le serveur : seul son pseudo reste 
 | **Avis sur un ticket** | L'auteur d'un ticket fermé donne sa note de 1 à 5. Seule la première note compte, et le commentaire facultatif n'est pas transmis. |
 | **Formulaire envoyé** | Un formulaire personnalisé est envoyé, depuis Discord ou depuis sa page publique. Les réponses arrivent groupées, une ligne *Question : réponse* par champ rempli. |
 | **Suggestion publiée** | Un membre publie une suggestion. |
+| **Seuil de votes atteint** | Une suggestion atteint le nombre de votes « pour » réglé dans [Suggestions](/dashboard/communaute/suggestions/), une seule fois par suggestion. Sans seuil réglé, il ne part jamais. |
 | **Suggestion traitée** | Le staff approuve, refuse ou marque une suggestion comme implémentée. |
 
 Pour un ticket en message privé ou relayé sur le serveur staff, le salon est vide : le filtre de salons écarte alors le dossier.
@@ -112,6 +116,11 @@ Pour un ticket en message privé ou relayé sur le serveur staff, le salon est v
 | **Victoire à un mini-jeu** | Un membre trouve le nombre mystère ou résout un rébus emoji. |
 | **Pari tranché** / **Pari annulé** | Un arbitre désigne le camp gagnant, ou les mises sont rendues. |
 | **Dette de clan creusée** / **soldée** | Un membre mise des points qu'il n'a pas, ou finit de rembourser. |
+| **Remerciement donné** / **Remerciement reçu** | Un membre en remercie un autre (commande, menu ou réaction), une fois le vote accepté. Les ajustements du staff ne comptent pas. |
+| **Message mis à la une** | Un message passe à la une pour la première fois, une fois ses gains et ses paliers appliqués. |
+| **Message retiré de la une** | Score repassé sous le seuil, retrait par le staff, garde-fou ou message d'origine supprimé. |
+| **Saison ouverte** | Une saison s'ouvre : à la main, à sa date de début ou par enchaînement. |
+| **Saison clôturée** | Une saison se termine, une fois le classement figé et les récompenses données. Sans membre classé, rien ne part. |
 
 :::caution[« Victoire à un mini-jeu » exige les salons fun]
 Sans module **Salons fun** actif et sans salon configuré pour le jeu concerné, personne ne peut gagner et l'automatisation ne partira jamais. Kotbo le dit sur la carte et propose le lien qui va bien. Une remise à zéro depuis le dashboard ne compte pas comme une victoire.
@@ -157,6 +166,10 @@ Sur un message : **Supprimer un message**, **Réagir à un message**, **Épingle
 
 Récompenser et suivre : **Donner des pièces**, **Retirer des pièces** (sans descendre sous zéro), **Donner de l'XP** - avec passage de niveau et rôles de récompense - et **Ajouter une note au membre**, qui inscrit une ligne datée dans sa note de modération. Enfin, **Ouvrir un ticket** crée un ticket de support au nom d'un membre.
 
+**Tenir un message à jour** publie un message au premier passage, puis le modifie aux passages suivants au lieu d'en poster un nouveau : idéal pour un tableau de bord ou un compteur. Il est republié s'il a été supprimé ou si le salon change.
+
+Les **variables** gardent un compteur d'une exécution à l'autre, pour un membre ou pour le serveur : **Ajouter à une variable** et **Définir une variable**, que les conditions peuvent ensuite tester (*la variable points du membre vaut au moins 10*).
+
 :::note[Les actions qui dépendent d'un module]
 **Donner des pièces** et **Retirer des pièces** échouent si le module Économie est désactivé, **Donner de l'XP** si le module Leveling l'est, et **Ouvrir un ticket** si le module Tickets l'est. **Donner un rôle temporaire** ne retire à l'échéance que le rôle qu'elle a elle-même posé : un membre qui l'avait déjà le garde.
 :::
@@ -173,6 +186,7 @@ Une sanction identique prononcée dans les trente secondes est ignorée. C'est a
 * **Aiguillage** : compare une valeur texte à une liste de cas.
 * **Pour chaque** : parcourt une liste et exécute le corps de boucle pour chaque élément.
 * **Attendre** : suspend l'exécution. Elle reprend même après un redémarrage du bot.
+* **Délai de récupération** : *Au plus une fois toutes les…* N secondes, minutes, heures ou jours, par membre, par salon ou pour tout le serveur. Tant que le délai court, les étapes suivantes ne s'exécutent pas.
 
 Dans la vue Étapes, les conditions sont proposées en phrases, et seules celles que le déclencheur peut renseigner apparaissent : le rôle, l'âge du compte, l'ancienneté sur le serveur, la fréquence du membre, le contenu ou la longueur du message, le salon, l'émoji, le type de sanction, le formulaire et ses réponses, le sort d'une suggestion, la note et le type d'un ticket, le code d'invitation, le mini-jeu gagné ou le nombre de membres du serveur.
 
@@ -192,6 +206,14 @@ Kotbo valide le graphe avant d'enregistrer et liste les **problèmes à corriger
 
 Une automatisation enregistrée démarre **en pause** ; l'interrupteur de sa carte l'active.
 
+À l'enregistrement, Kotbo vérifie aussi ce qu'il sait déjà : module éteint, permission manquante dans un salon choisi, rôle hors de portée, salon ou rôle supprimé. L'automatisation est enregistrée quand même, et **Le bot ne pourra pas faire ces étapes** les liste avec **Voir l'étape**.
+
+### Tester à blanc
+
+**Tester** fait tourner l'automatisation sans rien envoyer ni modifier sur Discord : l'événement est un exemple, ou celui de la dernière exécution, et le membre, c'est vous (**Essayer avec le membre** en choisit un autre). L'essai passe les mêmes contrôles que la vraie exécution et échoue sur la bonne étape, avec la même raison. Il ne réserve aucun délai et n'écrit aucune variable.
+
+Modifier une automatisation puis quitter l'éditeur sans enregistrer demande une confirmation.
+
 ---
 
 ## Suivre ce qui s'exécute
@@ -204,7 +226,9 @@ Une automatisation active qui n'a jamais rien produit depuis plus d'un jour l'an
 
 L'onglet **Exécutions** liste les passages avec leur statut - *En cours*, *En attente*, *Terminée*, *Échouée*, *Annulée* - et le nombre de blocs parcourus. Deux menus filtrent la liste **par statut** et **par automatisation**, le bouton **Voir les échecs** ne garde que les ratés, et **Charger les exécutions plus anciennes** remonte le temps. Une exécution en attente affiche sa reprise prévue, et une exécution échouée nomme l'étape fautive.
 
-Cliquez sur une exécution pour la **rejouer sur le graphe** : le parcours se replay étape par étape, avec les entrées et sorties consignées à chaque bloc.
+Cliquez sur une exécution pour la **rejouer sur le graphe** : le parcours se replay étape par étape, avec les entrées et sorties consignées à chaque bloc. Le panneau montre **Ce qui s'est passé** (ou, pour un essai, **Ce qui se serait passé**) : le message tel qu'il est parti sur Discord, le rôle donné ou retiré. Quand une permission manque, il dit quoi régler et où ; **Corriger dans l'éditeur** ouvre l'éditeur sur l'étape fautive.
+
+Le créateur d'une automatisation est prévenu au premier échec d'une série, dans la boîte de réception du dashboard et en message privé selon ses préférences. Le lien ouvre le rejeu de l'exécution en échec.
 
 :::note[Le journal ne grandit pas indéfiniment]
 Kotbo efface chaque nuit les exécutions terminées de plus de **30 jours**, puis tout ce qui dépasse les **1000 exécutions les plus récentes** de chaque automatisation. Les exécutions en attente ou en cours ne sont jamais touchées, et les compteurs de la carte ne bougent pas.
@@ -214,7 +238,9 @@ Kotbo efface chaque nuit les exécutions terminées de plus de **30 jours**, pui
 
 ## Gérer la liste
 
-Chaque carte propose **Modifier**, **Dupliquer**, **Mettre en pause** ou **Activer**, et **Supprimer**.
+Chaque carte propose **Modifier**, **Dupliquer**, **Mettre en pause** ou **Activer**, et **Supprimer**. Une recherche filtre la liste par nom.
+
+Une automatisation dont le déclencheur dépend d'un module retiré porte la mention **Module en pause** : elle ne partira plus, et ne peut plus être enregistrée telle quelle.
 
 :::danger[La suppression emporte l'historique]
 *Supprimer définitivement ce workflow et son historique ?* Les exécutions passées disparaissent avec l'automatisation.
