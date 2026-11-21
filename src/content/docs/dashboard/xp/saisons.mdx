@@ -1,9 +1,9 @@
 ---
 title: Saisons de leveling
-description: Créez des classements compétitifs à durée limitée avec récompenses de fin de saison.
+description: Classez l'XP gagnée sur une période et récompensez les meilleurs à la clôture, sans jamais remettre les niveaux à zéro.
 ---
 
-<p class="doc-lead">Les <strong>Saisons</strong> ajoutent une notion de temps au classement : un classement séparé démarre à une date, se termine à une autre, et laisse place à la suivante.</p>
+<p class="doc-lead">Une <strong>Saison</strong> classe l'XP gagnée entre une date de début et une date de fin, et récompense les meilleurs à la clôture. Les niveaux ne sont jamais remis à zéro : chacun garde sa progression, la saison ne compte que ce qui a été gagné pendant sa durée.</p>
 
 :::note[Où la trouver]
 Section **Niveaux → Saisons** : [Ouvrir les saisons ↗](https://dash.kotbo.fr/seasons).
@@ -15,33 +15,57 @@ Le module dépend de [Leveling & XP](/dashboard/xp/leveling/).
 ## Créer une saison
 
 <div class="step-list">
-  <div class="step-item"><div><h3>Cliquez sur Nouvelle saison</h3><p>Le formulaire <strong>Créer une saison</strong> s'ouvre.</p></div></div>
-  <div class="step-item"><div><h3>Renseignez les trois champs</h3><p><strong>Nom</strong> (par exemple <em>Saison 1 - Été 2026</em>), <strong>Date de début</strong> et <strong>Date de fin</strong>. Les trois sont obligatoires.</p></div></div>
-  <div class="step-item"><div><h3>Créez</h3><p>La saison apparaît dans la liste avec le statut <strong>À venir</strong>.</p></div></div>
+  <div class="step-item"><div><h3>Cliquez sur Nouvelle saison</h3><p>Sur un serveur sans saison, le bouton s'appelle <strong>Créer ma première saison</strong>.</p></div></div>
+  <div class="step-item"><div><h3>Nommez-la et datez-la</h3><p><strong>Nom</strong> (<em>Saison 1 - Été 2026</em>), <strong>Date de début</strong> et <strong>Date de fin</strong>. Une date du jour ou passée ouvre la saison tout de suite, si aucune autre ne tourne.</p></div></div>
+  <div class="step-item"><div><h3>Prévoyez les annonces</h3><p>Le <strong>Salon d'annonce</strong> reçoit l'ouverture, puis le podium et les récompenses à la clôture. <strong>Rappel avant la fin</strong> y ajoute un message pendant les dernières 24 h, avec le classement provisoire. Les aperçus montrent ces messages avant l'envoi.</p></div></div>
+  <div class="step-item"><div><h3>Ajoutez les récompenses</h3><p>Voir <a href="#les-récompenses">plus bas</a>. Puis <strong>Créer</strong>.</p></div></div>
 </div>
 
----
+**Enchaîner automatiquement** ouvre, à la clôture, une saison de même durée, mêmes récompenses et mêmes réglages, sauf si une autre est déjà prévue.
 
-## Le cycle de vie d'une saison
-
-| Statut | Signification |
-| --- | --- |
-| <span class="dash-badge">À venir</span> | Créée mais pas encore démarrée. Le bouton **Démarrer** la lance. |
-| <span class="dash-badge active">En cours</span> | Le classement de saison se remplit. |
-| <span class="dash-badge warn">Terminée</span> | Clôturée par le bouton **Terminer la saison**. |
-| <span class="dash-badge">Archivée</span> | Conservée pour l'historique. |
+Une seule saison tourne à la fois : une saison dont la date de début est passée attend la clôture de celle en cours (*« Saison 2 » attend son tour*).
 
 ---
 
-## Suivre le classement
+## Les récompenses
 
-* Le bloc **Classement actuel** affiche les membres de la saison en cours.
-* Si le module [Prestige](/dashboard/xp/prestige/) est actif, un **classement RP de la saison** est également disponible.
+Elles sont données à la clôture, selon le classement d'XP de la saison.
 
-:::tip[RP et XP ne se comportent pas pareil]
-Le RP est remis à zéro à la clôture de la saison, contrairement à l'XP, qui reste acquise.
+* **Par rang** : **Ajouter une récompense** associe un **Rang** à un **Rôle** et des **Pièces**. Cochez **Repris à la clôture suivante** pour que le rôle soit retiré à la fin de la saison d'après, sauf à qui le regagne.
+* **Rôle du premier** : donné au premier de la saison et retiré au premier de la saison précédente.
+* **Paliers d'XP** : **Ajouter un palier** récompense chaque membre qui gagne au moins **Dès (XP)** pendant la saison, en plus de la récompense de son rang. Chaque palier atteint compte.
+
+Les pièces demandent le module [Économie](/dashboard/economie/economie/) allumé ; Kotbo prévient sinon (*Pièces prévues, Économie éteinte*).
+
+:::caution[Des récompenses ne pourront pas être données]
+Kotbo signale à l'avance les rôles que Discord refusera à la clôture : rôle supprimé, géré par une intégration ou placé au-dessus du bot.
 :::
 
-Le bloc **Toutes les saisons** liste l'historique complet avec, pour chacune, son nombre de participants.
+---
 
-Si aucune saison n'existe encore, Kotbo affiche *Aucune saison créée* et vous invite à cliquer sur **Nouvelle saison**.
+## Onglet Saison en cours
+
+Le panneau **État des saisons** résume la **Saison en cours**, les **Récompenses prévues**, le **Salon d'annonce**, l'**Enchaînement**, la **Prochaine saison** et la **Dernière clôture**. Des conseils s'y ajoutent quand il le faut : aucune récompense prévue, pas d'annonce sur Discord, saison bientôt terminée.
+
+Le classement montre l'XP gagnée depuis le début de la saison : un membre arrivé en cours de route part de zéro. Avec le module [Prestige](/dashboard/xp/prestige/), un classement RP de la saison s'y ajoute ; le RP, lui, est remis à zéro à la clôture.
+
+* **Démarrer maintenant** lance une saison à venir sans attendre sa date.
+* **Terminer la saison** l'arrête avant sa date de fin prévue.
+
+À la clôture, le **Bilan** fige le classement, liste les **Récompenses remises** (ou ce qui a échoué : rôle refusé par Discord, membre parti, Économie éteinte, avec **Réessayer**) et propose **Lancer la saison suivante**.
+
+---
+
+## Onglet Toutes les saisons
+
+L'historique, avec le statut de chacune (**À venir**, **En cours**, **Terminée**) et, pour les saisons terminées, leur **Classement final**.
+
+**Comparaison des saisons** met les saisons côte à côte, d'après les chiffres figés à chaque clôture : **XP gagnée**, **XP du premier** et **Membres classés**.
+
+Seule une saison qui n'a pas commencé peut être supprimée.
+
+---
+
+## Sur Discord
+
+Les membres suivent la saison avec les commandes décrites dans [Clans, saisons et paris](/discord/communaute/clans/). Les [Déclencheurs](/dashboard/communaute/declencheurs/) peuvent réagir à l'ouverture ou à la clôture d'une saison.

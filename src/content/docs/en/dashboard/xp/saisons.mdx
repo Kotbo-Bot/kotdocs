@@ -1,9 +1,9 @@
 ---
 title: Leveling seasons
-description: Create time-limited competitive leaderboards with end-of-season rewards.
+description: Rank the XP earned over a period and reward the best at closing, without ever resetting levels.
 ---
 
-<p class="doc-lead"><strong>Seasons</strong> add a notion of time to the leaderboard: a separate ranking starts on one date, ends on another, and makes way for the next.</p>
+<p class="doc-lead">A <strong>Season</strong> ranks the XP earned between a start date and an end date, and rewards the best at closing. Levels are never reset: everyone keeps their progress, the season only counts what was earned during it.</p>
 
 :::note[Where to find it]
 The **Levels → Seasons** section: [Open seasons ↗](https://dash.kotbo.fr/seasons).
@@ -12,36 +12,60 @@ The module depends on [Leveling & XP](/en/dashboard/xp/leveling/).
 
 ---
 
-## Creating a season
+## Create a season
 
 <div class="step-list">
-  <div class="step-item"><div><h3>Click New season</h3><p>The <strong>Create a season</strong> form opens.</p></div></div>
-  <div class="step-item"><div><h3>Fill in the three fields</h3><p><strong>Name</strong> (for example <em>Season 1 - Summer 2026</em>), <strong>Start date</strong> and <strong>End date</strong>. All three are required.</p></div></div>
-  <div class="step-item"><div><h3>Create</h3><p>The season appears in the list with the <strong>Upcoming</strong> status.</p></div></div>
+  <div class="step-item"><div><h3>Click New season</h3><p>On a server with no season, the button reads <strong>Create my first season</strong>.</p></div></div>
+  <div class="step-item"><div><h3>Name and date it</h3><p><strong>Name</strong> (<em>Season 1 - Summer 2026</em>), start date and end date. Today's date or a past one opens the season right away, if no other is running.</p></div></div>
+  <div class="step-item"><div><h3>Plan the announcements</h3><p>The <strong>Announcement channel</strong> gets the opening, then the podium and rewards at closing. <strong>Reminder before the end</strong> adds a message there during the last 24 hours, with the provisional leaderboard. Previews show these messages before they go out.</p></div></div>
+  <div class="step-item"><div><h3>Add the rewards</h3><p>See <a href="#rewards">below</a>. Then create the season.</p></div></div>
 </div>
 
----
+**Chain automatically** opens, at closing, a season of the same length, rewards and settings, unless another one is already planned.
 
-## A season's life cycle
-
-| Status | Meaning |
-| --- | --- |
-| <span class="dash-badge">Upcoming</span> | Created but not started. The **Start** button launches it. |
-| <span class="dash-badge active">Active</span> | The season leaderboard fills up. |
-| <span class="dash-badge warn">Ended</span> | Closed with the **End the season** button. |
-| <span class="dash-badge">Archived</span> | Kept for the record. |
+Only one season runs at a time: a season whose start date has passed waits for the current one to close.
 
 ---
 
-## Following the leaderboard
+## Rewards
 
-* The **Current ranking** block shows the members of the running season.
-* If the [Prestige](/en/dashboard/xp/prestige/) module is on, a **season RP ranking** is available too.
+They are given at closing, based on the season's XP leaderboard.
 
-:::tip[RP and XP do not behave the same]
-RP is reset when the season closes, unlike XP, which stays earned.
+* **By rank**: **Add a reward** ties a **Rank** to a **Role** and **Coins**. Tick **Taken back at the next closing** so the role is removed at the end of the following season, unless won again.
+* **First place role**: given to the season's winner and taken from the previous season's winner.
+* **XP milestones**: **Add a milestone** rewards every member who earns at least **From (XP)** during the season, on top of their rank reward. Each milestone reached counts.
+
+Coins need the [Economy](/en/dashboard/economie/economie/) module on; Kotbo warns you otherwise.
+
+:::caution[Some rewards can't be given]
+Kotbo flags ahead of time the roles Discord will refuse at closing: deleted role, managed by an integration or placed above the bot.
 :::
 
-The **All seasons** block lists the full history with, for each one, its number of participants.
+---
 
-If no season exists yet, Kotbo shows *No season created* and invites you to click **New season**.
+## Current season tab
+
+The **Seasons status** panel sums up the **Current season**, **Planned rewards**, **Announcement channel**, **Chaining**, **Next season** and **Last closed**. Advice shows up when needed: no reward planned, no Discord announcement, season ending soon.
+
+The leaderboard shows the XP earned since the season began: a member who joined midway starts from zero. With the [Prestige](/en/dashboard/xp/prestige/) module, a season RP leaderboard is added; RP, unlike XP, is reset at closing.
+
+* **Start now** launches an upcoming season without waiting for its date.
+* Ending the season stops it before its planned end date.
+
+At closing, the recap freezes the leaderboard, lists the **Rewards given** (or what failed: role refused by Discord, member left, Economy off, with **Retry**) and offers **Start the next season**.
+
+---
+
+## All seasons tab
+
+The history, with each season's status (**Upcoming**, **Active**, **Ended**) and, for ended seasons, their **Final leaderboard**.
+
+**Season comparison** puts the seasons side by side, from the figures frozen at each closing: **XP earned**, **Winner's XP** and **Ranked members**.
+
+Only a season that hasn't started can be deleted.
+
+---
+
+## On Discord
+
+Members follow the season with the commands described in [Clans, seasons and bets](/en/discord/communaute/clans/). [Triggers](/en/dashboard/communaute/declencheurs/) can react to a season opening or closing.
