@@ -152,18 +152,34 @@ Cette personnalisation appartient au membre, pas au serveur. Aucun réglage de l
 
 ## Onglet Importer
 
-Cet onglet charge une liste de membres avec leurs niveaux et leur XP, par exemple depuis un autre bot.
+Cet onglet reprend les niveaux d'un autre bot. Choisissez d'abord la **Source de l'import** :
+
+| Source | Ce qu'il faut |
+| --- | --- |
+| **MEE6** | Kotbo lit le classement MEE6 du serveur. Il doit être public : dans MEE6, **Levels → Paramètres**, activez « Rendre le classement public ». |
+| **DraftBot** | Kotbo lit le classement public de la page draftbot.gg/levels du serveur. |
+| **Lurkr** | Le classement web doit être **Public** dans le dashboard Lurkr. Les membres qui ont caché leur rang ne peuvent pas être repris. |
+| **Tatsu** | Une **Clé d'API Tatsu** : tapez `t!apikey` dans un salon où Tatsu répond, puis collez la clé. Elle ne sert que le temps de la lecture et n'est pas enregistrée. |
+| **IA (captures ou texte)** | Pour un bot qu'on ne peut pas lire directement (Arcane, Amari, ProBot, Koya…) : lancez sa commande de classement, faites une capture de chaque page ou copiez le texte, puis **Lire avec l'IA**. Le résultat arrive dans la zone JSON pour que vous le relisiez. Offre Plus. |
+| **Fichier JSON** | Un fichier `.json` glissé-déposé ou collé, au format ci-dessous. |
+
+Avec MEE6, DraftBot et Lurkr, chaque membre garde son niveau et son avancement dans le palier, recalculés sur votre courbe d'XP. Tatsu ne donne qu'un score, sans niveau : il devient l'XP du membre, et le niveau est calculé sur votre courbe. Dans tous les cas, seuls les membres encore sur le serveur sont repris.
 
 <div class="step-list">
-  <div class="step-item"><div><h3>Fournissez le JSON</h3><p>Glissez-déposez un fichier <code>.json</code> ou collez le contenu directement. Le format attendu est un tableau d'objets.</p></div></div>
-  <div class="step-item"><div><h3>Analysez sans écrire</h3><p>L'option <strong>Analyser sans écrire</strong> simule l'import : reconnus, membres sans XP à ce jour, changements de niveau, XP revue à la baisse. Rien n'est modifié.</p></div></div>
+  <div class="step-item"><div><h3>Choisissez la source</h3><p>Et fournissez ce qu'elle demande : rien pour MEE6, DraftBot et Lurkr, la clé pour Tatsu, les captures pour l'IA, le JSON pour un fichier.</p></div></div>
+  <div class="step-item"><div><h3>Analysez sans écrire</h3><p><strong>Analyser sans écrire</strong> simule l'import : reconnus, anciens membres ignorés, membres sans XP à ce jour, changements de niveau, XP revue à la baisse. Rien n'est modifié.</p></div></div>
   <div class="step-item"><div><h3>Lancez l'importation</h3><p>Les membres non trouvés sont ignorés et listés avec leur raison.</p></div></div>
 </div>
+
+:::caution[L'import écrase]
+L'importation **écrase** les niveaux existants des membres correspondants. Lancez toujours l'analyse d'abord.
+:::
+
+### Le format JSON
 
 Kotbo fait correspondre chaque entrée à un membre Discord en comparant, sans tenir compte de la casse, son **nom d'utilisateur**, son **nom d'affichage** ou son **tag classique**.
 
 Règles de conversion :
 
 * si seule l'**XP** est fournie, le niveau est déduit automatiquement ;
-* si seul le **niveau** est fourni, l'XP minimum de ce niveau est attribuée ;
-* l'importation **écrase** les niveaux existants des membres correspondants.
+* si seul le **niveau** est fourni, l'XP minimum de ce niveau est attribuée.

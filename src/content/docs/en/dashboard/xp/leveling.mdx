@@ -152,18 +152,34 @@ This customisation belongs to the member, not to the server. No setting on the *
 
 ## Import tab
 
-This tab loads a list of members with their levels and XP, for example from another bot.
+This tab brings over levels from another bot. First pick the **Import source**:
+
+| Source | What it needs |
+| --- | --- |
+| **MEE6** | Kotbo reads the server's MEE6 leaderboard. It must be public: in MEE6, **Levels → Settings**, turn on "Make my server's leaderboard public". |
+| **DraftBot** | Kotbo reads the server's public leaderboard on draftbot.gg/levels. |
+| **Lurkr** | The web leaderboard must be **Public** in the Lurkr dashboard. Members who hid their rank can't be imported. |
+| **Tatsu** | A **Tatsu API key**: type `t!apikey` in a channel where Tatsu replies, then paste the key. It is only used while reading and is not saved. |
+| **AI (screenshots or text)** | For a bot that can't be read directly (Arcane, Amari, ProBot, Koya…): run its leaderboard command, take a screenshot of each page or copy the text, then **Read with AI**. The result lands in the JSON box so you can review it. Plus plan. |
+| **JSON file** | A `.json` file dropped or pasted, in the format below. |
+
+With MEE6, DraftBot and Lurkr, each member keeps their level and their progress within it, recalculated on your XP curve. Tatsu only gives a score, with no level: it becomes the member's XP, and the level is computed on your curve. In every case, only members still on the server are imported.
 
 <div class="step-list">
-  <div class="step-item"><div><h3>Provide the JSON</h3><p>Drop a <code>.json</code> file or paste the contents directly. The expected format is an array of objects.</p></div></div>
-  <div class="step-item"><div><h3>Analyse without writing</h3><p>The <strong>Analyse without writing</strong> option simulates the import: matched members, members with no XP yet, level changes, XP revised downwards. Nothing is modified.</p></div></div>
-  <div class="step-item"><div><h3>Run the import</h3><p>Members that could not be found are skipped and listed with the reason.</p></div></div>
+  <div class="step-item"><div><h3>Pick the source</h3><p>And provide what it needs: nothing for MEE6, DraftBot and Lurkr, the key for Tatsu, screenshots for the AI, the JSON for a file.</p></div></div>
+  <div class="step-item"><div><h3>Analyse without writing</h3><p><strong>Analyse without writing</strong> simulates the import: matched, former members skipped, members with no XP yet, level changes, XP going down. Nothing is changed.</p></div></div>
+  <div class="step-item"><div><h3>Run the import</h3><p>Members that are not found are skipped and listed with the reason.</p></div></div>
 </div>
 
-Kotbo matches each entry to a Discord member by comparing, case-insensitively, their **username**, their **display name** or their **legacy tag**.
+:::caution[The import overwrites]
+The import **overwrites** the existing levels of matched members. Always run the analysis first.
+:::
+
+### The JSON format
+
+Kotbo matches each entry to a Discord member by comparing, case-insensitively, their **username**, **display name** or **legacy tag**.
 
 Conversion rules:
 
-* if only **XP** is provided, the level is derived automatically;
-* if only the **level** is provided, the minimum XP for that level is granted;
-* the import **overwrites** the existing levels of matched members.
+* if only the **XP** is provided, the level is derived automatically;
+* if only the **level** is provided, the minimum XP for that level is granted.
