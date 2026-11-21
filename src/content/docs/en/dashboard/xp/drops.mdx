@@ -21,7 +21,7 @@ The switch at the top of the block is the **master** one: turned off, no drop ap
 | Setting | Purpose |
 | --- | --- |
 | **Default channel** | Used by drop types that have no channel of their own. |
-| **Mentioned role** | Pinged on every drop. Leave empty to notify nobody. |
+| **Mentioned role** | Pinged on every drop. Leave empty to notify nobody. | **Only for jackpots** keeps it for jackpot drops.
 | **Lifetime (minutes)** | After that, an unclaimed drop closes. The *Open to everyone* mode has its own duration. |
 | **Message deletion** | *Never*, or 5 min, 30 min, 1h, 6h or 24h after the drop ends, to keep the channel clear. The winners recap goes with the message, and the setting only applies to drops posted afterwards. |
 
@@ -30,13 +30,29 @@ A drop stays claimable for **at least five minutes**: below that, only members a
 And two drops on the same server never land **less than five minutes apart**, all types combined. Without that safeguard, several resources set to the shortest interval would post as many messages within the same quarter of an hour, often in the same channel.
 :::
 
+### Jackpot drops
+
+Now and then, a drop pays far more than usual, with its own announcement. The **Style** slider sets the **Frequency** (*1 drop in 20*…) and the **Reward** (*x5*…). Jackpots apply to every type except items.
+
+### Who can claim
+
+Optional settings: without them, everyone can claim.
+
+* **Claims per member over 24 h**: once the limit is reached, the member waits before claiming more.
+* **Minimum membership (days)**: against people who join only to grab drops.
+* **Required role**: only its members can claim. If the role is deleted from the server, the rule is ignored (*Role deleted*) until another one is picked.
+
 ### Overview
 
 A table sums up the five configured types, with the **Type**, **Status**, **Channel**, **Frequency** and **Active modes** columns. A type is only *Active* when its own switch **and** the master one are on.
 
+The **Drop status** button tells which types are really running and when the next one falls (*Imminent*, *Waiting for activity*…). When the module is on but nothing falls any more, the **Drops are stopped** box offers **Restart drops**.
+
+If many drops expire without a winner (the channel is probably empty when they fall), Kotbo says so and offers **Wait for activity**.
+
 ### Recent drops
 
-The history shows what actually landed: **Date**, **Type**, **Mode**, **Amount** and **Claimed** (how many members clicked).
+The history shows what actually landed: **Date**, **Type**, **Mode**, **Amount** and **Claimed** (how many members clicked). It can be filtered by type, or on **Jackpot**; a row unfolds its winners, and **Load older drops** goes further back.
 
 ---
 
@@ -62,6 +78,9 @@ Kotbo warns you when a drop would have nobody to credit: *Clans are disabled*, *
 
 * **Channel for this type**: leave it on *Default channel* to follow the global setting.
 * **Average interval (minutes)**: the average gap between two drops. The exact time is drawn between **half** and **one and a half times** this interval, so nobody can camp the channel. The page shows how many drops per day that represents.
+* **Only when the channel is active**: with **Wait for activity**, the drop waits until its channel has received a number of **Member messages** **Over the last (minutes)**. If the channel stays quiet, it falls anyway, at most one interval late.
+
+The **Preview**, next to the form, shows the announcement as members will see it, for each mode and as the **Jackpot version**, with what the type hands out at the current settings.
 
 ### Claim modes
 

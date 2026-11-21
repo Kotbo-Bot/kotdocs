@@ -21,7 +21,7 @@ L'interrupteur en haut du bloc est le **maître** : éteint, aucun drop n'appara
 | Réglage | Rôle |
 | --- | --- |
 | **Salon par défaut** | Utilisé par les types de drop qui n'ont pas de salon à eux. |
-| **Rôle mentionné** | Mentionné à chaque apparition. Laissez vide pour ne prévenir personne. |
+| **Rôle mentionné** | Mentionné à chaque apparition. Laissez vide pour ne prévenir personne. **Seulement pour les jackpots** le réserve aux drops jackpot. |
 | **Durée de vie (minutes)** | Au-delà, un drop que personne n'a ramassé se ferme. Le mode *Ouvert à tous* a sa propre durée. |
 | **Suppression du message** | *Jamais*, ou 5 min, 30 min, 1 h, 6 h ou 24 h après la fin du drop, pour ne pas encombrer le salon. Le récapitulatif des gagnants disparaît avec le message, et le réglage ne s'applique qu'aux drops publiés ensuite. |
 
@@ -30,13 +30,29 @@ Un drop reste ramassable **cinq minutes minimum** : en dessous, seuls les membre
 Et deux drops d'un même serveur ne tombent **jamais à moins de cinq minutes d'écart**, tous types confondus. Sans ce garde-fou, plusieurs ressources réglées au plus court posteraient autant de messages dans le même quart d'heure, souvent dans le même salon.
 :::
 
+### Drops jackpot
+
+De temps en temps, un drop rapporte bien plus que d'habitude, avec une annonce à part. Le curseur **Style** règle la **Fréquence** (*1 drop sur 20*…) et le **Gain** (*x5*…). Le jackpot s'applique à tous les types, sauf les objets.
+
+### Qui peut ramasser
+
+Réglages facultatifs : sans eux, tout le monde ramasse.
+
+* **Ramassages par membre sur 24 h** : une fois la limite atteinte, le membre attend pour en ramasser d'autres.
+* **Ancienneté minimale (jours)** : contre ceux qui rejoignent juste pour profiter des drops.
+* **Rôle requis** : seuls ses membres ramassent. Si le rôle est supprimé du serveur, la règle est ignorée (*Rôle supprimé*) jusqu'au choix d'un autre.
+
 ### Vue d'ensemble
 
 Un tableau récapitule les cinq types configurés, avec les colonnes **Type**, **État**, **Salon**, **Fréquence** et **Modes actifs**. Un type n'est *Actif* que si son propre interrupteur **et** le maître sont allumés.
 
+Le bouton **État des drops** dit quels types tournent vraiment et quand tombe le prochain (*Imminent*, *En attente d'activité*…). Quand le module est actif mais que plus rien ne tombe, l'encadré **Les drops sont arrêtés** propose **Relancer les drops**.
+
+Si beaucoup de drops expirent sans gagnant (le salon est sans doute vide quand ils tombent), Kotbo le signale et propose **Attendre l'activité**.
+
 ### Derniers drops
 
-L'historique montre ce qui est réellement tombé : **Date**, **Type**, **Mode**, **Montant** et **Ramassé** (le nombre de membres qui ont cliqué).
+L'historique montre ce qui est réellement tombé : **Date**, **Type**, **Mode**, **Montant** et **Ramassé** (le nombre de membres qui ont cliqué). Il se filtre par type, ou sur les **Jackpot** ; une ligne se déplie sur ses gagnants, et **Charger les drops plus anciens** remonte plus loin.
 
 ---
 
@@ -62,6 +78,9 @@ Kotbo prévient quand un drop n'aurait personne à créditer : *Les clans sont d
 
 * **Salon de ce type** : laissez sur *Salon par défaut* pour suivre le réglage global.
 * **Intervalle moyen (minutes)** : l'écart moyen entre deux drops. L'heure exacte est tirée entre la **moitié** et **une fois et demie** cet intervalle, pour que personne ne puisse camper le salon. La page affiche le nombre de drops par jour que cela représente.
+* **Seulement si le salon est actif** : avec **Attendre de l'activité**, le drop attend que son salon ait reçu un certain nombre de **Messages de membres** **Sur les dernières (minutes)**. Si le salon reste calme, il part quand même, avec au plus un intervalle de retard.
+
+L'**Aperçu**, à côté du formulaire, montre l'annonce telle que les membres la verront, pour chaque mode et en **Version jackpot**, avec ce que le type distribue aux réglages en cours.
 
 ### Modes de ramassage
 
@@ -85,7 +104,7 @@ Chaque mode a sa **récompense minimale** et sa **récompense maximale** : une c
 
 Un drop d'objet ne tire pas au hasard dans tout le catalogue : vous listez explicitement ce qui a le droit de tomber.
 
-* Jusqu'à **25 objets** dans la liste. Liste vide, aucun drop d'objet n'est publié.
+* Jusqu'à **25 objets** dans la liste **Objets pouvant tomber**, triés par rareté et cherchables. Liste vide, aucun drop d'objet n'est publié.
 * Chaque objet porte un **taux** en pourcentage, et la page exige que la somme fasse exactement 100 %. Le bouton **Répartir également** partage les cent points à parts égales.
 * Les montants de cet onglet sont un **nombre d'exemplaires** (de 1 à 10), pas des points.
 
