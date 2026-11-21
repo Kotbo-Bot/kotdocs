@@ -25,6 +25,9 @@ If a player posts the wrong number, plain text, or tries to double-post:
 * The bot may add a warning reaction.
 * The current score is either kept or reset depending on your settings (if reset, players have to start again from `1`).
 
+### Following the game
+Kotbo keeps a status message in the channel: the record, progress towards it, the last counter and the time of the last number. `/counting-stats` (`/stats-compteur` on French-language clients) shows the game's statistics, including each player's tally.
+
 ---
 
 ## 2. One Word Story
@@ -104,3 +107,9 @@ Only emojis are allowed in the channel.
 ### Writing rules
 1. Any message containing anything but emojis is deleted.
 2. Server emojis, skin tones, flags and keycap digits are all accepted.
+
+---
+
+## 8. Anonymous confessions
+
+`/confession send` (`/confession envoyer` on French-language clients) posts a confession without your name, numbered, in the confessions channel. The staff can't see the author; only an administrator can reveal them (`/confession reveal`) or remove a confession (`/confession delete`), and each action is traced in the staff log. A delay between two confessions may apply, and the server's banned words are still filtered.

@@ -25,6 +25,9 @@ Si un joueur envoie un mauvais nombre, du texte, ou tente de double-poster :
 * Le bot peut envoyer une réaction d'avertissement.
 * Le score actuel est conservé ou réinitialisé selon les paramètres (si réinitialisé, les joueurs doivent recommencer depuis `1`).
 
+### Suivre la partie
+Kotbo tient dans le salon un message d'état : le record, la progression vers ce record, le dernier compteur et l'heure du dernier nombre. `/stats-compteur` affiche les statistiques du jeu, dont le bilan de chaque joueur.
+
 ---
 
 ## 2. One Word Story (Une histoire, un mot)
@@ -104,3 +107,9 @@ Seuls les emojis sont admis dans le salon.
 ### Règles d'écriture
 1. Tout message contenant autre chose que des emojis est supprimé.
 2. Les emojis du serveur, les teintes de peau, les drapeaux et les touches numérotées sont acceptés sans réserve.
+
+---
+
+## 8. Confessions anonymes
+
+`/confession envoyer` publie une confession sans votre nom, numérotée, dans le salon des confessions. Le staff ne voit pas l'auteur ; seul un administrateur peut le révéler (`/confession reveler`) ou retirer une confession (`/confession supprimer`), et chaque action est tracée dans le journal staff. Un délai entre deux confessions peut s'appliquer, et les mots interdits du serveur restent filtrés.
