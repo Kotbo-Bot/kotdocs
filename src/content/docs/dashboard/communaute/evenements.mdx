@@ -20,6 +20,7 @@ Trois indicateurs ouvrent la page : **Total événements**, **En cours** et **Pa
 | --- | --- | --- |
 | **Quiz** | Questions & Réponses | Questions à choix multiples ou réponses libres, pour tester les connaissances de votre communauté. |
 | **CTF** | Hacking & Sécurité | Défis de sécurité informatique avec flags cachés, classement en temps réel et rôles en récompense. |
+| **Tournoi** | Arbre et classement | Arbre à élimination directe ou double, ou poules suivies d'une phase finale. Inscriptions en solo ou par équipes, scores en manches, page publique de suivi et export en image. |
 | **Personnalisé** | Inscription & Annonce | Un événement Discord, une annonce soignée et une inscription par formulaire ou par bouton. |
 
 Un événement passe par les statuts **Brouillon**, **Publié**, **En cours**, **Terminé** et **Annulé**.
@@ -69,6 +70,36 @@ Le bouton **Ajouter un défi** crée une entrée avec :
 
 ---
 
+## Tournoi
+
+### Format du tournoi
+
+* **Format** :
+  * **Élimination directe** : une défaite élimine. Les meilleures têtes de série sont exemptées du 1er tour si le nombre d'inscrits l'impose.
+  * **Double élimination** : une défaite envoie dans l'arbre des perdants, deux défaites éliminent. Grande finale entre les vainqueurs des deux arbres.
+  * **Poules** : chacun affronte tous les membres de sa poule, puis les meilleurs passent en phase finale. Réglez le **Nombre de poules** et les **Qualifiés par poule** (`0` : le classement des poules suffit).
+* **Manches par match** (BO3 : le premier à 2 manches gagne) et **Manches en finale**, pour une finale plus longue.
+* **Détail des manches** : saisir le score de chaque manche (11-7, 9-11…) plutôt que les seules manches gagnées.
+* **Match pour la 3e place** : sinon, les perdants des demi-finales sont 3e ex aequo.
+* **Joueurs par équipe** : `1` pour du chacun pour soi. Au-delà, le capitaine inscrit son équipe et choisit ses coéquipiers sur Discord.
+* **Places** : les inscriptions se ferment une fois ce nombre atteint. `0` : pas de limite.
+
+### Lancer et suivre
+
+**Gérer le tournoi** ouvre ses onglets **Inscrits**, **Tableau**, **Classement** et **Têtes de série**.
+
+1. Quand les inscriptions sont closes, **Générer l'arbre** (dans l'ordre des inscrits) ou **Tirage aléatoire**. Plus personne ne peut s'inscrire ensuite. Il faut au moins 2 inscrits.
+2. Dans **Tableau**, cliquez sur un match pour saisir son score : le vainqueur avance tout seul. Un score partiel affiche le match comme en cours.
+3. **Têtes de série** permet d'échanger deux têtes de série pour corriger le tirage. Si des matchs sont déjà joués, les scores concernés deviennent caducs.
+
+Le menu du tournoi propose aussi **Refaire le tirage** (nouvelles têtes de série au hasard, scores effacés) et **Rouvrir les inscriptions** (l'arbre et les scores sont effacés, les inscrits restent).
+
+### Partager
+
+**Page publique** et **Copier le lien public** mènent à une page de suivi ouverte à tous : arbre, scores et classement en direct, mis à jour toutes les 20 secondes. **Exporter en image** produit l'arbre en PNG, à poster sur Discord.
+
+---
+
 ## Piloter un événement en direct
 
 Le bouton **Piloter** ouvre la salle de contrôle.
@@ -80,6 +111,8 @@ Le bouton **Piloter** ouvre la salle de contrôle.
 * L'onglet **Graphique** montre les réponses arriver en direct.
 * L'onglet **Participants** classe les joueurs par **Score** et affiche leur **dernière réponse**.
 * **Terminer quiz** clôt l'événement.
+
+Le quiz se joue aussi sur le web. **Page joueurs** ouvre la page où chacun répond après s'être connecté avec Discord : ses points comptent dans le même classement que sur Discord, et une réponse reste modifiable tant que la question est ouverte. **Écran de présentation** affiche la question en grand, avec la façon de rejoindre depuis un téléphone, pour une diffusion en vocal ou sur un écran partagé.
 
 ### Pour un CTF
 

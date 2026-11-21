@@ -20,6 +20,7 @@ Three indicators open the page: **Total Events**, **Ongoing** and **Participatio
 | --- | --- | --- |
 | **Quiz** | Questions & Answers | Multiple-choice or free-text questions, to test your community's knowledge. |
 | **CTF** | Hacking & Security | Computer-security challenges with hidden flags, a real-time leaderboard and roles as rewards. |
+| **Tournament** | Bracket and standings | Single or double elimination bracket, or groups followed by playoffs. Solo or team sign-ups, scores in sets, a public tracking page and image export. |
 | **Custom** | Registration & Announcement | A Discord event, a polished announcement and sign-ups by form or by button. |
 
 An event moves through the **Draft**, **Published**, **Ongoing**, **Completed** and **Cancelled** statuses.
@@ -69,6 +70,36 @@ The **Add a challenge** button creates an entry with:
 
 ---
 
+## Tournament
+
+### Tournament format
+
+* **Format**:
+  * **Single elimination**: one loss eliminates. Top seeds get a first-round bye when the number of entrants requires it.
+  * **Double elimination**: one loss sends a player to the losers bracket; two losses eliminate. Grand final between both bracket winners.
+  * **Groups**: everyone plays every member of their group, then the best move on to the playoffs. Set the **Number of groups** and **Qualifiers per group** (`0`: group standings are final).
+* **Sets per match** (BO3: first to 2 sets wins) and **Sets in the final**, for a longer final.
+* **Set details**: enter each set's score (11-7, 9-11…) instead of just sets won.
+* **Third-place match**: otherwise semi-final losers share third place.
+* **Players per team**: `1` for everyone for themselves. Above that, the captain signs up the team and picks teammates on Discord.
+* **Spots**: sign-ups close once this number is reached. `0`: no limit.
+
+### Starting and following
+
+**Manage tournament** opens its **Entrants**, **Bracket**, **Standings** and **Seeds** tabs.
+
+1. Once sign-ups are closed, **Generate bracket** (in sign-up order) or **Random draw**. Nobody can sign up after that. At least 2 entrants are needed.
+2. In **Bracket**, click a match to enter its score: the winner moves on by itself. A partial score shows the match as ongoing.
+3. **Seeds** lets you swap two seeds to fix the draw. If matches were already played, the affected scores no longer count.
+
+The tournament menu also offers **Redraw** (new random seeds, scores erased) and **Reopen sign-ups** (bracket and scores erased, entrants kept).
+
+### Sharing
+
+**Public page** and **Copy public link** lead to a tracking page open to everyone: bracket, scores and standings live, refreshed every 20 seconds. **Export as image** renders the bracket as a PNG, ready to post on Discord.
+
+---
+
 ## Steering an event live
 
 The **Control** button opens the control room.
@@ -80,6 +111,8 @@ The **Control** button opens the control room.
 * The **Chart** tab shows answers arriving live.
 * The **Participants** tab ranks players by **Score** and shows their **last answer**.
 * **Finish Quiz** closes the event.
+
+The quiz can also be played on the web. **Player page** opens the page where everyone answers after logging in with Discord: their points count in the same ranking as on Discord, and an answer can be changed while the question is open. **Presentation screen** shows the question in large type, with how to join from a phone, for a voice stream or a shared screen.
 
 ### For a CTF
 
