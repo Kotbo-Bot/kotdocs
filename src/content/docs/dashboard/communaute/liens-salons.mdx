@@ -45,6 +45,10 @@ Chaque salon du pont choisit son rôle :
 *   **Webhook (miroir)** *(Recommandé)* : Kotbo utilise un webhook Discord pour envoyer le message avec le pseudo et la photo de profil réels de l'auteur original. Le rendu est propre et naturel.
 *   **Embed** : Le message est encapsulé dans un encart stylisé envoyé au nom de Kotbo, mentionnant le serveur et l'auteur d'origine.
 
+### Le trafic du pont
+
+Chaque carte de pont affiche son activité sur les 30 derniers jours : messages envoyés et copies livrées, avec les échecs. Au survol d'un salon, le détail : ce qu'il a envoyé, reçu, et ce qui a échoué.
+
 ### Diagnostic des permissions
 
 Une pastille **Permissions** signale ce qui bride le relais, salon par salon :
@@ -88,7 +92,7 @@ Si vous possédez les droits d'administration sur les deux serveurs, vous pouvez
 2. Cliquez sur **Créer un lien**.
 3. Sélectionnez le salon source local.
 4. Dans **Serveur cible**, sélectionnez le serveur distant (celui-ci apparaît dans la liste si vous y êtes administrateur et que le bot y est présent).
-5. Sélectionnez le salon cible dans la liste.
+5. Sélectionnez le salon cible dans la liste, ou **+ Créer le salon pour moi** : Kotbo crée le salon sur le serveur cible, marqué *nouveau* dans la liste.
 6. Ajustez vos options et cliquez sur **Créer le lien**.
 
 ### Méthode B : Liaison par invitation (si le serveur cible appartient à un autre propriétaire)

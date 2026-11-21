@@ -114,9 +114,10 @@ Un membre qui quitte puis revient retrouve les rôles qu'il avait au départ.
 * **Rôles persistants** : les rôles sont mémorisés au départ et rendus à l'arrivée, après le captcha s'il est actif.
 * **Rôles concernés** : *Tous, sauf ceux sélectionnés* ou *Seulement ceux sélectionnés*. La liste de rôles qui suit change de sens selon ce choix.
 * **Durée de conservation (jours)** : de 1 à 365. Au-delà, le membre revient sans ses rôles.
+* **Rendre aussi les rôles staff et admin** : un membre du staff qui revient retrouve ses rôles à permissions (donc son accès à la configuration) et son entrée dans l'annuaire du staff. Ignoré pour un membre suspendu ou blacklisté.
 
 :::caution[Ce qui n'est jamais rendu]
-Les rôles de modération ou d'administration, ceux gérés par une intégration, ceux placés au-dessus du bot, et ceux du captcha ou de la vérification. Un retour ne peut donc pas servir à récupérer des pouvoirs retirés.
+Sans l'option ci-dessus, les rôles de modération ou d'administration. Dans tous les cas, ceux gérés par une intégration, ceux placés au-dessus du bot, et ceux du captcha ou de la vérification. Un retour ne peut donc pas servir à récupérer des pouvoirs retirés.
 
 En mode *Seulement ceux sélectionnés* sans aucun rôle coché, personne ne retrouvera de rôle à son retour : Kotbo l'affiche en avertissement.
 :::

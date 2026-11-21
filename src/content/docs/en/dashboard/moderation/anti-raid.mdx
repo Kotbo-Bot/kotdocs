@@ -114,9 +114,10 @@ A member who leaves and comes back gets the roles they had when they left.
 * **Persistent roles**: roles are remembered on departure and given back on arrival, after the captcha if it is enabled.
 * **Roles concerned**: *All but the selected ones* or *Only the selected ones*. The role list that follows flips meaning with that choice.
 * **Retention (days)**: 1 to 365. Past that, the member comes back without their roles.
+* **Also restore staff and admin roles**: a returning staff member gets back their permission roles (and so their access to the configuration) and their staff directory entry. Skipped for a suspended or blacklisted member.
 
 :::caution[What is never given back]
-Moderation and administration roles, roles managed by an integration, roles placed above the bot, and the captcha or verification roles. Leaving and returning is therefore no way to recover powers that were taken away.
+Without the option above, moderation and administration roles. In every case, roles managed by an integration, roles placed above the bot, and the captcha or verification roles. Leaving and returning is therefore no way to recover powers that were taken away.
 
 In *Only the selected ones* mode with no role ticked, nobody gets any role back on return: Kotbo shows a warning.
 :::

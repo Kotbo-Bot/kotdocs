@@ -45,6 +45,10 @@ Every channel in the bridge picks its role:
 *   **As the author (mirror)** *(recommended)*: Kotbo uses a Discord webhook to send the message with the original author's real username and avatar. The result looks clean and natural.
 *   **Embed**: the message is wrapped in a styled embed sent under Kotbo's name, naming the original server and author.
 
+### Bridge traffic
+
+Each bridge card shows its activity over the last 30 days: messages sent and copies delivered, with failures. Hovering a channel gives the detail: what it sent, received, and what failed.
+
 ### Permission diagnostics
 
 A **Permissions** badge flags whatever is holding the relay back, channel by channel:
@@ -88,7 +92,7 @@ If you have administrator rights on both servers, you can establish the link str
 2. Click **Create a link**.
 3. Select the local source channel.
 4. Under **Target server**, select the remote server (it appears in the list if you are an administrator there and the bot is present).
-5. Select the target channel from the list.
+5. Select the target channel from the list, or **+ Create the channel for me**: Kotbo creates the channel on the target server, marked *new* in the list.
 6. Adjust your options and click **Create the link**.
 
 ### Method B: linking by invitation (if the target server belongs to someone else)
