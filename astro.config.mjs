@@ -147,6 +147,7 @@ export default defineConfig({
           ]),
           group('Intégrations', 'Integrations', [
             page('Connecter une IA', 'Connect an AI', 'aide/mcp'),
+            page('API AegisAI', 'AegisAI API', 'aide/aegisai-api'),
             page('Webhooks sortants', 'Outgoing webhooks', 'dashboard/configuration/webhooks'),
             page('Liens de salons', 'Channel links', 'dashboard/communaute/liens-salons'),
             page('Serveur du staff', 'Staff server', 'dashboard/cross-serveur/serveurs-staff'),
