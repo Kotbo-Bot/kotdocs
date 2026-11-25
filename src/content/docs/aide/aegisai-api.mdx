@@ -17,6 +17,13 @@ Si vous utilisez déjà le bot Kotbo sur votre serveur, aucune clé n'est néces
 L'API AegisAI est actuellement en phase **Bêta gratuite** : aucune carte bancaire n'est demandée et un plafond par défaut de **60 requêtes par minute** s'applique par clé. L'onglet **Facturation** du tableau de bord prépare les futures offres.
 :::
 
+## Accès rapides AegisAI
+
+* [Site et démo en direct ↗](https://aegisai.kotbo.fr/)
+* [Espace membre (connexion Discord) ↗](https://aegisai.kotbo.fr/portal)
+* [Tableau de bord (clés, organisations, statistiques) ↗](https://aegisai.kotbo.fr/dashboard)
+* [Statistiques publiques ↗](https://aegisai.kotbo.fr/stats)
+
 ---
 
 ## Obtenir une clé API
@@ -163,3 +170,24 @@ Chaque clé dispose d'une limite par minute calculée sur une **fenêtre glissan
     ```
   </TabItem>
 </Tabs>
+
+---
+
+## Prompt prêt pour un agent de code
+
+Copiez ces instructions dans votre assistant de code pour intégrer l'API avec les bons en-têtes, limites et cas d'erreur :
+
+```text
+Intègre l'API de modération AegisAI by Kotbo (https://aegisai.kotbo.fr) dans mon bot ou application.
+
+Spécifications techniques à respecter :
+1. Authentification : en-tête HTTP "Authorization: Aegis " + AEGIS_API_TOKEN (lu depuis les variables d'environnement, jamais en dur).
+2. Endpoints POST (Content-Type: application/json, corps {"text": string, "save"?: boolean}) :
+   - POST https://aegisai.kotbo.fr/analyze -> {"toxicity": number, "is_toxic": boolean} (seuil par défaut : > 0.85)
+   - POST https://aegisai.kotbo.fr/emotion -> {"label": string, "score": number}
+   - POST https://aegisai.kotbo.fr/scan -> {"toxic": {"toxicity": number, "is_toxic": boolean}, "emotion": {"label": string, "score": number}}
+   - GET https://aegisai.kotbo.fr/health (sans authentification) -> {"status": "ok", "engine": string, "version": string, "uptime_secs": number}
+3. Contraintes sur le texte : chaîne non vide (400 sinon), maximum 4 000 caractères (413 si dépassé). Nettoyer ou tronquer avant l'envoi si nécessaire.
+4. Confidentialité : laisser "save": false (ou omettre le champ) par défaut ; n'envoyer "save": true que si l'utilisateur a explicitement activé la contribution au triage/jeu de données (rétention 30 jours).
+5. Gestion des erreurs : gérer 401/403 (clé invalide ou révoquée), 413 (texte > 4 000 caractères), 429 (rate limit dépassé sur fenêtre de 60 s, 60 req/min par défaut) et 500/503 (service indisponible, avec repli non bloquant côté modération).
+```

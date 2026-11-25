@@ -17,6 +17,13 @@ If you already run Kotbo on your server, you do not need an API key: enable **Pr
 The AegisAI API is currently in **Free Beta**: no credit card is required, and each key defaults to **60 requests per minute**. The **Billing** tab in the developer dashboard lays the groundwork for future paid tiers.
 :::
 
+## Quick AegisAI links
+
+* [Website & live demo ↗](https://aegisai.kotbo.fr/)
+* [Member portal (Discord login) ↗](https://aegisai.kotbo.fr/portal)
+* [Developer dashboard (keys, organisations, stats) ↗](https://aegisai.kotbo.fr/dashboard)
+* [Public statistics ↗](https://aegisai.kotbo.fr/stats)
+
 ---
 
 ## Get an API key
@@ -163,3 +170,24 @@ Each key has a per-minute quota enforced over a **60-second sliding window** (`6
     ```
   </TabItem>
 </Tabs>
+
+---
+
+## Ready-to-use prompt for a coding agent
+
+Copy these instructions into your coding assistant to integrate the API with the proper headers, limits and error handling:
+
+```text
+Integrate the AegisAI by Kotbo moderation API (https://aegisai.kotbo.fr) into my bot or application.
+
+Technical requirements:
+1. Authentication: HTTP header "Authorization: Aegis " + AEGIS_API_TOKEN (loaded from environment variables, never hardcoded).
+2. POST endpoints (Content-Type: application/json, body {"text": string, "save"?: boolean}):
+   - POST https://aegisai.kotbo.fr/analyze -> {"toxicity": number, "is_toxic": boolean} (default threshold: > 0.85)
+   - POST https://aegisai.kotbo.fr/emotion -> {"label": string, "score": number}
+   - POST https://aegisai.kotbo.fr/scan -> {"toxic": {"toxicity": number, "is_toxic": boolean}, "emotion": {"label": string, "score": number}}
+   - GET https://aegisai.kotbo.fr/health (unauthenticated) -> {"status": "ok", "engine": string, "version": string, "uptime_secs": number}
+3. Text constraints: non-empty string (HTTP 400 otherwise), maximum 4,000 characters (HTTP 413 if exceeded). Trim or truncate beforehand if needed.
+4. Privacy: keep "save": false (or omit it) by default; only send "save": true if the user explicitly opted into 30-day triage retention.
+5. Error handling: handle 401/403 (invalid or revoked key), 413 (text > 4,000 characters), 429 (60-second sliding-window rate limit exceeded, 60 req/min default), and 500/503 (service unavailable, fail open so moderation does not block).
+```
