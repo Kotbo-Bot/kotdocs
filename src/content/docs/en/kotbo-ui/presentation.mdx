@@ -25,18 +25,20 @@ sidebar:
 
 ## Setup with Bun
 
-Reference the GitHub repository in the host `package.json` and install with **Bun**:
+Install the `@kotbo/ui` npm package with **Bun**:
+
+```bash
+bun add @kotbo/ui
+```
+
+Or declare it in the host `package.json` and run `bun install`:
 
 ```json
 {
   "dependencies": {
-    "@kotbo/ui": "github:Kotbo-Bot/kotbo-ui"
+    "@kotbo/ui": "^0.1.0"
   }
 }
-```
-
-```bash
-bun install
 ```
 
 In your application entry point (`main.ts`), import `@kotbo/ui/styles` before your local stylesheet:

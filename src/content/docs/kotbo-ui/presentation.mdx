@@ -25,18 +25,20 @@ sidebar:
 
 ## Installation avec Bun
 
-Déclarez la dépendance GitHub dans le `package.json` du projet hôte et installez avec **Bun** :
+Installez le paquet npm `@kotbo/ui` avec **Bun** :
+
+```bash
+bun add @kotbo/ui
+```
+
+Ou déclarez-le dans le `package.json` du projet hôte puis exécutez `bun install` :
 
 ```json
 {
   "dependencies": {
-    "@kotbo/ui": "github:Kotbo-Bot/kotbo-ui"
+    "@kotbo/ui": "^0.1.0"
   }
 }
-```
-
-```bash
-bun install
 ```
 
 Dans le point d'entrée de l'application (`main.ts`), chargez `@kotbo/ui/styles` avant votre feuille CSS applicative :
