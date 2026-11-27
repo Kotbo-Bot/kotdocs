@@ -1,49 +1,48 @@
-@import '@fontsource-variable/manrope';
-@import '@fontsource-variable/newsreader';
-@import '@fontsource/caveat';
+@import '@fontsource/sn-pro/latin-400.css';
+@import '@fontsource/sn-pro/latin-500.css';
+@import '@fontsource/sn-pro/latin-600.css';
+@import '@fontsource/sn-pro/latin-700.css';
+@import '@fontsource/sn-pro/latin-800.css';
+@import '@kotbo/ui/styles';
 
+/* Starlight branché sur les jetons Kotbo UI : un seul bloc, les jetons basculent avec data-theme. */
 :root {
-  --sl-font: 'Manrope Variable', sans-serif;
+  --sl-font: var(--font-body);
   --sl-font-mono: ui-monospace, 'SFMono-Regular', Consolas, monospace;
-  --sl-color-accent-low: #eef2ff; /* Pastel indigo/blue */
-  --sl-color-accent: #4f46e5; /* Royal indigo */
-  --sl-color-accent-high: #312e81;
-  --sl-color-white: #0f172a; /* Slate 900 for soft text */
-  --sl-color-gray-1: #334155; /* Slate 700 */
-  --sl-color-gray-2: #475569; /* Slate 600 */
-  --sl-color-gray-3: #64748b; /* Slate 500 */
-  --sl-color-gray-4: #94a3b8; /* Slate 400 */
-  --sl-color-gray-5: #cbd5e1; /* Slate 300 (borders) */
-  --sl-color-gray-6: #f8fafc; /* Slate 50 (panels) */
-  --sl-color-black: #ffffff; /* Pure white whiteboard canvas */
-  --kotbo-cyan: #1ebdce;
-  --kotbo-navy: #071b2e;
-  --dotted-color: rgba(148, 163, 184, 0.09); /* Subtle slate dots */
-}
 
-:root[data-theme='dark'] {
-  --sl-color-accent-low: rgba(96, 165, 250, 0.12); /* Pastel blue low */
-  --sl-color-accent: #60a5fa; /* Pastel blue accent */
-  --sl-color-accent-high: #93c5fd;
-  --sl-color-white: #f8fafc; /* Slate 50 text */
-  --sl-color-gray-1: #cbd5e1; /* Slate 300 */
-  --sl-color-gray-2: #94a3b8; /* Slate 400 */
-  --sl-color-gray-3: #64748b; /* Slate 500 */
-  --sl-color-gray-4: #475569; /* Slate 600 */
-  --sl-color-gray-5: #334155; /* Slate 700 (borders) */
-  --sl-color-gray-6: #1e293b; /* Slate 800 (panels) */
-  --sl-color-black: #0f172a; /* Slate 900 background */
-  --dotted-color: rgba(148, 163, 184, 0.06); /* Subtle slate dots in dark mode */
-}
+  --sl-color-accent-low: var(--primary-container-color);
+  --sl-color-accent: var(--primary-color);
+  --sl-color-accent-high: var(--on-primary-container-color);
+  --sl-color-text-accent: var(--success-color);
+  --sl-color-text-invert: var(--surface-container-lowest);
 
-body::before {
-  content: '';
-  position: fixed;
-  inset: 0;
-  z-index: -1;
-  pointer-events: none;
-  background-image: 
-    radial-gradient(circle at 78% 2%, color-mix(in srgb, var(--kotbo-cyan) 7%, transparent), transparent 29%),
-    radial-gradient(var(--dotted-color) 1.2px, transparent 1.2px);
-  background-size: 100% 100%, 24px 24px;
+  --sl-color-white: var(--on-background);
+  --sl-color-gray-1: var(--on-surface);
+  --sl-color-gray-2: var(--on-surface-variant);
+  --sl-color-gray-3: var(--on-surface-variant);
+  --sl-color-gray-4: var(--outline);
+  --sl-color-gray-5: var(--surface-container-high);
+  --sl-color-gray-6: var(--surface-container);
+  --sl-color-gray-7: var(--surface-container-low);
+  --sl-color-black: var(--background);
+
+  --sl-color-bg-nav: var(--background);
+  --sl-color-bg-sidebar: var(--surface-container-low);
+  --sl-color-bg-inline-code: var(--surface-container);
+  --sl-color-hairline-light: var(--outline-variant);
+  --sl-color-hairline: var(--outline-variant);
+
+  /* Encadrés : note (bleu), astuce (violet chez Starlight), attention, danger. */
+  --sl-color-blue: var(--series-1);
+  --sl-color-purple: var(--primary-color);
+  --sl-color-purple-low: var(--primary-container-color);
+  --sl-color-purple-high: var(--on-primary-container-color);
+  --sl-color-orange: var(--warning-color);
+  --sl-color-red: var(--error-color);
+  --sl-color-blue-low: color-mix(in srgb, var(--series-1) 12%, var(--background));
+  --sl-color-blue-high: var(--on-background);
+  --sl-color-orange-low: color-mix(in srgb, var(--warning-color) 12%, var(--background));
+  --sl-color-orange-high: var(--on-background);
+  --sl-color-red-low: color-mix(in srgb, var(--error-color) 12%, var(--background));
+  --sl-color-red-high: var(--on-background);
 }

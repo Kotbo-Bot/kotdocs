@@ -14,7 +14,7 @@ The dashboard source used as the product reference is located at `../Kotbo/apps/
 - `src/components/`: composants Astro réutilisables pour les pages de documentation (ex: `DashboardScreenshot.astro`, `DiscordCommand.astro`). `LanguageSelect.astro` surcharge le sélecteur de langue de Starlight (bouton FR/EN + menu déroulant).
 - `src/styles/`: feuilles de style modulaires :
   - `css.rooting.css` : Feuille de style principale important les autres fichiers.
-  - `variables.css` : Variables de thèmes, couleurs, polices.
+  - `variables.css` : branche les variables Starlight sur les jetons `@kotbo/ui` (thèmes Sand / Night, police SN Pro). Aucune couleur en dur : passer par ces jetons.
   - `layout.css` / `typography.css` : Surcharges globales.
   - `homepage.css` / `components.css` : Styles de la page d'accueil et des guides.
   - `animations.css` : Animations de transition.
