@@ -14,7 +14,12 @@ const page = (label, en, slug) => {
   return { label, translations: { en }, slug, ...(plan && { badge: PLAN_BADGES[plan] }) };
 };
 // Un groupe : mêmes libellés, puis ses entrées.
-const group = (label, en, items) => ({ label, translations: { en }, items });
+// Les sous-groupes sont repliés : Starlight n'ouvre que celui de la page courante.
+const group = (label, en, items) => ({
+  label,
+  translations: { en },
+  items: items.map((item) => (item.items ? { ...item, collapsed: true } : item)),
+});
 
 export default defineConfig({
   // Servi sous kotbo.fr/docs : le build est copié dans celui de la landing.

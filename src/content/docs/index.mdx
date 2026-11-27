@@ -14,6 +14,7 @@ hero:
       icon: open-book
 ---
 
+import { CardGrid, LinkCard } from '@astrojs/starlight/components';
 import DashboardScreenshot from '../../components/DashboardScreenshot.astro';
 
 <div class="hero-preview">
@@ -48,19 +49,17 @@ import DashboardScreenshot from '../../components/DashboardScreenshot.astro';
   </a>
 </div>
 
-:::tip[La doc officielle]
-Bienvenue sur l'espace de configuration de Kotbo. Ce guide est entièrement illustré à partir de captures d'écran de votre dashboard.
-:::
-
-<section class="home-intro" style="margin-top: 5rem;">
-  <span class="eyebrow">Simplicité & Contrôle</span>
-  <h2>Une documentation pensée pour le staff.</h2>
+<section class="home-tasks">
+  <div class="home-intro">
+    <span class="eyebrow">Par besoin</span>
+    <h2>Que voulez-vous faire ?</h2>
+  </div>
+  <CardGrid>
+    <LinkCard title="Protéger mon serveur" description="Anti-raid, filtres et sanctions." href="/dashboard/moderation/configuration-rapide/" />
+    <LinkCard title="Accueillir les nouveaux" description="Messages de bienvenue et de départ." href="/dashboard/communaute/accueil-depart/" />
+    <LinkCard title="Mettre en place les tickets" description="Un support clair pour vos membres." href="/dashboard/communaute/tickets/" />
+    <LinkCard title="Animer avec les niveaux" description="Expérience, paliers et récompenses." href="/dashboard/xp/leveling/" />
+    <LinkCard title="Retrouver une commande" description="Les commandes Discord du quotidien." href="/aide/commandes-utiles/" />
+    <LinkCard title="Résoudre un problème" description="Les réponses aux questions fréquentes." href="/aide/questions-frequentes/" />
+  </CardGrid>
 </section>
-
-<div style="max-width: 650px; margin: 0 auto 6rem; font-size: 1.05rem; padding: 0 1.5rem;">
-  <ul class="checkmark-list">
-    <li><strong>Rapports visuels :</strong> Des guides basés sur des captures d'écran réelles du dashboard.</li>
-    <li><strong>Clarté des rôles :</strong> Sachez exactement quelles permissions Discord sont requises pour chaque action.</li>
-    <li><strong>Zéro friction :</strong> Suivez les étapes pas à pas pour configurer vos modules en quelques clics.</li>
-  </ul>
-</div>

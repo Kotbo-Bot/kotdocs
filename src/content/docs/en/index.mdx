@@ -14,6 +14,7 @@ hero:
       icon: open-book
 ---
 
+import { CardGrid, LinkCard } from '@astrojs/starlight/components';
 import DashboardScreenshot from '../../../components/DashboardScreenshot.astro';
 
 <div class="hero-preview">
@@ -48,19 +49,17 @@ import DashboardScreenshot from '../../../components/DashboardScreenshot.astro';
   </a>
 </div>
 
-:::tip[The official docs]
-Welcome to the Kotbo configuration hub. This guide is illustrated end to end with screenshots of your own dashboard.
-:::
-
-<section class="home-intro" style="margin-top: 5rem;">
-  <span class="eyebrow">Simplicity & control</span>
-  <h2>Documentation written for staff teams.</h2>
+<section class="home-tasks">
+  <div class="home-intro">
+    <span class="eyebrow">By task</span>
+    <h2>What do you want to do?</h2>
+  </div>
+  <CardGrid>
+    <LinkCard title="Protect my server" description="Anti-raid, filters and sanctions." href="/en/dashboard/moderation/configuration-rapide/" />
+    <LinkCard title="Welcome newcomers" description="Welcome and goodbye messages." href="/en/dashboard/communaute/accueil-depart/" />
+    <LinkCard title="Set up tickets" description="Clear support for your members." href="/en/dashboard/communaute/tickets/" />
+    <LinkCard title="Run a levelling system" description="Experience, milestones and rewards." href="/en/dashboard/xp/leveling/" />
+    <LinkCard title="Find a command" description="Everyday Discord commands." href="/en/aide/commandes-utiles/" />
+    <LinkCard title="Fix a problem" description="Answers to frequent questions." href="/en/aide/questions-frequentes/" />
+  </CardGrid>
 </section>
-
-<div style="max-width: 650px; margin: 0 auto 6rem; font-size: 1.05rem; padding: 0 1.5rem;">
-  <ul class="checkmark-list">
-    <li><strong>Visual walkthroughs:</strong> guides built on real screenshots of the dashboard.</li>
-    <li><strong>Clear roles:</strong> know exactly which Discord permissions each action requires.</li>
-    <li><strong>Zero friction:</strong> follow step-by-step instructions to set up your modules in a few clicks.</li>
-  </ul>
-</div>

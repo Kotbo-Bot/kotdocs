@@ -3,7 +3,8 @@ import Default from '@astrojs/starlight/components/Head.astro';
 ---
 
 <Default><slot /></Default>
-<meta name="theme-color" content="#071b2e" />
+<meta name="theme-color" content="#fcfbf8" media="(prefers-color-scheme: light)" />
+<meta name="theme-color" content="#0f0f0f" media="(prefers-color-scheme: dark)" />
 <meta property="og:site_name" content="KotDoc" />
 
 <script is:inline>
@@ -51,22 +52,6 @@ import Default from '@astrojs/starlight/components/Head.astro';
     window.addEventListener('keyup', (e) => updateKbdState(e, false));
     window.addEventListener('blur', () => {
       document.querySelectorAll('.kbd.pressed').forEach(el => el.classList.remove('pressed'));
-    });
-    
-    // Prevent default browser shortcuts for dashboard combinations to let them light up nicely
-    window.addEventListener('keydown', (e) => {
-      const key = e.key ? e.key.toUpperCase() : '';
-      const isCtrl = e.ctrlKey || e.metaKey;
-      const isShift = e.shiftKey;
-      
-      if (isCtrl) {
-        if (key === 'G') {
-          e.preventDefault();
-        }
-        if (isShift && ['D', 'M', 'C', 'N'].includes(key)) {
-          e.preventDefault();
-        }
-      }
     });
   })();
 </script>
