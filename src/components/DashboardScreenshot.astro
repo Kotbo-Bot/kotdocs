@@ -44,8 +44,8 @@ const t = isEnglish
   .dashboard-screenshot { margin: 1.8rem 0 2.5rem; }
   
   .window-frame {
-    border: 1px solid color-mix(in srgb, var(--sl-color-gray-4) 22%, transparent);
-    border-radius: 0.8rem;
+    border: 1px solid var(--color-outline-variant);
+    border-radius: 1.25rem;
     overflow: hidden;
     background: #09090b;
     box-shadow: 0 20px 50px rgba(0, 20, 33, 0.12), 0 1px 0 rgba(255, 255, 255, 0.05) inset;
@@ -85,7 +85,7 @@ const t = isEnglish
     background: #090b0edb;
     backdrop-filter: blur(10px);
     color: #aab5bd;
-    font-size: .59rem;
+    font-size: .68rem;
     font-weight: 750;
     letter-spacing: .06em;
     text-transform: uppercase;
@@ -107,7 +107,8 @@ const t = isEnglish
     transition: .2s ease;
   }
   
-  .window-body > a:hover .screen-zoom { opacity: 1; transform: none; }
+  .window-body > a:hover .screen-zoom,
+  .window-body > a:focus-visible .screen-zoom { opacity: 1; transform: none; }
   
   .dashboard-screenshot figcaption { margin-top: .7rem; text-align: center; color: var(--sl-color-gray-3); font-size: .74rem; }
   

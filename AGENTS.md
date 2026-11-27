@@ -11,13 +11,12 @@ The dashboard source used as the product reference is located at `../Kotbo/apps/
 ## Project structure
 
 - `src/content/docs/`: pages de documentation écrites en Markdown ou MDX.
-- `src/components/`: composants Astro réutilisables pour les pages de documentation (ex: `DashboardScreenshot.astro`, `DiscordCommand.astro`). `LanguageSelect.astro` surcharge le sélecteur de langue de Starlight (bouton FR/EN + menu déroulant).
+- `src/components/`: composants Astro réutilisables pour les pages de documentation (ex: `DashboardScreenshot.astro`, `DiscordCommand.astro`). `Search.astro` est la palette Ctrl+K, `src/topics.ts` donne la couleur et l'icône de chaque thème. `LanguageSelect.astro` surcharge le sélecteur de langue de Starlight (bouton FR/EN + menu déroulant).
 - `src/styles/`: feuilles de style modulaires :
   - `css.rooting.css` : Feuille de style principale important les autres fichiers.
-  - `variables.css` : Variables de thèmes, couleurs, polices.
+  - `variables.css` : branche les variables Starlight sur les jetons `@kotbo/ui` (thèmes Sand / Night, police SN Pro). Aucune couleur en dur : passer par ces jetons.
   - `layout.css` / `typography.css` : Surcharges globales.
-  - `homepage.css` / `components.css` : Styles de la page d'accueil et des guides.
-  - `animations.css` : Animations de transition.
+  - `components.css` : Styles des guides. La page d'accueil est `src/components/Hero.astro` (liens et libellés FR/EN à y tenir à jour).
   - `discord-input.css` : Style du simulateur de commande Discord.
 - `src/assets/screenshots/`: captures d'écran anonymisées issues du vrai dashboard.
 - `astro.config.mjs`: configuration Starlight, navigation et GitHub Pages.

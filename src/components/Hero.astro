@@ -1,0 +1,206 @@
+---
+// Accueil de la doc (remplace le Hero de Starlight) : recherche, étapes de départ, catégories.
+import { siClaude, siDiscord, siGithub, siHuggingface, siN8n, siTopdotgg, siTwitch, siYoutube } from 'simple-icons';
+import { icon, topic } from '../topics';
+
+const route = Astro.locals.starlightRoute;
+const en = route.locale === 'en';
+const { title = route.entry.data.title, tagline } = route.entry.data.hero ?? {};
+
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+const href = (slug: string) => `${base}${en ? '/en' : ''}/${slug}/`;
+const t = (fr: string, english: string) => (en ? english : fr);
+const popular = [
+  ['Anti-raid', 'dashboard/moderation/anti-raid'],
+  ['Tickets', 'dashboard/communaute/tickets'],
+  [t('Bienvenue', 'Welcome'), 'dashboard/communaute/accueil-depart'],
+  [t('Niveaux', 'Levels'), 'dashboard/xp/leveling'],
+  [t('Commandes', 'Commands'), 'aide/commandes-utiles'],
+];
+
+const steps = [
+  [t('Se connecter', 'Sign in'), t('Reliez Discord et choisissez votre serveur.', 'Link Discord and pick your server.'), 'premiers-pas/connexion'],
+  [t('Suivre le parcours', 'Follow the setup'), t('Laissez Kotbo vous guider pour les réglages.', 'Let Kotbo walk you through the settings.'), 'premiers-pas/parcours'],
+  [t('Activer les modules', 'Enable modules'), t('Gardez uniquement ce qui vous sert.', 'Keep only what you need.'), 'premiers-pas/modules'],
+];
+
+const categories = [
+  { topic: topic('start'), title: t('Premiers pas', 'First steps'), links: [
+    [t('Prendre en main le dashboard', 'Find your way around'), 'premiers-pas/interface'],
+    [t('Ordre de configuration', 'Setup order'), 'premiers-pas/configuration-ordre'],
+    [t('Questions fréquentes', 'FAQ'), 'aide/questions-frequentes'],
+  ] },
+  { topic: topic('protection'), title: t('Protection', 'Protection'), links: [
+    [t('Configuration rapide', 'Quick setup'), 'dashboard/moderation/configuration-rapide'],
+    ['Anti-raid', 'dashboard/moderation/anti-raid'],
+    [t('Filtres', 'Filters'), 'dashboard/moderation/automod'],
+  ] },
+  { topic: topic('moderation'), title: t('Modération', 'Moderation'), links: [
+    [t('Sanctions', 'Sanctions'), 'dashboard/moderation/sanctions'],
+    [t('Membres', 'Members'), 'dashboard/moderation/membres'],
+    [t('Journaux', 'Logs'), 'dashboard/moderation/logs'],
+  ] },
+  { topic: topic('community'), title: t('Communauté', 'Community'), links: [
+    [t('Bienvenue et départs', 'Welcome & goodbye'), 'dashboard/communaute/accueil-depart'],
+    ['Giveaways', 'dashboard/communaute/giveaways'],
+    [t('Rôles par réaction', 'Reaction roles'), 'dashboard/communaute/reaction-roles'],
+  ] },
+  { topic: topic('levels'), title: t('Niveaux', 'Levels'), links: [
+    [t('Niveaux', 'Levels'), 'dashboard/xp/leveling'],
+    [t('Saisons', 'Seasons'), 'dashboard/xp/saisons'],
+    ['Clans', 'dashboard/xp/clans'],
+  ] },
+  { topic: topic('economy'), title: t('Économie et jeux', 'Economy & games'), links: [
+    [t('Économie', 'Economy'), 'dashboard/economie/economie'],
+    [t('Jeu RPG', 'RPG game'), 'dashboard/economie/rpg'],
+    [t('Quêtes', 'Quests'), 'dashboard/economie/quetes'],
+  ] },
+  { topic: topic('team'), title: t('Équipe et tickets', 'Team & tickets'), links: [
+    ['Tickets', 'dashboard/communaute/tickets'],
+    [t('Recrutement', 'Recruitment'), 'dashboard/staff/recrutement'],
+    [t('Rôles du staff', 'Staff roles'), 'dashboard/staff/hierarchie'],
+  ] },
+  { topic: topic('settings'), title: t('Réglages', 'Settings'), links: [
+    [t('Modules', 'Modules'), 'dashboard/configuration/modules'],
+    [t('Sauvegardes', 'Backups'), 'dashboard/configuration/sauvegardes'],
+    [t('Facturation', 'Billing'), 'dashboard/configuration/facturation'],
+  ] },
+  { topic: topic('integrations'), title: t('Intégrations', 'Integrations'), links: [
+    [t('Connecter une IA', 'Connect an AI'), 'aide/mcp'],
+    [t('Webhooks sortants', 'Outgoing webhooks'), 'dashboard/configuration/webhooks'],
+    [t('API AegisAI', 'AegisAI API'), 'aide/aegisai-api'],
+  ] },
+];
+// Chaque tuile renvoie à la page qui documente réellement l'intégration.
+const integrations = [
+  { brand: siDiscord, name: 'Discord', use: t('Les commandes du bot', 'Bot commands'), slug: 'aide/commandes-utiles' },
+  { brand: siYoutube, name: 'YouTube', use: t('Vidéos, Shorts et lives', 'Videos, Shorts and streams'), slug: 'dashboard/communaute/reseaux-sociaux' },
+  { brand: siTwitch, name: 'Twitch', use: t('Annonces de live', 'Live announcements'), slug: 'dashboard/communaute/reseaux-sociaux' },
+  { brand: siGithub, name: 'GitHub', use: t('Commits et releases', 'Commits and releases'), slug: 'dashboard/communaute/reseaux-sociaux' },
+  { brand: siHuggingface, name: 'Hugging Face', use: t('Modèles et datasets', 'Models and datasets'), slug: 'dashboard/communaute/reseaux-sociaux', ink: '#1f1500' },
+  { brand: siClaude, name: 'Claude & ChatGPT', use: t('Piloter le serveur (MCP)', 'Drive your server (MCP)'), slug: 'aide/mcp' },
+  { brand: siN8n, name: 'n8n & webhooks', use: t('Événements sortants', 'Outgoing events'), slug: 'dashboard/configuration/webhooks' },
+  { brand: siTopdotgg, name: 'Top.gg', use: t('Conditions de giveaway', 'Giveaway conditions'), slug: 'dashboard/communaute/giveaways', ink: '#1f0010' },
+];
+---
+
+<div class="home not-content">
+  <header class="home-head">
+    <h1 id="_top">{title}</h1>
+    {tagline && <p>{tagline}</p>}
+    <button type="button" class="home-search" data-home-search>
+      <Fragment set:html={icon('Search')} />
+      <span>{t('Rechercher une page…', 'Search a page…')}</span>
+    </button>
+    <ul class="home-chips" aria-label={t('Pages populaires', 'Popular pages')}>
+      {popular.map(([label, slug]) => <li><a href={href(slug)}>{label}</a></li>)}
+    </ul>
+  </header>
+
+  <ol class="home-steps">
+    {steps.map(([label, text, slug], i) => (
+      <li>
+        <a class="section-card" href={href(slug)} style={`--topic:var(--series-${[1, 7, 3][i]})`}>
+          <span class="home-step-number" aria-hidden="true">{i + 1}</span>
+          <span><strong>{label}</strong><span>{text}</span></span>
+        </a>
+      </li>
+    ))}
+  </ol>
+
+  <h2>{t('Parcourir par thème', 'Browse by topic')}</h2>
+  <div class="home-grid">
+    {categories.map((category) => (
+      <section class="section-card" style={`--topic:${category.topic.color}`}>
+        <h3><span class="home-icon" set:html={category.topic.icon} />{category.title}</h3>
+        <ul>
+          {category.links.map(([label, slug]) => <li><a href={href(slug)}>{label}</a></li>)}
+        </ul>
+      </section>
+    ))}
+  </div>
+
+  <h2>{t('Intégrations', 'Integrations')}</h2>
+  <ul class="home-integrations">
+    {integrations.map((item) => (
+      <li>
+        <a class="section-card" href={href(item.slug)} style={`--topic:#${item.brand.hex}`}>
+          <span class="home-brand" style={`color:${item.ink ?? '#fff'}`}>
+            <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor" aria-hidden="true"><path d={item.brand.path} /></svg>
+          </span>
+          <span><strong>{item.name}</strong><span>{item.use}</span></span>
+        </a>
+      </li>
+    ))}
+  </ul>
+
+  <aside class="home-cta">
+    <p><strong>{t('Pas encore Kotbo sur votre serveur ?', 'Kotbo not on your server yet?')}</strong></p>
+    <a class="primary" href="https://api.kotbo.fr/api/public/invite?utm_source=docs&utm_content=docs_home">{t('Ajouter Kotbo', 'Add Kotbo')}</a>
+    <a href="https://dash.kotbo.fr">{t('Ouvrir le dashboard', 'Open the dashboard')}</a>
+  </aside>
+</div>
+
+<script>
+  // La recherche reste celle de Starlight : ce gros bouton ouvre la même fenêtre que l'en-tête.
+  document.querySelector('[data-home-search]')?.addEventListener('click', () => {
+    document.querySelector<HTMLButtonElement>('kotbo-search [data-search-open]')?.click();
+  });
+</script>
+
+<style>
+  .home { max-width: 66rem; margin-inline: auto; padding-block: 0 3rem; }
+  .home ul, .home ol { list-style: none; padding: 0; margin: 0; }
+  .home a { text-decoration: none; }
+
+  .home-head {
+    display: flex; flex-direction: column; align-items: center; text-align: center; gap: 1rem; padding: 3rem 1rem;
+    border: 1px solid color-mix(in srgb, var(--color-primary) 25%, transparent); border-radius: 1.75rem;
+    background:
+      radial-gradient(circle at 12% 0%, color-mix(in srgb, var(--color-primary) 28%, transparent), transparent 45%),
+      radial-gradient(circle at 90% 10%, color-mix(in srgb, var(--series-9) 22%, transparent), transparent 42%),
+      radial-gradient(circle at 60% 120%, color-mix(in srgb, var(--series-7) 22%, transparent), transparent 50%),
+      var(--color-surface-container-lowest);
+  }
+  .home-head h1 { font-size: clamp(1.9rem, 4vw, 2.75rem); font-weight: 800; line-height: 1.15; color: var(--sl-color-white); }
+  .home-head p { max-width: 36rem; color: var(--sl-color-gray-2); }
+  .home-search {
+    display: flex; align-items: center; gap: .75rem; width: min(100%, 38rem); min-height: 3.5rem; padding: 0 1.25rem;
+    border: 1px solid var(--color-field-border); border-radius: 9999px; background: var(--color-surface-container-lowest);
+    color: var(--sl-color-gray-2); font: inherit; text-align: start; cursor: text; box-shadow: var(--glass-quiet-shadow);
+  }
+  .home-search:hover { border-color: var(--color-primary); }
+  .home-chips { display: flex; flex-wrap: wrap; justify-content: center; gap: .5rem; }
+  .home-chips a {
+    display: inline-block; padding: .35rem .9rem; border: 1px solid var(--color-outline-variant); border-radius: 9999px;
+    background: var(--color-surface-container); color: var(--sl-color-gray-1); font-size: var(--sl-text-sm);
+  }
+  .home-chips a:hover { border-color: var(--color-primary); background: var(--color-primary-container); color: var(--color-on-primary-container); }
+
+  .home-steps, .home-grid, .home-integrations { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 18rem), 1fr)); gap: .75rem; }
+  .home .home-integrations { grid-template-columns: repeat(auto-fit, minmax(min(100%, 14rem), 1fr)); }
+  .home .home-steps { margin-top: 1rem; }
+  .home li { margin: 0; }
+  .home .section-card:hover { border-color: var(--topic); }
+  .home-steps a, .home-integrations a { display: flex; align-items: center; gap: .9rem; height: 100%; padding: 1rem 1.15rem; color: var(--sl-color-gray-2); font-size: var(--sl-text-sm); }
+  .home-steps strong, .home-integrations strong { display: block; color: var(--sl-color-white); font-size: var(--sl-text-base); line-height: 1.35; }
+  .home-integrations span span { display: block; font-size: var(--sl-text-xs); }
+  .home-step-number, .home-icon, .home-brand { display: grid; place-items: center; flex-shrink: 0; width: 2.5rem; height: 2.5rem; border-radius: 9999px; font-weight: 800; }
+  .home-step-number, .home-icon { background: color-mix(in srgb, var(--topic) 18%, transparent); color: var(--topic); }
+  .home-brand { background: var(--topic); box-shadow: 0 0 0 1px rgba(255, 255, 255, .18); }
+
+  .home h2 { margin: 2.75rem 0 1rem; font-size: var(--sl-text-xl); font-weight: 700; color: var(--sl-color-white); }
+  .home-grid section { padding: 1.15rem; background-image: linear-gradient(160deg, color-mix(in srgb, var(--topic) 10%, transparent), transparent 55%); }
+  .home-grid h3 { display: flex; align-items: center; gap: .7rem; margin-bottom: .6rem; font-size: var(--sl-text-base); font-weight: 700; color: var(--sl-color-white); }
+  .home-grid a { display: block; padding: .4rem .6rem; margin-inline: -.6rem; border-radius: 9999px; color: var(--sl-color-gray-2); font-size: var(--sl-text-sm); }
+  .home-grid a:hover { background: color-mix(in srgb, var(--topic) 14%, transparent); color: var(--sl-color-white); }
+
+  .home-cta {
+    display: flex; flex-wrap: wrap; align-items: center; gap: .75rem; margin-top: 2.5rem; padding: 1.25rem 1.5rem;
+    border-radius: 1.25rem; background: var(--color-primary-container);
+  }
+  .home-cta p { flex: 1; min-width: 14rem; color: var(--color-on-primary-container); }
+  .home-cta strong { color: inherit; }
+  .home-cta a { padding: .6rem 1.2rem; border: 1px solid currentColor; border-radius: 9999px; color: var(--color-on-primary-container); font-size: var(--sl-text-sm); font-weight: 700; }
+  .home-cta a.primary { border-color: transparent; background: var(--color-primary); color: var(--color-on-primary); }
+</style>
