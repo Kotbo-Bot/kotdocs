@@ -1,0 +1,58 @@
+---
+title: Composants UI (@kotbo/ui)
+description: Primitives d'interface, modales, formulaires, sélecteurs, calendrier, DashboardShell, stores et actions de @kotbo/ui.
+sidebar:
+  order: 2
+---
+
+Le module principal `@kotbo/ui` regroupe l'ensemble des composants d'interface réutilisables, la coque d'application, les stores globaux et les actions Svelte.
+
+```ts
+import {
+  Button,
+  Tabs,
+  FilterPills,
+  Modal,
+  DashboardShell,
+  toast,
+  unsavedChanges,
+} from '@kotbo/ui';
+```
+
+## Primitives de mise en page et d'action
+
+* **`Button`** : quatre variantes (`primary`, `secondary`, `ghost`, `danger`), deux tailles (`sm`, `md`), états `loading` et `disabledReason` (bouton cliquable expliquant pourquoi l'action est bloquée).
+* **`ActionButton`** et **`RefreshButton`** : adaptateurs historiques pour les boutons d'action et le bouton d'actualisation avec état `aria-busy`.
+* **`Tabs`** : barre d'onglets accessible (`role="tablist"`) navigable au clavier (`←`, `→`, `Début`, `Fin`).
+* **`FilterPills`** : pastilles de filtrage génériques typées (`T extends string`) visuellement distinctes des onglets.
+* **`Callout`** : encadré contextuel dans le flux (`info`, `success`, `warning`, `danger`).
+* **`SectionCard`**, **`SettingsGroup`**, **`SettingsRow`** : structuration des écrans et listes sans « carte dans une carte ».
+* **`StatTile`** : tuile de chiffre clé avec pastille d'icône et variante sémantique.
+* **`Menu`** : menu secondaire téléporté dans `document.body` (`use:portal`) avec repositionnement automatique vers le haut si la place manque en bas.
+* **`EmptyState`**, **`Skeleton`**, **`InlineFeedback`**, **`Breadcrumbs`** : états vides actionnables ou justifiés (`reason`), squelettes de chargement et retours compacts.
+
+## Modales, tiroirs et notifications
+
+* **`Modal`** : boîte de dialogue accessible avec piégeage du focus (`use:dialogFocus`), verrouillage du défilement (`use:scrollLock`) et support multi-niveaux (`aboveCase`).
+* **`ConfirmModal`** : fenêtre de confirmation avec liste d'`impacts`, saisie obligatoire (`requireInput`) et focus initial sur le choix sûr.
+* **`DetailSheet`** : fiche plein écran avec bannière, identité, onglets collés au défilement et barre d'actions.
+* **`ToastContainer` & `Toast`** : file de notifications (4 max) suspendue au survol et au focus clavier, avec prise en charge de `toast.undoable(...)`.
+* **`UnsavedChangesBar`** : barre de sauvegarde/réinitialisation reliée au store `unsavedChanges`.
+
+## Formulaires, sélecteurs & calendrier
+
+* **`Field`**, **`FormInput`**, **`FormSelect`**, **`FormTextarea`**, **`ToggleSwitch`**, **`FormColorPicker`**, **`AmountRangeSlider`**.
+* **`SearchableSelect`** : combobox téléportée insensible aux accents avec option `onCreate`.
+* **`MultiSelect`** : sélecteur multiple à puces (`role="combobox"` + `role="listbox"`).
+* **`Calendar`** : vues jour, 2 jours, semaine, mois et agenda, avec glisser-déposer optionnel.
+
+## Coque d'application (`DashboardShell`)
+
+Fournit barre latérale repliable mémorisée (`storageKey`), infobulles sur le rail, tiroir mobile, fil d'Ariane, sélecteur de thème (`Auto / Clair / Sombre`), menu compte et barre d'onglets mobile.
+
+## Sous-exports JS purs (`bun test`)
+
+Les modules sans `.svelte` disposent de points d'entrée dédiés utilisables directement dans `bun test` :
+* `@kotbo/ui/config` (`configureKotboUi`, `getMessages`, `getLocale`)
+* `@kotbo/ui/actions/{portal,dialogFocus,scrollLock}`
+* `@kotbo/ui/utils/{pausableTimers,amountScale,calendarLayout,searchableSelectModel}`

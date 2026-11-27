@@ -1,0 +1,27 @@
+---
+title: Icons (@kotbo/ui/icons)
+description: Papicon component, static Papicons + Lucide registries, and icon accessibility in @kotbo/ui/icons.
+sidebar:
+  order: 4
+---
+
+The `@kotbo/ui/icons` module exports the unified `Papicon` component and its static icon registries, keeping bundles tree-shaken.
+
+```ts
+import { Papicon, iconAliases, fallbackIconName, toPapiconsName } from '@kotbo/ui/icons';
+```
+
+## Usage
+
+```svelte
+<Papicon icon="shield" size={20} />
+<Papicon name="trending-up" size={14} class="my-icon" />
+```
+
+* Both `icon` and `name` props are accepted for seamless compatibility with existing callers.
+* `iconAliases` maps historical Material, Lucide, and Phosphor identifiers to canonical `@getpapillon/papicons` names.
+* When an icon has no Papicons equivalent, `Papicon` falls back automatically to the static `lucide-svelte` registry.
+
+## Accessibility
+
+Every `<svg>` and Lucide icon rendered by `Papicon` carries `aria-hidden="true"` and `focusable="false"`: icons are purely decorative and accessible names must come from adjacent text or the parent control's `aria-label`.

@@ -1,0 +1,27 @@
+---
+title: Icônes (@kotbo/ui/icons)
+description: Composant Papicon, registres statiques Papicons + Lucide et accessibilité des icônes dans @kotbo/ui/icons.
+sidebar:
+  order: 4
+---
+
+Le module `@kotbo/ui/icons` fournit le composant unifié `Papicon` et ses registres statiques d'icônes, sans importer l'intégralité des paquets tiers.
+
+```ts
+import { Papicon, iconAliases, fallbackIconName, toPapiconsName } from '@kotbo/ui/icons';
+```
+
+## Utilisation
+
+```svelte
+<Papicon icon="shield" size={20} />
+<Papicon name="trending-up" size={14} class="my-icon" />
+```
+
+* Les props `icon` et `name` sont toutes deux acceptées pour préserver la compatibilité avec les appels existants.
+* Les alias (`iconAliases`) unifient les anciens noms Material, Lucide et Phosphor vers le registre `@getpapillon/papicons`.
+* Lorsqu'une icône n'a pas d'équivalent Papicons (ou ne se déplie pas), `Papicon` bascule automatiquement vers le registre statique `lucide-svelte`.
+
+## Accessibilité
+
+Toutes les balises `<svg>` et composants Lucide rendus par `Papicon` portent `aria-hidden="true"` et `focusable="false"` : les icônes restent purement décoratives et le libellé accessible est toujours porté par le texte voisin ou l'`aria-label` du bouton parent.

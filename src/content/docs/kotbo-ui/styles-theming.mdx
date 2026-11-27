@@ -1,0 +1,61 @@
+---
+title: Styles, thèmes & i18n (@kotbo/ui/styles)
+description: Feuilles CSS autonomes sans Tailwind, jetons Sand / Night, personnalisation moderne AegisAI et configuration i18n réactive.
+sidebar:
+  order: 5
+---
+
+Kotbo-UI repose sur du CSS autonome et des variables CSS standards, sans aucune dépendance à Tailwind CSS.
+
+## Points d'entrée CSS
+
+```ts
+// Jetons + styles de composants (à importer avant app.css)
+import '@kotbo/ui/styles';
+
+// Ou séparément :
+import '@kotbo/ui/styles/tokens.css';
+import '@kotbo/ui/styles/components.css';
+```
+
+## Jetons Sand / Night et séries Analytics
+
+`tokens.css` définit les thèmes clair (**Sand**) et sombre (**Night**) activés via `prefers-color-scheme: dark`, `.dark` ou `[data-theme="dark"]` :
+
+* **Surfaces et texte** : `--color-background`, `--color-surface`, `--color-surface-container-lowest/low/high`, `--color-on-surface`, `--color-on-surface-variant`, `--color-outline-variant`.
+* **Accent et statuts** : `--color-primary`, `--color-on-primary`, `--color-success`, `--color-warning`, `--color-error` (et variantes `*-container`).
+* **Séries Analytics** : `--series-1` à `--series-8` et `--series-neutral`.
+* **Superposition (`z-index`)** : `--layer-bar`, `--layer-popover`, `--layer-modal`, `--layer-popover-over-modal`, `--layer-toast`, `--layer-tooltip`.
+
+## Conserver le style moderne d'AegisAI
+
+Les variables `--kotbo-*` permettent à AegisAI de réutiliser les composants extraits de Kotbo tout en gardant son rendu légèrement plus moderne et spacieux :
+
+```css
+:root {
+  --color-primary: #2a78d6;
+  --kotbo-chart-card-radius: 1.25rem;
+  --kotbo-chart-card-padding: 1.25rem;
+  --kotbo-chart-card-gap: 1.25rem;
+  --kotbo-chart-card-bg: var(--surface);
+  --kotbo-facts-padding-top: 1rem;
+  --kotbo-fact-value-size: 1.05rem;
+  --kotbo-fact-value-weight: 700;
+}
+```
+
+## Internationalisation réactive (`configureKotboUi`)
+
+Par défaut, tous les composants parlent français. Une application hôte comme Kotbo Dashboard branche ses traductions Paraglide à chaud via `configureKotboUi` (`@kotbo/ui/config`) :
+
+```ts
+import { configureKotboUi } from '@kotbo/ui/config';
+
+configureKotboUi({
+  locale: () => dateLocale(),
+  messages: {
+    common_cancel: m.common_cancel,
+    anx_view_line: m.anx_view_line,
+  },
+});
+```

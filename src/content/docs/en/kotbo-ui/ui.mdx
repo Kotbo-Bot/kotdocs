@@ -1,0 +1,58 @@
+---
+title: UI components (@kotbo/ui)
+description: UI primitives, modals, forms, selects, calendar, DashboardShell, stores, and Svelte actions in @kotbo/ui.
+sidebar:
+  order: 2
+---
+
+The main `@kotbo/ui` entry point provides all reusable UI primitives, the application shell, global stores, and Svelte actions.
+
+```ts
+import {
+  Button,
+  Tabs,
+  FilterPills,
+  Modal,
+  DashboardShell,
+  toast,
+  unsavedChanges,
+} from '@kotbo/ui';
+```
+
+## Layout and action primitives
+
+* **`Button`**: four variants (`primary`, `secondary`, `ghost`, `danger`), two sizes (`sm`, `md`), `loading` state, and `disabledReason` (keeps the control clickable so users see why an action is blocked).
+* **`ActionButton`** and **`RefreshButton`**: compatibility adapters for legacy action buttons and compact refresh triggers with `aria-busy`.
+* **`Tabs`**: accessible tab bar (`role="tablist"`) with keyboard navigation (`ArrowLeft`, `ArrowRight`, `Home`, `End`).
+* **`FilterPills`**: typed generic filter pills (`T extends string`), visually distinct from section tabs.
+* **`Callout`**: inline status block (`info`, `success`, `warning`, `danger`).
+* **`SectionCard`**, **`SettingsGroup`**, **`SettingsRow`**: structured cards and aligned settings rows without nested cards.
+* **`StatTile`**: KPI tile with icon badge and semantic variant.
+* **`Menu`**: contextual menu portaled to `document.body` (`use:portal`) with automatic viewport placement.
+* **`EmptyState`**, **`Skeleton`**, **`InlineFeedback`**, **`Breadcrumbs`**: actionable or explained (`reason`) empty states, loading placeholders, and compact feedback.
+
+## Modals, sheets, and notifications
+
+* **`Modal`**: accessible dialog with focus trap (`use:dialogFocus`), body scroll lock (`use:scrollLock`), and `aboveCase` layering.
+* **`ConfirmModal`**: confirmation dialog with `impacts` list, typed confirmation (`requireInput`), and safe initial focus.
+* **`DetailSheet`**: full-height detail sheet with banner, identity header, sticky tabs, and action bar.
+* **`ToastContainer` & `Toast`**: accessible toast stack (up to 4 items), pausing auto-dismiss on hover or keyboard focus, including `toast.undoable(...)`.
+* **`UnsavedChangesBar`**: fixed save/reset bar backed by the `unsavedChanges` store.
+
+## Forms, selects & calendar
+
+* **`Field`**, **`FormInput`**, **`FormSelect`**, **`FormTextarea`**, **`ToggleSwitch`**, **`FormColorPicker`**, **`AmountRangeSlider`**.
+* **`SearchableSelect`**: portaled accent-insensitive combobox with inline `onCreate`.
+* **`MultiSelect`**: multi-value chip selector (`role="combobox"` + `role="listbox"`).
+* **`Calendar`**: day, 2-day, week, month, and agenda views with optional drag-and-drop.
+
+## Application shell (`DashboardShell`)
+
+Provides a collapsible sidebar persisted to `localStorage`, rail tooltips, mobile drawer, topbar breadcrumb, theme selector (`Auto / Light / Dark`), account menu, and mobile tab bar.
+
+## Pure JS sub-exports (`bun test`)
+
+Modules without `.svelte` templates expose pure JS subpaths that work directly inside `bun test`:
+* `@kotbo/ui/config` (`configureKotboUi`, `getMessages`, `getLocale`)
+* `@kotbo/ui/actions/{portal,dialogFocus,scrollLock}`
+* `@kotbo/ui/utils/{pausableTimers,amountScale,calendarLayout,searchableSelectModel}`

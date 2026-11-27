@@ -1,0 +1,52 @@
+---
+title: Kotbo-UI (@kotbo/ui)
+description: Overview and setup of Kotbo-UI, the shared Svelte 5 UI component and Analytics v3 library for Kotbo and AegisAI.
+sidebar:
+  order: 1
+---
+
+<p class="doc-lead"><strong>Kotbo-UI</strong> (<code>@kotbo/ui</code>) centralizes the Svelte 5 UI components, the <code>Papicon</code> icon system, and <strong>Analytics v3</strong> visualizations shared across the Kotbo dashboard and AegisAI.</p>
+
+## Why a dedicated package
+
+* **Zero duplication**: UI primitives, modals, selects, and Analytics v3 charts live in a single package.
+* **100% standalone CSS**: no Tailwind CSS dependency inside `@kotbo/ui`, allowing it to work seamlessly in both **Kotbo Dashboard** (Tailwind v4) and **AegisAI** (vanilla CSS with modern tokens).
+* **Decoupled i18n**: built-in French defaults with reactive runtime overrides via `configureKotboUi`, without requiring Paraglide inside the package.
+* **Pure JS sub-exports**: math helpers and DOM actions can be imported directly under `bun test` without a Svelte compiler plugin.
+
+## Entry points by module
+
+| Module | Contents | Documentation |
+| --- | --- | --- |
+| `@kotbo/ui` | UI primitives, overlays, forms, calendar, `DashboardShell`, stores (`toast`, `unsavedChanges`), actions | [UI components](./ui/) |
+| `@kotbo/ui/analytics` | `AnalyticsChartCard`, `MetricTabs`, `Chart`, `TimeSeriesChart`, `TopList`, `CohortTable`, and helpers | [Analytics v3](./analytics/) |
+| `@kotbo/ui/icons` | `Papicon`, static Papicons + Lucide registries, and alias table | [Icons](./icons/) |
+| `@kotbo/ui/styles` | Sand / Night design tokens (`tokens.css`) and component stylesheets (`components.css`) | [Styles, theming & i18n](./styles-theming/) |
+
+## Setup with Bun
+
+Reference the local workspace folder (upcoming `Kotbo-ui` repository) in the host `package.json` and install with **Bun**:
+
+```json
+{
+  "dependencies": {
+    "@kotbo/ui": "file:../Kotbo-ui"
+  }
+}
+```
+
+```bash
+bun install
+```
+
+In your application entry point (`main.ts`), import `@kotbo/ui/styles` before your local stylesheet:
+
+```ts
+import '@kotbo/ui/styles';
+import './app.css';
+```
+
+## How Kotbo and AegisAI use it
+
+* **Kotbo Dashboard** keeps its existing `src/lib/components/**` entry points as thin wrappers delegating to `@kotbo/ui`, wired to Paraglide through `kotboUiBridge.ts`.
+* **AegisAI** imports `@kotbo/ui` and `@kotbo/ui/analytics` (`DashboardShell`, `AnalyticsChartCard`) directly while keeping its slightly more modern dashboard look (`1.25rem` radius, `1.25rem` padding, blue/slate palette) through CSS custom properties in `app.css`.

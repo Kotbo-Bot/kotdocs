@@ -1,0 +1,50 @@
+---
+title: Analytics v3 (@kotbo/ui/analytics)
+description: Analytics v3 chart components and time-series helpers exported by @kotbo/ui/analytics.
+sidebar:
+  order: 3
+---
+
+The `@kotbo/ui/analytics` module contains the full **Analytics v3** visualization suite along with pure time-series, formatting, and accessible table helpers.
+
+```ts
+import {
+  AnalyticsChartCard,
+  MetricTabs,
+  Sparkline,
+  KpiTile,
+  Chart,
+  TimeSeriesChart,
+  TrendChart,
+  BarList,
+  ShareBar,
+  CohortTable,
+  TopList,
+  AnalyticsSkeleton,
+} from '@kotbo/ui/analytics';
+```
+
+## Main chart card (`AnalyticsChartCard`)
+
+* Connects a clickable `MetricTabs` strip (with SVG sparklines and directional delta badges) to the main plot.
+* Includes a toolbar for period selection, view switching (`Line`, `Bar`, `Table`, or custom views), and overlays (moving-average smoothing, dashed previous-period comparison, forecast with uncertainty band).
+* Renders a summary `facts` grid below the chart, computed automatically or passed by the host.
+* Exposes `--kotbo-chart-card-*` and `--kotbo-fact-value-*` CSS custom properties so AegisAI keeps its rounder `1.25rem` styling without forking the component.
+
+## Visualization components
+
+* **`Chart`**: tree-shaken Chart.js wrapper (`Bar`, `Line`, `Doughnut`, `Pie`). Resolves CSS custom properties (`var(--series-1)`) to canvas RGB values, hides the `<canvas>` (`aria-hidden="true"`), and outputs an `sr-only` data table for screen readers.
+* **`TimeSeriesChart` & `TrendChart`**: single-axis time-series plots with stacked series (`stacks`), comparison baselines, and vertical event markers (`markers`).
+* **`MetricTabs`**, **`Sparkline`**, and **`KpiTile`**: accessible metric selector (`role="radiogroup"` / `role="radio"`) and standalone KPI tiles.
+* **`BarList` & `ShareBar`**: horizontal proportional bar lists and 100% stacked share bars with full legend.
+* **`TopList`**: Top-N ranking card (table / bar toggle) with a "See all" searchable/paginated modal and host hooks (`onLoadFull`, `onExport`).
+* **`CohortTable`**: retention heatmap table using `color-mix()` shading and a weighted average row.
+* **`AnalyticsSkeleton`**: full-page or `compact` loading skeleton.
+
+## Pure JS sub-exports
+
+Import helpers directly without loading Chart.js or `.svelte` files (ideal for `bun test`):
+
+* `@kotbo/ui/analytics/timeSeries`: `resolveGranularity`, `bucketDays`, `weekStart`, `aggregate`, `movingAverage`, `smoothingWindow`, `trendPct`, `forecast`, `daysLeftInMonth`.
+* `@kotbo/ui/analytics/analyticsFormat`: `fmtNumber`, `fmtPct`, `fmtMinutes`, `fmtDuration`, `fmtDelta`, `shortDate`, `daysSince`, `SERIES`, `SERIES_NEUTRAL`.
+* `@kotbo/ui/analytics/chartTable`: `chartTable`, `nearestHeadingText`.

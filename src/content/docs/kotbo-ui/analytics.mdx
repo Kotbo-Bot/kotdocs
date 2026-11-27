@@ -1,0 +1,50 @@
+---
+title: Analytics v3 (@kotbo/ui/analytics)
+description: Composants Analytics v3 et helpers de séries temporelles exportés par @kotbo/ui/analytics.
+sidebar:
+  order: 3
+---
+
+Le module `@kotbo/ui/analytics` rassemble toutes les visualisations **Analytics v3** ainsi que les calculs purs de séries temporelles, de formatage et d'alternatives en tableau.
+
+```ts
+import {
+  AnalyticsChartCard,
+  MetricTabs,
+  Sparkline,
+  KpiTile,
+  Chart,
+  TimeSeriesChart,
+  TrendChart,
+  BarList,
+  ShareBar,
+  CohortTable,
+  TopList,
+  AnalyticsSkeleton,
+} from '@kotbo/ui/analytics';
+```
+
+## Carte principale (`AnalyticsChartCard`)
+
+* Pilote une série de métriques clés (`MetricTabs`) avec sparklines SVG et écarts fléchés.
+* Intègre une barre d'outils : sélecteur de pas/période, modes d'affichage (`Courbe`, `Barres`, `Tableau` ou vues personnalisées) et calques (lissage par moyenne mobile, période précédente en pointillés, prévision avec bande d'incertitude).
+* Affiche automatiquement une grille de faits clés (`facts`) sous le graphique ou des faits fournis par l'application hôte.
+* Expose les variables CSS `--kotbo-chart-card-*` et `--kotbo-fact-value-*` afin qu'AegisAI garde un style de carte plus arrondi (`1.25rem`) sans forker le composant.
+
+## Briques de visualisation
+
+* **`Chart`** : wrapper léger de Chart.js (`Bar`, `Line`, `Doughnut`, `Pie`). Convertit dynamiquement les jetons CSS (`var(--series-1)`) en RGB, masque le `<canvas>` (`aria-hidden="true"`) et expose un tableau `sr-only` équivalent (RGAA 1.1).
+* **`TimeSeriesChart` & `TrendChart`** : courbes/barres à axe unique, séries empilées (`stacks`) et repères verticaux (`markers`).
+* **`MetricTabs`**, **`Sparkline`** et **`KpiTile`** : tuiles radio accessibles (`role="radiogroup"` / `role="radio"`) et indicateurs KPI unitaires.
+* **`BarList` & `ShareBar`** : classements horizontaux proportionnels et barres de répartition 100 % avec légende complète.
+* **`TopList`** : classement Top N (bascule tableau / barres), modale « Tout voir » avec recherche, pagination et crochets `onLoadFull` / `onExport`.
+* **`CohortTable`** : matrice de rétention par cohortes avec intensité `color-mix()` et ligne de moyenne pondérée.
+* **`AnalyticsSkeleton`** : squelette plein écran ou mode `compact`.
+
+## Sous-exports JS purs
+
+Pour importer les fonctions utilitaires sans charger Chart.js ni de composants `.svelte` (idéal pour `bun test`) :
+
+* `@kotbo/ui/analytics/timeSeries` : `resolveGranularity`, `bucketDays`, `weekStart`, `aggregate`, `movingAverage`, `smoothingWindow`, `trendPct`, `forecast`, `daysLeftInMonth`.
+* `@kotbo/ui/analytics/analyticsFormat` : `fmtNumber`, `fmtPct`, `fmtMinutes`, `fmtDuration`, `fmtDelta`, `shortDate`, `daysSince`, `SERIES`, `SERIES_NEUTRAL`.
+* `@kotbo/ui/analytics/chartTable` : `chartTable`, `nearestHeadingText`.

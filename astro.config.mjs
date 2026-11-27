@@ -182,6 +182,13 @@ export default defineConfig({
             page('Accès aux commandes', 'Command access', 'discord/configuration/commandes'),
           ]),
         ]),
+        group('Kotbo-UI', 'Kotbo-UI', [
+          page('Présentation & installation', 'Overview & setup', 'kotbo-ui/presentation'),
+          page('Composants UI (@kotbo/ui)', 'UI components (@kotbo/ui)', 'kotbo-ui/ui'),
+          page('Analytics v3 (@kotbo/ui/analytics)', 'Analytics v3 (@kotbo/ui/analytics)', 'kotbo-ui/analytics'),
+          page('Icônes (@kotbo/ui/icons)', 'Icons (@kotbo/ui/icons)', 'kotbo-ui/icons'),
+          page('Styles, thèmes & i18n', 'Styles, theming & i18n', 'kotbo-ui/styles-theming'),
+        ]),
         group('Aide', 'Help', [
           page('Commandes utiles', 'Everyday commands', 'aide/commandes-utiles'),
           page('Questions fréquentes', 'Frequently asked questions', 'aide/questions-frequentes'),

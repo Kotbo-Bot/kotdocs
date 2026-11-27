@@ -1,0 +1,61 @@
+---
+title: Styles, theming & i18n (@kotbo/ui/styles)
+description: Standalone CSS without Tailwind, Sand / Night design tokens, AegisAI modern overrides, and reactive i18n configuration.
+sidebar:
+  order: 5
+---
+
+Kotbo-UI ships standalone CSS and standard custom properties with zero dependency on Tailwind CSS.
+
+## CSS entry points
+
+```ts
+// Tokens + component styles (import before app.css)
+import '@kotbo/ui/styles';
+
+// Or separately:
+import '@kotbo/ui/styles/tokens.css';
+import '@kotbo/ui/styles/components.css';
+```
+
+## Sand / Night tokens and Analytics series
+
+`tokens.css` provides light (**Sand**) and dark (**Night**) palettes controlled via `prefers-color-scheme: dark`, `.dark`, or `[data-theme="dark"]`:
+
+* **Surfaces & text**: `--color-background`, `--color-surface`, `--color-surface-container-lowest/low/high`, `--color-on-surface`, `--color-on-surface-variant`, `--color-outline-variant`.
+* **Accent & status**: `--color-primary`, `--color-on-primary`, `--color-success`, `--color-warning`, `--color-error` (plus `*-container` tokens).
+* **Analytics series**: `--series-1` through `--series-8` and `--series-neutral`.
+* **Z-index scale**: `--layer-bar`, `--layer-popover`, `--layer-modal`, `--layer-popover-over-modal`, `--layer-toast`, `--layer-tooltip`.
+
+## Preserving AegisAI's modern styling
+
+Dedicated `--kotbo-*` variables allow AegisAI to reuse Kotbo's extracted components while keeping its slightly more modern card styling and palette:
+
+```css
+:root {
+  --color-primary: #2a78d6;
+  --kotbo-chart-card-radius: 1.25rem;
+  --kotbo-chart-card-padding: 1.25rem;
+  --kotbo-chart-card-gap: 1.25rem;
+  --kotbo-chart-card-bg: var(--surface);
+  --kotbo-facts-padding-top: 1rem;
+  --kotbo-fact-value-size: 1.05rem;
+  --kotbo-fact-value-weight: 700;
+}
+```
+
+## Reactive internationalization (`configureKotboUi`)
+
+Built-in labels default to French. Host applications such as Kotbo Dashboard connect Paraglide translations at runtime via `configureKotboUi` (`@kotbo/ui/config`):
+
+```ts
+import { configureKotboUi } from '@kotbo/ui/config';
+
+configureKotboUi({
+  locale: () => dateLocale(),
+  messages: {
+    common_cancel: m.common_cancel,
+    anx_view_line: m.anx_view_line,
+  },
+});
+```
