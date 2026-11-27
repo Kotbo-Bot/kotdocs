@@ -3,7 +3,8 @@ body { letter-spacing: -.006em; }
 
 .site-title img { height: 2.2rem; width: auto; max-width: 10.5rem; }
 .sidebar-pane { border-inline-end-color: color-mix(in srgb, var(--sl-color-gray-5) 65%, transparent); }
-.sidebar-content a { font-size: .87rem; border-radius: .55rem; }
+.sidebar-content a { font-size: .87rem; border-radius: 9999px; padding-inline: .75rem; }
+.sidebar-content a:hover { background: var(--color-surface-hover); }
 .sidebar-content a[aria-current='page'] {
   font-weight: 800;
   background-color: var(--sl-color-accent-low) !important;
@@ -15,3 +16,16 @@ body { letter-spacing: -.006em; }
   .sidebar-content a, .sidebar-content summary { min-height: 2.75rem; align-items: center; }
   .sidebar-content a { display: flex; }
 }
+/* Sommaire de droite : colonne étroite et fixe, le reste revient au contenu. */
+@media (min-width: 72rem) {
+  .right-sidebar-container { width: 14rem !important; }
+  /* Panneau en position fixe : son 100 % vaudrait la fenêtre entière, d'où les titres coupés. */
+  .right-sidebar { width: 14rem !important; }
+  [data-has-sidebar][data-has-toc] .main-pane { width: calc(100% - 14rem) !important; --sl-content-margin-inline: auto !important; }
+  .right-sidebar-panel { padding-inline: .75rem !important; }
+  .right-sidebar-panel h2 { font-size: var(--sl-text-sm); }
+  .right-sidebar-panel a { font-size: var(--sl-text-xs); }
+  /* Starlight fige la largeur sur celle du menu de gauche : sans ça le sommaire est coupé. */
+  .right-sidebar-panel .sl-container { width: auto !important; max-width: none !important; }
+}
+:root { --sl-content-width: 50rem; }
