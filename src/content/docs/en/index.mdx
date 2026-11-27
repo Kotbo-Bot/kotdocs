@@ -1,65 +1,9 @@
 ---
-title: Master the Kotbo dashboard.
+title: Kotbo documentation
 description: Learn how to configure and use Kotbo from its dashboard.
 template: splash
+pagefind: false
 hero:
-  tagline: A visual handbook for setting up your server, understanding every screen and getting the most out of Kotbo day to day.
-  actions:
-    - text: Start the guide
-      link: /docs/en/premiers-pas/connexion/
-      icon: right-arrow
-    - text: Explore the interface
-      link: /docs/en/premiers-pas/interface/
-      variant: minimal
-      icon: open-book
+  title: How can we help?
+  tagline: Set up your server step by step, with screenshots of the real dashboard.
 ---
-
-import { CardGrid, LinkCard } from '@astrojs/starlight/components';
-import DashboardScreenshot from '../../../components/DashboardScreenshot.astro';
-
-<div class="hero-preview">
-  <DashboardScreenshot
-    file="dashboard-overview.webp"
-    alt="Real overview of the Kotbo dashboard"
-    eager
-  />
-</div>
-
-<section class="home-intro">
-  <span class="eyebrow">First steps</span>
-  <h2>From an empty server to a dashboard you <span class="highlight-pill">own</span>.</h2>
-  <p>Follow a short path designed for server owners and moderation teams — no technical knowledge required.</p>
-</section>
-
-<div class="journey-grid">
-  <a class="journey-card" href="/en/premiers-pas/connexion/">
-    <span class="number">01</span><span class="arrow">↗</span>
-    <h3>Sign in</h3>
-    <p>Authorise Discord and pick the server you want to administer.</p>
-  </a>
-  <a class="journey-card" href="/en/premiers-pas/interface/">
-    <span class="number">02</span><span class="arrow">↗</span>
-    <h3>Find your way around</h3>
-    <p>Understand the navigation, the server switcher and the shortcuts worth knowing.</p>
-  </a>
-  <a class="journey-card" href="/en/premiers-pas/modules/">
-    <span class="number">03</span><span class="arrow">↗</span>
-    <h3>Enable your modules</h3>
-    <p>Build a dashboard that fits your community, with no features you will never use.</p>
-  </a>
-</div>
-
-<section class="home-tasks">
-  <div class="home-intro">
-    <span class="eyebrow">By task</span>
-    <h2>What do you want to do?</h2>
-  </div>
-  <CardGrid>
-    <LinkCard title="Protect my server" description="Anti-raid, filters and sanctions." href="/en/dashboard/moderation/configuration-rapide/" />
-    <LinkCard title="Welcome newcomers" description="Welcome and goodbye messages." href="/en/dashboard/communaute/accueil-depart/" />
-    <LinkCard title="Set up tickets" description="Clear support for your members." href="/en/dashboard/communaute/tickets/" />
-    <LinkCard title="Run a levelling system" description="Experience, milestones and rewards." href="/en/dashboard/xp/leveling/" />
-    <LinkCard title="Find a command" description="Everyday Discord commands." href="/en/aide/commandes-utiles/" />
-    <LinkCard title="Fix a problem" description="Answers to frequent questions." href="/en/aide/questions-frequentes/" />
-  </CardGrid>
-</section>

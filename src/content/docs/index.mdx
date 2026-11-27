@@ -1,65 +1,9 @@
 ---
-title: Maîtrisez le dashboard Kotbo.
+title: Documentation Kotbo
 description: Apprenez à configurer et utiliser Kotbo depuis son dashboard.
 template: splash
+pagefind: false
 hero:
-  tagline: Une documentation visuelle pour configurer votre serveur, comprendre chaque écran et exploiter Kotbo au quotidien.
-  actions:
-    - text: Commencer le guide
-      link: /docs/premiers-pas/connexion/
-      icon: right-arrow
-    - text: Découvrir l’interface
-      link: /docs/premiers-pas/interface/
-      variant: minimal
-      icon: open-book
+  title: Comment pouvons-nous vous aider ?
+  tagline: Configurez votre serveur pas à pas, avec des captures du vrai dashboard.
 ---
-
-import { CardGrid, LinkCard } from '@astrojs/starlight/components';
-import DashboardScreenshot from '../../components/DashboardScreenshot.astro';
-
-<div class="hero-preview">
-  <DashboardScreenshot
-    file="dashboard-overview.webp"
-    alt="Vue d’ensemble réelle du dashboard Kotbo"
-    eager
-  />
-</div>
-
-<section class="home-intro">
-  <span class="eyebrow">Premiers repères</span>
-  <h2>Du serveur vide au dashboard <span class="highlight-pill">maîtrisé</span>.</h2>
-  <p>Suivez un parcours court, pensé pour les propriétaires de serveur et les équipes de modération — aucune connaissance technique requise.</p>
-</section>
-
-<div class="journey-grid">
-  <a class="journey-card" href="/premiers-pas/connexion/">
-    <span class="number">01</span><span class="arrow">↗</span>
-    <h3>Se connecter</h3>
-    <p>Autorisez Discord et sélectionnez le serveur que vous souhaitez administrer.</p>
-  </a>
-  <a class="journey-card" href="/premiers-pas/interface/">
-    <span class="number">02</span><span class="arrow">↗</span>
-    <h3>Prendre ses repères</h3>
-    <p>Comprenez la navigation, le sélecteur de serveur et les raccourcis utiles.</p>
-  </a>
-  <a class="journey-card" href="/premiers-pas/modules/">
-    <span class="number">03</span><span class="arrow">↗</span>
-    <h3>Activer les modules</h3>
-    <p>Composez un dashboard adapté à votre communauté, sans fonctions superflues.</p>
-  </a>
-</div>
-
-<section class="home-tasks">
-  <div class="home-intro">
-    <span class="eyebrow">Par besoin</span>
-    <h2>Que voulez-vous faire ?</h2>
-  </div>
-  <CardGrid>
-    <LinkCard title="Protéger mon serveur" description="Anti-raid, filtres et sanctions." href="/dashboard/moderation/configuration-rapide/" />
-    <LinkCard title="Accueillir les nouveaux" description="Messages de bienvenue et de départ." href="/dashboard/communaute/accueil-depart/" />
-    <LinkCard title="Mettre en place les tickets" description="Un support clair pour vos membres." href="/dashboard/communaute/tickets/" />
-    <LinkCard title="Animer avec les niveaux" description="Expérience, paliers et récompenses." href="/dashboard/xp/leveling/" />
-    <LinkCard title="Retrouver une commande" description="Les commandes Discord du quotidien." href="/aide/commandes-utiles/" />
-    <LinkCard title="Résoudre un problème" description="Les réponses aux questions fréquentes." href="/aide/questions-frequentes/" />
-  </CardGrid>
-</section>

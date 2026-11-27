@@ -3,7 +3,7 @@
 // logo, mêmes rubriques, même bouton Dashboard. La recherche, le thème et la langue restent ceux
 // de Starlight. Les chemins sont absolus : la doc est servie sous /docs, sur le domaine de la landing.
 import LanguageSelect from './LanguageSelect.astro';
-import Search from '@astrojs/starlight/components/Search.astro';
+import Search from './Search.astro';
 import ThemeSelect from '@astrojs/starlight/components/ThemeSelect.astro';
 
 const en = Astro.currentLocale === 'en';
@@ -24,7 +24,7 @@ const links = en
 
 <div class="header">
   <a class="brand" href={en ? '/en' : '/'} aria-label={en ? 'Kotbo, home' : 'Kotbo, accueil'}>
-    <img src="/favicon.svg" alt="" width="32" height="32" />
+    <img src={`${import.meta.env.BASE_URL.replace(/\/$/, '')}/favicon.svg`} alt="" width="32" height="32" />
     <span>Kotbo</span>
   </a>
   <nav class="links" aria-label={en ? 'Main navigation' : 'Navigation principale'}>
@@ -79,7 +79,7 @@ const links = en
   }
   .links a {
     padding: 0.5rem 0.75rem;
-    border-radius: 0.5rem;
+    border-radius: 9999px;
     color: var(--color-on-surface-variant);
     font-size: var(--sl-text-sm);
     font-weight: 500;

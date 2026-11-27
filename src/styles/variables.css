@@ -5,6 +5,29 @@
 @import '@fontsource/sn-pro/latin-800.css';
 @import '@kotbo/ui/styles';
 
+/* Accent bleu du dashboard (ACCENT_COLORS.blue de theme.svelte.ts). La spécificité répétée passe
+   devant le bloc `prefers-color-scheme` des jetons, qui remettrait le vert. */
+:root:root:root {
+  --primary-color: #2563eb;
+  --on-primary-color: #ffffff;
+  --primary-container-color: #dbeafe;
+  --on-primary-container-color: #1e3a5f;
+  --secondary-color: #3b82f6;
+  --tertiary-color: #60a5fa;
+  --surface-selection: rgba(37, 99, 235, 0.08);
+  --series-9: #0891b2;
+}
+:root:root:root[data-theme='dark'] {
+  --primary-color: #60a5fa;
+  --on-primary-color: #1e3a5f;
+  --primary-container-color: #1e3a8a;
+  --on-primary-container-color: #bfdbfe;
+  --secondary-color: #93c5fd;
+  --tertiary-color: #7dd3fc;
+  --surface-selection: rgba(96, 165, 250, 0.1);
+  --series-9: #23d5e7;
+}
+
 /* Starlight branché sur les jetons Kotbo UI : un seul bloc, les jetons basculent avec data-theme. */
 :root {
   --sl-font: var(--font-body);
@@ -13,8 +36,8 @@
   --sl-color-accent-low: var(--primary-container-color);
   --sl-color-accent: var(--primary-color);
   --sl-color-accent-high: var(--on-primary-container-color);
-  --sl-color-text-accent: var(--success-color);
-  --sl-color-text-invert: var(--surface-container-lowest);
+  --sl-color-text-accent: var(--primary-color);
+  --sl-color-text-invert: var(--on-primary-color);
 
   --sl-color-white: var(--on-background);
   --sl-color-gray-1: var(--on-surface);

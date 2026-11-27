@@ -58,6 +58,7 @@ export default defineConfig({
         baseUrl: 'https://github.com/Kotbo-Bot/kotbo-docs/edit/main/',
       },
       customCss: ['./src/styles/css.rooting.css'],
+      tableOfContents: { minHeadingLevel: 2, maxHeadingLevel: 2 },
       // Les groupes du dashboard suivent l'ordre et les libellés de son menu.
       sidebar: [
         group('Premiers pas', 'First steps', [
@@ -204,6 +205,8 @@ export default defineConfig({
         Head: './src/components/Head.astro',
         LanguageSelect: './src/components/LanguageSelect.astro',
         PageTitle: './src/components/PageTitle.astro',
+        Hero: './src/components/Hero.astro',
+        Search: './src/components/Search.astro',
       },
     }),
   ],
