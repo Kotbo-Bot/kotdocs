@@ -1,0 +1,251 @@
+---
+// Recherche Ctrl+K, calquée sur la palette du dashboard (CommandPalette.svelte).
+// L'index reste celui de Pagefind, construit par Starlight.
+import { icon, topic, topicOf, topics } from '../topics';
+
+const en = Astro.locals.starlightRoute.locale === 'en';
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+const t = (fr: string, english: string) => (en ? english : fr);
+
+const suggestions = [
+  [t('Connexion et serveur', 'Sign in and server'), 'premiers-pas/connexion'],
+  ['Anti-raid', 'dashboard/moderation/anti-raid'],
+  ['Tickets', 'dashboard/communaute/tickets'],
+  [t('Bienvenue et départs', 'Welcome and goodbye'), 'dashboard/communaute/accueil-depart'],
+  [t('Niveaux', 'Levels'), 'dashboard/xp/leveling'],
+  [t('Commandes utiles', 'Everyday commands'), 'aide/commandes-utiles'],
+].map(([label, slug]) => ({ label, href: `${base}${en ? '/en' : ''}/${slug}/`, topic: topicOf(slug) }));
+
+const strings = {
+  none: t('Aucun résultat pour « {q} ».', 'No result for “{q}”.'),
+  count: t('{n} résultat(s)', '{n} result(s)'),
+  failed: t('La recherche est indisponible. Rechargez la page.', 'Search is unavailable. Reload the page.'),
+  dev: t('La recherche fonctionne sur le site construit (bun run build puis bun run preview).', 'Search works on the built site (bun run build, then bun run preview).'),
+  results: t('Résultats', 'Results'),
+};
+const label = t('Rechercher', 'Search');
+---
+
+<kotbo-search data-base={base} data-dev={String(import.meta.env.DEV)} data-strings={JSON.stringify(strings)}>
+  <button type="button" class="ks-trigger" data-search-open aria-label={label} aria-keyshortcuts="Control+K">
+    <Fragment set:html={icon('Search')} />
+    <span>{label}</span>
+    <kbd class="kbd-key">Ctrl K</kbd>
+  </button>
+
+  <dialog class="ks-dialog" aria-label={label}>
+    <div class="ks-panel">
+      <div class="ks-top">
+        <label class="ks-field">
+          <Fragment set:html={icon('Search')} />
+          <input
+            type="search" role="combobox" aria-expanded="true" aria-controls="ks-list" aria-autocomplete="list"
+            autocomplete="off" spellcheck="false" aria-label={label}
+            placeholder={t('Rechercher une page, une commande, un réglage…', 'Search a page, a command, a setting…')}
+          />
+        </label>
+        <button type="button" class="kbd-key ks-close" data-search-close aria-label={t('Fermer', 'Close')}>Esc</button>
+      </div>
+      <p class="ks-status" role="status"></p>
+      <div class="ks-body">
+        <p class="ks-group">{t('Suggestions', 'Suggestions')}</p>
+        <ul id="ks-list" role="listbox" aria-label={label}>
+          {suggestions.map((item, i) => (
+            <li role="presentation">
+              <a role="option" id={`ks-s${i}`} href={item.href} style={`--topic:${item.topic.color}`} data-suggestion>
+                <span class="ks-disc" set:html={item.topic.icon} />
+                <span class="ks-text"><span class="ks-title">{item.label}</span></span>
+                <kbd class="kbd-key ks-enter" aria-hidden="true">↵</kbd>
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+      <div class="ks-foot" aria-hidden="true">
+        <span><kbd class="kbd-key">↑↓</kbd> {t('Naviguer', 'Navigate')}</span>
+        <span><kbd class="kbd-key">↵</kbd> {t('Ouvrir', 'Open')}</span>
+        <span><kbd class="kbd-key">Esc</kbd> {t('Fermer', 'Close')}</span>
+      </div>
+    </div>
+  </dialog>
+
+  {topics.map((entry) => (
+    <template data-topic={entry.id} data-match={entry.match} data-color={topic(entry.id).color} set:html={entry.icon} />
+  ))}
+</kotbo-search>
+
+<script>
+  interface Hit { url: string; excerpt: string; meta: { title?: string } }
+
+  class KotboSearch extends HTMLElement {
+    connectedCallback() {
+      const dialog = this.querySelector('dialog')!;
+      const input = this.querySelector('input')!;
+      const list = this.querySelector<HTMLElement>('#ks-list')!;
+      const group = this.querySelector<HTMLElement>('.ks-group')!;
+      const status = this.querySelector<HTMLElement>('.ks-status')!;
+      const strings = JSON.parse(this.dataset.strings!);
+      const base = this.dataset.base!;
+      const suggestions = [...list.children];
+      const suggestionsTitle = group.textContent!;
+      let selected = 0;
+      let pagefind: Promise<any> | undefined;
+
+      const options = () => [...list.querySelectorAll<HTMLAnchorElement>('[role="option"]')];
+      const select = (index: number, scroll = true) => {
+        const all = options();
+        selected = all.length ? (index + all.length) % all.length : 0;
+        all.forEach((option, i) => option.setAttribute('aria-selected', String(i === selected)));
+        input.setAttribute('aria-activedescendant', all[selected]?.id ?? '');
+        if (scroll) all[selected]?.scrollIntoView({ block: 'nearest' });
+      };
+
+      const load = () =>
+        (pagefind ??= import(/* @vite-ignore */ `${base}/pagefind/pagefind.js`).then(async (api) => {
+          await api.options({ baseUrl: `${base}/` });
+          return api;
+        }));
+
+      const row = (hit: Hit, index: number) => {
+        const templates = [...this.querySelectorAll<HTMLTemplateElement>('template[data-topic]')];
+        const found = templates.find((tpl) => new RegExp(tpl.dataset.match!).test(hit.url))!;
+        const item = document.createElement('li');
+        item.setAttribute('role', 'presentation');
+        const link = Object.assign(document.createElement('a'), { href: hit.url, id: `ks-r${index}` });
+        link.setAttribute('role', 'option');
+        link.style.setProperty('--topic', found.dataset.color!);
+        const disc = Object.assign(document.createElement('span'), { className: 'ks-disc' });
+        disc.append(found.content.cloneNode(true));
+        const text = Object.assign(document.createElement('span'), { className: 'ks-text' });
+        const title = Object.assign(document.createElement('span'), { className: 'ks-title', textContent: hit.meta.title ?? hit.url });
+        // L'extrait vient de Pagefind : texte échappé, seules les balises <mark> sont ajoutées.
+        const excerpt = Object.assign(document.createElement('span'), { className: 'ks-excerpt', innerHTML: hit.excerpt });
+        text.append(title, excerpt);
+        const enter = Object.assign(document.createElement('kbd'), { className: 'kbd-key ks-enter', textContent: '↵' });
+        enter.setAttribute('aria-hidden', 'true');
+        link.append(disc, text, enter);
+        item.append(link);
+        return item;
+      };
+
+      const show = (title: string, rows: Element[], message = '') => {
+        group.textContent = title;
+        group.hidden = !rows.length;
+        list.replaceChildren(...rows);
+        status.textContent = message;
+        select(0);
+      };
+
+      const search = async () => {
+        const query = input.value.trim();
+        if (!query) return show(suggestionsTitle, suggestions);
+        if (this.dataset.dev === 'true') return show('', [], strings.dev);
+        try {
+          const found = await (await load()).debouncedSearch(query, {}, 150);
+          // null : une frappe plus récente a pris le relais.
+          if (!found) return;
+          const hits: Hit[] = await Promise.all(found.results.slice(0, 8).map((result: any) => result.data()));
+          if (input.value.trim() !== query) return;
+          if (!hits.length) return show('', [], strings.none.replace('{q}', query));
+          show(`${strings.results} · ${strings.count.replace('{n}', String(found.results.length))}`, hits.map(row));
+        } catch {
+          pagefind = undefined;
+          show('', [], strings.failed);
+        }
+      };
+
+      const open = () => {
+        if (dialog.open) return;
+        dialog.showModal();
+        document.documentElement.style.overflow = 'hidden';
+        input.select();
+        select(selected, false);
+        if (this.dataset.dev !== 'true') load().catch(() => (pagefind = undefined));
+      };
+
+      this.querySelector('[data-search-open]')!.addEventListener('click', open);
+      this.querySelector('[data-search-close]')!.addEventListener('click', () => dialog.close());
+      dialog.addEventListener('close', () => (document.documentElement.style.overflow = ''));
+      // Un clic sur le voile (le dialog lui-même) ou sur un résultat referme la palette.
+      dialog.addEventListener('click', (event) => {
+        if (event.target === dialog || (event.target as Element).closest('a')) dialog.close();
+      });
+      input.addEventListener('input', search);
+      input.addEventListener('keydown', (event) => {
+        if (event.key === 'ArrowDown' || event.key === 'ArrowUp') {
+          event.preventDefault();
+          select(selected + (event.key === 'ArrowDown' ? 1 : -1));
+        } else if (event.key === 'Enter') {
+          event.preventDefault();
+          options()[selected]?.click();
+        } else if (event.key === 'Escape') {
+          // Sans ça, le champ « search » avale le premier Échap pour se vider.
+          event.preventDefault();
+          dialog.close();
+        }
+      });
+      list.addEventListener('mousemove', (event) => {
+        const option = (event.target as Element).closest<HTMLAnchorElement>('[role="option"]');
+        if (option) select(options().indexOf(option), false);
+      });
+      window.addEventListener('keydown', (event) => {
+        const typing = (event.target as Element).closest?.('input, textarea, select, [contenteditable]');
+        if ((event.ctrlKey || event.metaKey) && event.key.toLowerCase() === 'k') {
+          event.preventDefault();
+          dialog.open ? dialog.close() : open();
+        } else if (event.key === '/' && !typing) {
+          event.preventDefault();
+          open();
+        }
+      });
+      if (/Mac|iPhone|iPad/.test(navigator.platform)) this.querySelector('.ks-trigger kbd')!.textContent = '⌘ K';
+    }
+  }
+  customElements.define('kotbo-search', KotboSearch);
+</script>
+
+<style is:global>
+  kotbo-search { display: contents; }
+  .ks-trigger {
+    display: flex; align-items: center; gap: .6rem; width: 100%; max-width: 22rem; height: 2.5rem; padding: 0 .5rem 0 .9rem;
+    border: 1px solid var(--color-outline-variant); border-radius: 9999px; background: var(--color-surface-container);
+    color: var(--color-on-surface-variant); font: inherit; font-size: var(--sl-text-sm); cursor: pointer;
+  }
+  .ks-trigger:hover { border-color: var(--color-primary); color: var(--color-on-surface); }
+  .ks-trigger kbd { margin-inline-start: auto; }
+  @media (max-width: 50rem) {
+    .ks-trigger { width: 2.75rem; height: 2.75rem; justify-content: center; padding: 0; border: 0; background: none; }
+    .ks-trigger span, .ks-trigger kbd { display: none; }
+  }
+
+  .ks-dialog {
+    width: min(100% - 1.5rem, 38rem); max-width: none; max-height: min(80dvh, 40rem); margin: 12vh auto auto; padding: 0;
+    border: 1px solid var(--glass-quiet-edge); outline: 1px solid var(--glass-quiet-outer); border-radius: 1.25rem;
+    background: var(--color-surface-container-lowest); color: var(--color-on-surface);
+    box-shadow: var(--glass-quiet-shadow), 0 24px 60px -12px rgba(0, 0, 0, .45); overflow: hidden;
+  }
+  .ks-dialog::backdrop { background: rgba(0, 0, 0, .4); }
+  .ks-panel { display: flex; flex-direction: column; max-height: inherit; }
+  .ks-panel * { margin: 0; }
+  .ks-top { display: flex; align-items: center; gap: .5rem; padding: .75rem; }
+  .ks-field { display: flex; flex: 1; align-items: center; gap: .6rem; padding-inline-start: 1rem; border-radius: 9999px; background: var(--color-surface-container); }
+  .ks-field:focus-within { box-shadow: 0 0 0 2px var(--color-primary); }
+  .ks-field input { flex: 1; min-width: 0; min-height: 2.75rem; border: 0; border-radius: 0 9999px 9999px 0; background: none; color: inherit; font: inherit; font-size: 1rem; }
+  .ks-field input:focus-visible { outline: none; }
+  .ks-close { cursor: pointer; }
+  .ks-status:not(:empty) { padding: .25rem 1rem 1rem; color: var(--color-on-surface-variant); font-size: var(--sl-text-sm); }
+  .ks-body { flex: 1; overflow-y: auto; padding: 0 .375rem .375rem; }
+  .ks-group { padding: .35rem .65rem; color: var(--color-on-surface-variant); font-size: var(--sl-text-xs); font-weight: 600; }
+  .ks-body ul { list-style: none; padding: 0; }
+  .ks-body a { display: flex; align-items: center; gap: .75rem; padding: .55rem .65rem; border-radius: .875rem; color: inherit; text-decoration: none; }
+  .ks-body a[aria-selected="true"] { background: var(--color-primary-container); color: var(--color-on-primary-container); }
+  .ks-disc { display: grid; place-items: center; flex-shrink: 0; width: 2.125rem; height: 2.125rem; border-radius: 9999px; background: color-mix(in srgb, var(--topic) 18%, var(--color-surface-container-lowest)); color: var(--topic); }
+  .ks-text { display: flex; flex: 1; flex-direction: column; min-width: 0; }
+  .ks-title { font-size: var(--sl-text-sm); font-weight: 600; }
+  .ks-excerpt { display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 2; overflow: hidden; font-size: var(--sl-text-xs); line-height: 1.45; opacity: .85; }
+  .ks-excerpt mark { background: none; color: var(--sl-color-text-accent); font-weight: 700; }
+  .ks-enter { visibility: hidden; }
+  a[aria-selected="true"] .ks-enter { visibility: visible; }
+  .ks-foot { display: flex; gap: 1rem; padding: .65rem 1rem; border-top: 1px solid var(--color-outline-variant); background: var(--color-surface-container-low); color: var(--color-on-surface-variant); font-size: var(--sl-text-2xs); }
+  @media (max-width: 50rem) { .ks-foot, .ks-enter { display: none; } }
+</style>

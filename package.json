@@ -13,11 +13,17 @@
   "dependencies": {
     "@astrojs/starlight": "latest",
     "@fontsource/sn-pro": "^5.3.0",
+    "@getpapillon/papicons": "^0.2.3",
     "@kotbo/ui": "^0.1.0",
-    "astro": "latest"
+    "astro": "latest",
+    "react": "19.3.1",
+    "react-dom": "19.3.1",
+    "simple-icons": "^16.38.1"
   },
   "devDependencies": {
     "@astrojs/check": "latest",
+    "@types/react": "^19.3.3",
+    "@types/react-dom": "^19.3.0",
     "typescript": "latest"
   }
 }
